@@ -57,7 +57,7 @@ export type Review = {
   reviewFavorite: number;
 };
 
-export type ProductThumbnailInfo = {
+export type ProductPreviewInfo = {
   id: string;
   name: string;
   basePrice: number;
