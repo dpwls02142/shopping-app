@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ConditionalLayout from "@/app/components/ConditionalLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,8 +29,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="h-screen bg-gray-100 flex justify-center overflow-hidden">
-          <div className="w-full max-w-[468px] bg-white h-full overflow-y-auto">
-            {children}
+          <div className="w-full max-w-[468px] bg-white h-full overflow-y-auto relative">
+            <ConditionalLayout>{children}</ConditionalLayout>
           </div>
         </div>
       </body>
