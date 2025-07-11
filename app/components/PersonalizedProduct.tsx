@@ -2,6 +2,7 @@ import { fetchProductPreviewInfo } from "@/lib/api/productApi";
 import { fetchCustomers } from "@/lib/api/customerApi";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils/constant";
+import PersonalizedProductSkeleton from "@/app/components/PersonalizedProductSkeleton";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -90,7 +91,7 @@ const PersonalizedProductsContent = async () => {
 };
 
 const PersonalizedProduct = () => (
-  <Suspense fallback={<span>로딩 중...</span>}>
+  <Suspense fallback={<PersonalizedProductSkeleton />}>
     <PersonalizedProductsContent />
   </Suspense>
 );
