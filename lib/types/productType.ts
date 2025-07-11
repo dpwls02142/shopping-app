@@ -6,14 +6,14 @@ export type Product = {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
-}
+};
 
 export type ProductInventory = {
   id: string;
   productId: string;
   currentStock: number;
   lastUpdated: string;
-}
+};
 
 export type ProductOption = {
   id: string;
@@ -22,7 +22,7 @@ export type ProductOption = {
   optionValue: string;
   additionalPrice: number;
   stockQuantity: number;
-}
+};
 
 export type ProductDiscount = {
   id: string;
@@ -32,33 +32,39 @@ export type ProductDiscount = {
   discountedPrice: number;
   startDate: string;
   endDate: string;
-}
+};
 
 export type ProductImage = {
   id: string;
   productId: string;
   imageUrl: string;
   imageType: "thumbnail" | "detail";
-}
+};
 
 export type Seller = {
   id: string;
   name: string;
-}
+};
 
-export type CombinedProduct = {
+export type Review = {
+  id: string;
+  customerId: string;
+  productId: string;
+  reviewDetail: string;
+  imageUrl: string;
+  reviewScore: number;
+  createdAt: string;
+  reviewFavorite: number;
+};
+
+export type ProductThumbnailInfo = {
   id: string;
   name: string;
   basePrice: number;
   discountedPrice?: number;
   discountRate?: number;
   discountType?: string;
-  isActive: boolean;
-  currentStock: number;
   thumbnailImage?: string;
-  detailImages: string[];
-  options: ProductOption[];
-  seller: Seller;
-  createdAt: string;
-  updatedAt: string;
-}
+  reviewCount: number;
+  averageRating: number;
+};
