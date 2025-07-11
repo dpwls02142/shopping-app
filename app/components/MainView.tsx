@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
-import SwipeContainer from "@/app/components/SwipeContainer";
+import AppSwipeNavbar from "@/app/components/AppSwipeNavbar";
 
 interface MainViewProps {
   shoppingHome: React.ReactNode;
@@ -12,9 +12,9 @@ export default function MainView({ shoppingHome, deal }: MainViewProps) {
   const { currentPage } = useAppNavigation();
 
   return (
-    <SwipeContainer>
+    <AppSwipeNavbar>
       {currentPage === "home" && shoppingHome}
       {currentPage === "deal" && deal}
-    </SwipeContainer>
+    </AppSwipeNavbar>
   );
 }

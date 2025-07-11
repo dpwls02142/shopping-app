@@ -11,7 +11,7 @@ interface SwipeContainerProps {
 
 const SWIPE_THRESHOLD = 50;
 
-export default function SwipeContainer({ children }: SwipeContainerProps) {
+function AppSwipeNavbar({ children }: SwipeContainerProps) {
   const { currentPage, navigateTo } = useAppNavigation();
   const router = useRouter();
 
@@ -45,3 +45,5 @@ export default function SwipeContainer({ children }: SwipeContainerProps) {
     </motion.div>
   );
 }
+
+export default AppSwipeNavbar;
