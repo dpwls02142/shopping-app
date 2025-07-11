@@ -56,7 +56,7 @@ const PersonalizedProductCard = ({
 }: {
   product: ProductPreviewInfo;
 }) => (
-  <Link key={product.id} href={`/product/${product.id}`}>
+  <Link href={`/product/${product.id}`}>
     <ProductImage product={product} />
     <div className="space-y-1">
       <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
