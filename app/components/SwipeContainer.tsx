@@ -8,6 +8,8 @@ interface SwipeContainerProps {
   children: ReactNode;
 }
 
+const SWIPE_THRESHOLD = 50;
+
 export default function SwipeContainer({ children }: SwipeContainerProps) {
   const { currentPage, navigateTo } = useAppNavigation();
 
@@ -16,13 +18,12 @@ export default function SwipeContainer({ children }: SwipeContainerProps) {
     info: PanInfo
   ) => {
     const { offset } = info;
-    const swipeThreshold = 50;
 
-    if (offset.x > swipeThreshold) {
+    if (offset.x > SWIPE_THRESHOLD) {
       if (currentPage === "deal") {
         navigateTo("home");
       }
-    } else if (offset.x < -swipeThreshold) {
+    } else if (offset.x < -SWIPE_THRESHOLD) {
       if (currentPage === "home") {
         navigateTo("deal");
       }
