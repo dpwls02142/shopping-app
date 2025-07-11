@@ -26,7 +26,7 @@ const products = Array.from({ length: NUM_PRODUCTS }, () => {
     sellerId: faker.helpers.arrayElement(sellers).id,
     name: faker.commerce.productName(),
     basePrice: faker.number.int({ min: 5000, max: 50000 }),
-    isActive: faker.datatype.boolean(),
+    isActive: true,
     createdAt: createdAt.toISOString(),
     updatedAt: updatedAt.toISOString(),
   };
