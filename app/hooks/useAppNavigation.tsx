@@ -15,7 +15,7 @@ export const useCurrentPage = () => {
   return useNavigationStore((state) => state.currentPage);
 };
 export const useShowHeader = () => {
-  useNavigationStore((state) => state.showHeader);
+  return useNavigationStore((state) => state.showHeader);
 };
 export const useShowNavbar = () => {
   return useNavigationStore((state) => state.showNavbar);
