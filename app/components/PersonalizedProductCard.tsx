@@ -1,10 +1,12 @@
-import { fetchProductPreviewInfo } from "@/lib/api/productApi";
-import { fetchCustomers } from "@/lib/api/customerApi";
-import Image from "next/image";
-import Link from "next/link";
-import { Suspense } from "react";
+"use client";
+
+import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils/constant";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { MouseEvent } from "react";
 
 const ProductImage = ({ product }: { product: ProductPreviewInfo }) => {
   return (
@@ -22,7 +24,6 @@ const ProductImage = ({ product }: { product: ProductPreviewInfo }) => {
 
 const ProductPrice = ({ product }: { product: ProductPreviewInfo }) => {
   const { basePrice, discountedPrice } = product;
-
   if (!discountedPrice) {
     return (
       <div>
@@ -55,9 +56,26 @@ const ProductRating = ({ product }: { product: ProductPreviewInfo }) => {
   );
 };
 
-const ProductCard = ({ product }: { product: ProductPreviewInfo }) => {
+const PersonalizedProductCard = ({
+  product,
+}: {
+  product: ProductPreviewInfo;
+}) => {
+  const { navigateTo } = useAppNavigation();
+  const router = useRouter();
+
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    navigateTo("product");
+    router.push(`/product/${product.id}`);
+  };
+
   return (
-    <Link key={product.id} href={`/product/${product.id}`}>
+    <Link
+      key={product.id}
+      href={`/product/${product.id}`}
+      onClick={handleClick}
+    >
       <ProductImage product={product} />
       <div className="space-y-1">
         <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
@@ -74,30 +92,4 @@ const ProductCard = ({ product }: { product: ProductPreviewInfo }) => {
   );
 };
 
-const PersonalizedProductsContent = async () => {
-  const [products, customers] = await Promise.all([
-    fetchProductPreviewInfo(),
-    fetchCustomers(),
-  ]);
-  return (
-    <section className="px-4 py-6">
-      <h2 className="text-xl font-bold mb-4">
-        <span>{customers[0].name}님을 위한 추천 상품</span>
-      </h2>
-      <div className="grid grid-cols-2 gap-4">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </section>
-  );
-};
-const PersonalizedProductList = () => {
-  return (
-    <Suspense fallback={<span>로딩 중...</span>}>
-      <PersonalizedProductsContent />
-    </Suspense>
-  );
-};
-
-export default PersonalizedProductList;
+export default PersonalizedProductCard;
