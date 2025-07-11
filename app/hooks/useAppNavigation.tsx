@@ -1,21 +1,13 @@
 import { useNavigationStore } from "@/lib/store/useNavigationStore";
-import { NavigationStore } from "@/lib/types/navgationType";
+import { useRouter } from "next/navigation";
 
-export const useAppNavigation = (): NavigationStore => {
+export const useAppNavigation = () => {
   const store = useNavigationStore();
+  const router = useRouter();
 
   return {
-    currentPage: store.currentPage,
-    previousPage: store.previousPage,
-    showHeader: store.showHeader,
-    showNavbar: store.showNavbar,
-    showBackButton: store.showBackButton,
-
-    navigateTo: store.navigateTo,
-    goBack: store.goBack,
-    setShowHeader: store.setShowHeader,
-    setShowNavbar: store.setShowNavbar,
-    setShowBackButton: store.setShowBackButton,
+    ...store,
+    goBack: () => router.back(),
   };
 };
 
