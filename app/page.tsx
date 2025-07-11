@@ -1,5 +1,5 @@
-import PersonalizedProductsList from "@/app/components/PersonalizedProductsList";
+import PersonalizedProductList from "@/app/components/PersonalizedProductList";
 
 export default function Home() {
-  return <PersonalizedProductsList />;
+  return <PersonalizedProductList />;
 }

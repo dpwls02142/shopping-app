@@ -92,7 +92,7 @@ const PersonalizedProductsContent = async () => {
     </section>
   );
 };
-const PersonalizedProductsList = () => {
+const PersonalizedProductList = () => {
   return (
     <Suspense fallback={<span>로딩 중...</span>}>
       <PersonalizedProductsContent />
@@ -100,4 +100,4 @@ const PersonalizedProductsList = () => {
   );
 };
 
-export default PersonalizedProductsList;
+export default PersonalizedProductList;
