@@ -1,16 +1,18 @@
 "use client";
 
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
+import { useRouter } from "next/navigation";
 
 const AppNavbar = () => {
-  const { currentPage, navigateTo } = useAppNavigation();
+  const { currentPage } = useAppNavigation();
+  const router = useRouter();
 
   const handleHomeClick = () => {
-    navigateTo("home");
+    router.push("/?tab=home");
   };
 
   const handleDealClick = () => {
-    navigateTo("deal");
+    router.push("/?tab=deal");
   };
 
   return (
