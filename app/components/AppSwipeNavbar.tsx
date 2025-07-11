@@ -11,7 +11,7 @@ interface SwipeContainerProps {
 
 const SWIPE_THRESHOLD = 50;
 
-function AppSwipeNavbar({ children }: SwipeContainerProps) {
+const AppSwipeNavbar = ({ children }: SwipeContainerProps) => {
   const { currentPage, navigateTo } = useAppNavigation();
   const router = useRouter();
 

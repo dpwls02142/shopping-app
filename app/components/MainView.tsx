@@ -8,7 +8,7 @@ interface MainViewProps {
   deal: React.ReactNode;
 }
 
-export default function MainView({ shoppingHome, deal }: MainViewProps) {
+const MainView = ({ shoppingHome, deal }: MainViewProps) => {
   const { currentPage } = useAppNavigation();
 
   return (
@@ -18,3 +18,5 @@ export default function MainView({ shoppingHome, deal }: MainViewProps) {
     </AppSwipeNavbar>
   );
 }
+
+export default MainView;

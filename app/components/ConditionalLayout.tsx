@@ -12,9 +12,7 @@ interface ConditionalLayoutProps {
   children: ReactNode;
 }
 
-export default function ConditionalLayout({
-  children,
-}: ConditionalLayoutProps) {
+const ConditionalLayout = ({ children }: ConditionalLayoutProps) => {
   const { showHeader, showNavbar, showBackButton, navigateTo } =
     useAppNavigation();
   const pathname = usePathname();
@@ -47,4 +45,6 @@ export default function ConditionalLayout({
       <main className="flex-1 overflow-y-auto">{children}</main>
     </div>
   );
-}
+};
+
+export default ConditionalLayout;
