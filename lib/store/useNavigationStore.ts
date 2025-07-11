@@ -39,13 +39,6 @@ export const useNavigationStore = create<NavigationStore>((set, get) => ({
     });
   },
 
-  goBack: () => {
-    const { previousPage } = get();
-    if (previousPage) {
-      get().navigateTo(previousPage);
-    }
-  },
-
   setShowHeader: (show: boolean) => {
     set({ showHeader: show });
   },

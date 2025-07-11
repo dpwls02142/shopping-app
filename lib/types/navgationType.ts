@@ -10,7 +10,6 @@ export type AppNavigationState = {
 
 export type AppNavigationActions = {
   navigateTo: (page: NavigationPage) => void;
-  goBack: () => void;
   setShowHeader: (show: boolean) => void;
   setShowNavbar: (show: boolean) => void;
   setShowBackButton: (show: boolean) => void;
