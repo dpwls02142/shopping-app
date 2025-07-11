@@ -63,7 +63,7 @@ export type ProductPreviewInfo = {
   basePrice: number;
   discountedPrice?: number;
   discountRate?: number;
-  discountType?: string;
+  discountType?: "daily_deal" | "brand_deal" | "sale";
   thumbnailImage?: string;
   reviewCount: number;
   averageRating: number;
