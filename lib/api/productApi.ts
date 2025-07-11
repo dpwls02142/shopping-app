@@ -113,27 +113,27 @@ export const fetchProductPreviewInfo = async (): Promise<
       fetchProductImages(),
       fetchProductReviews(),
     ]);
-    const discountsMap = new Map(discounts.map((d) => [d.productId, d]));
-    const imagesMap = new Map(
+    const productDiscounts = new Map(discounts.map((d) => [d.productId, d]));
+    const productThumbnail = new Map(
       images
         .filter((img) => img.imageType === "thumbnail")
         .map((img) => [img.productId, img.imageUrl])
     );
-    const reviewsPreview = new Map<string, { sum: number; count: number }>();
+    const productReviewsPreview = new Map<string, { sum: number; count: number }>();
     reviews.forEach((review) => {
-      const existing = reviewsPreview.get(review.productId) ?? {
+      const existing = productReviewsPreview.get(review.productId) ?? {
         sum: 0,
         count: 0,
       };
-      reviewsPreview.set(review.productId, {
+      productReviewsPreview.set(review.productId, {
         sum: existing.sum + review.reviewScore,
         count: existing.count + 1,
       });
     });
 
     return products.map((product) => {
-      const discount = discountsMap.get(product.id);
-      const reviewInfo = reviewsPreview.get(product.id);
+      const discount = productDiscounts.get(product.id);
+      const reviewInfo = productReviewsPreview.get(product.id);
       const reviewCount = reviewInfo?.count ?? 0;
       const averageRating = reviewCount > 0 ? reviewInfo!.sum / reviewCount : 0;
 
@@ -144,7 +144,7 @@ export const fetchProductPreviewInfo = async (): Promise<
         discountedPrice: discount?.discountedPrice,
         discountRate: discount?.discountRate,
         discountType: discount?.discountType,
-        thumbnailImage: imagesMap.get(product.id),
+        thumbnailImage: productThumbnail.get(product.id),
         reviewCount,
         averageRating: Math.round(averageRating * 10) / 10,
       };
