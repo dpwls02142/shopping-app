@@ -11,8 +11,16 @@ import {
 import { SERVER_BASE_URL } from "../utils/constant";
 
 export const fetchProducts = async (): Promise<Product[]> => {
-  const response = await fetch(`${SERVER_BASE_URL}/products`);
-  return response.json();
+  try {
+    const response = await fetch(`${SERVER_BASE_URL}/products`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch customers: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 export const fetchProductInventories = async (): Promise<
