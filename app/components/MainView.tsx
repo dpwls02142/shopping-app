@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
-import SwipeContainer from "./SwipeContainer";
+import SwipeContainer from "@/app/components/SwipeContainer";
 
 interface MainViewProps {
   shoppingHome: React.ReactNode;
