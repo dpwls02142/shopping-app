@@ -13,6 +13,7 @@ const ProductImage = ({ product }: { product: ProductPreviewInfo }) => (
       src={product.thumbnailImage ?? ""}
       alt={product.name}
       fill
+      sizes="50vw"
       className="object-cover"
       priority
     />
