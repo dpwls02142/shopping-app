@@ -14,7 +14,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
   try {
     const response = await fetch(`${SERVER_BASE_URL}/products`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch customers: ${response.statusText}`);
+      throw new Error(`Failed to fetch products: ${response.statusText}`);
     }
     return await response.json();
   } catch (error) {
@@ -26,33 +26,81 @@ export const fetchProducts = async (): Promise<Product[]> => {
 export const fetchProductInventories = async (): Promise<
   ProductInventory[]
 > => {
-  const response = await fetch(`${SERVER_BASE_URL}/productInventories`);
-  return response.json();
+  try {
+    const response = await fetch(`${SERVER_BASE_URL}/productInventories`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch product inventories: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 export const fetchProductOptions = async (): Promise<ProductOption[]> => {
-  const response = await fetch(`${SERVER_BASE_URL}/productOptions`);
-  return response.json();
+  try {
+    const response = await fetch(`${SERVER_BASE_URL}/productOptions`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch product options: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 export const fetchProductDiscounts = async (): Promise<ProductDiscount[]> => {
-  const response = await fetch(`${SERVER_BASE_URL}/productDiscounts`);
-  return response.json();
+  try {
+    const response = await fetch(`${SERVER_BASE_URL}/productDiscounts`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch product discounts: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 export const fetchProductImages = async (): Promise<ProductImage[]> => {
-  const response = await fetch(`${SERVER_BASE_URL}/productImages`);
-  return response.json();
+  try {
+    const response = await fetch(`${SERVER_BASE_URL}/productImages`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch product images: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 export const fetchSellers = async (): Promise<Seller[]> => {
-  const response = await fetch(`${SERVER_BASE_URL}/sellers`);
-  return response.json();
+  try {
+    const response = await fetch(`${SERVER_BASE_URL}/sellers`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch sellers: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 export const fetchProductReviews = async (): Promise<Review[]> => {
-  const response = await fetch(`${SERVER_BASE_URL}/reviews`);
-  return response.json();
+  try {
+    const response = await fetch(`${SERVER_BASE_URL}/reviews`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch product reviews: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 export const fetchProductPreviewInfo = async (): Promise<
@@ -65,25 +113,29 @@ export const fetchProductPreviewInfo = async (): Promise<
       fetchProductImages(),
       fetchProductReviews(),
     ]);
+    const discountsMap = new Map(discounts.map((d) => [d.productId, d]));
+    const imagesMap = new Map(
+      images
+        .filter((img) => img.imageType === "thumbnail")
+        .map((img) => [img.productId, img.imageUrl])
+    );
+    const reviewsPreview = new Map<string, { sum: number; count: number }>();
+    reviews.forEach((review) => {
+      const existing = reviewsPreview.get(review.productId) ?? {
+        sum: 0,
+        count: 0,
+      };
+      reviewsPreview.set(review.productId, {
+        sum: existing.sum + review.reviewScore,
+        count: existing.count + 1,
+      });
+    });
 
     return products.map((product) => {
-      const discount = discounts.find((disc) => disc.productId === product.id);
-      const thumbnailImage = images.find(
-        (img) => img.productId === product.id && img.imageType === "thumbnail"
-      )?.imageUrl;
-
-      const productReviews = reviews.filter(
-        (review) => review.productId === product.id
-      );
-
-      const reviewCount = productReviews.length;
-      const averageRating =
-        reviewCount > 0
-          ? productReviews.reduce(
-              (sum, review) => sum + review.reviewScore,
-              0
-            ) / reviewCount
-          : 0;
+      const discount = discountsMap.get(product.id);
+      const reviewInfo = reviewsPreview.get(product.id);
+      const reviewCount = reviewInfo?.count ?? 0;
+      const averageRating = reviewCount > 0 ? reviewInfo!.sum / reviewCount : 0;
 
       return {
         id: product.id,
@@ -92,7 +144,7 @@ export const fetchProductPreviewInfo = async (): Promise<
         discountedPrice: discount?.discountedPrice,
         discountRate: discount?.discountRate,
         discountType: discount?.discountType,
-        thumbnailImage,
+        thumbnailImage: imagesMap.get(product.id),
         reviewCount,
         averageRating: Math.round(averageRating * 10) / 10,
       };
