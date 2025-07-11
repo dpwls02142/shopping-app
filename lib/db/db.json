@@ -1,0 +1,2302 @@
+{
+  "sellers": [
+    {
+      "id": "a7bd6991-1d80-4d4c-a3cd-535b9e1c1439",
+      "name": "Jacobson - Smith"
+    },
+    {
+      "id": "5797ddaa-c691-4b16-ad7c-b2bec0bdf7ad",
+      "name": "Stoltenberg Group"
+    },
+    {
+      "id": "9588da7d-de95-43c4-8942-37cf743ce99e",
+      "name": "Bednar, Lubowitz and Sporer"
+    },
+    {
+      "id": "913df283-162d-4b42-8187-f513d9d78fbe",
+      "name": "DuBuque, Hansen and Gorczany"
+    },
+    {
+      "id": "c9394db2-567f-4961-b096-96884f4c8186",
+      "name": "Heller - White"
+    },
+    {
+      "id": "9888eeb9-0a52-43ed-ad0f-94745815fe84",
+      "name": "Swaniawski, Brekke and Windler"
+    },
+    {
+      "id": "591b4e40-bde4-463d-80ac-e2e5b72cd594",
+      "name": "Medhurst - Yundt"
+    },
+    {
+      "id": "a4eb32c1-7128-470e-b6e8-7de9dc8e88c5",
+      "name": "Daugherty - Balistreri"
+    },
+    {
+      "id": "414ec995-20a5-4035-8ea5-26897e7fc5a2",
+      "name": "Franecki Group"
+    },
+    {
+      "id": "e636b658-b23b-4d4a-bede-695538296a9c",
+      "name": "Rempel - Halvorson"
+    }
+  ],
+  "customers": [
+    {
+      "id": "35b9fdff-bf79-4fa8-9a7e-a28e812a9c0e",
+      "name": "Stephanie Casper"
+    },
+    {
+      "id": "e4c1b3b6-7e61-4a70-be86-de97c0990c79",
+      "name": "Wm Krajcik"
+    },
+    {
+      "id": "e67b708a-3c7c-43f1-bf58-460a1fe07353",
+      "name": "Miss Victoria Kilback"
+    },
+    {
+      "id": "e435a615-35fe-4580-a3f1-bbd7dab14398",
+      "name": "Lawrence Jerde"
+    },
+    {
+      "id": "84da82ee-a5ce-4837-bd98-1e85a152732f",
+      "name": "Kari Denesik"
+    }
+  ],
+  "products": [
+    {
+      "id": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "sellerId": "591b4e40-bde4-463d-80ac-e2e5b72cd594",
+      "name": "Unbranded Wooden Chair",
+      "basePrice": 18900,
+      "isActive": false,
+      "createdAt": "2025-04-24T06:29:07.800Z",
+      "updatedAt": "2025-07-08T11:57:39.667Z"
+    },
+    {
+      "id": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "sellerId": "a4eb32c1-7128-470e-b6e8-7de9dc8e88c5",
+      "name": "Handmade Plastic Ball",
+      "basePrice": 11402,
+      "isActive": false,
+      "createdAt": "2025-03-28T11:20:06.962Z",
+      "updatedAt": "2025-04-25T01:16:32.465Z"
+    },
+    {
+      "id": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "sellerId": "a4eb32c1-7128-470e-b6e8-7de9dc8e88c5",
+      "name": "Awesome Bronze Towels",
+      "basePrice": 36917,
+      "isActive": true,
+      "createdAt": "2025-05-03T11:34:13.956Z",
+      "updatedAt": "2025-06-24T17:08:16.422Z"
+    },
+    {
+      "id": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "sellerId": "5797ddaa-c691-4b16-ad7c-b2bec0bdf7ad",
+      "name": "Fantastic Plastic Ball",
+      "basePrice": 41242,
+      "isActive": false,
+      "createdAt": "2025-03-02T19:47:36.203Z",
+      "updatedAt": "2025-07-06T18:22:36.496Z"
+    },
+    {
+      "id": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "sellerId": "414ec995-20a5-4035-8ea5-26897e7fc5a2",
+      "name": "Tasty Silk Bike",
+      "basePrice": 20096,
+      "isActive": false,
+      "createdAt": "2025-06-03T08:55:32.409Z",
+      "updatedAt": "2025-07-01T09:04:09.773Z"
+    },
+    {
+      "id": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "sellerId": "a4eb32c1-7128-470e-b6e8-7de9dc8e88c5",
+      "name": "Fresh Concrete Car",
+      "basePrice": 21939,
+      "isActive": false,
+      "createdAt": "2025-03-14T23:20:58.741Z",
+      "updatedAt": "2025-03-15T02:40:55.016Z"
+    },
+    {
+      "id": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "sellerId": "c9394db2-567f-4961-b096-96884f4c8186",
+      "name": "Recycled Granite Chicken",
+      "basePrice": 28261,
+      "isActive": false,
+      "createdAt": "2025-05-25T03:36:51.993Z",
+      "updatedAt": "2025-06-21T10:32:57.896Z"
+    },
+    {
+      "id": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "sellerId": "9888eeb9-0a52-43ed-ad0f-94745815fe84",
+      "name": "Sleek Marble Computer",
+      "basePrice": 24027,
+      "isActive": false,
+      "createdAt": "2024-10-21T03:48:21.359Z",
+      "updatedAt": "2024-11-22T17:20:19.490Z"
+    },
+    {
+      "id": "8909894d-29af-44e9-9252-2b13b5170698",
+      "sellerId": "c9394db2-567f-4961-b096-96884f4c8186",
+      "name": "Handcrafted Granite Fish",
+      "basePrice": 18290,
+      "isActive": false,
+      "createdAt": "2024-12-15T03:58:51.915Z",
+      "updatedAt": "2025-02-05T13:25:13.726Z"
+    },
+    {
+      "id": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "sellerId": "9588da7d-de95-43c4-8942-37cf743ce99e",
+      "name": "Elegant Steel Tuna",
+      "basePrice": 28569,
+      "isActive": true,
+      "createdAt": "2024-10-19T10:32:23.964Z",
+      "updatedAt": "2025-03-17T08:15:19.109Z"
+    },
+    {
+      "id": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "sellerId": "591b4e40-bde4-463d-80ac-e2e5b72cd594",
+      "name": "Recycled Wooden Keyboard",
+      "basePrice": 42239,
+      "isActive": false,
+      "createdAt": "2024-11-23T06:08:44.220Z",
+      "updatedAt": "2025-03-12T12:06:18.683Z"
+    },
+    {
+      "id": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "sellerId": "9588da7d-de95-43c4-8942-37cf743ce99e",
+      "name": "Ergonomic Granite Soap",
+      "basePrice": 10569,
+      "isActive": true,
+      "createdAt": "2024-10-03T01:17:51.394Z",
+      "updatedAt": "2024-12-15T18:22:43.373Z"
+    },
+    {
+      "id": "320332f8-8db8-4424-b03b-ff4430486958",
+      "sellerId": "9888eeb9-0a52-43ed-ad0f-94745815fe84",
+      "name": "Modern Aluminum Bike",
+      "basePrice": 42764,
+      "isActive": true,
+      "createdAt": "2025-04-13T03:02:08.365Z",
+      "updatedAt": "2025-05-02T18:46:33.927Z"
+    },
+    {
+      "id": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "sellerId": "9588da7d-de95-43c4-8942-37cf743ce99e",
+      "name": "Modern Ceramic Mouse",
+      "basePrice": 14608,
+      "isActive": false,
+      "createdAt": "2025-07-08T19:20:53.940Z",
+      "updatedAt": "2025-07-09T11:24:39.108Z"
+    },
+    {
+      "id": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "sellerId": "913df283-162d-4b42-8187-f513d9d78fbe",
+      "name": "Intelligent Steel Towels",
+      "basePrice": 21497,
+      "isActive": false,
+      "createdAt": "2025-01-24T12:03:49.489Z",
+      "updatedAt": "2025-02-01T11:23:17.529Z"
+    },
+    {
+      "id": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "sellerId": "a4eb32c1-7128-470e-b6e8-7de9dc8e88c5",
+      "name": "Rustic Cotton Keyboard",
+      "basePrice": 29046,
+      "isActive": true,
+      "createdAt": "2024-12-25T16:14:53.832Z",
+      "updatedAt": "2025-01-03T03:28:59.221Z"
+    },
+    {
+      "id": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "sellerId": "9888eeb9-0a52-43ed-ad0f-94745815fe84",
+      "name": "Rustic Concrete Soap",
+      "basePrice": 43784,
+      "isActive": false,
+      "createdAt": "2024-08-07T04:40:28.403Z",
+      "updatedAt": "2025-06-17T12:41:49.580Z"
+    },
+    {
+      "id": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "sellerId": "c9394db2-567f-4961-b096-96884f4c8186",
+      "name": "Rustic Steel Table",
+      "basePrice": 8476,
+      "isActive": true,
+      "createdAt": "2024-08-15T10:05:21.330Z",
+      "updatedAt": "2025-04-06T08:22:24.087Z"
+    },
+    {
+      "id": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "sellerId": "c9394db2-567f-4961-b096-96884f4c8186",
+      "name": "Incredible Aluminum Fish",
+      "basePrice": 11732,
+      "isActive": false,
+      "createdAt": "2025-01-29T02:52:57.033Z",
+      "updatedAt": "2025-03-16T04:47:15.501Z"
+    },
+    {
+      "id": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "sellerId": "9888eeb9-0a52-43ed-ad0f-94745815fe84",
+      "name": "Fantastic Marble Chips",
+      "basePrice": 25543,
+      "isActive": true,
+      "createdAt": "2025-05-30T15:04:06.362Z",
+      "updatedAt": "2025-07-04T21:49:14.720Z"
+    }
+  ],
+  "productInventories": [
+    {
+      "id": "085611fa-f589-4093-b761-71ac29c7ee4a",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "currentStock": 1,
+      "lastUpdated": "2025-05-14T01:10:30.069Z"
+    },
+    {
+      "id": "4852475a-d1f4-4237-989b-842a323b109d",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "currentStock": 2,
+      "lastUpdated": "2025-05-03T19:55:10.585Z"
+    },
+    {
+      "id": "150f4d8f-c75d-41df-8740-89dfafe53bb3",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "currentStock": 99,
+      "lastUpdated": "2025-06-01T00:21:13.321Z"
+    },
+    {
+      "id": "0316aac7-af6b-43cc-8e76-0dc997bb6017",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "currentStock": 11,
+      "lastUpdated": "2025-03-21T23:39:21.733Z"
+    },
+    {
+      "id": "be59e786-790b-44ea-8e00-c35a5fb88a01",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "currentStock": 69,
+      "lastUpdated": "2025-06-10T02:45:03.363Z"
+    },
+    {
+      "id": "113e16d7-d07c-42ae-be89-eabc0da3cdfb",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "currentStock": 61,
+      "lastUpdated": "2025-04-04T07:56:08.830Z"
+    },
+    {
+      "id": "8f0f2842-874b-4445-8d7f-74a21b269caf",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "currentStock": 33,
+      "lastUpdated": "2025-06-03T22:38:33.925Z"
+    },
+    {
+      "id": "99b00291-2484-45f4-b7b1-908003d71fcf",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "currentStock": 95,
+      "lastUpdated": "2025-02-02T00:10:53.341Z"
+    },
+    {
+      "id": "2f8421ee-1e9e-4e8e-8882-609026bf06cc",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "currentStock": 15,
+      "lastUpdated": "2025-04-08T00:40:03.110Z"
+    },
+    {
+      "id": "c2f6a0d8-26c4-49fd-89a4-673e545d6396",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "currentStock": 23,
+      "lastUpdated": "2025-05-28T23:46:42.729Z"
+    },
+    {
+      "id": "6a68a7af-97fc-44eb-b274-789d5a205303",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "currentStock": 94,
+      "lastUpdated": "2025-01-06T14:54:06.912Z"
+    },
+    {
+      "id": "cf1caa77-97b4-464e-b43e-27632f1d2958",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "currentStock": 52,
+      "lastUpdated": "2025-03-26T05:03:45.093Z"
+    },
+    {
+      "id": "529d4803-8479-4123-9153-9d79d9707e4f",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "currentStock": 18,
+      "lastUpdated": "2025-06-14T20:53:48.769Z"
+    },
+    {
+      "id": "d93924d4-abfb-4e45-be94-4cd74ff1ff3a",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "currentStock": 56,
+      "lastUpdated": "2025-07-08T19:44:08.328Z"
+    },
+    {
+      "id": "11a82f8f-d438-45d8-8cdb-2746578969f8",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "currentStock": 61,
+      "lastUpdated": "2025-03-15T08:53:45.207Z"
+    },
+    {
+      "id": "67690fce-d70b-41e7-99f5-5f9ac6a8cbf0",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "currentStock": 70,
+      "lastUpdated": "2025-05-13T22:22:41.696Z"
+    },
+    {
+      "id": "7416c16a-9d29-4665-85ee-9cb3074c031f",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "currentStock": 2,
+      "lastUpdated": "2025-06-22T10:13:46.724Z"
+    },
+    {
+      "id": "7b129ea0-de0e-4e0e-9b04-cf9bddc6a532",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "currentStock": 45,
+      "lastUpdated": "2025-07-09T10:47:41.126Z"
+    },
+    {
+      "id": "2568e532-8293-4685-982b-af6ac88a1e2d",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "currentStock": 32,
+      "lastUpdated": "2025-04-13T18:43:30.172Z"
+    },
+    {
+      "id": "2b0e4e5c-bb9b-48fe-bfe5-1aaf536cd13e",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "currentStock": 24,
+      "lastUpdated": "2025-06-22T08:28:02.275Z"
+    }
+  ],
+  "productOptions": [
+    {
+      "id": "4249780d-38ea-4dc3-ab61-5a412766659f",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 146,
+      "stockQuantity": 0
+    },
+    {
+      "id": "297258bc-7baa-4b69-a894-a7f57687135a",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 374,
+      "stockQuantity": 8
+    },
+    {
+      "id": "463741cc-7263-4bd9-94c5-f33287715ba0",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 116,
+      "stockQuantity": 6
+    },
+    {
+      "id": "6b39a98b-4785-4d3e-ad36-b4bfff1bc4ee",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 589,
+      "stockQuantity": 7
+    },
+    {
+      "id": "17d8682e-84f5-4c7d-9a79-cd190dd5f5af",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 285,
+      "stockQuantity": 8
+    },
+    {
+      "id": "438cbd1b-f227-4c5f-9691-22e8e44c5dc7",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 589,
+      "stockQuantity": 6
+    },
+    {
+      "id": "43469263-99a3-4ad4-b6ed-d34257fb6714",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 633,
+      "stockQuantity": 9
+    },
+    {
+      "id": "9a59187f-8834-4652-8665-57cfbd0ea365",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 723,
+      "stockQuantity": 1
+    },
+    {
+      "id": "095e52d7-76ce-4097-ad0e-a53356fdfab8",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 939,
+      "stockQuantity": 7
+    },
+    {
+      "id": "9dc6169e-0af1-4322-ad4e-d8b5ad6ed0ec",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 116,
+      "stockQuantity": 8
+    },
+    {
+      "id": "1923675e-3818-481d-a49f-04361f6b595f",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 145,
+      "stockQuantity": 2
+    },
+    {
+      "id": "670f466e-abaf-4fbd-bcef-d34f32b5d157",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 734,
+      "stockQuantity": 2
+    },
+    {
+      "id": "fa5e8c27-5c80-4b7b-8250-71e89c21cf94",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 806,
+      "stockQuantity": 5
+    },
+    {
+      "id": "83b46d85-1b45-4ae1-b1ae-e0ef64b5130b",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 623,
+      "stockQuantity": 3
+    },
+    {
+      "id": "aa5f57ba-d3c1-4daf-998f-1bc821d4be6d",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 553,
+      "stockQuantity": 2
+    },
+    {
+      "id": "734a1142-4987-44c3-adaa-02a9b18ba3a4",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 557,
+      "stockQuantity": 6
+    },
+    {
+      "id": "5cd49864-a968-4701-a338-4e01f2505c1b",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 811,
+      "stockQuantity": 7
+    },
+    {
+      "id": "59960d19-7503-4993-88f9-7f6a22271504",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 266,
+      "stockQuantity": 10
+    },
+    {
+      "id": "8e285f7e-a797-4b90-aab6-97c07977926f",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 876,
+      "stockQuantity": 9
+    },
+    {
+      "id": "f459c22e-ee41-4089-b27d-e0816efda3cf",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 765,
+      "stockQuantity": 4
+    },
+    {
+      "id": "f738219a-ff83-46b0-bd89-79c724189e08",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 40,
+      "stockQuantity": 6
+    },
+    {
+      "id": "a9fc87a6-717c-487d-bf52-4f72088be585",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 77,
+      "stockQuantity": 9
+    },
+    {
+      "id": "5e134274-c6d7-40f9-bd1e-4988fc5308db",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 245,
+      "stockQuantity": 6
+    },
+    {
+      "id": "608a2874-fb4b-4977-aa8c-ecd97d5c6a66",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 650,
+      "stockQuantity": 8
+    },
+    {
+      "id": "89fee45e-8d7b-4fbc-b4e6-8fc8d1fcd027",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 808,
+      "stockQuantity": 6
+    },
+    {
+      "id": "defd4f6b-eba9-417c-aea5-81ee0f5c2a51",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 974,
+      "stockQuantity": 1
+    },
+    {
+      "id": "3e4805c3-e73b-4179-9c6e-65d05a8cd6c4",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 108,
+      "stockQuantity": 6
+    },
+    {
+      "id": "64394e7a-86eb-4af7-a1ae-9a74016c39cb",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 642,
+      "stockQuantity": 7
+    },
+    {
+      "id": "59eb624e-0267-475c-a029-2e048930f043",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 932,
+      "stockQuantity": 1
+    },
+    {
+      "id": "9acfb118-738c-400b-be2e-f0f195cfd3dc",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 620,
+      "stockQuantity": 0
+    },
+    {
+      "id": "134c9747-7b53-4db7-8b8d-312788a38d1d",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 626,
+      "stockQuantity": 6
+    },
+    {
+      "id": "f61f104a-050b-41a4-885c-a73af7cd3ed9",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 742,
+      "stockQuantity": 10
+    },
+    {
+      "id": "81529d8f-485d-43a5-a063-c52bdb9512a0",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 960,
+      "stockQuantity": 4
+    },
+    {
+      "id": "098bffd8-ba60-4676-8e6a-07b1445c5bc9",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 239,
+      "stockQuantity": 9
+    },
+    {
+      "id": "55259f9e-00cc-42f0-b491-0b229c8f33e8",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 645,
+      "stockQuantity": 4
+    },
+    {
+      "id": "7bed723e-fa0a-47fd-8b4b-c2dceac31391",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 997,
+      "stockQuantity": 7
+    },
+    {
+      "id": "a11734af-5748-4194-9083-e9834f7c7d2a",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 901,
+      "stockQuantity": 8
+    },
+    {
+      "id": "f118eede-8ed1-444a-88fc-424c9669bdb9",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 862,
+      "stockQuantity": 7
+    },
+    {
+      "id": "1790e195-5f68-48aa-8f01-33a202ab1549",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 16,
+      "stockQuantity": 4
+    },
+    {
+      "id": "59e4c3ce-452b-43ee-aac8-aa9d6909ea5e",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 744,
+      "stockQuantity": 9
+    },
+    {
+      "id": "98fc5f46-406d-4bf8-9389-9f9181273523",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 488,
+      "stockQuantity": 3
+    },
+    {
+      "id": "3c065a68-b0d8-43f6-a7d6-4c7e72ebb158",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 182,
+      "stockQuantity": 5
+    },
+    {
+      "id": "ea1c0c4b-3170-43c0-b9f7-e8cd5781f310",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 511,
+      "stockQuantity": 10
+    },
+    {
+      "id": "404bf93b-b9fa-46e4-be4f-2e47c0a280c3",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 214,
+      "stockQuantity": 2
+    },
+    {
+      "id": "1cb99a8a-281b-4064-8a4e-9210b34a822f",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 532,
+      "stockQuantity": 3
+    },
+    {
+      "id": "a7139b75-4978-4611-b09a-e2fb8346c344",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 279,
+      "stockQuantity": 10
+    },
+    {
+      "id": "a88a0a4b-6acc-4058-ad10-7c832d7b34aa",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 751,
+      "stockQuantity": 0
+    },
+    {
+      "id": "3a51c5e0-5807-4bd8-8f08-d86fdabcb274",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 725,
+      "stockQuantity": 4
+    },
+    {
+      "id": "cfab112c-ec75-4cd2-a312-fa5a2d012228",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 727,
+      "stockQuantity": 7
+    },
+    {
+      "id": "8436dbf3-fb8d-4364-af33-2e30b8072eeb",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 485,
+      "stockQuantity": 3
+    },
+    {
+      "id": "14a612d8-11fc-4f88-b3a0-35c369622251",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 997,
+      "stockQuantity": 8
+    },
+    {
+      "id": "7aca9755-1bfa-42eb-986c-0d18d7ceae74",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 972,
+      "stockQuantity": 3
+    },
+    {
+      "id": "f4af3c32-17f0-4508-8861-7c222f21c550",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 679,
+      "stockQuantity": 2
+    },
+    {
+      "id": "171ab3ee-44e9-4c17-a612-b0f77ddf091f",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 271,
+      "stockQuantity": 9
+    },
+    {
+      "id": "e9f72e5d-2baa-4cc9-9027-0c303533a221",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 626,
+      "stockQuantity": 8
+    },
+    {
+      "id": "ef7e435a-7498-45b1-bf34-a21c3a74377d",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 752,
+      "stockQuantity": 8
+    },
+    {
+      "id": "dcb4c45e-e3c3-4978-ab07-5528d6c38948",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 946,
+      "stockQuantity": 9
+    },
+    {
+      "id": "adabca59-de04-4eab-ac4e-c1b6f73d2445",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 22,
+      "stockQuantity": 5
+    },
+    {
+      "id": "2152a189-5f2b-4f58-9326-2311f42d8a38",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 325,
+      "stockQuantity": 3
+    },
+    {
+      "id": "93ed5819-fbcd-47bd-84cb-328f55b39c63",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 644,
+      "stockQuantity": 1
+    },
+    {
+      "id": "d6ee68e8-eb6a-4ff8-8479-fc9853802fb8",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 642,
+      "stockQuantity": 6
+    },
+    {
+      "id": "03cb9f86-5cef-461c-95a6-5fb0e6861729",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 252,
+      "stockQuantity": 9
+    },
+    {
+      "id": "cdc0e349-0332-4049-bd88-86be3edc6cbc",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 81,
+      "stockQuantity": 10
+    },
+    {
+      "id": "78f64260-171f-4e20-8563-a2b7d2f163c7",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 13,
+      "stockQuantity": 0
+    },
+    {
+      "id": "bf0a9274-251a-4b42-85b8-21bd276c2390",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 998,
+      "stockQuantity": 0
+    },
+    {
+      "id": "1ac2f7ff-85e6-4dd0-a758-bf5200b4b490",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 602,
+      "stockQuantity": 3
+    },
+    {
+      "id": "b7fd2378-9c91-4838-9dc2-f97c2fed5447",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 549,
+      "stockQuantity": 5
+    },
+    {
+      "id": "6ae9ad7d-4659-449c-a5bf-a3c928cefdfa",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 170,
+      "stockQuantity": 0
+    },
+    {
+      "id": "6cf77855-916c-4423-a7fc-ad2d1229a487",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 507,
+      "stockQuantity": 6
+    },
+    {
+      "id": "0abab254-cee0-4711-a069-cf2ce776c4ab",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 996,
+      "stockQuantity": 7
+    },
+    {
+      "id": "29a907fd-9ba9-409f-b45d-b93674b8c539",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 588,
+      "stockQuantity": 4
+    },
+    {
+      "id": "3be46c8b-a19a-44d8-b8b5-6cec2ee32356",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 221,
+      "stockQuantity": 9
+    },
+    {
+      "id": "94e0a048-ca1d-452a-b371-2088071b7c28",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 307,
+      "stockQuantity": 5
+    },
+    {
+      "id": "f14dd4fb-cd7d-4437-aa9d-2454273bf044",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 353,
+      "stockQuantity": 9
+    },
+    {
+      "id": "1555dcd2-42d9-402f-92fa-ba66233459a9",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 991,
+      "stockQuantity": 8
+    },
+    {
+      "id": "cbffcc7d-8c2d-4797-b0f2-4816f17bfb12",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 409,
+      "stockQuantity": 8
+    },
+    {
+      "id": "e6eca656-53d8-4972-91f6-a3cd77ad2782",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 704,
+      "stockQuantity": 9
+    },
+    {
+      "id": "e75718cd-8e94-4834-8646-e81309eb3bc0",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 126,
+      "stockQuantity": 1
+    },
+    {
+      "id": "81ed16f0-4bfc-44ae-9942-9a3ef427642b",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 155,
+      "stockQuantity": 2
+    },
+    {
+      "id": "36fb9ee7-9058-44fa-8dc9-dd4428da4d5d",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 795,
+      "stockQuantity": 2
+    },
+    {
+      "id": "9c43fa20-5b19-4e23-9a53-5d5f57ff9911",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 46,
+      "stockQuantity": 3
+    },
+    {
+      "id": "2cad9266-24f0-43a9-9f99-2cb0ab2e4647",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 533,
+      "stockQuantity": 1
+    },
+    {
+      "id": "65235b27-e9bc-43b5-b19c-17dfca06909d",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 730,
+      "stockQuantity": 3
+    },
+    {
+      "id": "f8bd2c2a-86d4-4bfd-92cd-a5431689887b",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 995,
+      "stockQuantity": 1
+    },
+    {
+      "id": "c11f1f2f-3962-4aee-8ea9-6f021be9c8e4",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 772,
+      "stockQuantity": 8
+    },
+    {
+      "id": "6b573e2c-0d9a-40f0-8c3b-156ebb6d372d",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 817,
+      "stockQuantity": 10
+    },
+    {
+      "id": "18a5277f-127c-4c62-b66b-d87b46999119",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 817,
+      "stockQuantity": 2
+    },
+    {
+      "id": "3274371a-8149-4896-a79c-8eab468c0fd6",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 592,
+      "stockQuantity": 1
+    },
+    {
+      "id": "959dd8af-a569-45e9-a151-0ad672a3c764",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 886,
+      "stockQuantity": 9
+    },
+    {
+      "id": "404b5035-ec0b-464f-ba44-88933b74db86",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 163,
+      "stockQuantity": 6
+    },
+    {
+      "id": "a2db6185-0f4b-4bd4-9d84-a006a358980e",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 665,
+      "stockQuantity": 10
+    },
+    {
+      "id": "eb33ac7f-5755-4732-aec6-a9994e14a937",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 747,
+      "stockQuantity": 0
+    },
+    {
+      "id": "ea695532-06be-41ba-8ecd-09eaa753de95",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 480,
+      "stockQuantity": 7
+    },
+    {
+      "id": "daadc90e-ccfe-4cf2-9082-95f0f6962646",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 6,
+      "stockQuantity": 8
+    },
+    {
+      "id": "3df5d247-3c8c-4429-bed6-08e5f675c226",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 157,
+      "stockQuantity": 9
+    },
+    {
+      "id": "78a1c91a-a4e9-46d3-a248-2f27f78a86bd",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 177,
+      "stockQuantity": 6
+    },
+    {
+      "id": "14d19f02-5f43-4217-9ab9-598f7c908d95",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 298,
+      "stockQuantity": 2
+    },
+    {
+      "id": "f58a97d3-10aa-44a9-bc62-48709e20343f",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 295,
+      "stockQuantity": 3
+    },
+    {
+      "id": "441dfd51-37b3-4f77-a0cc-35e19b45ff9f",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 575,
+      "stockQuantity": 2
+    },
+    {
+      "id": "2604be54-2c64-4b15-ac82-9cfd6010cd02",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 845,
+      "stockQuantity": 3
+    },
+    {
+      "id": "5901ff99-994d-446c-9b17-51274d510798",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 463,
+      "stockQuantity": 3
+    },
+    {
+      "id": "5954f748-f2ed-4566-93bd-cd8910202101",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 659,
+      "stockQuantity": 6
+    },
+    {
+      "id": "8d5c5906-64c2-46d6-86b3-4d53b3fb2785",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 631,
+      "stockQuantity": 5
+    },
+    {
+      "id": "3e4ed857-74c3-413c-ab7b-bd3410117fe3",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 178,
+      "stockQuantity": 3
+    },
+    {
+      "id": "419737d9-551b-44b8-ba08-e9bdca8444d7",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 766,
+      "stockQuantity": 1
+    },
+    {
+      "id": "d6a62394-46df-4874-b1e8-25a61eca3fb1",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 630,
+      "stockQuantity": 1
+    },
+    {
+      "id": "8c5723e5-aa38-4407-a0a1-5913dd4bf015",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 573,
+      "stockQuantity": 9
+    },
+    {
+      "id": "d8f940e6-4f3c-49c4-a670-bbc4a1cf14d7",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 22,
+      "stockQuantity": 1
+    },
+    {
+      "id": "e2c14a6a-1e16-4e70-b003-3f9d38e027b3",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 26,
+      "stockQuantity": 3
+    },
+    {
+      "id": "57e33c19-19f2-452e-b74c-bec31995451b",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 811,
+      "stockQuantity": 3
+    },
+    {
+      "id": "748a9f72-beaf-4cd2-b7ac-3aeb42096bed",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 311,
+      "stockQuantity": 1
+    },
+    {
+      "id": "affbc4df-6756-48c4-8cc0-c83674154055",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 559,
+      "stockQuantity": 1
+    },
+    {
+      "id": "a1379d69-36e2-46d6-9d6d-4395b9b4201c",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 102,
+      "stockQuantity": 2
+    },
+    {
+      "id": "39034043-4e5f-47a2-a779-e5518cb8df3c",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 591,
+      "stockQuantity": 4
+    },
+    {
+      "id": "57936b11-afe0-4211-ba07-60d20e4d6bc6",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 474,
+      "stockQuantity": 1
+    },
+    {
+      "id": "5e245446-0743-4d79-a9e8-ff6440696f68",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 632,
+      "stockQuantity": 3
+    },
+    {
+      "id": "d737997f-2f49-4209-85e5-63a339c6dd94",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 3,
+      "stockQuantity": 8
+    },
+    {
+      "id": "064ba05c-0fe4-4449-9165-c7c876c5bcf7",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 842,
+      "stockQuantity": 7
+    },
+    {
+      "id": "a14d70d3-a772-42bd-93fb-2a4bf3b22dd9",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 293,
+      "stockQuantity": 9
+    },
+    {
+      "id": "1d74a21d-e165-484c-99be-491ba2a9ce61",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 699,
+      "stockQuantity": 10
+    },
+    {
+      "id": "096161f0-d485-473d-aa5d-2857ef026356",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 756,
+      "stockQuantity": 2
+    },
+    {
+      "id": "001a147c-992f-44f3-bcfb-9e91005f4b2d",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 365,
+      "stockQuantity": 0
+    },
+    {
+      "id": "bc7ea6dc-34d3-4460-a1dd-73a300f0e27a",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 947,
+      "stockQuantity": 2
+    },
+    {
+      "id": "f2996848-0266-4586-8398-f089f9b46738",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 803,
+      "stockQuantity": 1
+    },
+    {
+      "id": "1f294e21-e6c0-43ad-b483-fa3e85103cf0",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 192,
+      "stockQuantity": 0
+    },
+    {
+      "id": "0ac83a41-dc3f-4d7d-82b6-2da82dcb7429",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 778,
+      "stockQuantity": 0
+    },
+    {
+      "id": "73660a2b-a66f-4daf-969a-ed122578a945",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 731,
+      "stockQuantity": 7
+    },
+    {
+      "id": "6570cae2-376a-415b-b849-5da714dbaba7",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 115,
+      "stockQuantity": 5
+    },
+    {
+      "id": "096358b5-a9ee-49c1-86af-c836ae6c81f4",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 279,
+      "stockQuantity": 1
+    },
+    {
+      "id": "61f6855d-f471-43f8-871a-ec8f0cc8fac0",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 840,
+      "stockQuantity": 3
+    },
+    {
+      "id": "2709d4b4-5007-40b3-a806-3d0f3efabeaf",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 273,
+      "stockQuantity": 1
+    },
+    {
+      "id": "8e7b2aea-11f1-4259-8b78-77388b135efc",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 140,
+      "stockQuantity": 1
+    },
+    {
+      "id": "a3be83c9-f999-4888-ad0e-dcc25ff16bd8",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 565,
+      "stockQuantity": 7
+    },
+    {
+      "id": "8d8bdc3f-6dee-4b6a-aa21-4023ceb04130",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 105,
+      "stockQuantity": 1
+    },
+    {
+      "id": "d2564efe-cd33-4006-8e2e-2f62cf75f600",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 860,
+      "stockQuantity": 10
+    },
+    {
+      "id": "1f4b3676-7012-4fb4-ba3d-5aa2488b6fff",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 379,
+      "stockQuantity": 9
+    },
+    {
+      "id": "122eecef-f5d1-4935-a5e5-6f2594bd578f",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 458,
+      "stockQuantity": 5
+    },
+    {
+      "id": "b8e4ce3f-fc86-4aff-ba84-702323084465",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 420,
+      "stockQuantity": 0
+    },
+    {
+      "id": "ee9ad16e-97e7-4574-bbbe-296f54ede074",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 796,
+      "stockQuantity": 0
+    },
+    {
+      "id": "39ab0d1e-f02c-4b74-96e9-c3915ab66f4d",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 407,
+      "stockQuantity": 5
+    },
+    {
+      "id": "9f6de8bf-fb04-4cd7-9b13-868694dfea23",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 766,
+      "stockQuantity": 9
+    },
+    {
+      "id": "2bb4687e-9093-4d83-b9ce-a3a77e16266a",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 425,
+      "stockQuantity": 6
+    },
+    {
+      "id": "699ed323-bb58-4b28-851d-7dc65252084d",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 173,
+      "stockQuantity": 3
+    },
+    {
+      "id": "29a3cb0d-fde2-41a2-afc5-349c03d72c89",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 269,
+      "stockQuantity": 8
+    },
+    {
+      "id": "5f1b7a10-9c33-4f08-a4e9-aae899ef3c6c",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 887,
+      "stockQuantity": 4
+    },
+    {
+      "id": "e31a1686-fe5b-4c30-b09d-1de9565dfc83",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 897,
+      "stockQuantity": 0
+    },
+    {
+      "id": "04fd9dff-2849-40ba-b203-5f6d519bd441",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 872,
+      "stockQuantity": 9
+    },
+    {
+      "id": "2db7da0a-8bdc-44a9-9f58-61b3211165c1",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 513,
+      "stockQuantity": 6
+    },
+    {
+      "id": "788fb86f-51e0-4c31-8273-7e6da9e2c307",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 846,
+      "stockQuantity": 9
+    },
+    {
+      "id": "398fd99d-38b6-4e82-b5a4-d237b6b2a413",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 540,
+      "stockQuantity": 1
+    },
+    {
+      "id": "1b58f5c9-627d-47f7-8b03-bcfc1748e7ef",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 566,
+      "stockQuantity": 1
+    },
+    {
+      "id": "0f8ef614-468d-45e5-bdc5-74d7fe1e8b38",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 493,
+      "stockQuantity": 9
+    },
+    {
+      "id": "9ef44334-79e1-495f-9ef8-e275e325dc34",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 540,
+      "stockQuantity": 6
+    },
+    {
+      "id": "cafeea51-ffdd-4a84-b706-5c56a67572da",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 690,
+      "stockQuantity": 0
+    },
+    {
+      "id": "44e1690c-5094-4d8f-a102-b6965142662f",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 887,
+      "stockQuantity": 9
+    },
+    {
+      "id": "3b43103e-478c-4486-9ed9-8821c181a300",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 961,
+      "stockQuantity": 10
+    },
+    {
+      "id": "d2e19f2f-0ef1-4ea7-a6d8-c95165398993",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 367,
+      "stockQuantity": 6
+    },
+    {
+      "id": "83b37261-363b-435b-9382-5cf55efbec77",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 155,
+      "stockQuantity": 6
+    },
+    {
+      "id": "d7e30003-f126-4c1d-87b0-a3b7a55fd4e8",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 49,
+      "stockQuantity": 0
+    },
+    {
+      "id": "ba73d17a-39b2-4c4c-a05f-5e1cd3423c13",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 419,
+      "stockQuantity": 9
+    },
+    {
+      "id": "016e9e37-60fe-47c6-a3de-dfead4b169e2",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 227,
+      "stockQuantity": 9
+    },
+    {
+      "id": "43f5cffc-2f42-444c-ba4e-4364ef22bf04",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 487,
+      "stockQuantity": 4
+    },
+    {
+      "id": "667a299d-55a7-4f61-8407-02a949227185",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 566,
+      "stockQuantity": 5
+    },
+    {
+      "id": "deba3367-2458-4940-a59f-deeeea0514fc",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 610,
+      "stockQuantity": 0
+    },
+    {
+      "id": "fca45297-f638-4f14-b151-8a6d59cbd92c",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 862,
+      "stockQuantity": 9
+    },
+    {
+      "id": "f8326fee-439b-4e12-a3da-d0697dfa6fe5",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 575,
+      "stockQuantity": 6
+    },
+    {
+      "id": "c9c60415-8213-4d4a-84b5-99edec909519",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 607,
+      "stockQuantity": 0
+    },
+    {
+      "id": "ad1bbf7d-a0c8-484b-87db-4892d181ca2b",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 504,
+      "stockQuantity": 2
+    },
+    {
+      "id": "222b65f8-57a7-44ba-8d50-d751cdb3460f",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 917,
+      "stockQuantity": 10
+    },
+    {
+      "id": "e6e1456f-a424-41cf-b2df-de8a4622cafa",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 698,
+      "stockQuantity": 10
+    },
+    {
+      "id": "34ca1a38-10d8-417d-bb60-4df48d5a6674",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 468,
+      "stockQuantity": 5
+    },
+    {
+      "id": "335a5c4b-45cd-4340-98b5-0fc86c6d0d96",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Red\"}",
+      "additionalPrice": 156,
+      "stockQuantity": 8
+    },
+    {
+      "id": "c6eace01-679c-4e97-9d53-24572d70eb6b",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Blue\"}",
+      "additionalPrice": 534,
+      "stockQuantity": 5
+    },
+    {
+      "id": "5ad45ccb-6b8b-4b97-8356-13e62e335e13",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"S\",\"color\":\"Green\"}",
+      "additionalPrice": 317,
+      "stockQuantity": 6
+    },
+    {
+      "id": "552abba6-30a2-4bbf-b380-5c2fe1912597",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Red\"}",
+      "additionalPrice": 78,
+      "stockQuantity": 9
+    },
+    {
+      "id": "3b7438ec-46ac-4fd5-8dbe-f972ee93271c",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Blue\"}",
+      "additionalPrice": 158,
+      "stockQuantity": 6
+    },
+    {
+      "id": "ad8ebb5a-7a78-42e0-b99b-fdaf3925458f",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"M\",\"color\":\"Green\"}",
+      "additionalPrice": 527,
+      "stockQuantity": 6
+    },
+    {
+      "id": "eb59e809-8513-43b1-bcfe-2822f88680be",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Red\"}",
+      "additionalPrice": 936,
+      "stockQuantity": 8
+    },
+    {
+      "id": "af0702a2-9e6f-4f35-a860-d5c7bfbe5577",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Blue\"}",
+      "additionalPrice": 983,
+      "stockQuantity": 1
+    },
+    {
+      "id": "3d03a6c0-0a5f-46fe-bfc1-5ecf2a076ba3",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "optionName": "Size/Color",
+      "optionValue": "{\"size\":\"L\",\"color\":\"Green\"}",
+      "additionalPrice": 501,
+      "stockQuantity": 10
+    }
+  ],
+  "productDiscounts": [
+    {
+      "id": "c2a28cea-8839-48de-9b86-69d0c3dc2e63",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "discountType": "brand_deal",
+      "discountRate": 10,
+      "discountedPrice": 17010,
+      "startDate": "2025-06-13T07:29:46.232Z",
+      "endDate": "2026-03-27T16:34:28.004Z"
+    },
+    {
+      "id": "9467a863-3b9a-4a49-ad62-72f7d2c0a082",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "discountType": "daily_deal",
+      "discountRate": 41,
+      "discountedPrice": 6727,
+      "startDate": "2025-06-15T07:22:54.272Z",
+      "endDate": "2025-12-25T20:10:27.394Z"
+    },
+    {
+      "id": "53247f34-6e0c-4169-8a18-4e2ab86c083d",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "discountType": "brand_deal",
+      "discountRate": 70,
+      "discountedPrice": 11075,
+      "startDate": "2025-05-05T06:00:38.508Z",
+      "endDate": "2025-11-11T03:59:15.139Z"
+    },
+    {
+      "id": "3f4f2982-035a-4298-b5f4-833473f9bca4",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "discountType": "sale",
+      "discountRate": 16,
+      "discountedPrice": 34643,
+      "startDate": "2025-05-31T09:31:14.469Z",
+      "endDate": "2025-09-06T02:33:53.109Z"
+    },
+    {
+      "id": "f5511aed-7c52-42a2-ab18-d1a13ab07539",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "discountType": "daily_deal",
+      "discountRate": 32,
+      "discountedPrice": 13665,
+      "startDate": "2025-06-23T06:15:38.358Z",
+      "endDate": "2025-10-28T05:42:29.404Z"
+    },
+    {
+      "id": "297f239d-5410-4db6-b364-e53884f71b14",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "discountType": "brand_deal",
+      "discountRate": 44,
+      "discountedPrice": 12286,
+      "startDate": "2025-06-07T21:40:46.234Z",
+      "endDate": "2025-06-28T19:59:35.036Z"
+    },
+    {
+      "id": "ce0be80b-2925-4804-a4d9-e6589616d098",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "discountType": "sale",
+      "discountRate": 85,
+      "discountedPrice": 4239,
+      "startDate": "2025-06-04T08:03:23.664Z",
+      "endDate": "2025-08-22T13:53:10.741Z"
+    },
+    {
+      "id": "02d46b22-c3e7-4e80-88aa-37085fce5670",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "discountType": "brand_deal",
+      "discountRate": 17,
+      "discountedPrice": 19942,
+      "startDate": "2025-05-13T03:05:09.724Z",
+      "endDate": "2025-10-12T16:43:51.788Z"
+    },
+    {
+      "id": "613a6ae8-76f3-46ee-93e3-d0a8bac94ebc",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "discountType": "daily_deal",
+      "discountRate": 60,
+      "discountedPrice": 7316,
+      "startDate": "2025-05-27T08:55:04.845Z",
+      "endDate": "2025-09-25T09:37:27.196Z"
+    },
+    {
+      "id": "5a076d73-66ec-4207-984a-83656530f8f3",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "discountType": "sale",
+      "discountRate": 50,
+      "discountedPrice": 14285,
+      "startDate": "2024-11-27T11:29:31.323Z",
+      "endDate": "2025-04-18T06:06:11.032Z"
+    }
+  ],
+  "productImages": [
+    {
+      "id": "48255fda-a664-47ae-8b6f-7341ee670a46",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "imageUrl": "https://picsum.photos/seed/oAfRa/3081/2864",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "0d7a657d-a9a1-47fa-99e6-2b26c9e3f73b",
+      "productId": "b4bce1de-c20e-4aab-8acb-d425d4df730b",
+      "imageUrl": "https://loremflickr.com/3164/2889?lock=5317420255202059",
+      "imageType": "detail"
+    },
+    {
+      "id": "f2d3c587-7d9d-4b41-8821-1f945bf25461",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "imageUrl": "https://loremflickr.com/758/2801?lock=7847219602749984",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "13de53f4-28c1-4148-ba93-9ba393144d17",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "imageUrl": "https://picsum.photos/seed/M45ARf/2179/2521",
+      "imageType": "detail"
+    },
+    {
+      "id": "60348e8a-cfc2-4961-bcd0-9c331ff5f41d",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "imageUrl": "https://loremflickr.com/1733/3511?lock=8567153178077099",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "820031c7-8b71-4a42-ac7a-3032870caaa7",
+      "productId": "42bf47ff-0530-44a4-af9d-c376c2a1171a",
+      "imageUrl": "https://picsum.photos/seed/CknLV/2183/825",
+      "imageType": "detail"
+    },
+    {
+      "id": "73428020-d5a2-4f25-adc3-a70cbfcb8f6b",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "imageUrl": "https://picsum.photos/seed/ybHUXLkF/2949/2132",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "bc505059-b631-4e7a-843e-271545bf8bbb",
+      "productId": "a703e023-5c01-4116-a8c1-bdc3a3dbb1cc",
+      "imageUrl": "https://loremflickr.com/745/2408?lock=5429708052814076",
+      "imageType": "detail"
+    },
+    {
+      "id": "5df8104d-b234-4896-9a5c-3070c80f109b",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "imageUrl": "https://picsum.photos/seed/cAN9Pa0/3327/3457",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "80f0427e-2da4-426f-8b1c-567fda259d72",
+      "productId": "6a1770d3-8467-4c5b-a036-bee2393e5168",
+      "imageUrl": "https://picsum.photos/seed/W67x8/2622/3138",
+      "imageType": "detail"
+    },
+    {
+      "id": "d8f1caae-a01a-4853-b601-9073a1a3489c",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "imageUrl": "https://picsum.photos/seed/9ewISEnQGt/2376/239",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "1dbaf134-1e6a-493f-989e-3a572299249f",
+      "productId": "1fd67bac-33a2-4486-a0b1-f28c05b7e787",
+      "imageUrl": "https://loremflickr.com/999/1739?lock=7062347203749697",
+      "imageType": "detail"
+    },
+    {
+      "id": "cbc4d8b3-8479-4bf9-8eee-8754de415455",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "imageUrl": "https://picsum.photos/seed/AJFDoC/3100/1251",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "baeeb692-2722-45bd-8b6c-143b5bfa5a1b",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "imageUrl": "https://picsum.photos/seed/jh9fBOxJK/1270/29",
+      "imageType": "detail"
+    },
+    {
+      "id": "00c8ff28-a7e7-438d-a818-3d347e4e23c0",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "imageUrl": "https://picsum.photos/seed/JJWNN/668/1547",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "f0ac9347-3b25-4ecd-aa1d-bc3d8c7a690a",
+      "productId": "4810a0de-816c-40b5-a922-78f06c3d1655",
+      "imageUrl": "https://picsum.photos/seed/yRGr7T0k/3718/815",
+      "imageType": "detail"
+    },
+    {
+      "id": "b46c8315-1a23-44bf-9ef4-e459b06fafa4",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "imageUrl": "https://picsum.photos/seed/BSJWyH6R/1720/3922",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "85bba660-3e7f-4063-bc68-edc685008c29",
+      "productId": "8909894d-29af-44e9-9252-2b13b5170698",
+      "imageUrl": "https://loremflickr.com/1254/472?lock=1240585005033143",
+      "imageType": "detail"
+    },
+    {
+      "id": "304f820b-f297-40ee-ac8c-08f8f1ec6091",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "imageUrl": "https://picsum.photos/seed/ahI4pfCsE/2493/3267",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "d0a39f8c-49ef-4c00-abfd-a607fc0f7bcc",
+      "productId": "bcc19359-a804-43fe-92ce-939d3710c53a",
+      "imageUrl": "https://picsum.photos/seed/xAtxEtffNz/264/2754",
+      "imageType": "detail"
+    },
+    {
+      "id": "d26a688b-e126-4c05-9d85-10c01aa3cc3c",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "imageUrl": "https://picsum.photos/seed/thr81BKG/2372/2761",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "84424e98-2924-4a2b-915d-4e0655e0ee59",
+      "productId": "213e65a7-1372-41a8-83e9-bf3ab601d238",
+      "imageUrl": "https://loremflickr.com/2071/3473?lock=2333353865853426",
+      "imageType": "detail"
+    },
+    {
+      "id": "6abde812-b180-46ad-90d4-c0a9fe932b21",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "imageUrl": "https://loremflickr.com/2961/587?lock=2425222374061221",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "b7014334-377c-415c-8081-eb49aba02324",
+      "productId": "7e2eac0f-415e-4576-9f1d-e439c74c1fe5",
+      "imageUrl": "https://loremflickr.com/2231/3393?lock=6764790033214606",
+      "imageType": "detail"
+    },
+    {
+      "id": "5edb663d-193f-4a31-bc7a-c7428be1b6a9",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "imageUrl": "https://picsum.photos/seed/Akd7Vrv/2934/1427",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "19a075e8-8482-4dd6-bc8b-007f69f009eb",
+      "productId": "320332f8-8db8-4424-b03b-ff4430486958",
+      "imageUrl": "https://loremflickr.com/2454/2698?lock=3545357796651287",
+      "imageType": "detail"
+    },
+    {
+      "id": "b8e4ed67-90fd-4746-a89e-9aae5474e218",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "imageUrl": "https://loremflickr.com/125/117?lock=5137853404806078",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "b4c45c8b-2474-47aa-a861-f3caa4a458d8",
+      "productId": "8d67c45e-1023-4fc0-a3f7-7b2842b2380c",
+      "imageUrl": "https://picsum.photos/seed/vrBqRJeH/3160/1166",
+      "imageType": "detail"
+    },
+    {
+      "id": "34788ca0-a521-4d91-9a20-011945f1a987",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "imageUrl": "https://picsum.photos/seed/sCWECDVP/3560/1181",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "6bf8097c-309c-4c5a-955e-cb9323ccbaeb",
+      "productId": "131c03ef-917c-4690-8375-c9e9ac2b6625",
+      "imageUrl": "https://picsum.photos/seed/rgUiw/1186/1449",
+      "imageType": "detail"
+    },
+    {
+      "id": "1dbd5587-ef6b-4fc8-92c4-a4da3d44715d",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "imageUrl": "https://loremflickr.com/1273/2329?lock=1036032374684415",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "555d8bd5-8ade-4868-bebd-f92d3df36842",
+      "productId": "b7532bc2-73dd-489d-ad69-6a30a50647b3",
+      "imageUrl": "https://picsum.photos/seed/fQIUui7in/2200/3098",
+      "imageType": "detail"
+    },
+    {
+      "id": "ffcb095f-4e0b-4300-bd9d-c20054c51114",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "imageUrl": "https://loremflickr.com/847/3961?lock=3939662691930247",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "1de660e9-3d3f-4bcc-b38b-9c64b367237c",
+      "productId": "bd036238-b04a-40f9-a18d-5724a6055b42",
+      "imageUrl": "https://loremflickr.com/3538/577?lock=6421270480236089",
+      "imageType": "detail"
+    },
+    {
+      "id": "1791e0c8-6173-4e4f-8b59-f2bcd240f90f",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "imageUrl": "https://picsum.photos/seed/Tn9cC/2799/2501",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "f189b998-a215-4995-9a1d-c29a3dc1f06b",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "imageUrl": "https://picsum.photos/seed/b7ef4/1521/699",
+      "imageType": "detail"
+    },
+    {
+      "id": "ad46a2f8-19f6-441d-b9f2-07f9a46d9de0",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "imageUrl": "https://picsum.photos/seed/eWpVT4unf/3549/2273",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "cb183363-73cb-452a-a9c5-de28b3b9af8f",
+      "productId": "b44b61aa-dec8-4783-9f28-d970636c056c",
+      "imageUrl": "https://picsum.photos/seed/k2y4JAKB/3028/2093",
+      "imageType": "detail"
+    },
+    {
+      "id": "f20bf86b-10c1-4ea1-9d5b-6a69b10e299f",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "imageUrl": "https://picsum.photos/seed/Uk8hxO/1777/106",
+      "imageType": "thumbnail"
+    },
+    {
+      "id": "9fadada7-7a0c-44b3-94d6-c199ffca9eb8",
+      "productId": "06fcccb1-ced6-47be-8d63-7027f0607e33",
+      "imageUrl": "https://picsum.photos/seed/JPLBQbC7Iv/3370/221",
+      "imageType": "detail"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "d4055680-9523-468b-bb23-401ad1d76b32",
+      "customerId": "e435a615-35fe-4580-a3f1-bbd7dab14398",
+      "productId": "bb4f721a-9090-4cc6-9fff-5dc98c5d697f",
+      "reviewDetail": "Cuppedia vere patior cuius vinum auditor vestrum.",
+      "imageUrl": "https://picsum.photos/seed/UzesoXvZxa/298/678",
+      "reviewScore": 4,
+      "createdAt": "2025-04-13T14:51:21.491Z",
+      "reviewFavorite": 18
+    },
+    {
+      "id": "a235a0bf-25c3-4a9d-808b-2aebb46b4c6e",
+      "customerId": "35b9fdff-bf79-4fa8-9a7e-a28e812a9c0e",
+      "productId": "e6d1204b-8149-401d-ae99-10165d325fa9",
+      "reviewDetail": "Apparatus illum tamen.",
+      "imageUrl": "https://loremflickr.com/1173/256?lock=2526939535594506",
+      "reviewScore": 4,
+      "createdAt": "2025-06-05T02:27:11.943Z",
+      "reviewFavorite": 17
+    },
+    {
+      "id": "21352920-823b-4619-ac8e-96f73a2f470b",
+      "customerId": "e67b708a-3c7c-43f1-bf58-460a1fe07353",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "reviewDetail": "Aequus confido tergiversatio annus beneficium viscus error nesciunt succedo comprehendo.",
+      "imageUrl": "https://loremflickr.com/2381/2975?lock=8755009490850042",
+      "reviewScore": 3,
+      "createdAt": "2025-02-03T02:33:57.654Z",
+      "reviewFavorite": 14
+    },
+    {
+      "id": "14f503b6-d4a0-4e10-b13e-f64a6d1c069a",
+      "customerId": "e4c1b3b6-7e61-4a70-be86-de97c0990c79",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "reviewDetail": "Vitium vel asporto vacuus.",
+      "imageUrl": "https://picsum.photos/seed/A79eR8dzz/986/2115",
+      "reviewScore": 5,
+      "createdAt": "2024-10-17T12:35:43.789Z",
+      "reviewFavorite": 8
+    },
+    {
+      "id": "2f0a437d-bc0f-4e77-95da-fc7d632c7eda",
+      "customerId": "e67b708a-3c7c-43f1-bf58-460a1fe07353",
+      "productId": "01ebd620-b25c-4fb2-91ae-0dade735b101",
+      "reviewDetail": "Theologus nisi desidero causa summisse xiphias.",
+      "imageUrl": "https://picsum.photos/seed/KxlnQN1xw/3836/1557",
+      "reviewScore": 5,
+      "createdAt": "2025-01-06T14:32:33.328Z",
+      "reviewFavorite": 7
+    }
+  ],
+  "cart": [
+    {
+      "id": "82c3f59a-8ab0-4eeb-ba0c-5cb9c555783e",
+      "customerId": "35b9fdff-bf79-4fa8-9a7e-a28e812a9c0e"
+    },
+    {
+      "id": "5c6cdd26-319b-43b0-8f72-277be73d4132",
+      "customerId": "e4c1b3b6-7e61-4a70-be86-de97c0990c79"
+    },
+    {
+      "id": "dc62a395-82c3-41f7-9202-ab896c17006f",
+      "customerId": "e67b708a-3c7c-43f1-bf58-460a1fe07353"
+    },
+    {
+      "id": "edd3ef15-870b-48fc-a257-ddce73a72b06",
+      "customerId": "e435a615-35fe-4580-a3f1-bbd7dab14398"
+    },
+    {
+      "id": "0ddea661-79f8-41b2-ae62-4486b0cf5fae",
+      "customerId": "84da82ee-a5ce-4837-bd98-1e85a152732f"
+    }
+  ],
+  "cartProduct": [
+    {
+      "id": "c189f3fb-a5a4-4a93-b888-0dc03aa201d6",
+      "cartId": "82c3f59a-8ab0-4eeb-ba0c-5cb9c555783e",
+      "optionId": "6b39a98b-4785-4d3e-ad36-b4bfff1bc4ee",
+      "quantity": 5,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-05-23T20:12:54.088Z"
+    },
+    {
+      "id": "a736e418-d877-4225-a72a-4ac3f2d6698c",
+      "cartId": "82c3f59a-8ab0-4eeb-ba0c-5cb9c555783e",
+      "optionId": "788fb86f-51e0-4c31-8273-7e6da9e2c307",
+      "quantity": 2,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-02-09T06:38:50.362Z"
+    },
+    {
+      "id": "b8357134-9bbb-4074-8032-98dc20a5df41",
+      "cartId": "5c6cdd26-319b-43b0-8f72-277be73d4132",
+      "optionId": "1d74a21d-e165-484c-99be-491ba2a9ce61",
+      "quantity": 3,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-07-10T06:59:33.804Z"
+    },
+    {
+      "id": "6c98028e-a0f4-4344-bab4-d9bdf99c127a",
+      "cartId": "5c6cdd26-319b-43b0-8f72-277be73d4132",
+      "optionId": "441dfd51-37b3-4f77-a0cc-35e19b45ff9f",
+      "quantity": 4,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-05-07T02:56:15.109Z"
+    },
+    {
+      "id": "81c2bfa4-af2a-49db-bea3-9fb5c8934452",
+      "cartId": "dc62a395-82c3-41f7-9202-ab896c17006f",
+      "optionId": "5ad45ccb-6b8b-4b97-8356-13e62e335e13",
+      "quantity": 5,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-06-14T17:58:54.525Z"
+    },
+    {
+      "id": "4b4b2884-3388-4d9d-b231-ded658f1cd77",
+      "cartId": "dc62a395-82c3-41f7-9202-ab896c17006f",
+      "optionId": "e75718cd-8e94-4834-8646-e81309eb3bc0",
+      "quantity": 5,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-03-30T20:48:10.438Z"
+    },
+    {
+      "id": "4a31bf10-ac97-4a33-9c82-de8e8ccb14aa",
+      "cartId": "edd3ef15-870b-48fc-a257-ddce73a72b06",
+      "optionId": "5954f748-f2ed-4566-93bd-cd8910202101",
+      "quantity": 1,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-03-22T11:40:18.429Z"
+    },
+    {
+      "id": "bcfe691d-01f1-4565-a3fd-584d1d9bd8fb",
+      "cartId": "edd3ef15-870b-48fc-a257-ddce73a72b06",
+      "optionId": "deba3367-2458-4940-a59f-deeeea0514fc",
+      "quantity": 2,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-06-19T19:14:15.105Z"
+    },
+    {
+      "id": "4fe19c1b-06b4-4199-ba78-ac61a3396406",
+      "cartId": "0ddea661-79f8-41b2-ae62-4486b0cf5fae",
+      "optionId": "17d8682e-84f5-4c7d-9a79-cd190dd5f5af",
+      "quantity": 3,
+      "isSelectedCheckbox": true,
+      "addedAt": "2025-06-11T03:04:06.199Z"
+    },
+    {
+      "id": "54819c24-0018-4f74-b400-71df5f9c24c2",
+      "cartId": "0ddea661-79f8-41b2-ae62-4486b0cf5fae",
+      "optionId": "398fd99d-38b6-4e82-b5a4-d237b6b2a413",
+      "quantity": 4,
+      "isSelectedCheckbox": true,
+      "addedAt": "2024-09-14T19:25:05.431Z"
+    }
+  ]
+}
