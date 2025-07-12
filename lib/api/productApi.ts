@@ -7,6 +7,7 @@ import {
   Seller,
   Review,
   ProductPreviewInfo,
+  ProductDetailInfo,
 } from "../types/productType";
 import { SERVER_BASE_URL } from "../utils/constant";
 
@@ -29,7 +30,9 @@ export const fetchProductInventories = async (): Promise<
   try {
     const response = await fetch(`${SERVER_BASE_URL}/productInventories`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch product inventories: ${response.statusText}`);
+      throw new Error(
+        `Failed to fetch product inventories: ${response.statusText}`
+      );
     }
     return await response.json();
   } catch (error) {
@@ -42,7 +45,9 @@ export const fetchProductOptions = async (): Promise<ProductOption[]> => {
   try {
     const response = await fetch(`${SERVER_BASE_URL}/productOptions`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch product options: ${response.statusText}`);
+      throw new Error(
+        `Failed to fetch product options: ${response.statusText}`
+      );
     }
     return await response.json();
   } catch (error) {
@@ -55,7 +60,9 @@ export const fetchProductDiscounts = async (): Promise<ProductDiscount[]> => {
   try {
     const response = await fetch(`${SERVER_BASE_URL}/productDiscounts`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch product discounts: ${response.statusText}`);
+      throw new Error(
+        `Failed to fetch product discounts: ${response.statusText}`
+      );
     }
     return await response.json();
   } catch (error) {
@@ -94,7 +101,9 @@ export const fetchProductReviews = async (): Promise<Review[]> => {
   try {
     const response = await fetch(`${SERVER_BASE_URL}/reviews`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch product reviews: ${response.statusText}`);
+      throw new Error(
+        `Failed to fetch product reviews: ${response.statusText}`
+      );
     }
     return await response.json();
   } catch (error) {
@@ -119,7 +128,10 @@ export const fetchProductPreviewInfo = async (): Promise<
         .filter((img) => img.imageType === "thumbnail")
         .map((img) => [img.productId, img.imageUrl])
     );
-    const productReviewsPreview = new Map<string, { sum: number; count: number }>();
+    const productReviewsPreview = new Map<
+      string,
+      { sum: number; count: number }
+    >();
     reviews.forEach((review) => {
       const existing = productReviewsPreview.get(review.productId) ?? {
         sum: 0,
@@ -152,5 +164,56 @@ export const fetchProductPreviewInfo = async (): Promise<
   } catch (error) {
     console.error(error);
     return [];
+  }
+};
+
+export const fetchProductDetail = async (
+  productId: string
+): Promise<ProductDetailInfo> => {
+  try {
+    const [products, discounts, images, reviews] = await Promise.all([
+      fetchProducts(),
+      fetchProductDiscounts(),
+      fetchProductImages(),
+      fetchProductReviews(),
+    ]);
+
+    const product = products.find((p) => p.id === productId);
+    if (!product) {
+      throw new Error(`Failed to fetch product: ${productId}`);
+    }
+
+    const discount = discounts.find((d) => d.productId === productId);
+    const productImages = images.filter((img) => img.productId === productId);
+    const thumbnailImage = productImages.find(
+      (img) => img.imageType === "thumbnail"
+    )?.imageUrl;
+    const detailImages = productImages
+      .filter((img) => img.imageType === "detail")
+      .map((img) => img.imageUrl);
+
+    const productReviews = reviews.filter((r) => r.productId === productId);
+    const reviewCount = productReviews.length;
+    const averageRating =
+      reviewCount > 0
+        ? Math.round(
+            (productReviews.reduce((sum, r) => sum + r.reviewScore, 0) /
+              reviewCount) *
+              10
+          ) / 10
+        : 0;
+
+    return {
+      product,
+      discount,
+      thumbnailImage,
+      detailImages,
+      reviews: productReviews,
+      reviewCount,
+      averageRating,
+    };
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
