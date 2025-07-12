@@ -1,4 +1,4 @@
-import { fetchProductPreviewInfo } from "@/lib/api/productApi";
+import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 import { fetchCustomers } from "@/lib/api/customerApi";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils/constant";
