@@ -10,7 +10,6 @@ const ProductDetail = ({ detailImages }: { detailImages: string[] }) => (
             alt={`제품 상세 이미지 ${index + 1}`}
             width={468}
             height={0}
-            priority={index === 0}
           />
         </div>
       ))}
