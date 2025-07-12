@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, PanInfo } from "framer-motion";
-import { ReactNode } from "react";
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
-import { useRouter } from "next/navigation";
+import { ReactNode } from "react";
 
 interface SwipeContainerProps {
   children: ReactNode;
@@ -12,8 +11,7 @@ interface SwipeContainerProps {
 const SWIPE_THRESHOLD = 50;
 
 const AppSwipeNavbar = ({ children }: SwipeContainerProps) => {
-  const { currentPage, navigateTo } = useAppNavigation();
-  const router = useRouter();
+  const { currentPage, navigateToWithUrl } = useAppNavigation();
 
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
@@ -23,13 +21,11 @@ const AppSwipeNavbar = ({ children }: SwipeContainerProps) => {
 
     if (offset.x > SWIPE_THRESHOLD) {
       if (currentPage === "deal") {
-        navigateTo("home");
-        router.push("/?tab=home");
+        navigateToWithUrl("home");
       }
     } else if (offset.x < -SWIPE_THRESHOLD) {
       if (currentPage === "home") {
-        navigateTo("deal");
-        router.push("/?tab=deal");
+        navigateToWithUrl("deal");
       }
     }
   };
@@ -39,11 +35,11 @@ const AppSwipeNavbar = ({ children }: SwipeContainerProps) => {
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       onDragEnd={handleDragEnd}
-      className="h-full"
+      className="h-full cursor-grab active:cursor-grabbing"
     >
       {children}
     </motion.div>
   );
-}
+};
 
 export default AppSwipeNavbar;

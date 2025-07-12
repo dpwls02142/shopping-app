@@ -1,22 +1,19 @@
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import { NavigationPage } from "@/lib/types/navgationType";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const AppNavbar = () => {
-  const { currentPage, navigateTo } = useAppNavigation();
-  const router = useRouter();
+  const { currentPage, navigateToWithUrl } = useAppNavigation();
 
   const navItems = [
-    { page: "home", label: "쇼핑 홈" },
-    { page: "deal", label: "특가" },
+    { page: "home", label: "쇼핑 홈", href: "/" },
+    { page: "deal", label: "특가", href: "/?tab=deal" },
   ];
 
   const handleTabClick = (page: string, event: React.MouseEvent) => {
     event.preventDefault();
     if (currentPage === page) return;
-    navigateTo(page as NavigationPage);
-    router.push(`/?tab=${page}`);
+    navigateToWithUrl(page as NavigationPage);
   };
 
   return (
@@ -25,7 +22,7 @@ const AppNavbar = () => {
         {navItems.map((item) => (
           <Link
             key={item.page}
-            href={`/?tab=${item.page}`}
+            href={item.href}
             onClick={(e) => handleTabClick(item.page, e)}
             className={`flex items-center space-x-2 px-4 py-3 border-b-2 ${
               currentPage === item.page

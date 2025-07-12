@@ -1,14 +1,12 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import { ArrowLeft } from "lucide-react";
 
 const BackButton = () => {
-  const router = useRouter();
+  const { goBack } = useAppNavigation();
 
   return (
     <button
-      onClick={() => router.back()}
+      onClick={goBack}
       className="absolute top-4 left-4 z-50 flex items-center justify-center"
       aria-label="뒤로가기"
     >
