@@ -14,7 +14,7 @@ const DailyProductCard = ({ product }: DailyProductCardProps) => {
 
   return (
     <Link href={`/product/${product.product.id}`}>
-      <div className="flex-shrink-0 w-full max-w-md bg-white rounded-lg overflow-hidden">
+      <div className="flex-shrink-0 w-full rounded-lg overflow-hidden">
         <div className="relative h-48 w-full rounded-t-lg overflow-hidden">
           <Image
             src={product.thumbnailImage ?? ""}
