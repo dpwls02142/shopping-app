@@ -98,10 +98,14 @@ const useNavigationStore = create<NavigationStore>()(
 
           switch (page) {
             case "cart":
-            case "product":
               newState.showHeader = false;
               newState.showNavbar = false;
               newState.showBackButton = true;
+              break;
+            case "product":
+              newState.showHeader = true;
+              newState.showNavbar = false;
+              newState.showBackButton = false;
               break;
             case "home":
             case "deal":
