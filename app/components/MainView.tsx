@@ -2,10 +2,10 @@
 
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import AppSwipeNavbar from "@/app/components/AppSwipeNavbar";
-
+import { ReactNode } from "react";
 interface MainViewProps {
-  shoppingHome: React.ReactNode;
-  deal: React.ReactNode;
+  shoppingHome: ReactNode;
+  deal: ReactNode;
 }
 
 const MainView = ({ shoppingHome, deal }: MainViewProps) => {
@@ -17,6 +17,6 @@ const MainView = ({ shoppingHome, deal }: MainViewProps) => {
       {currentPage === "deal" && deal}
     </AppSwipeNavbar>
   );
-}
+};
 
 export default MainView;
