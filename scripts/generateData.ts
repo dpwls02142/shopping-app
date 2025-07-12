@@ -4,9 +4,9 @@ import path from "path";
 
 const NUM_PRODUCTS = 20;
 const NUM_DEALS = 10;
-const NUM_CUSTOMERS = 5;
+const NUM_CUSTOMERS = 50;
 const NUM_SELLERS = 10;
-const NUM_REVIEWS = 5;
+const NUM_REVIEWS = 100;
 
 const sellers = Array.from({ length: NUM_SELLERS }, () => ({
   id: faker.string.uuid(),
@@ -153,6 +153,9 @@ const db = {
   cartProduct,
 };
 
-fs.writeFileSync(path.join("lib", "db", "db.json"), JSON.stringify(db, null, 2));
+fs.writeFileSync(
+  path.join("lib", "db", "db.json"),
+  JSON.stringify(db, null, 2)
+);
 
 console.log("더미 데이터 생성: lib/db/db.json");
