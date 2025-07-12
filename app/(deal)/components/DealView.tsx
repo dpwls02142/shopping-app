@@ -12,10 +12,12 @@ const DealView = ({ searchParams }: DealViewProps) => {
   const view = searchParams.view;
 
   return (
-    <section>
+    <div>
       <DealNavbar />
-      {view === "brand" ? <BrandProducts /> : <DailyProducts />}
-    </section>
+      <section>
+        {view === "brand" ? <BrandProducts /> : <DailyProducts />}
+      </section>
+    </div>
   );
 };
 
