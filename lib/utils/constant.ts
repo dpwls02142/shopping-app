@@ -13,7 +13,7 @@ export const formatDateToKor = (dateString: string) => {
   });
 };
 
-export const handleApiError = (error: any, defaultValue: any = null) => {
+export const handleApiError = <T>(error: unknown, defaultValue: T): T => {
   console.error(error);
   return defaultValue;
 };
@@ -33,4 +33,3 @@ export const fetchWithErrorHandling = async <T>(
     return handleApiError(error, defaultValue);
   }
 };
-

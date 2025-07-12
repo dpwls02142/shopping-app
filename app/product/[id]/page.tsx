@@ -17,7 +17,7 @@ export default async function ProductPage(props: ProductPageProps) {
         <ProductView productDetail={productDetail} productId={productId} />
       </div>
     );
-  } catch (error) {
+  } catch {
     return (
       <div className="flex justify-center items-center h-screen">
         <div>상품을 불러올 수 없습니다.</div>

@@ -10,7 +10,7 @@ const getUrlSearchParams = (): URLSearchParams => {
 };
 
 const urlQueryStorage: StateStorage = {
-  getItem: (key): string | null => {
+  getItem: (_key): string | null => {
     if (typeof window === "undefined") return null;
 
     const searchParams = getUrlSearchParams();
@@ -41,7 +41,7 @@ const urlQueryStorage: StateStorage = {
     });
   },
 
-  setItem: (key, newValue): void => {
+  setItem: (_key, newValue): void => {
     if (typeof window === "undefined") {
       return;
     }
@@ -67,7 +67,7 @@ const urlQueryStorage: StateStorage = {
     }
   },
 
-  removeItem: (key): void => {
+  removeItem: (_key): void => {
     if (typeof window === "undefined") return;
 
     const searchParams = getUrlSearchParams();
