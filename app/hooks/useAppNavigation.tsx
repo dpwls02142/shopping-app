@@ -35,13 +35,8 @@ export const useAppNavigation = () => {
   );
 
   const goBack = useCallback(() => {
-    const { previousPage } = store;
-    if (previousPage) {
-      navigateToWithUrl(previousPage);
-    } else {
-      router.back();
-    }
-  }, [store, router, navigateToWithUrl]);
+    router.back();
+  }, [router]);
 
   return {
     ...store,

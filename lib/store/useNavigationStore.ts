@@ -10,7 +10,7 @@ const getUrlSearchParams = (): URLSearchParams => {
 };
 
 const urlQueryStorage: StateStorage = {
-  getItem: (key): string | null => {
+  getItem: (_key): string | null => {
     if (typeof window === "undefined") return null;
 
     const searchParams = getUrlSearchParams();
@@ -41,7 +41,7 @@ const urlQueryStorage: StateStorage = {
     });
   },
 
-  setItem: (key, newValue): void => {
+  setItem: (_key, newValue): void => {
     if (typeof window === "undefined") {
       return;
     }
@@ -67,7 +67,7 @@ const urlQueryStorage: StateStorage = {
     }
   },
 
-  removeItem: (key): void => {
+  removeItem: (_key): void => {
     if (typeof window === "undefined") return;
 
     const searchParams = getUrlSearchParams();
@@ -88,6 +88,9 @@ const useNavigationStore = create<NavigationStore>()(
 
       navigateTo: (page: NavigationPage) => {
         const { currentPage } = get();
+        if (currentPage === page) {
+          return;
+        }
 
         set((state) => {
           const newState = {
@@ -98,10 +101,14 @@ const useNavigationStore = create<NavigationStore>()(
 
           switch (page) {
             case "cart":
-            case "product":
               newState.showHeader = false;
               newState.showNavbar = false;
               newState.showBackButton = true;
+              break;
+            case "product":
+              newState.showHeader = true;
+              newState.showNavbar = false;
+              newState.showBackButton = false;
               break;
             case "home":
             case "deal":
