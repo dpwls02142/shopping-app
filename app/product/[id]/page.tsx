@@ -1,15 +1,17 @@
 import { fetchProductDetail } from "@/lib/api/productApi";
 import ProductView from "@/app/product/components/ProductView";
+
 type ProductPageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-export default async function Product({ params }: ProductPageProps) {
-  const { id: productId } = params;
+export default async function ProductPage(props: ProductPageProps) {
   try {
+    const { id: productId } = await props.params;
     const productDetail = await fetchProductDetail(productId);
+
     return (
       <div className="min-h-screen bg-gray-50">
         <ProductView productDetail={productDetail} productId={productId} />
