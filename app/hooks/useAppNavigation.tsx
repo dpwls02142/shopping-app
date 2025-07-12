@@ -8,7 +8,10 @@ export const useAppNavigation = () => {
   const router = useRouter();
 
   const navigateToWithUrl = useCallback(
-    (page: NavigationPage, params?: { productId?: string }) => {
+    (
+      page: NavigationPage,
+      params?: { productId?: string; view?: "brand" | "daily" }
+    ) => {
       const isProduct = params?.productId;
       store.navigateTo(page);
       switch (page) {
@@ -16,7 +19,11 @@ export const useAppNavigation = () => {
           router.push("/");
           break;
         case "deal":
-          router.push("/?tab=deal");
+          if (params?.view) {
+            router.push(`/?tab=deal&view=${params.view}`);
+          } else {
+            router.push("/?tab=deal");
+          }
           break;
         case "cart":
           router.push("/cart");
