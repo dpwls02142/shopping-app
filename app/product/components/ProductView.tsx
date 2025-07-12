@@ -5,6 +5,7 @@ import ProductNavbar from "@/app/product/components/ProductNavbar";
 import ProductReview from "@/app/product/components/ProductReview";
 import ProductDetail from "@/app/product/components/ProductDetail";
 import useProductNavgation from "@/app/product/hooks/useProductNavgation";
+import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
 import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
 import Image from "next/image";
 
@@ -107,6 +108,7 @@ const ProductInfo = ({
           />
         </div>
         <ProductPrice basePrice={product.basePrice} discount={discount} />
+        {discount?.discountType === "daily_deal" && <ProductDealTimer />}
       </div>
     </div>
   );
