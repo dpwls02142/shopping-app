@@ -80,14 +80,14 @@ export const fetchProductDetail = async (
   productId: string
 ): Promise<ProductDetailInfo> => {
   try {
-    const [product, discount, images, reviews] = await Promise.all([
-      fetchProductByProductId(productId),
+    const product = await fetchProductByProductId(productId);
+
+    const [seller, discount, images, reviews] = await Promise.all([
+      fetchSellerById(product.sellerId),
       fetchProductDiscountByProductId(productId),
       fetchProductImageByProductId(productId),
       fetchProductReviewByProductId(productId),
     ]);
-
-    const seller = await fetchSellerById(product.sellerId);
 
     const thumbnailImage = images.find(
       (img) => img.imageType === "thumbnail"
