@@ -99,6 +99,8 @@ export const fetchAllProductsWithDetails = async (): Promise<
       const entry = productImagesByProduct.get(img.productId)!;
       if (img.imageType === "thumbnail") {
         entry.thumbnail = img.imageUrl;
+      } else if (img.imageType === "detail") {
+        entry.details.push(img.imageUrl);
       }
     });
 
