@@ -68,3 +68,13 @@ export type ProductPreviewInfo = {
   reviewCount: number;
   averageRating: number;
 };
+
+export type ProductDetailInfo = {
+  product: Product;
+  discount?: ProductDiscount;
+  thumbnailImage?: string;
+  detailImages: string[];
+  reviews: Review[];
+  reviewCount: number;
+  averageRating: number;
+};
