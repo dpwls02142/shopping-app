@@ -71,10 +71,11 @@ export type ProductPreviewInfo = {
 
 export type ProductDetailInfo = {
   product: Product;
+  seller: Seller;
   discount?: ProductDiscount;
   thumbnailImage?: string;
   detailImages: string[];
-  reviews: Review[];
-  reviewCount: number;
-  averageRating: number;
+  reviews?: Review[];
+  reviewCount?: number;
+  averageRating?: number;
 };
