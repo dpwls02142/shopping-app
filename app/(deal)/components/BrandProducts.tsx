@@ -22,6 +22,7 @@ const BrandProducts = async () => {
                 <Image
                   src={product.thumbnailImage ?? ""}
                   alt={product.product.name}
+                  sizes="468px"
                   fill
                   className="object-cover"
                   priority
