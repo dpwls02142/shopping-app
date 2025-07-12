@@ -88,6 +88,9 @@ const useNavigationStore = create<NavigationStore>()(
 
       navigateTo: (page: NavigationPage) => {
         const { currentPage } = get();
+        if (currentPage === page) {
+          return;
+        }
 
         set((state) => {
           const newState = {
