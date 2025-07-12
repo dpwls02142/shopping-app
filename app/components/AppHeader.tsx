@@ -18,7 +18,7 @@ const AppHeader = () => {
         </div>
         <Link
           href="/cart"
-          className="flex items-center space-x-1 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="flex items-center space-x-1 p-2"
           aria-label="장바구니"
         >
           <ShoppingCart className="w-5 h-5 text-gray-700" />
