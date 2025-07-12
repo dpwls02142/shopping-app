@@ -4,6 +4,15 @@ export const formatPriceToKor = (price: number) => {
   return price.toLocaleString("ko-KR");
 };
 
+export const formatDateToKor = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
 export const handleApiError = (error: any, defaultValue: any = null) => {
   console.error(error);
   return defaultValue;
@@ -24,3 +33,4 @@ export const fetchWithErrorHandling = async <T>(
     return handleApiError(error, defaultValue);
   }
 };
+
