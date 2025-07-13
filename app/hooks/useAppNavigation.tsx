@@ -8,10 +8,7 @@ export const useAppNavigation = () => {
   const router = useRouter();
 
   const navigateToWithUrl = useCallback(
-    (
-      page: NavigationPage,
-      params?: { productId?: string; view?: "brand" | "daily" }
-    ) => {
+    (page: NavigationPage, params?: { productId?: string }) => {
       const isProduct = params?.productId;
       store.navigateTo(page);
       switch (page) {
@@ -19,11 +16,7 @@ export const useAppNavigation = () => {
           router.push("/");
           break;
         case "deal":
-          if (params?.view) {
-            router.push(`/?tab=deal&view=${params.view}`);
-          } else {
-            router.push("/?tab=deal");
-          }
+          router.push("/?tab=deal");
           break;
         case "cart":
           router.push("/cart");
@@ -81,7 +74,8 @@ export const useInitializeFromUrl = () => {
         page = "product";
       } else if (pathname === "/") {
         const tab = searchParams.get("tab");
-        if (tab === "deal") {
+        const view = searchParams.get("view");
+        if (tab === "deal" || view === "brand" || view === "daily") {
           page = "deal";
         } else {
           page = "home";
