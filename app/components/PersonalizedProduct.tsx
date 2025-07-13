@@ -84,11 +84,11 @@ const PersonalizedProductsContent = async () => {
       <h2 className="text-xl font-bold mb-4">
         <span>{customers[0].name}님을 위한 추천 상품</span>
       </h2>
-      <div className="grid grid-cols-2 gap-4">
+      <ul className="grid grid-cols-2 gap-4">
         {products.map((product) => (
           <PersonalizedProductCard key={product.id} product={product} />
         ))}
-      </div>
+      </ul>
     </section>
   );
 };
