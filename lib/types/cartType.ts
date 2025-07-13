@@ -19,7 +19,8 @@ export type CartActions = {
   addToCart: (
     product: Product,
     selectedOptions: ProductOption[],
-    quantity: number
+    quantity: number,
+    discountedPrice?: number
   ) => void;
   removeFromCart: (itemId: string) => void;
   updateQuantity: (itemId: string, quantity: number) => void;
