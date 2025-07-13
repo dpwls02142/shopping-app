@@ -6,7 +6,7 @@
 | 분류     | 기술 스택                                                      |
 | ------ | ---------------------------------------------------------- |
 | 프레임워크  | React v19.0.0, Next.js v15.1.0 (App Router), TypeScript v5 |
-| 상태 관리  | TanStack Query v1.0.0 (서버 상태), Zustand v5.0.6 (클라이언트 상태)   |
+| 상태 관리  | TanStack Query v5.83.0 (서버 상태), Zustand v5.0.6 (클라이언트 상태)   |
 | 폼 관리   | React Hook Form v7.60.0                                    |
 | 스타일링   | Tailwind CSS v3.4.1, shadcn/ui  |
 | 패키지 관리 | pnpm                                                       |
