@@ -1,6 +1,5 @@
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import { NavigationPage } from "@/lib/types/navgationType";
-import { MouseEvent } from "react";
 import Link from "next/link";
 
 const navItems = [
@@ -11,7 +10,7 @@ const navItems = [
 const AppNavbar = () => {
   const { currentPage, navigateToWithUrl } = useAppNavigation();
 
-  const handleTabClick = (page: string, event: MouseEvent) => {
+  const handleTabClick = (page: string, event: React.MouseEvent) => {
     event.preventDefault();
     if (currentPage === page) return;
     navigateToWithUrl(page as NavigationPage);
