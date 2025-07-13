@@ -53,10 +53,11 @@ const productOptions = products.flatMap((p) => {
     colors.map((color) => ({
       id: faker.string.uuid(),
       productId: p.id,
-      optionName: "Size/Color",
+      optionName: "Size",
       optionValue: JSON.stringify({ size, color }),
       additionalPrice: faker.number.int({ min: 0, max: 1000 }),
-      stockQuantity: faker.number.int({ min: 0, max: 10 }),
+      stockQuantity: faker.number.int({ min: 5, max: 50 }),
+      maxPurchaseQuantity: faker.number.int({ min: 3, max: 5 }),
     }))
   );
 });
