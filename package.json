@@ -12,6 +12,7 @@
     "json-server": "json-server --watch lib/db/db.json --port 3001"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
     "@radix-ui/react-use-controllable-state": "^1.2.2",
     "@tanstack/react-query": "^5.83.0",
     "clsx": "^2.1.1",
@@ -23,6 +24,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.60.0",
     "tailwind-merge": "^3.3.1",
+    "zod": "^4.0.5",
     "zustand": "^5.0.6"
   },
   "devDependencies": {
