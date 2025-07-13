@@ -56,20 +56,22 @@ const PersonalizedProductCard = ({
 }: {
   product: ProductPreviewInfo;
 }) => (
-  <Link href={`/product/${product.id}`}>
-    <ProductImage product={product} />
-    <div className="space-y-1">
-      <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
-        {product.name}
-      </h3>
-      <div className="flex items-center space-x-2">
-        <ProductPrice product={product} />
+  <li key={product.id}>
+    <Link href={`/product/${product.id}`}>
+      <ProductImage product={product} />
+      <div className="space-y-1">
+        <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+          {product.name}
+        </h3>
+        <div className="flex items-center space-x-2">
+          <ProductPrice product={product} />
+        </div>
+        <div className="flex items-center text-xs text-gray-500 gap-1">
+          <ProductRating product={product} />
+        </div>
       </div>
-      <div className="flex items-center text-xs text-gray-500 gap-1">
-        <ProductRating product={product} />
-      </div>
-    </div>
-  </Link>
+    </Link>
+  </li>
 );
 
 const PersonalizedProductsContent = async () => {
@@ -82,11 +84,11 @@ const PersonalizedProductsContent = async () => {
       <h2 className="text-xl font-bold mb-4">
         <span>{customers[0].name}님을 위한 추천 상품</span>
       </h2>
-      <div className="grid grid-cols-2 gap-4">
+      <ul className="grid grid-cols-2 gap-4">
         {products.map((product) => (
           <PersonalizedProductCard key={product.id} product={product} />
         ))}
-      </div>
+      </ul>
     </section>
   );
 };

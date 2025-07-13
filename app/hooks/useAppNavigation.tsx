@@ -74,7 +74,8 @@ export const useInitializeFromUrl = () => {
         page = "product";
       } else if (pathname === "/") {
         const tab = searchParams.get("tab");
-        if (tab === "deal") {
+        const view = searchParams.get("view");
+        if (tab === "deal" || view === "brand" || view === "daily") {
           page = "deal";
         } else {
           page = "home";

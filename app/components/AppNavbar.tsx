@@ -2,13 +2,13 @@ import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import { NavigationPage } from "@/lib/types/navgationType";
 import Link from "next/link";
 
+const navItems = [
+  { page: "home", label: "쇼핑 홈", href: "/" },
+  { page: "deal", label: "특가", href: "/?tab=deal" },
+];
+
 const AppNavbar = () => {
   const { currentPage, navigateToWithUrl } = useAppNavigation();
-
-  const navItems = [
-    { page: "home", label: "쇼핑 홈", href: "/" },
-    { page: "deal", label: "특가", href: "/?tab=deal" },
-  ];
 
   const handleTabClick = (page: string, event: React.MouseEvent) => {
     event.preventDefault();

@@ -1,9 +1,24 @@
-import DailyProducts from "@/app/(deal)/components/DailyProducts";
+import DealView from "@/app/(deal)/components/DealView";
 import MainView from "@/app/components/MainView";
 import PersonalizedProduct from "@/app/components/PersonalizedProduct";
 
-export default function Home() {
+type Props = {
+  searchParams: {
+    tab?: string;
+    view?: string;
+  };
+};
+
+async function Home({ searchParams }: Props) {
+  const params = await searchParams;
+  const { view } = params;
+
   return (
-    <MainView shoppingHome={<PersonalizedProduct />} deal={<DailyProducts />} />
+    <MainView
+      shoppingHome={<PersonalizedProduct />}
+      deal={<DealView searchParams={{ view }} />}
+    />
   );
 }
+
+export default Home;
