@@ -1,6 +1,16 @@
 "use client";
-
 import { useState, useEffect } from "react";
+
+const HOURS_PER_DAY = 24;
+const MINUTES_PER_HOUR = 60;
+const SECONDS_PER_MINUTE = 60;
+const SECONDS_PER_HOUR = 3600;
+const TOTAL_SECONDS_IN_DAY =
+  HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE;
+const TIMER_INTERVAL_MS = 1000;
+const PERCENTAGE_MULTIPLIER = 100;
+const TIME_PADDING_LENGTH = 2;
+const PADDING_CHAR = "0";
 
 const useDealTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -13,27 +23,30 @@ const useDealTimer = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-
-      const totalSecondsInDay = 24 * 60 * 60;
       const secondsPassed =
-        now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-
-      const remainingSeconds = totalSecondsInDay - secondsPassed;
+        now.getHours() * SECONDS_PER_HOUR +
+        now.getMinutes() * SECONDS_PER_MINUTE +
+        now.getSeconds();
+      const remainingSeconds = TOTAL_SECONDS_IN_DAY - secondsPassed;
 
       if (remainingSeconds > 0) {
-        const hours = Math.floor(remainingSeconds / 3600);
-        const minutes = Math.floor((remainingSeconds % 3600) / 60);
-        const seconds = remainingSeconds % 60;
+        const hours = Math.floor(remainingSeconds / SECONDS_PER_HOUR);
+        const minutes = Math.floor(
+          (remainingSeconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE
+        );
+        const seconds = remainingSeconds % SECONDS_PER_MINUTE;
 
         setTimeLeft({
-          hours: String(hours).padStart(2, "0"),
-          minutes: String(minutes).padStart(2, "0"),
-          seconds: String(seconds).padStart(2, "0"),
+          hours: String(hours).padStart(TIME_PADDING_LENGTH, PADDING_CHAR),
+          minutes: String(minutes).padStart(TIME_PADDING_LENGTH, PADDING_CHAR),
+          seconds: String(seconds).padStart(TIME_PADDING_LENGTH, PADDING_CHAR),
         });
 
-        setProgress((secondsPassed / totalSecondsInDay) * 100);
+        setProgress(
+          (secondsPassed / TOTAL_SECONDS_IN_DAY) * PERCENTAGE_MULTIPLIER
+        );
       }
-    }, 1000);
+    }, TIMER_INTERVAL_MS);
 
     return () => clearInterval(timer);
   }, []);
