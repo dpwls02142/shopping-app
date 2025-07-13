@@ -5,6 +5,7 @@ import {
   Review,
   Seller,
   ProductDetailInfo,
+  ProductOption,
 } from "../types/productType";
 import { SERVER_BASE_URL, handleApiError } from "@/lib/utils/constant";
 
@@ -68,6 +69,22 @@ export const fetchProductReviewByProductId = async (
   }
 };
 
+export const fetchProductOptionsByProductId = async (
+  productId: string
+): Promise<ProductOption[]> => {
+  try {
+    const response = await fetch(
+      `${SERVER_BASE_URL}/productOptions?productId=${productId}`
+    );
+    if (!response.ok) {
+      return [];
+    }
+    return await response.json();
+  } catch (error) {
+    return handleApiError(error, []);
+  }
+};
+
 export const fetchSellerById = async (sellerId: string): Promise<Seller> => {
   const response = await fetch(`${SERVER_BASE_URL}/sellers/${sellerId}`);
   if (!response.ok) {
@@ -82,11 +99,12 @@ export const fetchProductDetail = async (
   try {
     const product = await fetchProductByProductId(productId);
 
-    const [seller, discount, images, reviews] = await Promise.all([
+    const [seller, discount, images, reviews, options] = await Promise.all([
       fetchSellerById(product.sellerId),
       fetchProductDiscountByProductId(productId),
       fetchProductImageByProductId(productId),
       fetchProductReviewByProductId(productId),
+      fetchProductOptionsByProductId(productId),
     ]);
 
     const thumbnailImage = images.find(
@@ -114,6 +132,7 @@ export const fetchProductDetail = async (
       reviews,
       reviewCount,
       averageRating,
+      options,
     };
   } catch (error) {
     console.error("fetchProductDetail error:", error);
