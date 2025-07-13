@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "@/app/components/ConditionalLayout";
 import { Suspense } from "react";
+import QueryProvider from "@/app/providers/QueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,13 +30,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="h-screen bg-gray-100 flex justify-center overflow-hidden">
-          <div className="w-full max-w-[468px] bg-white h-full overflow-y-auto relative">
-            <Suspense fallback={null}>
-              <ConditionalLayout>{children}</ConditionalLayout>
-            </Suspense>
+        <QueryProvider>
+          <div className="h-screen bg-gray-100 flex justify-center overflow-hidden">
+            <div className="w-full max-w-[468px] bg-white h-full overflow-y-auto relative">
+              <Suspense fallback={null}>
+                <ConditionalLayout>{children}</ConditionalLayout>
+              </Suspense>
+            </div>
           </div>
-        </div>
+        </QueryProvider>
       </body>
     </html>
   );
