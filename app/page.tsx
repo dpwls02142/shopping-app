@@ -1,5 +1,4 @@
 import DealView from "@/app/(deal)/components/DealView";
-import DailyProducts from "@/app/(deal)/components/DailyProducts";
 import MainView from "@/app/components/MainView";
 import PersonalizedProduct from "@/app/components/PersonalizedProduct";
 
@@ -10,12 +9,16 @@ type Props = {
   };
 };
 
-export default async function Home({ searchParams }: Props) {
-  const { tab, view } = await searchParams;
-  if (tab === "deal") {
-    return <DealView searchParams={{ view }} />;
-  }
+async function Home({ searchParams }: Props) {
+  const params = await searchParams;
+  const { view } = params;
+
   return (
-    <MainView shoppingHome={<PersonalizedProduct />} deal={<DailyProducts />} />
+    <MainView
+      shoppingHome={<PersonalizedProduct />}
+      deal={<DealView searchParams={{ view }} />}
+    />
   );
 }
+
+export default Home;
