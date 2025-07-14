@@ -77,31 +77,18 @@ export const findMatchingOption = (
         const isMatch = selectedKeys.every((key) => {
           const hasKey = parsedKeys.includes(key);
           const valueMatch = parsedValue[key] === validSelectedOptions[key];
-          console.log(`키 ${key} 검증:`, {
-            hasKey,
-            valueMatch,
-            parsedValue: parsedValue[key],
-            selectedValue: validSelectedOptions[key],
-          });
+
           return hasKey && valueMatch;
         });
 
-        console.log(`옵션 ${option.id} 매칭 결과:`, isMatch);
-
         if (isMatch) {
-          console.log(`매칭된 옵션 찾음:`, option);
           return option;
         }
       }
     } catch (error) {
-      console.log(
-        `옵션 ${option.id} JSON 파싱 실패, 단순 문자열로 처리:`,
-        error
-      );
       // JSON 파싱 실패 시 단순 문자열로 처리
       const optionKey = option.optionName;
       if (validSelectedOptions[optionKey] === option.optionValue) {
-        console.log(`단순 문자열 매칭 성공:`, option);
         return option;
       }
     }
