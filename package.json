@@ -12,7 +12,15 @@
     "json-server": "json-server --watch lib/db/db.json --port 3001"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-select": "^2.2.5",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-use-controllable-state": "^1.2.2",
+    "@tanstack/react-query": "^5.83.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.3",
     "husky": "^9.1.7",
@@ -22,7 +30,8 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.60.0",
     "tailwind-merge": "^3.3.1",
-    "tanstack-query": "^1.0.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^4.0.5",
     "zustand": "^5.0.6"
   },
   "devDependencies": {
@@ -30,6 +39,7 @@
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3",
     "@faker-js/faker": "^9.9.0",
+    "@tanstack/eslint-plugin-query": "^5.81.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

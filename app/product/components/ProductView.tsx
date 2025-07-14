@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { formatPriceToKor } from "@/lib/utils/constant";
 import { ProductDetailInfo } from "@/lib/types/productType";
 import ProductNavbar from "@/app/product/components/ProductNavbar";
@@ -7,6 +8,16 @@ import ProductDetail from "@/app/product/components/ProductDetail";
 import useProductNavgation from "@/app/product/hooks/useProductNavgation";
 import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
 import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import AddToCartForm from "@/app/product/forms/AddToCartForm";
 import Image from "next/image";
 
 type ProductDetailProps = {
@@ -136,12 +147,50 @@ const ProductContent = ({
 
 const ProductView = ({ productDetail }: ProductDetailProps) => {
   const { activeTab, setActiveTab } = useProductNavgation();
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+
+  const handleAddToCartSuccess = () => {
+    setIsSheetOpen(false);
+  };
+
   return (
-    <div>
-      <ProductInfo productDetail={productDetail} />
-      <div className="bg-gray-100 pt-2">
-        <ProductNavbar activeTab={activeTab} onTabChange={setActiveTab} />
-        <ProductContent productDetail={productDetail} activeTab={activeTab} />
+    <div className="flex flex-col h-full">
+      <div className="flex-1 overflow-y-auto pb-20">
+        <ProductInfo productDetail={productDetail} />
+        <div className="bg-gray-100 pt-2">
+          <ProductNavbar activeTab={activeTab} onTabChange={setActiveTab} />
+          <ProductContent productDetail={productDetail} activeTab={activeTab} />
+        </div>
+      </div>
+
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[468px] bg-white border-t border-gray-200 p-4 z-50">
+        <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+          <SheetTrigger asChild>
+            <Button className="w-full h-12 text-lg font-bold">
+              장바구니
+            </Button>
+          </SheetTrigger>
+          <SheetContent
+            side="bottom"
+            className="h-[85vh] max-w-[468px] mx-auto rounded-t-2xl p-0 flex flex-col"
+          >
+            <SheetHeader className="p-4 pb-2 flex-shrink-0">
+              <SheetTitle className="text-left">
+                {productDetail.product.name}
+              </SheetTitle>
+              <SheetDescription className="text-left">
+                원하는 옵션을 선택해주세요
+              </SheetDescription>
+            </SheetHeader>
+            <div className="flex-1 overflow-hidden">
+              <AddToCartForm
+                productDetail={productDetail}
+                onSuccess={handleAddToCartSuccess}
+                hideTitle={true}
+              />
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </div>
   );

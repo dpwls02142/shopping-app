@@ -22,6 +22,7 @@ export type ProductOption = {
   optionValue: string;
   additionalPrice: number;
   stockQuantity: number;
+  maxPurchaseQuantity: number;
 };
 
 export type ProductDiscount = {
@@ -71,6 +72,7 @@ export type ProductPreviewInfo = {
 
 export type ProductDetailInfo = {
   product: Product;
+  options: ProductOption[];
   seller: Seller;
   discount?: ProductDiscount;
   thumbnailImage?: string;

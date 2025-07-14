@@ -3,10 +3,10 @@ import MainView from "@/app/components/MainView";
 import PersonalizedProduct from "@/app/components/PersonalizedProduct";
 
 type Props = {
-  searchParams: {
+  searchParams: Promise<{
     tab?: string;
     view?: string;
-  };
+  }>;
 };
 
 async function Home({ searchParams }: Props) {
