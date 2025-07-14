@@ -7,6 +7,7 @@ import { CartItem } from "@/lib/types/cartType";
 import {
   parseOptionValue,
   createOptionsFromSelection,
+  getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
 import { formatPriceToKor } from "@/lib/utils/constant";
 import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
@@ -72,6 +73,11 @@ export default function CartProductCard({
 
   const selectedOptions = createOptionsFromSelection(item.selectedOptions);
 
+  const maxPurchaseQuantity = getMaxPurchaseQuantity(
+    item.productOptions,
+    selectedOptions
+  );
+
   return (
     <div className="border rounded-lg bg-white shadow-sm overflow-hidden">
       <div className="p-4 cursor-pointe">
@@ -107,9 +113,7 @@ export default function CartProductCard({
                   hideTitle={true}
                   calculateTotal={() => totalItemPrice}
                   allOptionsSelected={true}
-                  maxPurchaseQuantity={
-                    item.selectedOptions[0]?.maxPurchaseQuantity
-                  }
+                  maxPurchaseQuantity={maxPurchaseQuantity}
                   isCartMode={true}
                   onQuantityChange={handleQuantityChange}
                   selectedOptions={selectedOptions}
