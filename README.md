@@ -1,6 +1,7 @@
 # SHOPPING APP
 
 > 본 리포지토리는 [토스쇼핑](https://toss.im/shopping-seller) 클론 코딩 프로젝트입니다.
+> 프로젝트 데모는 [해당 사이트](https://shopping-app-ivory.vercel.app/)에서 볼 수 있습니다.
 
 ## 사용 기술 스택
 | 분류     | 기술 스택                                                      |
@@ -15,7 +16,7 @@
 
 ## 프레임워크 및 라이브러리 선택 이유
 
-> 보다 자세한 내용은 [여기서](https://growth-log-kappa.vercel.app/blog/projects/clone%20coding/01.%20%EC%B4%88%EA%B8%B0%EC%84%B8%ED%8C%85/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%84%B8%ED%8C%85) 보실 수 있습니다.
+> 보다 자세한 내용은 [여기서](https://growth-log-kappa.vercel.app/blog/projects/clone%20coding/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%84%B8%ED%8C%85) 보실 수 있습니다.
 
 ### 프레임워크
 - **Next.js (App Router)**
