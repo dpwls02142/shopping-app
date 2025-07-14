@@ -1,10 +1,9 @@
-export const SERVER_BASE_URL =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:3001";
-
+const serverBase = process.env.API_BASE_URL;
 export const getApiUrl = (endpoint: string) => {
-  return process.env.NODE_ENV === "production"
-    ? `/api/${endpoint}`
-    : `http://localhost:3001/${endpoint}`;
+  if (typeof window === "undefined") {
+    return `${serverBase}/api/${endpoint}`;
+  }
+  return `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/${endpoint}`;
 };
 
 export const formatPriceToKor = (price: number) => {
