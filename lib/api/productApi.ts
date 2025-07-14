@@ -73,13 +73,16 @@ export const fetchProductOptionsByProductId = async (
   productId: string
 ): Promise<ProductOption[]> => {
   try {
-    const response = await fetch(
-      `${SERVER_BASE_URL}/productOptions?productId=${productId}`
-    );
+    const response = await fetch(`${SERVER_BASE_URL}/productOptions`);
     if (!response.ok) {
       return [];
     }
-    return await response.json();
+    const allOptions = await response.json();
+    const filteredOptions = allOptions.filter(
+      (option: ProductOption) => option.productId === productId
+    );
+
+    return filteredOptions;
   } catch (error) {
     return handleApiError(error, []);
   }

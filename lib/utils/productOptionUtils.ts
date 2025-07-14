@@ -53,24 +53,59 @@ export const findMatchingOption = (
   options: ProductOption[],
   selectedOptions: Record<string, string>
 ): ProductOption | null => {
-  return (
-    options.find((option) => {
-      try {
-        const parsedValue = JSON.parse(option.optionValue);
-
-        if (typeof parsedValue === "object" && parsedValue !== null) {
-          // 모든 선택된 옵션과 일치하는지 확인
-          return Object.keys(selectedOptions).every((key) => {
-            return parsedValue[key] === selectedOptions[key];
-          });
-        }
-
-        return false;
-      } catch (error) {
-        return false;
-      }
-    }) || null
+  // 빈 문자열이나 유효하지 않은 값들을 필터링
+  const validSelectedOptions = Object.fromEntries(
+    Object.entries(selectedOptions).filter(
+      ([_, value]) => value && value.trim() !== ""
+    )
   );
+
+  if (Object.keys(validSelectedOptions).length === 0) {
+    return null;
+  }
+
+  for (const option of options) {
+    try {
+      const parsedValue = JSON.parse(option.optionValue);
+
+      if (typeof parsedValue === "object" && parsedValue !== null) {
+        const selectedKeys = Object.keys(validSelectedOptions);
+        const parsedKeys = Object.keys(parsedValue);
+
+        const isMatch = selectedKeys.every((key) => {
+          const hasKey = parsedKeys.includes(key);
+          const valueMatch = parsedValue[key] === validSelectedOptions[key];
+          console.log(`키 ${key} 검증:`, {
+            hasKey,
+            valueMatch,
+            parsedValue: parsedValue[key],
+            selectedValue: validSelectedOptions[key],
+          });
+          return hasKey && valueMatch;
+        });
+
+        console.log(`옵션 ${option.id} 매칭 결과:`, isMatch);
+
+        if (isMatch) {
+          console.log(`매칭된 옵션 찾음:`, option);
+          return option;
+        }
+      }
+    } catch (error) {
+      console.log(
+        `옵션 ${option.id} JSON 파싱 실패, 단순 문자열로 처리:`,
+        error
+      );
+      // JSON 파싱 실패 시 단순 문자열로 처리
+      const optionKey = option.optionName;
+      if (validSelectedOptions[optionKey] === option.optionValue) {
+        console.log(`단순 문자열 매칭 성공:`, option);
+        return option;
+      }
+    }
+  }
+
+  return null;
 };
 
 /**
@@ -81,19 +116,15 @@ export const getMaxPurchaseQuantity = (
   selectedOptions: Record<string, string>
 ): number => {
   const matchingOption = findMatchingOption(options, selectedOptions);
-  return matchingOption ? matchingOption.maxPurchaseQuantity : 0;
-};
 
-/**
-수량 유효성 검사
-*/
-export const validateQuantity = (
-  options: ProductOption[],
-  selectedOptions: Record<string, string>,
-  quantity: number
-): boolean => {
-  const maxQuantity = getMaxPurchaseQuantity(options, selectedOptions);
-  return quantity > 0 && quantity <= maxQuantity;
+  if (
+    matchingOption &&
+    typeof matchingOption.maxPurchaseQuantity === "number"
+  ) {
+    return matchingOption.maxPurchaseQuantity;
+  }
+
+  return 2;
 };
 
 /**
