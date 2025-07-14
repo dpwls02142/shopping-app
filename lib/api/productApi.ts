@@ -57,7 +57,9 @@ export const fetchProductReviewByProductId = async (
   productId: string
 ): Promise<Review[]> => {
   try {
-    const response = await fetch(getApiUrl(`reviews?productId=${productId}`));
+    const response = await fetch(
+      getApiUrl(`productReviews?productId=${productId}`)
+    );
     if (!response.ok) {
       return [];
     }
