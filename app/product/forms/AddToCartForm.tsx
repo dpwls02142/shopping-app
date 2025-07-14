@@ -96,7 +96,6 @@ function AddToCartForm({
   };
 
   const handleQuantityChange = (newQuantity: number) => {
-    // 옵션이 선택되지 않은 경우 기본 검사만 수행
     if (!allOptionsSelected) {
       form.clearErrors("quantity");
       form.setValue("quantity", newQuantity);
@@ -125,6 +124,32 @@ function AddToCartForm({
     if (values.quantity > maxPurchaseQuantity) {
       form.setError("quantity", {
         message: `최대 구매 가능 수량은 ${maxPurchaseQuantity}개입니다.`,
+      });
+      return;
+    }
+
+    // 기존 장바구니에 동일한 상품+옵션이 있는지 확인
+    const existingCartItem = useCartProductsStore
+      .getState()
+      .items.find((item) => {
+        const isSameProduct = item.product.id === product.id;
+        const isSameOptions =
+          JSON.stringify(item.selectedOptions) ===
+          JSON.stringify([currentMatchingOption]);
+        return isSameProduct && isSameOptions;
+      });
+
+    // 기존 수량 + 새로 추가할 수량이 최대 수량을 초과하는지 검사
+    const currentCartQuantity = existingCartItem
+      ? existingCartItem.quantity
+      : 0;
+    const totalQuantityAfterAdd = currentCartQuantity + values.quantity;
+
+    if (totalQuantityAfterAdd > maxPurchaseQuantity) {
+      const remainingQuantity = maxPurchaseQuantity - currentCartQuantity;
+      form.setError("quantity", {
+        message: `이미 장바구니에 ${currentCartQuantity}개가 담겨있습니다. 
+        최대 ${remainingQuantity}개까지 추가 가능합니다.`,
       });
       return;
     }
