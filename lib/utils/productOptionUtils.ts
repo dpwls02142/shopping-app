@@ -111,9 +111,9 @@ export const getMaxPurchaseQuantity = (
     typeof matchingOption.maxPurchaseQuantity === "number"
   ) {
     return matchingOption.maxPurchaseQuantity;
+  } else {
+    return 0;
   }
-
-  return 2;
 };
 
 /**
