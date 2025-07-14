@@ -17,7 +17,8 @@ export const extractOptionKeys = (options: ProductOption[]): string[] => {
           }
         });
       }
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_error) {
       if (!keys.includes(option.optionName)) {
         keys.push(option.optionName);
       }
@@ -40,7 +41,8 @@ export const parseOptionValue = (optionValue: string): string => {
 
     // 문자열인 경우 그대로 반환
     return String(parsedValue);
-  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (_error) {
     // JSON 파싱에 실패하면 원본 값 반환
     return optionValue;
   }
@@ -53,24 +55,46 @@ export const findMatchingOption = (
   options: ProductOption[],
   selectedOptions: Record<string, string>
 ): ProductOption | null => {
-  return (
-    options.find((option) => {
-      try {
-        const parsedValue = JSON.parse(option.optionValue);
-
-        if (typeof parsedValue === "object" && parsedValue !== null) {
-          // 모든 선택된 옵션과 일치하는지 확인
-          return Object.keys(selectedOptions).every((key) => {
-            return parsedValue[key] === selectedOptions[key];
-          });
-        }
-
-        return false;
-      } catch (error) {
-        return false;
-      }
-    }) || null
+  // 빈 문자열이나 유효하지 않은 값들을 필터링
+  const validSelectedOptions = Object.fromEntries(
+    Object.entries(selectedOptions).filter(
+      ([_, value]) => value && value.trim() !== ""
+    )
   );
+
+  if (Object.keys(validSelectedOptions).length === 0) {
+    return null;
+  }
+
+  for (const option of options) {
+    try {
+      const parsedValue = JSON.parse(option.optionValue);
+
+      if (typeof parsedValue === "object" && parsedValue !== null) {
+        const selectedKeys = Object.keys(validSelectedOptions);
+        const parsedKeys = Object.keys(parsedValue);
+
+        const isMatch = selectedKeys.every((key) => {
+          const hasKey = parsedKeys.includes(key);
+          const valueMatch = parsedValue[key] === validSelectedOptions[key];
+
+          return hasKey && valueMatch;
+        });
+
+        if (isMatch) {
+          return option;
+        }
+      }
+    } catch (error) {
+      // JSON 파싱 실패 시 단순 문자열로 처리
+      const optionKey = option.optionName;
+      if (validSelectedOptions[optionKey] === option.optionValue) {
+        return option;
+      }
+    }
+  }
+
+  return null;
 };
 
 /**
@@ -81,19 +105,15 @@ export const getMaxPurchaseQuantity = (
   selectedOptions: Record<string, string>
 ): number => {
   const matchingOption = findMatchingOption(options, selectedOptions);
-  return matchingOption ? matchingOption.maxPurchaseQuantity : 0;
-};
 
-/**
-수량 유효성 검사
-*/
-export const validateQuantity = (
-  options: ProductOption[],
-  selectedOptions: Record<string, string>,
-  quantity: number
-): boolean => {
-  const maxQuantity = getMaxPurchaseQuantity(options, selectedOptions);
-  return quantity > 0 && quantity <= maxQuantity;
+  if (
+    matchingOption &&
+    typeof matchingOption.maxPurchaseQuantity === "number"
+  ) {
+    return matchingOption.maxPurchaseQuantity;
+  } else {
+    return 0;
+  }
 };
 
 /**
@@ -127,7 +147,8 @@ export const createOptionsFromSelection = (
       } else {
         result[option.optionName] = option.optionValue;
       }
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_error) {
       result[option.optionName] = option.optionValue;
     }
   });

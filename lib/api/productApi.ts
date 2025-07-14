@@ -85,6 +85,7 @@ export const fetchProductOptionsByProductId = async (
   }
 };
 
+
 export const fetchSellerById = async (sellerId: string): Promise<Seller> => {
   const response = await fetch(`${SERVER_BASE_URL}/sellers/${sellerId}`);
   if (!response.ok) {

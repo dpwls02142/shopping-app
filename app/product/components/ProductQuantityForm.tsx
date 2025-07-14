@@ -16,6 +16,7 @@ import {
 
 type ProductQuantityFormProps = {
   product: Product;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   hideTitle?: boolean;
   allOptionsSelected?: boolean;
@@ -117,18 +118,12 @@ function ProductQuantityForm({
                       onClick={(e) => {
                         e.stopPropagation();
                         const newQuantity = field.value + 1;
-                        if (
-                          newQuantity <= maxPurchaseQuantity ||
-                          maxPurchaseQuantity === 0
-                        ) {
+                        if (newQuantity <= maxPurchaseQuantity) {
                           field.onChange(newQuantity);
                           handleQuantityChange(newQuantity);
                         }
                       }}
-                      disabled={
-                        field.value >= maxPurchaseQuantity &&
-                        maxPurchaseQuantity > 0
-                      }
+                      disabled={field.value >= maxPurchaseQuantity}
                     >
                       <PlusIcon className="h-4 w-4" />
                     </Button>
