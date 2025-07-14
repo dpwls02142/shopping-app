@@ -114,12 +114,8 @@ function AddToCartForm({
     if (formOnly) return;
 
     if (!allOptionsSelected) {
-      optionKeys.forEach((key) => {
-        if (!values.options[key]) {
-          form.setError(`options.${key}`, {
-            message: `${key}을(를) 선택해주세요.`,
-          });
-        }
+      form.setError("options", {
+        message: `모든 옵션을 선택해주세요.`,
       });
       return;
     }
