@@ -1,26 +1,15 @@
 export const getApiUrl = (endpoint: string) => {
   // 서버 측
   if (typeof window === "undefined") {
-    const deploymentUrl = process.env.VERCEL_URL;
-    const branchUrl = process.env.VERCEL_BRANCH_URL;
     const apiBaseUrl = process.env.API_BASE_URL;
-
-    if (deploymentUrl) {
-      return `https://${deploymentUrl}/api/${endpoint}`;
-    }
-    if (branchUrl) {
-      return `https://${branchUrl}/api/${endpoint}`;
-    }
     if (apiBaseUrl) {
       return `${apiBaseUrl}/api/${endpoint}`;
     }
 
-    return `http://localhost:3000/api/${endpoint}`;
   }
   // 클라이언트 측에선 상대 경로
   return `/api/${endpoint}`;
 };
-
 
 export const formatPriceToKor = (price: number) => {
   return price.toLocaleString("ko-KR");
