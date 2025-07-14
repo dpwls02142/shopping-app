@@ -1,11 +1,13 @@
-import { Product, ProductOption } from "./productType";
+import { Product, ProductOption } from "@/lib/types/productType";
 
 export type CartItem = {
   id: string;
   product: Product;
   selectedOptions: ProductOption[];
+  productOptions: ProductOption[];
   quantity: number;
   totalPrice: number;
+  discountPrice?: number;
   createdAt: string;
 };
 
@@ -20,11 +22,15 @@ export type CartActions = {
     product: Product,
     selectedOptions: ProductOption[],
     quantity: number,
-    discountedPrice?: number
+    discountedPrice?: number,
+    allAvailableOptions?: ProductOption[]
   ) => void;
   removeFromCart: (itemId: string) => void;
-  updateQuantity: (itemId: string, quantity: number) => void;
-  clearCart: () => void;
+  updateQuantity: (
+    itemId: string,
+    quantity: number,
+    allAvailableOptions?: ProductOption[]
+  ) => void;
   getItemById: (itemId: string) => CartItem | undefined;
 };
 
