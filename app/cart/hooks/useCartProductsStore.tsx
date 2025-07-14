@@ -4,7 +4,6 @@ import { persist } from "zustand/middleware";
 import { CartStore, CartItem } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 import {
-  validateQuantity,
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
@@ -119,14 +118,16 @@ const useCartProductsStore = create<CartStore>()(
             const optionsConfig = createOptionsFromSelection(
               existingItem.selectedOptions
             );
-            if (
-              !validateQuantity(allAvailableOptions, optionsConfig, quantity)
-            ) {
+            {
               const maxQuantity = getMaxPurchaseQuantity(
                 allAvailableOptions,
                 optionsConfig
               );
-              throw new Error(`최대 구매 가능 수량은 ${maxQuantity}개입니다.`);
+              if (quantity > maxQuantity) {
+                throw new Error(
+                  `최대 구매 가능 수량은 ${maxQuantity}개입니다.`
+                );
+              }
             }
           }
 
