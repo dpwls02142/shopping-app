@@ -117,18 +117,12 @@ function ProductQuantityForm({
                       onClick={(e) => {
                         e.stopPropagation();
                         const newQuantity = field.value + 1;
-                        if (
-                          newQuantity <= maxPurchaseQuantity ||
-                          maxPurchaseQuantity === 0
-                        ) {
+                        if (newQuantity <= maxPurchaseQuantity) {
                           field.onChange(newQuantity);
                           handleQuantityChange(newQuantity);
                         }
                       }}
-                      disabled={
-                        field.value >= maxPurchaseQuantity &&
-                        maxPurchaseQuantity > 0
-                      }
+                      disabled={field.value >= maxPurchaseQuantity}
                     >
                       <PlusIcon className="h-4 w-4" />
                     </Button>
