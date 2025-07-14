@@ -16,15 +16,13 @@ export default function CartProducts({
 
   const handleQuantityChange = (itemId: string, quantity: number) => {
     const item = items.find((i) => i.id === itemId);
-    if (item) {
-      try {
-        if (item.quantity !== quantity) {
-          updateQuantity(itemId, quantity, item.productOptions);
-          onQuantityChange?.(itemId, quantity);
-        }
-      } catch (error) {
-        alert(error);
+    try {
+      if (item && item.quantity !== quantity) {
+        updateQuantity(itemId, quantity, item.productOptions);
+        onQuantityChange?.(itemId, quantity);
       }
+    } catch (error) {
+      alert(error);
     }
   };
 
