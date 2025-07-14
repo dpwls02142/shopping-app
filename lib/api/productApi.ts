@@ -7,12 +7,12 @@ import {
   ProductDetailInfo,
   ProductOption,
 } from "../types/productType";
-import { SERVER_BASE_URL, handleApiError } from "@/lib/utils/constant";
+import { getApiUrl, handleApiError } from "@/lib/utils/constant";
 
 export const fetchProductByProductId = async (
   productId: string
 ): Promise<Product> => {
-  const response = await fetch(`${SERVER_BASE_URL}/products/${productId}`);
+  const response = await fetch(getApiUrl(`products/${productId}`));
   if (!response.ok) {
     throw new Error(`Failed to fetch product: ${response.statusText}`);
   }
@@ -24,7 +24,7 @@ export const fetchProductDiscountByProductId = async (
 ): Promise<ProductDiscount | null> => {
   try {
     const response = await fetch(
-      `${SERVER_BASE_URL}/productDiscounts?productId=${productId}`
+      getApiUrl(`productDiscounts?productId=${productId}`)
     );
     if (!response.ok) {
       console.warn("No discount found for product", productId);
@@ -42,7 +42,7 @@ export const fetchProductImageByProductId = async (
 ): Promise<ProductImage[]> => {
   try {
     const response = await fetch(
-      `${SERVER_BASE_URL}/productImages?productId=${productId}`
+      getApiUrl(`productImages?productId=${productId}`)
     );
     if (!response.ok) {
       throw new Error(`Failed to fetch product images: ${response.statusText}`);
@@ -58,7 +58,7 @@ export const fetchProductReviewByProductId = async (
 ): Promise<Review[]> => {
   try {
     const response = await fetch(
-      `${SERVER_BASE_URL}/reviews?productId=${productId}`
+      getApiUrl(`productReviews?productId=${productId}`)
     );
     if (!response.ok) {
       return [];
@@ -74,7 +74,7 @@ export const fetchProductOptionsByProductId = async (
 ): Promise<ProductOption[]> => {
   try {
     const response = await fetch(
-      `${SERVER_BASE_URL}/productOptions?productId=${productId}`
+      getApiUrl(`productOptions?productId=${productId}`)
     );
     if (!response.ok) {
       return [];
@@ -85,9 +85,8 @@ export const fetchProductOptionsByProductId = async (
   }
 };
 
-
 export const fetchSellerById = async (sellerId: string): Promise<Seller> => {
-  const response = await fetch(`${SERVER_BASE_URL}/sellers/${sellerId}`);
+  const response = await fetch(getApiUrl(`sellers/${sellerId}`));
   if (!response.ok) {
     throw new Error(`Failed to fetch seller: ${response.statusText}`);
   }

@@ -85,7 +85,8 @@ export const findMatchingOption = (
           return option;
         }
       }
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_error) {
       // JSON 파싱 실패 시 단순 문자열로 처리
       const optionKey = option.optionName;
       if (validSelectedOptions[optionKey] === option.optionValue) {
