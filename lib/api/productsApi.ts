@@ -77,12 +77,13 @@ export const fetchAllProductsWithDetails = async (): Promise<
   ProductDetailInfo[]
 > => {
   try {
-    const [products, discounts, images, reviews, sellers] = await Promise.all([
+    const [products, discounts, images, reviews, sellers, options] = await Promise.all([
       fetchProducts(),
       fetchProductDiscounts(),
       fetchProductImages(),
       fetchProductReviews(),
       fetchSellers(),
+      fetchProductOptions(),
     ]);
 
     const productDiscounts = new Map(discounts.map((d) => [d.productId, d]));
@@ -112,6 +113,14 @@ export const fetchAllProductsWithDetails = async (): Promise<
       productReviewsByProduct.get(review.productId)!.push(review);
     });
 
+    const productOptionsByProduct = new Map<string, ProductOption[]>();
+    options.forEach((option) => {
+      if (!productOptionsByProduct.has(option.productId)) {
+        productOptionsByProduct.set(option.productId, []);
+      }
+      productOptionsByProduct.get(option.productId)!.push(option);
+    });
+
     const processedProducts = products
       .map((product): ProductDetailInfo | null => {
         const seller = sellersMap.get(product.sellerId);
@@ -120,6 +129,7 @@ export const fetchAllProductsWithDetails = async (): Promise<
         const discount = productDiscounts.get(product.id);
         const imageInfo = productImagesByProduct.get(product.id);
         const productReviews = productReviewsByProduct.get(product.id) || [];
+        const productOptions = productOptionsByProduct.get(product.id) || [];
         const reviewCount = productReviews.length;
         const averageRating =
           reviewCount > 0
@@ -132,6 +142,7 @@ export const fetchAllProductsWithDetails = async (): Promise<
 
         return {
           product,
+          options: productOptions,
           seller,
           discount,
           thumbnailImage: imageInfo?.thumbnail,
