@@ -1,9 +1,21 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import dbData from "@/lib/db/db.json";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    return NextResponse.json(dbData.productOptions);
+    const { searchParams } = new URL(request.url);
+    const productId = searchParams.get("productId");
+
+    if (!productId) {
+      return NextResponse.json(dbData.productOptions);
+    }
+
+    const options = dbData.productOptions.filter(
+      (option) => option.productId === productId
+    );
+
+    return NextResponse.json(options);
   } catch (error) {
     console.error("Error fetching product options:", error);
     return NextResponse.json(
