@@ -1,5 +1,10 @@
 export const getApiUrl = (endpoint: string) => {
   if (typeof window === "undefined") {
+    console.log("Server side environment:");
+    console.log("VERCEL_URL:", process.env.VERCEL_URL);
+    console.log("VERCEL_ENV:", process.env.VERCEL_ENV);
+    console.log("API_BASE_URL:", process.env.API_BASE_URL);
+
     // 서버 사이드
     if (process.env.VERCEL_URL) {
       return `https://${process.env.VERCEL_URL}/api/${endpoint}`;
