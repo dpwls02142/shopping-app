@@ -38,19 +38,22 @@ function ProductOptionSelector({
     const keys: string[] = [];
 
     productOptions.forEach((option) => {
-      const parsedOptions = JSON.parse(option.optionValue);
-      Object.entries(parsedOptions).forEach(([key, value]) => {
-        if (!separated[key]) {
-          separated[key] = [];
-          keys.push(key);
-        }
+      try {
+        const parsedOptions = JSON.parse(option.optionValue);
+        Object.entries(parsedOptions).forEach(([key, value]) => {
+          if (!separated[key]) {
+            separated[key] = [];
+            keys.push(key);
+          }
 
-        if (!separated[key].some((item) => item.value === value)) {
-          separated[key].push({ value: value as string, option });
-        }
-      });
+          if (!separated[key].some((item) => item.value === value)) {
+            separated[key].push({ value: value as string, option });
+          }
+        });
+      } catch (error) {
+        console.error(error);
+      }
     });
-
     return { separatedOptions: separated, optionKeys: keys };
   })();
 
