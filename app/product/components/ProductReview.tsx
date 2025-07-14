@@ -10,7 +10,7 @@ type ProductReviewProps = {
 
 const renderStars = (rating: number) => {
   return (
-    <Rating value={rating}>
+    <Rating value={rating} readOnly={true}>
       {Array.from({ length: 5 }).map((_, index) => (
         <RatingButton key={index} size={12} />
       ))}
