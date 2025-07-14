@@ -1,0 +1,151 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { MinusIcon, PlusIcon } from "lucide-react";
+import { Product } from "@/lib/types/productType";
+import { formatPriceToKor } from "@/lib/utils/constant";
+import { Control } from "react-hook-form";
+import {
+  FormField,
+  FormItem,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+
+type ProductQuantityFormProps = {
+  product: Product;
+  control: Control<any>;
+  hideTitle?: boolean;
+  allOptionsSelected?: boolean;
+  maxPurchaseQuantity?: number;
+  isCartMode?: boolean;
+  onQuantityChange?: (quantity: number) => void;
+  calculateTotal?: () => number;
+  selectedOptions?: Record<string, string>;
+};
+
+function ProductQuantityForm({
+  product,
+  control,
+  hideTitle = false,
+  allOptionsSelected = false,
+  maxPurchaseQuantity = 0,
+  isCartMode = false,
+  onQuantityChange,
+  calculateTotal,
+  selectedOptions = {},
+}: ProductQuantityFormProps) {
+  const handleQuantityChange = (newQuantity: number) => {
+    if (newQuantity < 1) return;
+    if (newQuantity > maxPurchaseQuantity && maxPurchaseQuantity > 0) {
+      return;
+    }
+    onQuantityChange?.(newQuantity);
+  };
+
+  if (!allOptionsSelected && !isCartMode) {
+    return null;
+  }
+
+  return (
+    <div className="space-y-4">
+      {!hideTitle && (
+        <>
+          <h2 className="text-lg font-semibold">{product.name}</h2>
+          <Separator />
+        </>
+      )}
+
+      <div className="bg-gray-50 p-4 rounded-lg">
+        {!isCartMode && (
+          <div className="flex justify-between items-center mb-2">
+            <div className="text-sm text-gray-600">
+              {Object.entries(selectedOptions)
+                .filter(([_, value]) => value !== "")
+                .map(([key, value]) => `${key}: ${value}`)
+                .join(" / ")}
+            </div>
+          </div>
+        )}
+
+        <div className="flex justify-between items-center">
+          <FormField
+            control={control}
+            name="quantity"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <div className="flex items-center space-x-2">
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const newQuantity = field.value - 1;
+                        if (newQuantity >= 1) {
+                          field.onChange(newQuantity);
+                          handleQuantityChange(newQuantity);
+                        }
+                      }}
+                      disabled={field.value <= 1}
+                    >
+                      <MinusIcon className="h-4 w-4" />
+                    </Button>
+
+                    <Input
+                      className="w-12 text-center bg-white border-none"
+                      type="number"
+                      min={1}
+                      max={maxPurchaseQuantity}
+                      value={field.value}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => {
+                        e.stopPropagation();
+                        const value = parseInt(e.target.value) || 1;
+                        field.onChange(value);
+                        handleQuantityChange(value);
+                      }}
+                    />
+
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const newQuantity = field.value + 1;
+                        if (
+                          newQuantity <= maxPurchaseQuantity ||
+                          maxPurchaseQuantity === 0
+                        ) {
+                          field.onChange(newQuantity);
+                          handleQuantityChange(newQuantity);
+                        }
+                      }}
+                      disabled={
+                        field.value >= maxPurchaseQuantity &&
+                        maxPurchaseQuantity > 0
+                      }
+                    >
+                      <PlusIcon className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className="font-semibold text-lg">
+            {calculateTotal ? formatPriceToKor(calculateTotal()) : 0}원
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ProductQuantityForm;
