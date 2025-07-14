@@ -5,7 +5,7 @@ import { ProductDetailInfo } from "@/lib/types/productType";
 import ProductNavbar from "@/app/product/components/ProductNavbar";
 import ProductReview from "@/app/product/components/ProductReview";
 import ProductDetail from "@/app/product/components/ProductDetail";
-import useProductNavgation from "@/app/product/hooks/useProductNavgation";
+import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
 import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
 import { Button } from "@/components/ui/button";
@@ -146,7 +146,7 @@ const ProductContent = ({
 };
 
 const ProductView = ({ productDetail }: ProductDetailProps) => {
-  const { activeTab, setActiveTab } = useProductNavgation();
+  const { activeTab, setActiveTab } = useProductNavigation();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleAddToCartSuccess = () => {
@@ -166,9 +166,7 @@ const ProductView = ({ productDetail }: ProductDetailProps) => {
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[468px] bg-white border-t border-gray-200 p-4 z-50">
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild>
-            <Button className="w-full h-12 text-lg font-bold">
-              장바구니
-            </Button>
+            <Button className="w-full h-12 text-lg font-bold">장바구니</Button>
           </SheetTrigger>
           <SheetContent
             side="bottom"
