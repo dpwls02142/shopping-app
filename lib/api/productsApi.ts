@@ -9,15 +9,11 @@ import {
   ProductPreviewInfo,
   ProductDetailInfo,
 } from "../types/productType";
-import {
-  SERVER_BASE_URL,
-  fetchWithErrorHandling,
-  handleApiError,
-} from "../utils/constant";
+import { getApiUrl, fetchWithErrorHandling, handleApiError } from "../utils/constant";
 
 export const fetchProducts = async (): Promise<Product[]> => {
   return fetchWithErrorHandling(
-    `${SERVER_BASE_URL}/products`,
+    getApiUrl("products"),
     "Failed to fetch products",
     []
   );
@@ -27,7 +23,7 @@ export const fetchProductInventories = async (): Promise<
   ProductInventory[]
 > => {
   return fetchWithErrorHandling(
-    `${SERVER_BASE_URL}/productInventories`,
+    getApiUrl("productInventories"),
     "Failed to fetch product inventories",
     []
   );
@@ -35,7 +31,7 @@ export const fetchProductInventories = async (): Promise<
 
 export const fetchProductOptions = async (): Promise<ProductOption[]> => {
   return fetchWithErrorHandling(
-    `${SERVER_BASE_URL}/productOptions`,
+    getApiUrl("productOptions"),
     "Failed to fetch product options",
     []
   );
@@ -43,7 +39,7 @@ export const fetchProductOptions = async (): Promise<ProductOption[]> => {
 
 export const fetchProductDiscounts = async (): Promise<ProductDiscount[]> => {
   return fetchWithErrorHandling(
-    `${SERVER_BASE_URL}/productDiscounts`,
+    getApiUrl("productDiscounts"),
     "Failed to fetch product discounts",
     []
   );
@@ -51,7 +47,7 @@ export const fetchProductDiscounts = async (): Promise<ProductDiscount[]> => {
 
 export const fetchProductImages = async (): Promise<ProductImage[]> => {
   return fetchWithErrorHandling(
-    `${SERVER_BASE_URL}/productImages`,
+    getApiUrl("productImages"),
     "Failed to fetch product images",
     []
   );
@@ -59,7 +55,7 @@ export const fetchProductImages = async (): Promise<ProductImage[]> => {
 
 export const fetchSellers = async (): Promise<Seller[]> => {
   return fetchWithErrorHandling(
-    `${SERVER_BASE_URL}/sellers`,
+    getApiUrl("sellers"),
     "Failed to fetch sellers",
     []
   );
@@ -67,7 +63,7 @@ export const fetchSellers = async (): Promise<Seller[]> => {
 
 export const fetchProductReviews = async (): Promise<Review[]> => {
   return fetchWithErrorHandling(
-    `${SERVER_BASE_URL}/reviews`,
+    getApiUrl("productReviews"),
     "Failed to fetch product reviews",
     []
   );
@@ -77,14 +73,15 @@ export const fetchAllProductsWithDetails = async (): Promise<
   ProductDetailInfo[]
 > => {
   try {
-    const [products, discounts, images, reviews, sellers, options] = await Promise.all([
-      fetchProducts(),
-      fetchProductDiscounts(),
-      fetchProductImages(),
-      fetchProductReviews(),
-      fetchSellers(),
-      fetchProductOptions(),
-    ]);
+    const [products, discounts, images, reviews, sellers, options] =
+      await Promise.all([
+        fetchProducts(),
+        fetchProductDiscounts(),
+        fetchProductImages(),
+        fetchProductReviews(),
+        fetchSellers(),
+        fetchProductOptions(),
+      ]);
 
     const productDiscounts = new Map(discounts.map((d) => [d.productId, d]));
     const sellersMap = new Map(sellers.map((s) => [s.id, s]));
