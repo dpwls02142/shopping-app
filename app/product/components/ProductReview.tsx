@@ -31,10 +31,6 @@ const ProductReview = ({ reviews }: ProductReviewProps) => {
                     {formatDateToKor(review.createdAt)}
                   </span>
                 </div>
-                <div className="flex items-center text-sm text-gray-500">
-                  <span className="mr-1">👍</span>
-                  <span>{review.reviewFavorite}</span>
-                </div>
               </div>
               <p className="text-gray-800 mb-3">{review.reviewDetail}</p>
               {review.imageUrl && (
