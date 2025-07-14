@@ -3,11 +3,7 @@
 import useCartProductsStore from "@/app/cart/hooks/useCartProductsStore";
 import { formatPriceToKor } from "@/lib/utils/constant";
 
-type CartProductsSummaryProps = {
-  showActions?: boolean;
-};
-
-export default function CartProductsSummary({}: CartProductsSummaryProps) {
+export default function CartProductsSummary() {
   const { totalItems, totalPrice } = useCartProductsStore();
 
   return (
