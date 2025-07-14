@@ -67,7 +67,7 @@ const useCartProductsStore = create<CartStore>()(
           const totalItemPrice = (itemPrice + optionPrice) * quantity;
 
           const newItem: CartItem = {
-            id: `${product.id}-${Date.now()}-${Math.random()}`,
+            id: `${product.id}-${crypto.randomUUID()}`,
             product,
             selectedOptions,
             productOptions: allAvailableOptions || [],
