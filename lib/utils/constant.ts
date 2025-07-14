@@ -1,4 +1,11 @@
-export const SERVER_BASE_URL = "http://localhost:3001";
+export const SERVER_BASE_URL =
+  process.env.NODE_ENV === "production" ? "" : "http://localhost:3001";
+
+export const getApiUrl = (endpoint: string) => {
+  return process.env.NODE_ENV === "production"
+    ? `/api/${endpoint}`
+    : `http://localhost:3001/${endpoint}`;
+};
 
 export const formatPriceToKor = (price: number) => {
   return price.toLocaleString("ko-KR");
