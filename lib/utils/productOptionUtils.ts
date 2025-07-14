@@ -17,7 +17,8 @@ export const extractOptionKeys = (options: ProductOption[]): string[] => {
           }
         });
       }
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_error) {
       if (!keys.includes(option.optionName)) {
         keys.push(option.optionName);
       }
@@ -40,7 +41,8 @@ export const parseOptionValue = (optionValue: string): string => {
 
     // 문자열인 경우 그대로 반환
     return String(parsedValue);
-  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (_error) {
     // JSON 파싱에 실패하면 원본 값 반환
     return optionValue;
   }
@@ -158,7 +160,8 @@ export const createOptionsFromSelection = (
       } else {
         result[option.optionName] = option.optionValue;
       }
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_error) {
       result[option.optionName] = option.optionValue;
     }
   });

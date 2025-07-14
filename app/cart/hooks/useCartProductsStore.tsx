@@ -146,7 +146,7 @@ const useCartProductsStore = create<CartStore>()(
             totalPrice: totalItemPrice,
           };
 
-          set((state) => ({
+          set((_state) => ({
             items: updatedItems,
             totalItems: updatedItems.reduce(
               (sum, item) => sum + item.quantity,

@@ -16,6 +16,7 @@ import {
 
 type ProductQuantityFormProps = {
   product: Product;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   hideTitle?: boolean;
   allOptionsSelected?: boolean;

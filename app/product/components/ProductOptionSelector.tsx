@@ -17,6 +17,7 @@ import { Control, useWatch } from "react-hook-form";
 
 type ProductOptionSelectorProps = {
   productOptions: ProductOption[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
 };
