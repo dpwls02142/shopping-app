@@ -80,7 +80,7 @@ export default function CartProductCard({
 
   return (
     <div className="border rounded-lg bg-white shadow-sm overflow-hidden">
-      <div className="p-4 cursor-pointe">
+      <div className="p-4">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <Link href={`/product/${item.product.id}`}>
