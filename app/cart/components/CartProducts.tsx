@@ -1,6 +1,6 @@
 "use client";
 
-import useCartProductsStore from "@/app/cart/hooks/useCartProductsStore";
+import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 import CartProductCard from "./CartProductCard";
 
 type CartProductsProps = {

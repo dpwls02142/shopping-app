@@ -2,7 +2,7 @@
 
 import CartProducts from "./components/CartProducts";
 import CartProductsSummary from "./components/CartProductsSummary";
-import useCartProductsStore from "./hooks/useCartProductsStore";
+import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 import { Button } from "@/components/ui/button";
 
 export default function CartPage() {

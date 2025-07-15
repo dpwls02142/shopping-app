@@ -1,6 +1,6 @@
 "use client";
 
-import useCartProductsStore from "@/app/cart/hooks/useCartProductsStore";
+import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 import { formatPriceToKor } from "@/lib/utils/constant";
 
 export default function CartProductsSummary() {

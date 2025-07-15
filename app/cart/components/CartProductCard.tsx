@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import useCartProductsStore from "@/app/cart/hooks/useCartProductsStore";
+import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 
 type CartProductCardProps = {
   item: CartItem;

@@ -4,7 +4,7 @@ import * as z from "zod";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ProductDetailInfo } from "@/lib/types/productType";
-import useCartProductsStore from "@/app/cart/hooks/useCartProductsStore";
+import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import ProductOptionSelector from "@/app/product/components/ProductOptionSelector";
