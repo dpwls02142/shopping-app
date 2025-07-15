@@ -32,8 +32,19 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
         <div className="space-y-4 pt-4">
           <div className="bg-gray-50 p-4 rounded-lg">
             <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-600">선택한 옵션</span>
+            </div>
               <div className="flex justify-between items-center">
-                {parseOptionValue(JSON.stringify(addToCartForm.watchedOptions))}
+                {parseOptionValue(addToCartForm.watchedOptions).map(
+                  (option) => (
+                    <span
+                      key={option.key}
+                      className="text-sm text-gray-600 mr-2"
+                    >
+                      {option.key}: {option.value}
+                    </span>
+                  )
+                )}
               </div>
               <ProductQuantityForm
                 control={addToCartForm.form.control}
@@ -42,7 +53,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
               />
             </div>
           </div>
-        </div>
+
 
         <div className="pt-2">
           <div className="flex justify-between items-center mb-4">

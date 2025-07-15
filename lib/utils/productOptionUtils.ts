@@ -28,24 +28,45 @@ export const extractOptionKeys = (options: ProductOption[]): string[] => {
 };
 
 /**
-JSON 문자열로 저장된 옵션 값을 파싱해서 보기 좋게 표시하는 함수
+옵션 값을 파싱해서 키-값 쌍의 배열로 반환하는 함수
+ProductOption[] 또는 Record<string, string> 형태를 모두 처리
 */
-export const parseOptionValue = (optionValue: string): string => {
-  try {
-    const parsedValue = JSON.parse(optionValue);
-
-    // 객체인 경우 값들을 " / "로 연결해서 반환
-    if (typeof parsedValue === "object" && parsedValue !== null) {
-      return Object.values(parsedValue).join(" / ");
-    }
-
-    // 문자열인 경우 그대로 반환
-    return String(parsedValue);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (_error) {
-    // JSON 파싱에 실패하면 원본 값 반환
-    return optionValue;
+export const parseOptionValue = (
+  options: ProductOption[] | Record<string, string>
+): Array<{ key: string; value: string }> => {
+  // Record<string, string> 형태인 경우
+  if (!Array.isArray(options)) {
+    return Object.entries(options)
+      .filter(([_, value]) => value && value.trim() !== "")
+      .map(([key, value]) => ({
+        key,
+        value: String(value),
+      }));
   }
+
+  // ProductOption[] 형태인 경우
+  const optionMap = new Map<string, string>();
+
+  options.forEach((option) => {
+    try {
+      const parsedValue = JSON.parse(option.optionValue);
+      if (typeof parsedValue === "object" && parsedValue !== null) {
+        Object.entries(parsedValue).forEach(([key, value]) => {
+          optionMap.set(key, String(value));
+        });
+      } else {
+        optionMap.set(option.optionName, option.optionValue);
+      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_error) {
+      optionMap.set(option.optionName, option.optionValue);
+    }
+  });
+
+  return Array.from(optionMap.entries()).map(([key, value]) => ({
+    key,
+    value,
+  }));
 };
 
 /**

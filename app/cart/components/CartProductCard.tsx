@@ -51,9 +51,9 @@ export default function CartProductCard({
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex flex-wrap gap-2">
-              {item.selectedOptions.map((option) => (
-                <span key={option.optionName} className="text-sm text-gray-600">
-                  {option.optionName}: {parseOptionValue(option.optionValue)}
+              {parseOptionValue(item.selectedOptions).map((option) => (
+                <span key={option.key} className="text-sm text-gray-600">
+                  {option.key}: {option.value}
                 </span>
               ))}
             </div>
