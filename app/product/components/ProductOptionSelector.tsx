@@ -1,5 +1,6 @@
-import { Control, useWatch } from "react-hook-form";
+import { Control } from "react-hook-form";
 
+import useProductOptions from "@/app/product/hooks/forms/useProductOptions";
 import {
   FormControl,
   FormField,
@@ -28,43 +29,8 @@ function ProductOptionSelector({
   control,
   onSelectionChange,
 }: ProductOptionSelectorProps) {
-  const { separatedOptions, optionKeys } = (() => {
-    if (!productOptions || productOptions.length === 0) {
-      return { separatedOptions: {}, optionKeys: [] };
-    }
-
-    const separated: Record<
-      string,
-      Array<{ value: string; option: ProductOption }>
-    > = {};
-    const keys: string[] = [];
-
-    productOptions.forEach((option) => {
-      try {
-        const parsedOptions = JSON.parse(option.optionValue);
-        Object.entries(parsedOptions).forEach(([key, value]) => {
-          if (!separated[key]) {
-            separated[key] = [];
-            keys.push(key);
-          }
-
-          if (!separated[key].some((item) => item.value === value)) {
-            separated[key].push({ value: value as string, option });
-          }
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    });
-    return { separatedOptions: separated, optionKeys: keys };
-  })();
-
-  const watchedOptions = useWatch({ control, name: "options" });
-
-  const handleOptionChange = (key: string, value: string) => {
-    const newOptions = { ...watchedOptions, [key]: value };
-    onSelectionChange(newOptions);
-  };
+  const { separatedOptions, optionKeys, watchedOptions, handleOptionChange } =
+    useProductOptions(productOptions, control);
 
   return (
     <div className="space-y-4">
@@ -84,8 +50,10 @@ function ProductOptionSelector({
               <FormItem>
                 <FormLabel>{key}</FormLabel>
                 <Select
-                  onValueChange={(value) => handleOptionChange(key, value)}
                   value={field.value || ""}
+                  onValueChange={(value) =>
+                    handleOptionChange(key, value, onSelectionChange)
+                  }
                   disabled={isDisabled}
                 >
                   <FormControl>
@@ -94,11 +62,13 @@ function ProductOptionSelector({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {separatedOptions[key]?.map((option, optionIndex) => (
-                      <SelectItem key={optionIndex} value={option.value}>
-                        {option.value}
-                      </SelectItem>
-                    ))}
+                    {separatedOptions.separatedOptions[key]?.map(
+                      (item, idx) => (
+                        <SelectItem key={idx} value={item.value}>
+                          {item.value}
+                        </SelectItem>
+                      )
+                    )}
                   </SelectContent>
                 </Select>
                 <FormMessage />

@@ -2,7 +2,7 @@
 
 import ProductOptionSelector from "@/app/product/components/ProductOptionSelector";
 import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
-import { useAddToCartForm } from "@/app/product/hooks/forms/useAddToCartForm";
+import useAddToCartForm from "@/app/product/hooks/forms/useAddToCartForm";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { ProductDetailInfo } from "@/lib/types/productType";
