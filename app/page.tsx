@@ -1,6 +1,6 @@
 import DealView from "@/app/(deal)/components/DealView";
 import MainView from "@/app/components/MainView";
-import PersonalizedProduct from "@/app/components/PersonalizedProduct";
+import PersonalizedProduct from "@/app/product/components/PersonalizedProduct";
 
 type Props = {
   searchParams: Promise<{
