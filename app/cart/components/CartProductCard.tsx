@@ -12,6 +12,7 @@ import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
+import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 
 type CartProductCardProps = {
   item: CartItem;
@@ -25,6 +26,23 @@ function CartProductCard({ item, onRemove }: CartProductCardProps) {
     },
   });
   const selectedOptions = createOptionsFromSelection(item.selectedOptions);
+  const updateCartItemQuantity = useCartProductsStore(
+    (state) => state.updateQuantity
+  );
+  const handleQuantityChange = (newQuantity: number) => {
+    try {
+      updateCartItemQuantity(item.id, newQuantity, item.productOptions);
+      form.clearErrors("quantity");
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : `수량 변경 중 오류가 발생했습니다.`;
+      form.setError("quantity", { message: errorMessage });
+      form.setValue("quantity", item.quantity);
+    }
+  };
+
   return (
     <div className="rounded-lg bg-white overflow-hidden">
       <div className="p-4">
@@ -69,6 +87,7 @@ function CartProductCard({ item, onRemove }: CartProductCardProps) {
                 )}
                 selectedOptions={selectedOptions}
                 showSelectedOptions={false}
+                onQuantityChange={handleQuantityChange}
               />
             </FormProvider>
           </div>
