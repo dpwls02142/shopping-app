@@ -14,7 +14,6 @@ import { Input } from "@/components/ui/input";
 import { Product } from "@/lib/types/productType";
 
 type ProductQuantityFormProps = {
-  product: Product;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   maxPurchaseQuantity?: number;

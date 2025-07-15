@@ -107,7 +107,6 @@ export default function CartProductCard({
             <Form {...form}>
               <div className="flex justify-end">
                 <ProductQuantityForm
-                  product={item.product}
                   control={form.control}
                   maxPurchaseQuantity={getMaxPurchaseQuantity(
                     item.productOptions,
