@@ -1,4 +1,4 @@
-import useNavigationStore from "@/lib/store/useNavigationStore";
+import useNavigationStore from "@/app/stores/useNavigationStore";
 import { NavigationPage } from "@/lib/types/navgationType";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
