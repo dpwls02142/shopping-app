@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { useState } from "react";
 
@@ -6,7 +7,7 @@ import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
 import ProductDetail from "@/app/product/components/ProductDetail";
 import ProductNavbar from "@/app/product/components/ProductNavbar";
 import ProductReview from "@/app/product/components/ProductReview";
-import AddToCartForm from "@/app/product/forms/AddToCartForm";
+import AddToCartForm from "@/app/product/components/AddToCartForm";
 import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 import { Button } from "@/components/ui/button";
 import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
@@ -189,7 +190,11 @@ const ProductView = ({ productDetail }: ProductDetailProps) => {
               <AddToCartForm
                 productDetail={productDetail}
                 onSuccess={handleAddToCartSuccess}
-                hideTitle={true}
+                config={{
+                  display: {
+                    hideTitle: true,
+                  },
+                }}
               />
             </div>
           </SheetContent>
