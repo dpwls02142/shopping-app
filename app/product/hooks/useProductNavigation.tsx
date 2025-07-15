@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 
-type UseProductNavgationReturn = {
+type UseProductNavigationReturn = {
   activeTab: "reviews" | "details";
   setActiveTab: (tab: "reviews" | "details") => void;
   isVisible: boolean;
 };
 
-const useProductNavgation = (): UseProductNavgationReturn => {
+const useProductNavigation = (): UseProductNavigationReturn => {
   const [activeTab, setActiveTab] = useState<"reviews" | "details">("reviews");
   const [isVisible, setIsVisible] = useState(false);
 
@@ -29,4 +29,4 @@ const useProductNavgation = (): UseProductNavgationReturn => {
   };
 };
 
-export default useProductNavgation;
+export default useProductNavigation;

@@ -10,7 +10,7 @@ type ProductReviewProps = {
 
 const renderStars = (rating: number) => {
   return (
-    <Rating value={rating}>
+    <Rating value={rating} readOnly={true}>
       {Array.from({ length: 5 }).map((_, index) => (
         <RatingButton key={index} size={12} />
       ))}
@@ -30,10 +30,6 @@ const ProductReview = ({ reviews }: ProductReviewProps) => {
                   <span className="ml-2 text-sm text-gray-600">
                     {formatDateToKor(review.createdAt)}
                   </span>
-                </div>
-                <div className="flex items-center text-sm text-gray-500">
-                  <span className="mr-1">👍</span>
-                  <span>{review.reviewFavorite}</span>
                 </div>
               </div>
               <p className="text-gray-800 mb-3">{review.reviewDetail}</p>
