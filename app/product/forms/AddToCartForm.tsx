@@ -10,7 +10,7 @@ import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { ProductDetailInfo } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils/constant";
+import { formatPriceToKor } from "@/lib/utils";
 import {
   areAllOptionsSelected,
   extractOptionKeys,

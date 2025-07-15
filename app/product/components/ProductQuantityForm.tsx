@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Product } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils/constant";
+import { formatPriceToKor } from "@/lib/utils";
 
 type ProductQuantityFormProps = {
   product: Product;

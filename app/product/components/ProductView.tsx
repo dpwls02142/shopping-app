@@ -19,7 +19,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ProductDetailInfo } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils/constant";
+import { formatPriceToKor } from "@/lib/utils";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;

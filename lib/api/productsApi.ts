@@ -8,8 +8,8 @@ import {
   ProductPreviewInfo,
   Review,
   Seller,
-} from "../types/productType";
-import { fetchWithErrorHandling, getApiUrl, handleApiError } from "../utils/constant";
+} from "@/lib/types/productType";
+import { fetchWithErrorHandling, getApiUrl, handleApiError } from "@/lib/utils";
 
 export const fetchProducts = async (): Promise<Product[]> => {
   return fetchWithErrorHandling(

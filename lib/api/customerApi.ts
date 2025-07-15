@@ -1,5 +1,5 @@
-import { Customer } from "../types/customerType";
-import { getApiUrl } from "../utils/constant";
+import { Customer } from "@/lib/types/customerType";
+import { getApiUrl } from "@/lib/utils";
 
 export const fetchCustomers = async (): Promise<Customer[]> => {
   try {

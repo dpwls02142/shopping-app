@@ -1,7 +1,7 @@
 "use client";
 
 import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
-import { formatPriceToKor } from "@/lib/utils/constant";
+import { formatPriceToKor } from "@/lib/utils";
 
 export default function CartProductsSummary() {
   const { totalItems, totalPrice } = useCartProductsStore();

@@ -6,7 +6,7 @@ import PersonalizedProductSkeleton from "@/app/components/PersonalizedProductSke
 import { fetchCustomers } from "@/lib/api/customerApi";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 import { ProductPreviewInfo } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils/constant";
+import { formatPriceToKor } from "@/lib/utils";
 
 const ProductImage = ({ product }: { product: ProductPreviewInfo }) => (
   <div className="relative w-full aspect-square mb-2 overflow-hidden rounded-lg">

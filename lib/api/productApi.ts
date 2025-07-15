@@ -1,5 +1,3 @@
-import { getApiUrl, handleApiError } from "@/lib/utils/constant";
-
 import {
   Product,
   ProductDetailInfo,
@@ -8,7 +6,8 @@ import {
   ProductOption,
   Review,
   Seller,
-} from "../types/productType";
+} from "@/lib/types/productType";
+import { getApiUrl, handleApiError } from "@/lib/utils";
 
 export const fetchProductByProductId = async (
   productId: string
