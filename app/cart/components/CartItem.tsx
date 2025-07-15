@@ -4,31 +4,29 @@ import { X } from "lucide-react";
 import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
 
-import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
+import useCartStore from "@/app/cart/stores/useCartStore";
+import ProductQuantityForm from "@/app/product/components/ProductQuantity";
 import { Button } from "@/components/ui/button";
-import { CartItem } from "@/lib/types/cartType";
+import { CartItem as CartItemType } from "@/lib/types/cartType";
 import { formatPriceToKor } from "@/lib/utils";
 import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
-import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 
-type CartProductCardProps = {
-  item: CartItem;
+type CartItemProps = {
+  item: CartItemType;
   onRemove: (itemId: string) => void;
 };
 
-function CartProductCard({ item, onRemove }: CartProductCardProps) {
+function CartItem({ item, onRemove }: CartItemProps) {
   const form = useForm({
     defaultValues: {
       quantity: item.quantity,
     },
   });
   const selectedOptions = createOptionsFromSelection(item.selectedOptions);
-  const updateCartItemQuantity = useCartProductsStore(
-    (state) => state.updateQuantity
-  );
+  const updateCartItemQuantity = useCartStore((state) => state.updateQuantity);
   const handleQuantityChange = (newQuantity: number) => {
     try {
       updateCartItemQuantity(item.id, newQuantity, item.productOptions);
@@ -104,4 +102,4 @@ function CartProductCard({ item, onRemove }: CartProductCardProps) {
   );
 }
 
-export default CartProductCard;
+export default CartItem;

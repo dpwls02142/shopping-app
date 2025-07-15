@@ -1,5 +1,5 @@
-import BrandProducts from "@/app/(deal)/components/BrandProducts";
-import DailyProducts from "@/app/(deal)/components/DailyProducts";
+import BrandProductList from "@/app/(deal)/components/BrandProductList";
+import DailyProductList from "@/app/(deal)/components/DailyProductList";
 import DealNavbar from "@/app/(deal)/components/DealNavbar";
 
 type DealViewProps = {
@@ -15,7 +15,7 @@ function DealView({ searchParams }: DealViewProps) {
     <div>
       <DealNavbar />
       <section>
-        {view === "brand" ? <BrandProducts /> : <DailyProducts />}
+        {view === "brand" ? <BrandProductList /> : <DailyProductList />}
       </section>
     </div>
   );

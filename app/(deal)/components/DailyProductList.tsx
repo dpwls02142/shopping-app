@@ -1,7 +1,7 @@
-import DailyProductCard from "@/app/(deal)/components/DailyProductCard";
+import DailyProductCard from "@/app/(deal)/components/DailyProduct";
 import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 
-async function DailyProducts() {
+async function DailyProductList() {
   const products = await fetchAllProductsWithDetails();
   const dailyDealProducts = products.filter(
     (p) => p.discount?.discountType === "daily_deal"
@@ -22,4 +22,4 @@ async function DailyProducts() {
   );
 }
 
-export default DailyProducts;
+export default DailyProductList;

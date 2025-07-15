@@ -3,15 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
+import DealTimer from "@/app/(deal)/components/DealTimer";
 import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
 
-type DailyProductCardProps = {
+type DailyProductProps = {
   product: ProductDetailInfo;
 };
 
-function DailyProductCard({ product }: DailyProductCardProps) {
+function DailyProduct({ product }: DailyProductProps) {
   return (
     <li key={product.product.id}>
       <Link href={`/product/${product.product.id}`}>
@@ -44,7 +44,7 @@ function DailyProductCard({ product }: DailyProductCardProps) {
               </span>
             </div>
             <div>
-              <ProductDealTimer />
+              <DealTimer />
             </div>
           </div>
         </div>
@@ -53,4 +53,4 @@ function DailyProductCard({ product }: DailyProductCardProps) {
   );
 }
 
-export default DailyProductCard;
+export default DailyProduct;

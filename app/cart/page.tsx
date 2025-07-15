@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 
-import CartProducts from "@/app/cart/components/CartProducts";
-import CartProductsSummary from "@/app/cart/components/CartProductsSummary";
-import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
+import CartItemList from "@/app/cart/components/CartItemList";
+import CartSummary from "@/app/cart/components/CartSummary";
+import useCartStore from "@/app/cart/stores/useCartStore";
 import { Button } from "@/components/ui/button";
 
 export default function CartPage() {
-  const { items, totalItems } = useCartProductsStore();
+  const { items, totalItems } = useCartStore();
   const isCartNull = items.length === 0;
   return (
     <div className="flex flex-col min-h-screen relative bg-gray-50">
@@ -26,10 +26,10 @@ export default function CartPage() {
         ) : (
           <div>
             <div className="grid grid-cols-1 gap-6 pb-60">
-              <CartProducts />
+              <CartItemList />
             </div>
             <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 max-w-[468px] mx-auto">
-              <CartProductsSummary />
+              <CartSummary />
               <Button className="w-full outline-none text-lg font-bold h-12 mt-4">
                 {totalItems}건 주문하기
               </Button>

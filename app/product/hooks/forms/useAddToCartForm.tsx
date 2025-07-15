@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useWatch } from "react-hook-form";
 import * as z from "zod";
 
-import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
+import useCartStore from "@/app/cart/stores/useCartStore";
 import { ProductDetailInfo } from "@/lib/types/productType";
 import {
   areAllOptionsSelected,
@@ -20,7 +20,7 @@ type UseAddToCartFormProps = {
 
 function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
   const { product, options: productOptions, discount } = productDetail;
-  const addToCart = useCartProductsStore((state) => state.addToCart);
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const formSchema = z.object({
     options: z.record(z.string(), z.string()),

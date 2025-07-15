@@ -7,7 +7,7 @@ type ProductPageProps = {
   }>;
 };
 
-export default async function ProductPage(props: ProductPageProps) {
+async function ProductPage(props: ProductPageProps) {
   try {
     const { id: productId } = await props.params;
     const productDetail = await fetchProductDetail(productId);
@@ -25,3 +25,5 @@ export default async function ProductPage(props: ProductPageProps) {
     );
   }
 }
+
+export default ProductPage;

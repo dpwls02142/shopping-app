@@ -1,14 +1,14 @@
 "use client";
 
-import CartProductCard from "@/app/cart/components/CartProductCard";
-import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
+import CartProductCard from "@/app/cart/components/CartItem";
+import useCartStore from "@/app/cart/stores/useCartStore";
 
-type CartProductsProps = {
+type CartItemListProps = {
   onProductRemove?: (itemId: string) => void;
 };
 
-function CartProducts({ onProductRemove }: CartProductsProps) {
-  const { items, removeFromCart } = useCartProductsStore();
+function CartItemList({ onProductRemove }: CartItemListProps) {
+  const { items, removeFromCart } = useCartStore();
 
   const handleRemove = (itemId: string) => {
     removeFromCart(itemId);
@@ -24,4 +24,4 @@ function CartProducts({ onProductRemove }: CartProductsProps) {
   );
 }
 
-export default CartProducts;
+export default CartItemList;

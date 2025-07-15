@@ -1,9 +1,9 @@
 "use client";
 
-import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
+import useCartProductsStore from "@/app/cart/stores/useCartStore";
 import { formatPriceToKor } from "@/lib/utils";
 
-function CartProductsSummary() {
+function CartSummary() {
   const { totalItems, totalPrice } = useCartProductsStore();
 
   return (
@@ -24,4 +24,4 @@ function CartProductsSummary() {
   );
 }
 
-export default CartProductsSummary;
+export default CartSummary;

@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-type ProductQuantityFormProps = {
+type ProductQuantityProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   maxPurchaseQuantity?: number;
@@ -22,13 +22,13 @@ type ProductQuantityFormProps = {
   showSelectedOptions?: boolean;
 };
 
-function ProductQuantityForm({
+function ProductQuantity({
   control,
   maxPurchaseQuantity = 0,
   onQuantityChange,
   selectedOptions = {},
   showSelectedOptions = true,
-}: ProductQuantityFormProps) {
+}: ProductQuantityProps) {
   const { setQuantity } = useProductQuantity({
     control,
     max: maxPurchaseQuantity,
@@ -99,4 +99,4 @@ function ProductQuantityForm({
   );
 }
 
-export default ProductQuantityForm;
+export default ProductQuantity;

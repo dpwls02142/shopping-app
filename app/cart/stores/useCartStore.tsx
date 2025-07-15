@@ -2,14 +2,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import { CartItem,CartProductsStore } from "@/lib/types/cartType";
+import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
 
-const useCartProductsStore = create<CartProductsStore>()(
+const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
       items: [],
@@ -208,4 +208,4 @@ const useCartProductsStore = create<CartProductsStore>()(
   )
 );
 
-export default useCartProductsStore;
+export default useCartStore;

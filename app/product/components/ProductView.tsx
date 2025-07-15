@@ -4,7 +4,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Image from "next/image";
 import { useState } from "react";
 
-import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
+import DealTimer from "@/app/(deal)/components/DealTimer";
 import AddToCartForm from "@/app/product/components/AddToCartForm";
 import ProductDetail from "@/app/product/components/ProductDetail";
 import ProductNavbar from "@/app/product/components/ProductNavbar";
@@ -122,7 +122,7 @@ const ProductInfo = ({
           />
         </div>
         <ProductPrice basePrice={product.basePrice} discount={discount} />
-        {discount?.discountType === "daily_deal" && <ProductDealTimer />}
+        {discount?.discountType === "daily_deal" && <DealTimer />}
       </div>
     </div>
   );

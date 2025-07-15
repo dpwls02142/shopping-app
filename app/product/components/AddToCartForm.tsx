@@ -1,7 +1,7 @@
 "use client";
 
-import ProductOptionSelector from "@/app/product/components/ProductOptionSelector";
-import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
+import ProductOptions from "@/app/product/components/ProductOptions";
+import ProductQuantity from "@/app/product/components/ProductQuantity";
 import useAddToCartForm from "@/app/product/hooks/forms/useAddToCartForm";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -23,7 +23,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
         onSubmit={addToCartForm.form.handleSubmit(addToCartForm.onSubmit)}
         className="p-4"
       >
-        <ProductOptionSelector
+        <ProductOptions
           productOptions={addToCartForm.productOptions || []}
           control={addToCartForm.form.control}
           onSelectionChange={addToCartForm.handleOptionSelectionChange}
@@ -47,7 +47,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
               </div>
 
               <div>
-                <ProductQuantityForm
+                <ProductQuantity
                   control={addToCartForm.form.control}
                   maxPurchaseQuantity={addToCartForm.maxPurchaseQuantity}
                   onQuantityChange={addToCartForm.handleQuantityChange}

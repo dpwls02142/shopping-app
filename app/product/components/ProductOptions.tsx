@@ -17,18 +17,18 @@ import {
 } from "@/components/ui/select";
 import { ProductOption } from "@/lib/types/productType";
 
-type ProductOptionSelectorProps = {
+type ProductOptionsProps = {
   productOptions: ProductOption[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
 };
 
-function ProductOptionSelector({
+function ProductOptions({
   productOptions,
   control,
   onSelectionChange,
-}: ProductOptionSelectorProps) {
+}: ProductOptionsProps) {
   const { separatedOptions, optionKeys, watchedOptions, handleOptionChange } =
     useProductOptions(productOptions, control);
 
@@ -79,4 +79,4 @@ function ProductOptionSelector({
   );
 }
 
-export default ProductOptionSelector;
+export default ProductOptions;
