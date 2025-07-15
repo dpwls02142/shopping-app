@@ -11,32 +11,21 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import { Product } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils";
 
 type ProductQuantityFormProps = {
   product: Product;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
-  hideTitle?: boolean;
-  allOptionsSelected?: boolean;
   maxPurchaseQuantity?: number;
-  isCartMode?: boolean;
   onQuantityChange?: (quantity: number) => void;
-  calculateTotal?: () => number;
   selectedOptions?: Record<string, string>;
 };
 
 function ProductQuantityForm({
-  product,
   control,
-  hideTitle = false,
-  allOptionsSelected = false,
   maxPurchaseQuantity = 0,
-  isCartMode = false,
   onQuantityChange,
-  calculateTotal,
   selectedOptions = {},
 }: ProductQuantityFormProps) {
   const handleQuantityChange = (newQuantity: number) => {
@@ -47,98 +36,85 @@ function ProductQuantityForm({
     onQuantityChange?.(newQuantity);
   };
 
-  if (!allOptionsSelected && !isCartMode) {
-    return null;
-  }
+  const hasSelectedOptions = Object.values(selectedOptions).some(
+    (value) => value !== ""
+  );
 
   return (
-    <div className="space-y-4">
-      {!hideTitle && (
-        <>
-          <h2 className="text-lg font-semibold">{product.name}</h2>
-          <Separator />
-        </>
-      )}
-
-      <div className="bg-gray-50 p-4 rounded-lg">
-        {!isCartMode && (
-          <div className="flex justify-between items-center mb-2">
-            <div className="text-sm text-gray-600">
-              {Object.entries(selectedOptions)
-                .filter(([_, value]) => value !== "")
-                .map(([key, value]) => `${key}: ${value}`)
-                .join(" / ")}
-            </div>
-          </div>
-        )}
-
-        <div className="flex justify-between items-center">
-          <FormField
-            control={control}
-            name="quantity"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center space-x-2">
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newQuantity = field.value - 1;
-                        if (newQuantity >= 1) {
-                          field.onChange(newQuantity);
-                          handleQuantityChange(newQuantity);
-                        }
-                      }}
-                      disabled={field.value <= 1}
-                    >
-                      <MinusIcon className="h-4 w-4" />
-                    </Button>
-
-                    <Input
-                      className="w-12 text-center bg-white border-none"
-                      type="number"
-                      min={1}
-                      max={maxPurchaseQuantity}
-                      value={field.value}
-                      onClick={(e) => e.stopPropagation()}
-                      onChange={(e) => {
-                        e.stopPropagation();
-                        const value = parseInt(e.target.value) || 1;
-                        field.onChange(value);
-                        handleQuantityChange(value);
-                      }}
-                    />
-
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newQuantity = field.value + 1;
-                        if (newQuantity <= maxPurchaseQuantity) {
-                          field.onChange(newQuantity);
-                          handleQuantityChange(newQuantity);
-                        }
-                      }}
-                      disabled={field.value >= maxPurchaseQuantity}
-                    >
-                      <PlusIcon className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <div className="font-semibold text-lg">
-            {calculateTotal ? formatPriceToKor(calculateTotal()) : 0}원
+    <div className="bg-gray-50 p-4 rounded-lg">
+      {hasSelectedOptions && (
+        <div className="flex justify-between items-center mb-2">
+          <div className="text-sm text-gray-600">
+            {Object.entries(selectedOptions)
+              .filter(([_, value]) => value !== "")
+              .map(([key, value]) => `${key}: ${value}`)
+              .join(" / ")}
           </div>
         </div>
+      )}
+
+      <div className="flex justify-between items-center">
+        <FormField
+          control={control}
+          name="quantity"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <div className="flex items-center space-x-2">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const newQuantity = field.value - 1;
+                      if (newQuantity >= 1) {
+                        field.onChange(newQuantity);
+                        handleQuantityChange(newQuantity);
+                      }
+                    }}
+                    disabled={field.value <= 1}
+                  >
+                    <MinusIcon className="h-4 w-4" />
+                  </Button>
+
+                  <Input
+                    className="w-12 text-center bg-white border-none"
+                    type="number"
+                    min={1}
+                    max={maxPurchaseQuantity}
+                    value={field.value}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => {
+                      e.stopPropagation();
+                      const value = parseInt(e.target.value) || 1;
+                      field.onChange(value);
+                      handleQuantityChange(value);
+                    }}
+                  />
+
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const newQuantity = field.value + 1;
+                      if (newQuantity <= maxPurchaseQuantity) {
+                        field.onChange(newQuantity);
+                        handleQuantityChange(newQuantity);
+                      }
+                    }}
+                    disabled={field.value >= maxPurchaseQuantity}
+                  >
+                    <PlusIcon className="h-4 w-4" />
+                  </Button>
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
       </div>
     </div>
   );
