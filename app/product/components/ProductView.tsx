@@ -190,11 +190,6 @@ const ProductView = ({ productDetail }: ProductDetailProps) => {
               <AddToCartForm
                 productDetail={productDetail}
                 onSuccess={handleAddToCartSuccess}
-                config={{
-                  display: {
-                    hideTitle: true,
-                  },
-                }}
               />
             </div>
           </SheetContent>
