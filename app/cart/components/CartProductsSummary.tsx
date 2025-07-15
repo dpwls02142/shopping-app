@@ -3,7 +3,7 @@
 import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 import { formatPriceToKor } from "@/lib/utils";
 
-export default function CartProductsSummary() {
+function CartProductsSummary() {
   const { totalItems, totalPrice } = useCartProductsStore();
 
   return (
@@ -23,3 +23,5 @@ export default function CartProductsSummary() {
     </div>
   );
 }
+
+export default CartProductsSummary;

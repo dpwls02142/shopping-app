@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import useNavigationStore from "@/app/stores/useNavigationStore";
 import { NavigationPage } from "@/lib/types/navgationType";
 
-export const useAppNavigation = () => {
+function useAppNavigation() {
   const store = useNavigationStore();
   const router = useRouter();
 
@@ -44,25 +44,25 @@ export const useAppNavigation = () => {
     navigateToWithUrl,
     goBack,
   };
-};
+}
 
-export const useCurrentPage = () => {
+function useCurrentPage() {
   return useNavigationStore((state) => state.currentPage);
-};
+}
 
-export const useShowHeader = () => {
+function useShowHeader() {
   return useNavigationStore((state) => state.showHeader);
-};
+}
 
-export const useShowNavbar = () => {
+function useShowNavbar() {
   return useNavigationStore((state) => state.showNavbar);
-};
+}
 
-export const useShowBackButton = () => {
+function useShowBackButton() {
   return useNavigationStore((state) => state.showBackButton);
-};
+}
 
-export const useInitializeFromUrl = () => {
+function useInitializeFromUrl() {
   const { navigateTo } = useNavigationStore();
 
   return useCallback(
@@ -87,4 +87,13 @@ export const useInitializeFromUrl = () => {
     },
     [navigateTo]
   );
+}
+
+export {
+  useAppNavigation,
+  useCurrentPage,
+  useInitializeFromUrl,
+  useShowBackButton,
+  useShowHeader,
+  useShowNavbar,
 };

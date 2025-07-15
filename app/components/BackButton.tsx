@@ -2,7 +2,7 @@ import { ArrowLeft } from "lucide-react";
 
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 
-const BackButton = () => {
+function BackButton() {
   const { goBack } = useAppNavigation();
 
   return (
@@ -14,6 +14,6 @@ const BackButton = () => {
       <ArrowLeft className="w-5 h-5 text-gray-700" />
     </button>
   );
-};
+}
 
 export default BackButton;

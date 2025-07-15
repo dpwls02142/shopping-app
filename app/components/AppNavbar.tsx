@@ -8,7 +8,7 @@ const navItems = [
   { page: "deal", label: "특가", href: "/?tab=deal" },
 ];
 
-const AppNavbar = () => {
+function AppNavbar() {
   const { currentPage, navigateToWithUrl } = useAppNavigation();
 
   const handleTabClick = (page: string, event: React.MouseEvent) => {
@@ -37,6 +37,6 @@ const AppNavbar = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default AppNavbar;

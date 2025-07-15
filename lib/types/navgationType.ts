@@ -1,6 +1,6 @@
-export type NavigationPage = "home" | "product" | "cart" | "deal";
+type NavigationPage = "home" | "product" | "cart" | "deal";
 
-export type AppNavigationState = {
+type AppNavigationState = {
   currentPage: NavigationPage;
   previousPage: NavigationPage | null;
   showHeader: boolean;
@@ -8,11 +8,18 @@ export type AppNavigationState = {
   showBackButton: boolean;
 };
 
-export type AppNavigationActions = {
+type AppNavigationActions = {
   navigateTo: (page: NavigationPage) => void;
   setShowHeader: (show: boolean) => void;
   setShowNavbar: (show: boolean) => void;
   setShowBackButton: (show: boolean) => void;
 };
 
-export type NavigationStore = AppNavigationState & AppNavigationActions;
+type NavigationStore = AppNavigationState & AppNavigationActions;
+
+export type {
+  AppNavigationActions,
+  AppNavigationState,
+  NavigationPage,
+  NavigationStore,
+};

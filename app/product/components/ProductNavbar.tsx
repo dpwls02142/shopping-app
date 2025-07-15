@@ -6,11 +6,11 @@ type ProductNavbarProps = {
   isVisible: boolean;
 };
 
-const ProductNavbar = ({
+function ProductNavbar({
   activeTab,
   onTabChange,
   isVisible,
-}: ProductNavbarProps) => {
+}: ProductNavbarProps) {
   const topStyle = isVisible ? "top-[60px]" : "top-0";
   return (
     <div
@@ -40,6 +40,6 @@ const ProductNavbar = ({
       </div>
     </div>
   );
-};
+}
 
 export default ProductNavbar;

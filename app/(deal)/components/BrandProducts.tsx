@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 
-const BrandProducts = async () => {
+async function BrandProducts() {
   const products = await fetchAllProductsWithDetails();
   const brandDealProducts = products.filter(
     (p) => p.discount?.discountType === "brand_deal"
@@ -53,6 +53,6 @@ const BrandProducts = async () => {
       </ul>
     </div>
   );
-};
+}
 
 export default BrandProducts;

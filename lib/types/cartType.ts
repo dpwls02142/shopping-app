@@ -1,6 +1,6 @@
 import { Product, ProductOption } from "@/lib/types/productType";
 
-export type CartItem = {
+type CartItem = {
   id: string;
   product: Product;
   selectedOptions: ProductOption[];
@@ -11,13 +11,13 @@ export type CartItem = {
   createdAt: string;
 };
 
-export type CartState = {
+type CartState = {
   items: CartItem[];
   totalItems: number;
   totalPrice: number;
 };
 
-export type CartActions = {
+type CartActions = {
   addToCart: (
     product: Product,
     selectedOptions: ProductOption[],
@@ -34,4 +34,6 @@ export type CartActions = {
   getItemById: (itemId: string) => CartItem | undefined;
 };
 
-export type CartProductsStore = CartState & CartActions;
+type CartProductsStore = CartState & CartActions;
+
+export type { CartActions, CartItem, CartProductsStore,CartState };

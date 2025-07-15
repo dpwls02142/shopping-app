@@ -8,7 +8,7 @@ type DealViewProps = {
   };
 };
 
-const DealView = ({ searchParams }: DealViewProps) => {
+function DealView({ searchParams }: DealViewProps) {
   const view = searchParams.view;
 
   return (
@@ -19,6 +19,6 @@ const DealView = ({ searchParams }: DealViewProps) => {
       </section>
     </div>
   );
-};
+}
 
 export default DealView;

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
 const HOURS_PER_DAY = 24;
 const MINUTES_PER_HOUR = 60;
@@ -12,7 +12,7 @@ const PERCENTAGE_MULTIPLIER = 100;
 const TIME_PADDING_LENGTH = 2;
 const PADDING_CHAR = "0";
 
-const useDealTimer = () => {
+function useDealTimer() {
   const [timeLeft, setTimeLeft] = useState({
     hours: "00",
     minutes: "00",
@@ -52,6 +52,6 @@ const useDealTimer = () => {
   }, []);
 
   return { timeLeft, progress };
-};
+}
 
 export default useDealTimer;

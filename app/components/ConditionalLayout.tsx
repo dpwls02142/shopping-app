@@ -17,7 +17,7 @@ interface ConditionalLayoutProps {
   children: ReactNode;
 }
 
-const ConditionalLayout = ({ children }: ConditionalLayoutProps) => {
+function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const showHeader = useShowHeader();
   const showNavbar = useShowNavbar();
   const showBackButton = useShowBackButton();
@@ -37,6 +37,6 @@ const ConditionalLayout = ({ children }: ConditionalLayoutProps) => {
       <main className="flex-1 overflow-y-auto">{children}</main>
     </div>
   );
-};
+}
 
 export default ConditionalLayout;

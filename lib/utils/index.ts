@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getApiUrl = (endpoint: string) => {
+const getApiUrl = (endpoint: string) => {
   // 서버 측
   if (typeof window === "undefined") {
     const apiBaseUrl = process.env.API_BASE_URL;
@@ -17,11 +17,11 @@ export const getApiUrl = (endpoint: string) => {
   return `/api/${endpoint}`;
 };
 
-export const formatPriceToKor = (price: number) => {
+const formatPriceToKor = (price: number) => {
   return price.toLocaleString("ko-KR");
 };
 
-export const formatDateToKor = (dateString: string) => {
+const formatDateToKor = (dateString: string) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("ko-KR", {
     year: "numeric",
@@ -30,12 +30,12 @@ export const formatDateToKor = (dateString: string) => {
   });
 };
 
-export const handleApiError = <T>(error: unknown, defaultValue: T): T => {
+const handleApiError = <T>(error: unknown, defaultValue: T): T => {
   console.error(error);
   return defaultValue;
 };
 
-export const fetchWithErrorHandling = async <T>(
+const fetchWithErrorHandling = async <T>(
   url: string,
   errorMessage: string,
   defaultValue: T
@@ -49,4 +49,12 @@ export const fetchWithErrorHandling = async <T>(
   } catch (error) {
     return handleApiError(error, defaultValue);
   }
+};
+
+export {
+  fetchWithErrorHandling,
+  formatDateToKor,
+  formatPriceToKor,
+  getApiUrl,
+  handleApiError,
 };

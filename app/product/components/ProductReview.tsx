@@ -10,7 +10,7 @@ type ProductReviewProps = {
   reviewCount: number;
 };
 
-const renderStars = (rating: number) => {
+function renderStars(rating: number) {
   return (
     <Rating value={rating} readOnly={true}>
       {Array.from({ length: 5 }).map((_, index) => (
@@ -19,7 +19,8 @@ const renderStars = (rating: number) => {
     </Rating>
   );
 };
-const ProductReview = ({ reviews }: ProductReviewProps) => {
+
+function ProductReview({ reviews }: ProductReviewProps) {
   return (
     <div className="bg-white">
       <div className="divide-y divide-gray-200">

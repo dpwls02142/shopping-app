@@ -11,7 +11,7 @@ interface SwipeContainerProps {
 
 const SWIPE_THRESHOLD = 50;
 
-const AppSwipeNavbar = ({ children }: SwipeContainerProps) => {
+function AppSwipeNavbar({ children }: SwipeContainerProps) {
   const { currentPage, navigateToWithUrl } = useAppNavigation();
 
   const handleDragEnd = (
@@ -41,6 +41,6 @@ const AppSwipeNavbar = ({ children }: SwipeContainerProps) => {
       {children}
     </motion.div>
   );
-};
+}
 
 export default AppSwipeNavbar;

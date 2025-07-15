@@ -7,7 +7,7 @@ type CartProductsProps = {
   onProductRemove?: (itemId: string) => void;
 };
 
-export default function CartProducts({ onProductRemove }: CartProductsProps) {
+function CartProducts({ onProductRemove }: CartProductsProps) {
   const { items, removeFromCart } = useCartProductsStore();
 
   const handleRemove = (itemId: string) => {
@@ -23,3 +23,5 @@ export default function CartProducts({ onProductRemove }: CartProductsProps) {
     </div>
   );
 }
+
+export default CartProducts;

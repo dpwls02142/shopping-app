@@ -26,7 +26,7 @@ const safelyParseOptionValue = (
 /**
  * 옵션에서 모든 고유 키를 추출합니다.
  */
-export const extractOptionKeys = (options: ProductOption[]): string[] => {
+const extractOptionKeys = (options: ProductOption[]): string[] => {
   if (!options || options.length === 0) return [];
   // flatMap으로 모든 키를 배열로 펼친 후 Set을 사용해 중복을 제거
   const allKeys = options.flatMap((option) =>
@@ -38,7 +38,7 @@ export const extractOptionKeys = (options: ProductOption[]): string[] => {
 /**
  * 선택된 옵션 조합에 해당하는 ProductOption 찾기
  */
-export const findMatchingOption = (
+const findMatchingOption = (
   options: ProductOption[],
   selectedOptions: Record<string, string>
 ): ProductOption | null => {
@@ -61,7 +61,7 @@ export const findMatchingOption = (
 /**
  * 선택된 옵션들로부터 하나의 옵션 설정 객체(Record)를 생성
  */
-export const createOptionsFromSelection = (
+const createOptionsFromSelection = (
   selectedOptions: ProductOption[]
 ): Record<string, string> => {
   // reduce를 사용하여 모든 옵션을 하나의 객체로 병합
@@ -77,7 +77,7 @@ export const createOptionsFromSelection = (
 /**
  * 최대 구매 가능 수량
  */
-export const getMaxPurchaseQuantity = (
+const getMaxPurchaseQuantity = (
   options: ProductOption[],
   selectedOptions: Record<string, string>
 ): number => {
@@ -88,7 +88,7 @@ export const getMaxPurchaseQuantity = (
 /**
  * 모든 필수 옵션이 선택되었는지 확인
  */
-export const areAllOptionsSelected = (
+const areAllOptionsSelected = (
   optionKeys: string[],
   selectedOptions: Record<string, string>
 ): boolean => {
@@ -98,10 +98,20 @@ export const areAllOptionsSelected = (
 /**
  * 옵션 객체를 키-값 쌍의 배열로 변환
  */
-export const convertRecordToKeyValueArray = (
+const convertRecordToKeyValueArray = (
   options: Record<string, string>
 ): Array<{ key: string; value: string }> => {
   return Object.entries(options)
     .filter(([_, value]) => value?.trim())
     .map(([key, value]) => ({ key, value }));
+};
+
+export {
+  areAllOptionsSelected,
+  convertRecordToKeyValueArray,
+  createOptionsFromSelection,
+  extractOptionKeys,
+  findMatchingOption,
+  getMaxPurchaseQuantity,
+  safelyParseOptionValue,
 };

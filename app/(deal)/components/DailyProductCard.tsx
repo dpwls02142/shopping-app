@@ -10,7 +10,7 @@ type DailyProductCardProps = {
   product: ProductDetailInfo;
 };
 
-const DailyProductCard = ({ product }: DailyProductCardProps) => {
+function DailyProductCard({ product }: DailyProductCardProps) {
   return (
     <li key={product.product.id}>
       <Link href={`/product/${product.product.id}`}>
@@ -50,6 +50,6 @@ const DailyProductCard = ({ product }: DailyProductCardProps) => {
       </Link>
     </li>
   );
-};
+}
 
 export default DailyProductCard;

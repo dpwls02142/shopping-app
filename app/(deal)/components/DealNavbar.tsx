@@ -16,7 +16,7 @@ const navItems = [
   },
 ];
 
-const DealNavbar = () => {
+function DealNavbar() {
   const searchParams = useSearchParams();
   const currentView = searchParams.get("view") || "daily";
 
@@ -57,6 +57,6 @@ const DealNavbar = () => {
       ))}
     </nav>
   );
-};
+}
 
 export default DealNavbar;

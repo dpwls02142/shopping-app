@@ -148,7 +148,7 @@ const ProductContent = ({
   }
 };
 
-const ProductView = ({ productDetail }: ProductDetailProps) => {
+function ProductView({ productDetail }: ProductDetailProps) {
   const { activeTab, setActiveTab, isVisible } = useProductNavigation();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
@@ -200,6 +200,6 @@ const ProductView = ({ productDetail }: ProductDetailProps) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductView;

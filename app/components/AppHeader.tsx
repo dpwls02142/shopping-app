@@ -6,7 +6,7 @@ import BackButton from "@/app/components/BackButton";
 import { useCurrentPage } from "@/app/hooks/useAppNavigation";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
-const AppHeader = () => {
+function AppHeader() {
   const currentPage = useCurrentPage();
   const isMainPage = currentPage === "home" || currentPage === "deal";
   const isCartPage = currentPage === "cart";
@@ -46,6 +46,6 @@ const AppHeader = () => {
       </div>
     </header>
   );
-};
+}
 
 export default AppHeader;

@@ -1,6 +1,6 @@
 import useDealTimer from "@/app/(deal)/hooks/useDealTimer";
 
-const ProductDealTimer = () => {
+function ProductDealTimer() {
   const { timeLeft, progress } = useDealTimer();
 
   return (
@@ -16,6 +16,6 @@ const ProductDealTimer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductDealTimer;

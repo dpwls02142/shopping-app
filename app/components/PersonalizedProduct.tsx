@@ -8,20 +8,22 @@ import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
 
-const ProductImage = ({ product }: { product: ProductPreviewInfo }) => (
-  <div className="relative w-full aspect-square mb-2 overflow-hidden rounded-lg">
-    <Image
-      src={product.thumbnailImage ?? ""}
-      alt={product.name}
-      fill
-      sizes="50vw"
-      className="object-cover"
-      priority
-    />
-  </div>
-);
+function ProductImage({ product }: { product: ProductPreviewInfo }) {
+  return (
+    <div className="relative w-full aspect-square mb-2 overflow-hidden rounded-lg">
+      <Image
+        src={product.thumbnailImage ?? ""}
+        alt={product.name}
+        fill
+        sizes="50vw"
+        className="object-cover"
+        priority
+      />
+    </div>
+  );
+}
 
-const ProductPrice = ({ product }: { product: ProductPreviewInfo }) => {
+function ProductPrice({ product }: { product: ProductPreviewInfo }) {
   const { basePrice, discountedPrice } = product;
   if (!discountedPrice) {
     return (
@@ -42,40 +44,40 @@ const ProductPrice = ({ product }: { product: ProductPreviewInfo }) => {
       </span>
     </div>
   );
-};
+}
 
-const ProductRating = ({ product }: { product: ProductPreviewInfo }) => (
-  <div>
-    <span className="text-yellow-400">★</span>
-    <span>{product.averageRating}</span>
-    <span>({product.reviewCount})</span>
-  </div>
-);
+function ProductRating({ product }: { product: ProductPreviewInfo }) {
+  return (
+    <div>
+      <span className="text-yellow-400">★</span>
+      <span>{product.averageRating}</span>
+      <span>({product.reviewCount})</span>
+    </div>
+  );
+}
 
-const PersonalizedProductCard = ({
-  product,
-}: {
-  product: ProductPreviewInfo;
-}) => (
-  <li key={product.id}>
-    <Link href={`/product/${product.id}`}>
-      <ProductImage product={product} />
-      <div className="space-y-1">
-        <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
-          {product.name}
-        </h3>
-        <div className="flex items-center space-x-2">
-          <ProductPrice product={product} />
+function PersonalizedProductCard({ product }: { product: ProductPreviewInfo }) {
+  return (
+    <li key={product.id}>
+      <Link href={`/product/${product.id}`}>
+        <ProductImage product={product} />
+        <div className="space-y-1">
+          <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+            {product.name}
+          </h3>
+          <div className="flex items-center space-x-2">
+            <ProductPrice product={product} />
+          </div>
+          <div className="flex items-center text-xs text-gray-500 gap-1">
+            <ProductRating product={product} />
+          </div>
         </div>
-        <div className="flex items-center text-xs text-gray-500 gap-1">
-          <ProductRating product={product} />
-        </div>
-      </div>
-    </Link>
-  </li>
-);
+      </Link>
+    </li>
+  );
+}
 
-const PersonalizedProductsContent = async () => {
+async function PersonalizedProductsContent() {
   const [products, customers] = await Promise.all([
     fetchProductPreviewInfo(),
     fetchCustomers(),
@@ -92,12 +94,14 @@ const PersonalizedProductsContent = async () => {
       </ul>
     </section>
   );
-};
+}
 
-const PersonalizedProduct = () => (
-  <Suspense fallback={<PersonalizedProductSkeleton />}>
-    <PersonalizedProductsContent />
-  </Suspense>
-);
+function PersonalizedProduct() {
+  return (
+    <Suspense fallback={<PersonalizedProductSkeleton />}>
+      <PersonalizedProductsContent />
+    </Suspense>
+  );
+}
 
 export default PersonalizedProduct;

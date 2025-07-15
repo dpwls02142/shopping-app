@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 import Link from "next/link";
-import { FormProvider,useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 
 import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
 import { Button } from "@/components/ui/button";
@@ -18,10 +18,7 @@ type CartProductCardProps = {
   onRemove: (itemId: string) => void;
 };
 
-export default function CartProductCard({
-  item,
-  onRemove,
-}: CartProductCardProps) {
+function CartProductCard({ item, onRemove }: CartProductCardProps) {
   const form = useForm({
     defaultValues: {
       quantity: item.quantity,
@@ -85,3 +82,5 @@ export default function CartProductCard({
     </div>
   );
 }
+
+export default CartProductCard;
