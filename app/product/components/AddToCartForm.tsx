@@ -36,6 +36,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
                 {parseOptionValue(JSON.stringify(addToCartForm.watchedOptions))}
               </div>
               <ProductQuantityForm
+                control={addToCartForm.form.control}
                 maxPurchaseQuantity={addToCartForm.maxPurchaseQuantity}
                 onQuantityChange={addToCartForm.handleQuantityChange}
               />

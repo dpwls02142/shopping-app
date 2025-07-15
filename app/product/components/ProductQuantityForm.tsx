@@ -1,7 +1,7 @@
 "use client";
 
 import { MinusIcon, PlusIcon } from "lucide-react";
-import { useFormContext } from "react-hook-form";
+import { Control } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +13,8 @@ import {
 import { Input } from "@/components/ui/input";
 
 type ProductQuantityFormProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any>;
   maxPurchaseQuantity?: number;
   onQuantityChange?: (quantity: number) => void;
   selectedOptions?: Record<string, string>;
@@ -20,12 +22,12 @@ type ProductQuantityFormProps = {
 };
 
 function ProductQuantityForm({
+  control,
   maxPurchaseQuantity = 0,
   onQuantityChange,
   selectedOptions = {},
   showSelectedOptions = true,
 }: ProductQuantityFormProps) {
-  const { control } = useFormContext();
   const handleQuantityChange = (newQuantity: number) => {
     if (newQuantity < 1) return;
     if (newQuantity > maxPurchaseQuantity && maxPurchaseQuantity > 0) {
