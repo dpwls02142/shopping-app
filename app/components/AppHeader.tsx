@@ -2,9 +2,8 @@ import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
-import { useCurrentPage } from "@/app/hooks/useAppNavigation";
-
 import BackButton from "@/app/components/BackButton";
+import { useCurrentPage } from "@/app/hooks/useAppNavigation";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
 const AppHeader = () => {

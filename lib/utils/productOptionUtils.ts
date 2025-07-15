@@ -17,8 +17,8 @@ const safelyParseOptionValue = (
         {} as Record<string, string>
       );
     }
-  } catch (e) {
-    // JSON 파싱 실패 시 optionName과 optionValue를 사용
+  } catch (error) {
+    console.error(error);
   }
   return { [option.optionName]: option.optionValue };
 };

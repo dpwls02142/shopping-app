@@ -2,11 +2,6 @@ import { Control, useWatch } from "react-hook-form";
 
 import { ProductOption } from "@/lib/types/productType";
 
-type SeparatedOptionsReturn = {
-  separatedOptions: Record<string, { value: string; option: ProductOption }[]>;
-  optionKeys: string[];
-};
-
 function useProductOptions(
   productOptions: ProductOption[],
   control: Control<any>

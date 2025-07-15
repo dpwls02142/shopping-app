@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 import Link from "next/link";
-import { useForm, FormProvider } from "react-hook-form";
+import { FormProvider,useForm } from "react-hook-form";
 
 import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
 import { Button } from "@/components/ui/button";
@@ -27,7 +27,7 @@ export default function CartProductCard({
       quantity: item.quantity,
     },
   });
-  const selectedOptionsInCart = createOptionsFromSelection(item.selectedOptions);
+  const selectedOptions = createOptionsFromSelection(item.selectedOptions);
   return (
     <div className="rounded-lg bg-white overflow-hidden">
       <div className="p-4">
@@ -50,7 +50,7 @@ export default function CartProductCard({
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex flex-wrap gap-2">
-              {Object.entries(selectedOptionsInCart).map(([key, value]) => (
+              {Object.entries(selectedOptions).map(([key, value]) => (
                 <span key={key} className="text-sm text-gray-600">
                   {key}: {value}
                 </span>
