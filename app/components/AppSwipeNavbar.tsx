@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, PanInfo } from "framer-motion";
 import { ReactNode } from "react";
+import { motion, PanInfo } from "framer-motion";
 
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 

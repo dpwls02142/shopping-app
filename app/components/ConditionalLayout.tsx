@@ -1,17 +1,18 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
-import AppHeader from "@/app/components/AppHeader";
-import AppNavbar from "@/app/components/AppNavbar";
-import BackButton from "@/app/components/BackButton";
 import {
   useInitializeFromUrl,
   useShowBackButton,
   useShowHeader,
   useShowNavbar,
 } from "@/app/hooks/useAppNavigation";
+
+import AppHeader from "@/app/components/AppHeader";
+import AppNavbar from "@/app/components/AppNavbar";
+import BackButton from "@/app/components/BackButton";
 
 interface ConditionalLayoutProps {
   children: ReactNode;

@@ -9,6 +9,7 @@ import {
   Review,
   Seller,
 } from "@/lib/types/productType";
+
 import { fetchWithErrorHandling, getApiUrl, handleApiError } from "@/lib/utils";
 
 export const fetchProducts = async (): Promise<Product[]> => {

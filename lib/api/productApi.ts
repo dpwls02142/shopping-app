@@ -7,6 +7,7 @@ import {
   Review,
   Seller,
 } from "@/lib/types/productType";
+
 import { getApiUrl, handleApiError } from "@/lib/utils";
 
 export const fetchProductByProductId = async (

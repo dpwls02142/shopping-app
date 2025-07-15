@@ -1,4 +1,5 @@
 import ProductView from "@/app/product/[id]/components/ProductView";
+
 import { fetchProductDetail } from "@/lib/api/productApi";
 
 type ProductPageProps = {

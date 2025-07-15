@@ -1,15 +1,16 @@
 "use client";
 
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
+import useProductNavigation from "@/app/product/[id]/hooks/useProductNavigation";
 
 import DealTimer from "@/app/product/(deal)/components/DealTimer";
 import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
 import ProductDetail from "@/app/product/[id]/components/ProductDetail";
 import ProductNavbar from "@/app/product/[id]/components/ProductNavbar";
 import ProductReview from "@/app/product/[id]/components/ProductReview";
-import useProductNavigation from "@/app/product/[id]/hooks/useProductNavigation";
 import { Button } from "@/components/ui/button";
 import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
 import {
@@ -20,7 +21,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+
 import { ProductDetailInfo } from "@/lib/types/productType";
+
 import { formatPriceToKor } from "@/lib/utils";
 
 type ProductDetailProps = {

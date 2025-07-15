@@ -4,8 +4,9 @@ import Link from "next/link";
 
 import CartItemList from "@/app/cart/components/CartItemList";
 import CartSummary from "@/app/cart/components/CartSummary";
-import useCartStore from "@/app/cart/stores/useCartStore";
 import { Button } from "@/components/ui/button";
+
+import useCartStore from "@/app/cart/stores/useCartStore";
 
 export default function CartPage() {
   const { items, totalItems } = useCartStore();

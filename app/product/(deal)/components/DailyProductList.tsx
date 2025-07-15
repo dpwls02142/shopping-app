@@ -1,4 +1,5 @@
 import DailyProduct from "@/app/product/(deal)/components/DailyProduct";
+
 import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 
 async function DailyProductList() {

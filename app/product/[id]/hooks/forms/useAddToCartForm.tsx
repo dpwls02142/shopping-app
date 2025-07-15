@@ -1,11 +1,13 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
+
 import { ProductDetailInfo } from "@/lib/types/productType";
+
 import {
   areAllOptionsSelected,
   extractOptionKeys,

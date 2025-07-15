@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 import { formatPriceToKor } from "@/lib/utils";
+
+import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 
 async function BrandProductList() {
   const products = await fetchAllProductsWithDetails();

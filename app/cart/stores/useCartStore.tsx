@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
+
 import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,

@@ -1,8 +1,10 @@
-import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { ShoppingCart } from "lucide-react";
+
+import { useCurrentPage } from "@/app/hooks/useAppNavigation";
 
 import BackButton from "@/app/components/BackButton";
-import { useCurrentPage } from "@/app/hooks/useAppNavigation";
+
 import useCartStore from "@/app/cart/stores/useCartStore";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
