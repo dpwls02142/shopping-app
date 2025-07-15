@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
-import { parseOptionValue } from "@/lib/utils/productOptionUtils";
+import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
 
 type AddToCartFormProps = {
   productDetail: ProductDetailInfo;
@@ -37,7 +37,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
 
             <div className="flex justify-between items-start">
               <div className="flex flex-wrap items-center gap-2">
-                {parseOptionValue(addToCartForm.watchedOptions).map(
+                {convertRecordToKeyValueArray(addToCartForm.watchedOptions).map(
                   (option) => (
                     <span key={option.key} className="text-sm text-gray-600">
                       {option.key}: {option.value}
