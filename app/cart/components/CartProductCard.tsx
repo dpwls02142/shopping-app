@@ -15,7 +15,6 @@ import { formatPriceToKor } from "@/lib/utils";
 import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
-  parseOptionValue,
 } from "@/lib/utils/productOptionUtils";
 
 type CartProductCardProps = {
@@ -44,19 +43,6 @@ export default function CartProductCard({
   const updateCartItemQuantity = useCartProductsStore(
     (state) => state.updateQuantity
   );
-
-  const ProductOptionDisplay = (item: CartItem) => {
-    return item.selectedOptions
-      .map((option) => {
-        const optionText = parseOptionValue(option.optionValue);
-        const priceText =
-          option.additionalPrice > 0
-            ? ` (+${formatPriceToKor(option.additionalPrice)}원)`
-            : "";
-        return `${optionText}${priceText}`;
-      })
-      .join(" / ");
-  };
 
   const handleQuantityChange = async (newQuantity: number) => {
     try {
@@ -98,10 +84,6 @@ export default function CartProductCard({
               </h3>
             </Link>
 
-            <div className="text-sm text-gray-600 mb-3">
-              {ProductOptionDisplay(item)}
-            </div>
-
             <div className="flex items-center gap-2 mb-3">
               <span className="text-lg font-bold text-gray-900">
                 {formatPriceToKor(itemPrice + optionPrice)}원
@@ -115,20 +97,23 @@ export default function CartProductCard({
 
             <div className="mt-4" onClick={(e) => e.stopPropagation()}>
               <Form {...form}>
-                <ProductQuantityForm
-                  product={item.product}
-                  control={form.control}
-                  hideTitle={true}
-                  calculateTotal={() => totalItemPrice}
-                  allOptionsSelected={true}
-                  maxPurchaseQuantity={getMaxPurchaseQuantity(
-                    item.productOptions,
-                    selectedOptions
-                  )}
-                  isCartMode={true}
-                  onQuantityChange={handleQuantityChange}
-                  selectedOptions={selectedOptions}
-                />
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <ProductQuantityForm
+                      product={item.product}
+                      control={form.control}
+                      maxPurchaseQuantity={getMaxPurchaseQuantity(
+                        item.productOptions,
+                        selectedOptions
+                      )}
+                      onQuantityChange={handleQuantityChange}
+                      selectedOptions={selectedOptions}
+                    />
+                    <div className="font-semibold text-lg">
+                      {formatPriceToKor(totalItemPrice)}원
+                    </div>
+                  </div>
+                </div>
               </Form>
             </div>
           </div>
