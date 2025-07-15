@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
 import { ProductDetailInfo } from "@/lib/types/productType";
+import { formatPriceToKor } from "@/lib/utils";
 
 type DailyProductCardProps = {
   product: ProductDetailInfo;
@@ -30,10 +31,10 @@ function DailyProductCard({ product }: DailyProductCardProps) {
             </h3>
             <div className="flex items-baseline my-2">
               <span className="text-xl font-bold">
-                {product.discount?.discountedPrice.toLocaleString()}원
+                {formatPriceToKor(product.discount?.discountedPrice ?? 0)}원
               </span>
               <span className="text-gray-500 line-through ml-2">
-                {product.product.basePrice.toLocaleString()}원
+                {formatPriceToKor(product.product.basePrice)}원
               </span>
             </div>
             <div className="text-sm text-gray-600">

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
+import { formatPriceToKor } from "@/lib/utils";
 
 async function BrandProducts() {
   const products = await fetchAllProductsWithDetails();
@@ -33,10 +34,11 @@ async function BrandProducts() {
                   </h3>
                   <div className="flex items-baseline my-2">
                     <span className="text-xl font-bold">
-                      {product.discount?.discountedPrice.toLocaleString()}원
+                      {formatPriceToKor(product.discount?.discountedPrice ?? 0)}
+                      원
                     </span>
                     <span className="text-gray-500 line-through ml-2">
-                      {product.product.basePrice.toLocaleString()}원
+                      {formatPriceToKor(product.product.basePrice)}원
                     </span>
                   </div>
                   <div className="text-sm text-gray-600">
