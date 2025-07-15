@@ -31,29 +31,31 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
 
         <div className="space-y-4 pt-4">
           <div className="bg-gray-50 p-4 rounded-lg">
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600">선택한 옵션</span>
-            </div>
-              <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-600 mb-1 block">
+              선택한 옵션
+            </span>
+
+            <div className="flex justify-between items-start">
+              <div className="flex flex-wrap items-center gap-2">
                 {parseOptionValue(addToCartForm.watchedOptions).map(
                   (option) => (
-                    <span
-                      key={option.key}
-                      className="text-sm text-gray-600 mr-2"
-                    >
+                    <span key={option.key} className="text-sm text-gray-600">
                       {option.key}: {option.value}
                     </span>
                   )
                 )}
               </div>
-              <ProductQuantityForm
-                control={addToCartForm.form.control}
-                maxPurchaseQuantity={addToCartForm.maxPurchaseQuantity}
-                onQuantityChange={addToCartForm.handleQuantityChange}
-              />
+
+              <div>
+                <ProductQuantityForm
+                  control={addToCartForm.form.control}
+                  maxPurchaseQuantity={addToCartForm.maxPurchaseQuantity}
+                  onQuantityChange={addToCartForm.handleQuantityChange}
+                />
+              </div>
             </div>
           </div>
-
+        </div>
 
         <div className="pt-2">
           <div className="flex justify-between items-center mb-4">

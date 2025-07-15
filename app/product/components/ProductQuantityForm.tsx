@@ -40,7 +40,7 @@ function ProductQuantityForm({
   );
 
   return (
-    <div className="bg-gray-50 p-4 rounded-lg">
+    <div className="bg-gray-50 rounded-lg">
       {hasSelectedOptions && showSelectedOptions && (
         <div className="mb-2 text-sm text-gray-600">
           {Object.entries(selectedOptions)
