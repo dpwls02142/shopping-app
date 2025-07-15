@@ -1,8 +1,7 @@
 import { Control, useWatch } from "react-hook-form";
 
 type UseQuantityFieldProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any>;
+  control: Control<{ quantity: number }>;
   max: number;
   onChange?: (quantity: number) => void;
 };

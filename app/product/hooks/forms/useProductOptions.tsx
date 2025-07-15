@@ -4,8 +4,7 @@ import { ProductOption } from "@/lib/types/productType";
 
 function useProductOptions(
   productOptions: ProductOption[],
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any>
+  control: Control<{ options: Record<string, string> }>
 ) {
   const watchedOptions = useWatch({ control, name: "options" });
 
