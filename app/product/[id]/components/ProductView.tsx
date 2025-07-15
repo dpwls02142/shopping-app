@@ -4,12 +4,12 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Image from "next/image";
 import { useState } from "react";
 
-import DealTimer from "@/app/(deal)/components/DealTimer";
-import AddToCartForm from "@/app/product/components/AddToCartForm";
-import ProductDetail from "@/app/product/components/ProductDetail";
-import ProductNavbar from "@/app/product/components/ProductNavbar";
-import ProductReview from "@/app/product/components/ProductReview";
-import useProductNavigation from "@/app/product/hooks/useProductNavigation";
+import DealTimer from "@/app/product/(deal)/components/DealTimer";
+import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
+import ProductDetail from "@/app/product/[id]/components/ProductDetail";
+import ProductNavbar from "@/app/product/[id]/components/ProductNavbar";
+import ProductReview from "@/app/product/[id]/components/ProductReview";
+import useProductNavigation from "@/app/product/[id]/hooks/useProductNavigation";
 import { Button } from "@/components/ui/button";
 import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
 import {

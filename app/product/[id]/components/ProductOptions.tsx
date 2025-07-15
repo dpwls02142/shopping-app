@@ -1,6 +1,6 @@
 import { Control } from "react-hook-form";
 
-import useProductOptions from "@/app/product/hooks/forms/useProductOptions";
+import useProductOptions from "@/app/product/[id]/hooks/forms/useProductOptions";
 import {
   FormControl,
   FormField,
