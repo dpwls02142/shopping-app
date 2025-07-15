@@ -37,7 +37,11 @@ function CartProductCard({ item, onRemove }: CartProductCardProps) {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => onRemove(item.id)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onRemove(item.id);
+            }}
             className="text-gray-400 hover:text-red-500"
           >
             <X className="h-4 w-4" />
