@@ -15,22 +15,21 @@ import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import useCartProductsStore from "@/app/cart/hooks/useCartProductsStore";
 
 type CartProductCardProps = {
   item: CartItem;
-  onQuantityChange: (itemId: string, quantity: number) => void;
   onRemove: (itemId: string) => void;
 };
 
 const quantitySchema = z.object({
-  quantity: z.number().min(1, "수량은 1 이상이어야 합니다."),
+  quantity: z.number().min(1, "수량은 1개 이상이어야 합니다."),
 });
 
 type QuantityFormValues = z.infer<typeof quantitySchema>;
 
 export default function CartProductCard({
   item,
-  onQuantityChange,
   onRemove,
 }: CartProductCardProps) {
   const form = useForm<QuantityFormValues>({
@@ -40,6 +39,10 @@ export default function CartProductCard({
     },
     mode: "onChange",
   });
+
+  const updateCartItemQuantity = useCartProductsStore(
+    (state) => state.updateQuantity
+  );
 
   const ProductOptionDisplay = (item: CartItem) => {
     return item.selectedOptions
@@ -54,8 +57,18 @@ export default function CartProductCard({
       .join(" / ");
   };
 
-  const handleQuantityChange = (newQuantity: number) => {
-    onQuantityChange(item.id, newQuantity);
+  const handleQuantityChange = async (newQuantity: number) => {
+    try {
+      await updateCartItemQuantity(item.id, newQuantity, item.productOptions);
+      form.clearErrors("quantity");
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : `수량 변경 중 오류가 발생했습니다.`;
+      form.setError("quantity", { message: errorMessage });
+      form.setValue("quantity", item.quantity);
+    }
   };
 
   const handleRemove = (e: React.MouseEvent) => {
@@ -72,11 +85,6 @@ export default function CartProductCard({
   const totalItemPrice = (itemPrice + optionPrice) * form.watch("quantity");
 
   const selectedOptions = createOptionsFromSelection(item.selectedOptions);
-
-  const maxPurchaseQuantity = getMaxPurchaseQuantity(
-    item.productOptions,
-    selectedOptions
-  );
 
   return (
     <div className="border rounded-lg bg-white shadow-sm overflow-hidden">
@@ -104,7 +112,6 @@ export default function CartProductCard({
               )}
             </div>
 
-            {/* 수량 변경 폼 */}
             <div className="mt-4" onClick={(e) => e.stopPropagation()}>
               <Form {...form}>
                 <ProductQuantityForm
@@ -113,7 +120,10 @@ export default function CartProductCard({
                   hideTitle={true}
                   calculateTotal={() => totalItemPrice}
                   allOptionsSelected={true}
-                  maxPurchaseQuantity={maxPurchaseQuantity}
+                  maxPurchaseQuantity={getMaxPurchaseQuantity(
+                    item.productOptions,
+                    selectedOptions
+                  )}
                   isCartMode={true}
                   onQuantityChange={handleQuantityChange}
                   selectedOptions={selectedOptions}
