@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 
 import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
 import { Button } from "@/components/ui/button";
@@ -28,6 +28,7 @@ export default function CartProductCard({
       quantity: item.quantity,
     },
   });
+
   return (
     <div className="rounded-lg bg-white overflow-hidden">
       <div className="p-4">
@@ -59,15 +60,19 @@ export default function CartProductCard({
           </div>
 
           <div onClick={(e) => e.stopPropagation()}>
-            <ProductQuantityForm
-              control={form.control}
-              maxPurchaseQuantity={getMaxPurchaseQuantity(
-                item.productOptions,
-                createOptionsFromSelection(item.selectedOptions)
-              )}
-              selectedOptions={createOptionsFromSelection(item.selectedOptions)}
-              showSelectedOptions={false}
-            />
+            <FormProvider {...form}>
+              <ProductQuantityForm
+                control={form.control}
+                maxPurchaseQuantity={getMaxPurchaseQuantity(
+                  item.productOptions,
+                  createOptionsFromSelection(item.selectedOptions)
+                )}
+                selectedOptions={createOptionsFromSelection(
+                  item.selectedOptions
+                )}
+                showSelectedOptions={false}
+              />
+            </FormProvider>
           </div>
         </div>
 
