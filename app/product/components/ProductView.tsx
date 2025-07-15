@@ -155,20 +155,15 @@ const ProductView = ({ productDetail }: ProductDetailProps) => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-y-auto pb-20">
+      <div className="flex-1 pb-20">
         <ProductInfo productDetail={productDetail} />
         <div className="bg-gray-100 pt-2">
-          <div className={isVisible ? "hidden" : "block"}>
-            <ProductNavbar activeTab={activeTab} onTabChange={setActiveTab} />
-          </div>
-
+          <ProductNavbar
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            isVisible={isVisible}
+          />
           <ProductContent productDetail={productDetail} activeTab={activeTab} />
-
-          {isVisible && (
-            <div className="fixed top-0 left-1/2 transform -translate-x-1/2 w-full z-40 max-w-[468px]">
-              <ProductNavbar activeTab={activeTab} onTabChange={setActiveTab} />
-            </div>
-          )}
         </div>
       </div>
 
