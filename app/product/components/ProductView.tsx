@@ -13,12 +13,13 @@ import { Button } from "@/components/ui/button";
 import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
 import {
   Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
   SheetTitle,
+  SheetContent,
   SheetTrigger,
+  SheetHeader,
+  SheetDescription,
 } from "@/components/ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
 
@@ -178,14 +179,16 @@ const ProductView = ({ productDetail }: ProductDetailProps) => {
             side="bottom"
             className="h-[85vh] max-w-[468px] mx-auto rounded-t-2xl p-0 flex flex-col"
           >
-            <SheetHeader className="p-4 pb-2 flex-shrink-0">
-              <SheetTitle className="text-left">
-                {productDetail.product.name}
-              </SheetTitle>
-              <SheetDescription className="text-left">
-                원하는 옵션을 선택해주세요
-              </SheetDescription>
-            </SheetHeader>
+            <VisuallyHidden>
+              <SheetHeader className="p-4 pb-2 flex-shrink-0">
+                <SheetTitle className="text-left">
+                  {productDetail.product.name}
+                </SheetTitle>
+                <SheetDescription className="text-left">
+                  원하는 옵션을 선택해주세요
+                </SheetDescription>
+              </SheetHeader>
+            </VisuallyHidden>
             <div className="flex-1 overflow-hidden">
               <AddToCartForm
                 productDetail={productDetail}
