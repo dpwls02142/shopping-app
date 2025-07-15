@@ -1,4 +1,4 @@
-import { Control,useWatch } from "react-hook-form";
+import { Control, useWatch } from "react-hook-form";
 
 import { ProductOption } from "@/lib/types/productType";
 
@@ -9,38 +9,31 @@ type SeparatedOptionsReturn = {
 
 function useProductOptions(
   productOptions: ProductOption[],
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>
 ) {
   const watchedOptions = useWatch({ control, name: "options" });
 
-  const separatedOptions: SeparatedOptionsReturn = (() => {
-    const separated: Record<
-      string,
-      { value: string; option: ProductOption }[]
-    > = {};
-    const keys: string[] = [];
+  const separated: Record<string, { value: string; option: ProductOption }[]> =
+    {};
+  const keys: string[] = [];
 
-    productOptions?.forEach((option) => {
-      try {
-        const parsed = JSON.parse(option.optionValue);
-        Object.entries(parsed).forEach(([key, value]) => {
-          if (!separated[key]) {
-            separated[key] = [];
-            keys.push(key);
-          }
+  productOptions?.forEach((option) => {
+    try {
+      const parsed = JSON.parse(option.optionValue);
+      Object.entries(parsed).forEach(([key, value]) => {
+        if (!separated[key]) {
+          separated[key] = [];
+          keys.push(key);
+        }
 
-          if (!separated[key].some((item) => item.value === value)) {
-            separated[key].push({ value: value as string, option });
-          }
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    });
-
-    return { separatedOptions: separated, optionKeys: keys };
-  })();
+        if (!separated[key].some((item) => item.value === value)) {
+          separated[key].push({ value: value as string, option });
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
   const handleOptionChange = (
     key: string,
@@ -53,8 +46,8 @@ function useProductOptions(
 
   return {
     watchedOptions,
-    separatedOptions,
-    optionKeys: Object.keys(separatedOptions),
+    separatedOptions: separated,
+    optionKeys: keys,
     handleOptionChange,
   };
 }

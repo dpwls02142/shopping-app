@@ -62,13 +62,11 @@ function ProductOptionSelector({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {separatedOptions.separatedOptions[key]?.map(
-                      (item, idx) => (
-                        <SelectItem key={idx} value={item.value}>
-                          {item.value}
-                        </SelectItem>
-                      )
-                    )}
+                    {separatedOptions[key]?.map((item, idx) => (
+                      <SelectItem key={idx} value={item.value}>
+                        {item.value}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
