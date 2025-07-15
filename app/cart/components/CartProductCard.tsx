@@ -107,12 +107,16 @@ export default function CartProductCard({
                         selectedOptions
                       )}
                       onQuantityChange={handleQuantityChange}
-                      selectedOptions={selectedOptions}
                     />
-                    <div className="font-semibold text-lg">
-                      {formatPriceToKor(totalItemPrice)}원
-                    </div>
                   </div>
+                </div>
+                {Object.entries(selectedOptions).map(([key, value]) => (
+                  <div key={key}>
+                    {key} : {value}
+                  </div>
+                ))}
+                <div className="font-semibold text-lg">
+                  {formatPriceToKor(totalItemPrice)}원
                 </div>
               </Form>
             </div>
