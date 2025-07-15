@@ -3,11 +3,19 @@
 type ProductNavbarProps = {
   activeTab: "reviews" | "details";
   onTabChange: (tab: "reviews" | "details") => void;
+  isVisible: boolean;
 };
 
-const ProductNavbar = ({ activeTab, onTabChange }: ProductNavbarProps) => {
+const ProductNavbar = ({
+  activeTab,
+  onTabChange,
+  isVisible,
+}: ProductNavbarProps) => {
+  const topStyle = isVisible ? "top-[60px]" : "top-0";
   return (
-    <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
+    <div
+      className={`bg-white border-b border-gray-200 sticky z-40 ${topStyle}`}
+    >
       <div className="flex">
         <button
           onClick={() => onTabChange("reviews")}
