@@ -11,7 +11,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Product } from "@/lib/types/productType";
 
 type ProductQuantityFormProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
