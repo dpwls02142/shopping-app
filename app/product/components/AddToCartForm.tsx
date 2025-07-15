@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
+import { parseOptionValue } from "@/lib/utils/productOptionUtils";
 
 type AddToCartFormProps = {
   productDetail: ProductDetailInfo;
@@ -31,12 +32,14 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
         <div className="space-y-4 pt-4">
           <div className="bg-gray-50 p-4 rounded-lg">
             <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center">
+                {parseOptionValue(JSON.stringify(addToCartForm.watchedOptions))}
+              </div>
               <ProductQuantityForm
                 product={addToCartForm.product}
                 control={addToCartForm.form.control}
                 maxPurchaseQuantity={addToCartForm.maxPurchaseQuantity}
                 onQuantityChange={addToCartForm.handleQuantityChange}
-                selectedOptions={addToCartForm.watchedOptions}
               />
             </div>
           </div>
