@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
 
 import ProductQuantity from "@/app/product/[id]/components/ProductQuantity";
-import useCartStore from "@/app/product/cart/stores/useCartStore";
+import useCartStore from "@/app/cart/stores/useCartStore";
 import { Button } from "@/components/ui/button";
 import { CartItem as CartItemType } from "@/lib/types/cartType";
 import { formatPriceToKor } from "@/lib/utils";

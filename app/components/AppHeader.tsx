@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import BackButton from "@/app/components/BackButton";
 import { useCurrentPage } from "@/app/hooks/useAppNavigation";
-import useCartStore from "@/app/product/cart/stores/useCartStore";
+import useCartStore from "@/app/cart/stores/useCartStore";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
 function AppHeader() {
