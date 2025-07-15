@@ -9,7 +9,7 @@
 | 프레임워크  | React v19.0.0, Next.js v15.1.0 (App Router), TypeScript v5 |
 | 상태 관리  | TanStack Query v5.83.0 (서버 상태), Zustand v5.0.6 (클라이언트 상태)   |
 | 폼 관리   | React Hook Form v7.60.0                                    |
-| 스타일링   | Tailwind CSS v3.4.1, shadcn/ui  |
+| 스타일링   | Tailwind CSS v3.4.1, shadcn/ui, radix-ui |
 | 패키지 관리 | pnpm                                                       |
 | 데이터    | Faker.js v9.9.0, json-server v1.0.0-beta.3                 |
 | 기타 도구  | ESLint v9, Prettier v3.6.2, Husky v9.1.7                   |
