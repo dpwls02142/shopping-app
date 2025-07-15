@@ -1,18 +1,19 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import { MinusIcon, PlusIcon } from "lucide-react";
-import { Product } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils/constant";
 import { Control } from "react-hook-form";
+
+import { Button } from "@/components/ui/button";
 import {
+  FormControl,
   FormField,
   FormItem,
-  FormControl,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { Product } from "@/lib/types/productType";
+import { formatPriceToKor } from "@/lib/utils/constant";
 
 type ProductQuantityFormProps = {
   product: Product;

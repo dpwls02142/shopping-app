@@ -1,5 +1,6 @@
-import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import { ArrowLeft } from "lucide-react";
+
+import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 
 const BackButton = () => {
   const { goBack } = useAppNavigation();

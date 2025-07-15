@@ -1,8 +1,10 @@
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { useCurrentPage } from "@/app/hooks/useAppNavigation";
-import BackButton from "./BackButton";
+
 import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
+import { useCurrentPage } from "@/app/hooks/useAppNavigation";
+
+import BackButton from "./BackButton";
 
 const AppHeader = () => {
   const currentPage = useCurrentPage();

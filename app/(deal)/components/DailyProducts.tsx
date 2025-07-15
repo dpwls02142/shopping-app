@@ -1,5 +1,5 @@
-import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 import DailyProductCard from "@/app/(deal)/components/DailyProductCard";
+import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 
 const DailyProducts = async () => {
   const products = await fetchAllProductsWithDetails();

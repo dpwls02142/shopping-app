@@ -1,9 +1,10 @@
 "use client";
 
-import CartProducts from "./components/CartProducts";
-import CartProductsSummary from "./components/CartProductsSummary";
 import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 import { Button } from "@/components/ui/button";
+
+import CartProducts from "./components/CartProducts";
+import CartProductsSummary from "./components/CartProductsSummary";
 
 export default function CartPage() {
   const { items, totalItems } = useCartProductsStore();

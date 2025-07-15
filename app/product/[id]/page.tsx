@@ -1,5 +1,5 @@
-import { fetchProductDetail } from "@/lib/api/productApi";
 import ProductView from "@/app/product/components/ProductView";
+import { fetchProductDetail } from "@/lib/api/productApi";
 
 type ProductPageProps = {
   params: Promise<{

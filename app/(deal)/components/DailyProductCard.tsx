@@ -1,9 +1,10 @@
 "use client";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
 import Image from "next/image";
 import Link from "next/link";
+
 import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
+import { ProductDetailInfo } from "@/lib/types/productType";
 
 type DailyProductCardProps = {
   product: ProductDetailInfo;

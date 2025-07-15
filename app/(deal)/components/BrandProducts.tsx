@@ -1,6 +1,7 @@
-import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
+import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 
 const BrandProducts = async () => {
   const products = await fetchAllProductsWithDetails();

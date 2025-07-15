@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+
 import { NavigationPage, NavigationStore } from "@/lib/types/navgationType";
 
 const useNavigationStore = create<NavigationStore>()(

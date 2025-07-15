@@ -1,8 +1,10 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import ConditionalLayout from "@/app/components/ConditionalLayout";
 import { Suspense } from "react";
+
+import ConditionalLayout from "@/app/components/ConditionalLayout";
 import QueryProvider from "@/app/providers/QueryProvider";
 
 const geistSans = Geist({

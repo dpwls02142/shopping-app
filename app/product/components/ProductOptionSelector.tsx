@@ -1,9 +1,11 @@
+import { Control, useWatch } from "react-hook-form";
+
 import {
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  FormControl,
 } from "@/components/ui/form";
 import {
   Select,
@@ -13,7 +15,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ProductOption } from "@/lib/types/productType";
-import { Control, useWatch } from "react-hook-form";
 
 type ProductOptionSelectorProps = {
   productOptions: ProductOption[];

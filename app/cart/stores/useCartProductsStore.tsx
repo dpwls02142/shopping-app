@@ -1,7 +1,8 @@
 "use client";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { CartProductsStore, CartItem } from "@/lib/types/cartType";
+
+import { CartItem,CartProductsStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 import {
   createOptionsFromSelection,

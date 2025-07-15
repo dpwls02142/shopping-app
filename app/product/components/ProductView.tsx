@@ -1,14 +1,15 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
-import { formatPriceToKor } from "@/lib/utils/constant";
-import { ProductDetailInfo } from "@/lib/types/productType";
+
+import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
+import ProductDetail from "@/app/product/components/ProductDetail";
 import ProductNavbar from "@/app/product/components/ProductNavbar";
 import ProductReview from "@/app/product/components/ProductReview";
-import ProductDetail from "@/app/product/components/ProductDetail";
+import AddToCartForm from "@/app/product/forms/AddToCartForm";
 import useProductNavigation from "@/app/product/hooks/useProductNavigation";
-import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
-import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
 import { Button } from "@/components/ui/button";
+import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
 import {
   Sheet,
   SheetContent,
@@ -17,8 +18,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import AddToCartForm from "@/app/product/forms/AddToCartForm";
-import Image from "next/image";
+import { ProductDetailInfo } from "@/lib/types/productType";
+import { formatPriceToKor } from "@/lib/utils/constant";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;

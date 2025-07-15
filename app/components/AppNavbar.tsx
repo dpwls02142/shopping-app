@@ -1,6 +1,7 @@
+import Link from "next/link";
+
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import { NavigationPage } from "@/lib/types/navgationType";
-import Link from "next/link";
 
 const navItems = [
   { page: "home", label: "쇼핑 홈", href: "/" },
