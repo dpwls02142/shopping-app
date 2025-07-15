@@ -44,9 +44,9 @@ export default function CartProductCard({
     (state) => state.updateQuantity
   );
 
-  const handleQuantityChange = async (newQuantity: number) => {
+  const handleQuantityChange = (newQuantity: number) => {
     try {
-      await updateCartItemQuantity(item.id, newQuantity, item.productOptions);
+      updateCartItemQuantity(item.id, newQuantity, item.productOptions);
       form.clearErrors("quantity");
     } catch (error) {
       const errorMessage =
