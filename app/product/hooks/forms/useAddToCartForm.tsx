@@ -5,12 +5,7 @@ import { useForm, useWatch } from "react-hook-form";
 import * as z from "zod";
 
 import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
-import ProductOptionSelector from "@/app/product/components/ProductOptionSelector";
-import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
 import { ProductDetailInfo } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils";
 import {
   areAllOptionsSelected,
   extractOptionKeys,
@@ -18,35 +13,15 @@ import {
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
 
-type AddToCartFormProps = {
+type UseAddToCartFormProps = {
   productDetail: ProductDetailInfo;
   onSuccess?: () => void;
-  onSelectionChange?: (
-    selectedOptions: Record<string, string>,
-    quantity: number
-  ) => void;
-  hideTitle?: boolean;
-  hideSubmitButton?: boolean;
-  hideTotal?: boolean;
-  formOnly?: boolean;
-  isCartMode?: boolean;
-  initialValues?: {
-    options?: Record<string, string>;
-    quantity?: number;
-  };
 };
 
-function AddToCartForm({
+export function useAddToCartForm({
   productDetail,
   onSuccess,
-  onSelectionChange,
-  hideTitle = false,
-  hideSubmitButton = false,
-  hideTotal = false,
-  formOnly = false,
-  isCartMode = false,
-  initialValues,
-}: AddToCartFormProps) {
+}: UseAddToCartFormProps) {
   const { product, options: productOptions, discount } = productDetail;
   const addToCart = useCartProductsStore((state) => state.addToCart);
 
@@ -60,8 +35,8 @@ function AddToCartForm({
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      options: initialValues?.options || {},
-      quantity: initialValues?.quantity || 1,
+      options: {},
+      quantity: 1,
     },
     mode: "onChange",
   });
@@ -89,28 +64,15 @@ function AddToCartForm({
 
   const handleOptionSelectionChange = (newOptions: Record<string, string>) => {
     form.setValue("options", newOptions);
-
-    if (!initialValues?.quantity) {
-      form.setValue("quantity", 1);
-    }
-    onSelectionChange?.(newOptions, watchedQuantity);
+    form.setValue("quantity", 1);
   };
 
   const handleQuantityChange = (newQuantity: number) => {
-    if (!allOptionsSelected) {
-      form.clearErrors("quantity");
-      form.setValue("quantity", newQuantity);
-      onSelectionChange?.(watchedOptions, newQuantity);
-      return;
-    }
     form.clearErrors("quantity");
     form.setValue("quantity", newQuantity);
-    onSelectionChange?.(watchedOptions, newQuantity);
   };
 
   const onSubmit = (values: FormValues) => {
-    if (formOnly) return;
-
     if (!allOptionsSelected) {
       form.setError("options", {
         message: `모든 옵션을 선택해주세요.`,
@@ -145,51 +107,17 @@ function AddToCartForm({
     }
   };
 
-  return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className={`space-y-4 ${hideTitle ? "p-4 pt-2" : "p-4"}`}
-      >
-        <ProductOptionSelector
-          productOptions={productOptions || []}
-          control={form.control}
-          onSelectionChange={handleOptionSelectionChange}
-        />
-        <ProductQuantityForm
-          product={product}
-          control={form.control}
-          hideTitle={hideTitle}
-          calculateTotal={() => totalAmount}
-          allOptionsSelected={allOptionsSelected}
-          maxPurchaseQuantity={maxPurchaseQuantity}
-          isCartMode={isCartMode}
-          onQuantityChange={handleQuantityChange}
-          selectedOptions={watchedOptions}
-        />
-
-        {!hideSubmitButton && !hideTotal && (
-          <>
-            <div className="pt-2">
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-lg text-gray-600">상품 금액</span>
-                <span className="text-2xl font-bold text-gray-900">
-                  {formatPriceToKor(totalAmount)}원
-                </span>
-              </div>
-              <Button
-                type="submit"
-                className="w-full h-12 text-lg"
-                disabled={!allOptionsSelected}
-              >
-                장바구니
-              </Button>
-            </div>
-          </>
-        )}
-      </form>
-    </Form>
-  );
+  return {
+    form,
+    totalAmount,
+    allOptionsSelected,
+    maxPurchaseQuantity,
+    watchedOptions,
+    watchedQuantity,
+    productOptions,
+    product,
+    handleOptionSelectionChange,
+    handleQuantityChange,
+    onSubmit,
+  };
 }
-
-export default AddToCartForm;
