@@ -1,10 +1,10 @@
 "use client";
 
-import useCartProductsStore from "@/app/cart/stores/useCartStore";
+import useCartStore from "@/app/product/cart/stores/useCartStore";
 import { formatPriceToKor } from "@/lib/utils";
 
 function CartSummary() {
-  const { totalItems, totalPrice } = useCartProductsStore();
+  const { totalItems, totalPrice } = useCartStore();
 
   return (
     <div className="bg-white p-6 space-y-4">

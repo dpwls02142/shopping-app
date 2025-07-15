@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 
-import CartItemList from "@/app/cart/components/CartItemList";
-import CartSummary from "@/app/cart/components/CartSummary";
-import useCartStore from "@/app/cart/stores/useCartStore";
+import CartItemList from "@/app/product/cart/components/CartItemList";
+import CartSummary from "@/app/product/cart/components/CartSummary";
+import useCartStore from "@/app/product/cart/stores/useCartStore";
 import { Button } from "@/components/ui/button";
 
 export default function CartPage() {

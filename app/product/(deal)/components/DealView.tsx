@@ -1,6 +1,6 @@
-import BrandProductList from "@/app/(deal)/components/BrandProductList";
-import DailyProductList from "@/app/(deal)/components/DailyProductList";
-import DealNavbar from "@/app/(deal)/components/DealNavbar";
+import BrandProductList from "@/app/product/(deal)/components/BrandProductList";
+import DailyProductList from "@/app/product/(deal)/components/DailyProductList";
+import DealNavbar from "@/app/product/(deal)/components/DealNavbar";
 
 type DealViewProps = {
   searchParams: {

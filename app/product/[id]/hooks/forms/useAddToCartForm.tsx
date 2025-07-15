@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useWatch } from "react-hook-form";
 import * as z from "zod";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import useCartStore from "@/app/product/cart/stores/useCartStore";
 import { ProductDetailInfo } from "@/lib/types/productType";
 import {
   areAllOptionsSelected,

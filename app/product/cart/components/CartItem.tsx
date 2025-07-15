@@ -4,8 +4,8 @@ import { X } from "lucide-react";
 import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
-import ProductQuantityForm from "@/app/product/[id]/components/ProductQuantity";
+import useCartStore from "@/app/product/cart/stores/useCartStore";
+import ProductQuantity from "@/app/product/[id]/components/ProductQuantity";
 import { Button } from "@/components/ui/button";
 import { CartItem as CartItemType } from "@/lib/types/cartType";
 import { formatPriceToKor } from "@/lib/utils";
@@ -77,7 +77,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
 
           <div onClick={(e) => e.stopPropagation()}>
             <FormProvider {...form}>
-              <ProductQuantityForm
+              <ProductQuantity
                 control={form.control}
                 maxPurchaseQuantity={getMaxPurchaseQuantity(
                   item.productOptions,

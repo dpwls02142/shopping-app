@@ -1,4 +1,4 @@
-import DailyProductCard from "@/app/(deal)/components/DailyProduct";
+import DailyProduct from "@/app/product/(deal)/components/DailyProduct";
 import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 
 async function DailyProductList() {
@@ -14,7 +14,7 @@ async function DailyProductList() {
       <div className="flex flex-col space-y-4 p-4 max-w-4xl mx-auto">
         <ul className="list-none p-0 m-0">
           {dailyDealProducts.map((p) => (
-            <DailyProductCard key={p.product.id} product={p} />
+            <DailyProduct key={p.product.id} product={p} />
           ))}
         </ul>
       </div>
