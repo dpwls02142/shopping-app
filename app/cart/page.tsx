@@ -10,7 +10,7 @@ export default function CartPage() {
   const { items, totalItems } = useCartProductsStore();
   const isCartNull = items.length === 0;
   return (
-    <div className="flex flex-col min-h-full relative">
+    <div className="flex flex-col min-h-full relative bg-gray-50">
       <div className="px-4 pt-14 pb-60">
         <h1 className="text-xl font-bold text-gray-900 mb-4">장바구니</h1>
         {isCartNull ? (
