@@ -18,10 +18,7 @@ type UseAddToCartFormProps = {
   onSuccess?: () => void;
 };
 
-export function useAddToCartForm({
-  productDetail,
-  onSuccess,
-}: UseAddToCartFormProps) {
+function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
   const { product, options: productOptions, discount } = productDetail;
   const addToCart = useCartProductsStore((state) => state.addToCart);
 
@@ -121,3 +118,5 @@ export function useAddToCartForm({
     onSubmit,
   };
 }
+
+export default useAddToCartForm;

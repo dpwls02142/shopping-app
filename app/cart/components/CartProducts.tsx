@@ -2,7 +2,7 @@
 
 import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 
-import CartProductCard from "./CartProductCard";
+import CartProductCard from "@/app/cart/components/CartProductCard";
 
 type CartProductsProps = {
   onProductRemove?: (itemId: string) => void;

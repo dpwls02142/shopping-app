@@ -5,8 +5,8 @@ import Link from "next/link";
 import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
 import { Button } from "@/components/ui/button";
 
-import CartProducts from "./components/CartProducts";
-import CartProductsSummary from "./components/CartProductsSummary";
+import CartProducts from "@/app/cart/components/CartProducts";
+import CartProductsSummary from "@/app/cart/components/CartProductsSummary";
 
 export default function CartPage() {
   const { items, totalItems } = useCartProductsStore();
