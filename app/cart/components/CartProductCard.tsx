@@ -61,11 +61,9 @@ function CartProductCard({ item, onRemove }: CartProductCardProps) {
                 control={form.control}
                 maxPurchaseQuantity={getMaxPurchaseQuantity(
                   item.productOptions,
-                  createOptionsFromSelection(item.selectedOptions)
+                  selectedOptions
                 )}
-                selectedOptions={createOptionsFromSelection(
-                  item.selectedOptions
-                )}
+                selectedOptions={selectedOptions}
                 showSelectedOptions={false}
               />
             </FormProvider>
