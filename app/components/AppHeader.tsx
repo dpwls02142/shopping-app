@@ -1,7 +1,7 @@
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import useCartStore from "@/app/product/cart/stores/useCartStore";
 import BackButton from "@/app/components/BackButton";
 import { useCurrentPage } from "@/app/hooks/useAppNavigation";
 
