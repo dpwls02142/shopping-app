@@ -1,7 +1,8 @@
-import useNavigationStore from "@/lib/store/useNavigationStore";
-import { NavigationPage } from "@/lib/types/navgationType";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+
+import useNavigationStore from "@/app/stores/useNavigationStore";
+import { NavigationPage } from "@/lib/types/navgationType";
 
 export const useAppNavigation = () => {
   const store = useNavigationStore();

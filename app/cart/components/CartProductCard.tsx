@@ -1,36 +1,35 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { TrashIcon } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { X } from "lucide-react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
+import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
 import { CartItem } from "@/lib/types/cartType";
+import { formatPriceToKor } from "@/lib/utils";
 import {
-  parseOptionValue,
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
-import { formatPriceToKor } from "@/lib/utils/constant";
-import ProductQuantityForm from "@/app/product/components/ProductQuantityForm";
-import { useForm } from "react-hook-form";
-import { Form } from "@/components/ui/form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 type CartProductCardProps = {
   item: CartItem;
-  onQuantityChange: (itemId: string, quantity: number) => void;
   onRemove: (itemId: string) => void;
 };
 
 const quantitySchema = z.object({
-  quantity: z.number().min(1, "수량은 1 이상이어야 합니다."),
+  quantity: z.number().min(1, "수량은 1개 이상이어야 합니다."),
 });
 
 type QuantityFormValues = z.infer<typeof quantitySchema>;
 
 export default function CartProductCard({
   item,
-  onQuantityChange,
   onRemove,
 }: CartProductCardProps) {
   const form = useForm<QuantityFormValues>({
@@ -41,21 +40,22 @@ export default function CartProductCard({
     mode: "onChange",
   });
 
-  const ProductOptionDisplay = (item: CartItem) => {
-    return item.selectedOptions
-      .map((option) => {
-        const optionText = parseOptionValue(option.optionValue);
-        const priceText =
-          option.additionalPrice > 0
-            ? ` (+${formatPriceToKor(option.additionalPrice)}원)`
-            : "";
-        return `${optionText}${priceText}`;
-      })
-      .join(" / ");
-  };
+  const updateCartItemQuantity = useCartProductsStore(
+    (state) => state.updateQuantity
+  );
 
   const handleQuantityChange = (newQuantity: number) => {
-    onQuantityChange(item.id, newQuantity);
+    try {
+      updateCartItemQuantity(item.id, newQuantity, item.productOptions);
+      form.clearErrors("quantity");
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : `수량 변경 중 오류가 발생했습니다.`;
+      form.setError("quantity", { message: errorMessage });
+      form.setValue("quantity", item.quantity);
+    }
   };
 
   const handleRemove = (e: React.MouseEvent) => {
@@ -73,63 +73,58 @@ export default function CartProductCard({
 
   const selectedOptions = createOptionsFromSelection(item.selectedOptions);
 
-  const maxPurchaseQuantity = getMaxPurchaseQuantity(
-    item.productOptions,
-    selectedOptions
-  );
-
   return (
-    <div className="border rounded-lg bg-white shadow-sm overflow-hidden">
+    <div className="rounded-lg bg-white overflow-hidden">
       <div className="p-4">
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <Link href={`/product/${item.product.id}`}>
-              <h3 className="font-semibold text-lg text-gray-900 mb-2">
-                {item.product.name}
-              </h3>
-            </Link>
-
-            <div className="text-sm text-gray-600 mb-3">
-              {ProductOptionDisplay(item)}
-            </div>
-
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-lg font-bold text-gray-900">
-                {formatPriceToKor(itemPrice + optionPrice)}원
-              </span>
-              {item.discountPrice && (
-                <span className="text-sm text-gray-500 line-through">
-                  {formatPriceToKor(item.product.basePrice)}원
-                </span>
-              )}
-            </div>
-
-            {/* 수량 변경 폼 */}
-            <div className="mt-4" onClick={(e) => e.stopPropagation()}>
-              <Form {...form}>
-                <ProductQuantityForm
-                  product={item.product}
-                  control={form.control}
-                  hideTitle={true}
-                  calculateTotal={() => totalItemPrice}
-                  allOptionsSelected={true}
-                  maxPurchaseQuantity={maxPurchaseQuantity}
-                  isCartMode={true}
-                  onQuantityChange={handleQuantityChange}
-                  selectedOptions={selectedOptions}
-                />
-              </Form>
-            </div>
-          </div>
-
+        <div className="flex items-start justify-between mb-2">
+          <Link href={`/product/${item.product.id}`} className="flex-1">
+            <h3 className="font-semibold text-lg text-gray-900">
+              {item.product.name}
+            </h3>
+          </Link>
           <Button
             variant="ghost"
             size="sm"
             onClick={handleRemove}
-            className="text-gray-400 hover:text-red-500 hover:bg-red-50"
+            className="text-gray-400 hover:text-red-500"
           >
-            <TrashIcon className="h-4 w-4" />
+            <X className="h-4 w-4" />
           </Button>
+        </div>
+
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex-1">
+            <div className="flex flex-wrap gap-2">
+              {Object.entries(selectedOptions).map(([key, value]) => (
+                <span key={key} className="text-sm text-gray-600">
+                  {key}: {value}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div onClick={(e) => e.stopPropagation()}>
+            <Form {...form}>
+              <div className="flex justify-end">
+                <ProductQuantityForm
+                  control={form.control}
+                  maxPurchaseQuantity={getMaxPurchaseQuantity(
+                    item.productOptions,
+                    selectedOptions
+                  )}
+                  onQuantityChange={handleQuantityChange}
+                />
+              </div>
+            </Form>
+          </div>
+        </div>
+
+        {/* 하단: 주문 금액 */}
+        <div className="flex justify-between items-center pt-4 border-t border-gray-200">
+          <span className="text-sm text-gray-600">주문 금액</span>
+          <span className="font-semibold text-lg text-gray-900">
+            {formatPriceToKor(totalItemPrice)}원
+          </span>
         </div>
       </div>
     </div>

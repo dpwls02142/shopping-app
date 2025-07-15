@@ -1,15 +1,15 @@
 import {
   Product,
-  ProductInventory,
-  ProductOption,
+  ProductDetailInfo,
   ProductDiscount,
   ProductImage,
-  Seller,
-  Review,
+  ProductInventory,
+  ProductOption,
   ProductPreviewInfo,
-  ProductDetailInfo,
-} from "../types/productType";
-import { getApiUrl, fetchWithErrorHandling, handleApiError } from "../utils/constant";
+  Review,
+  Seller,
+} from "@/lib/types/productType";
+import { fetchWithErrorHandling, getApiUrl, handleApiError } from "@/lib/utils";
 
 export const fetchProducts = async (): Promise<Product[]> => {
   return fetchWithErrorHandling(

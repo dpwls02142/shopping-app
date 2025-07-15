@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
 
 const HOURS_PER_DAY = 24;
 const MINUTES_PER_HOUR = 60;

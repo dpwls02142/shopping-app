@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, PanInfo } from "framer-motion";
-import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 import { ReactNode } from "react";
+
+import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 
 interface SwipeContainerProps {
   children: ReactNode;

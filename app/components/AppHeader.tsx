@@ -1,9 +1,12 @@
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { useCurrentPage } from "@/app/hooks/useAppNavigation";
-import BackButton from "./BackButton";
-import useCartProductsStore from "@/app/cart/hooks/useCartProductsStore";
 
+import useCartProductsStore from "@/app/cart/stores/useCartProductsStore";
+import { useCurrentPage } from "@/app/hooks/useAppNavigation";
+
+import BackButton from "./BackButton";
+
+const MAX_DISPLAY_CART_ITEMS = 99;
 const AppHeader = () => {
   const currentPage = useCurrentPage();
   const isMainPage = currentPage === "home" || currentPage === "deal";
@@ -11,7 +14,7 @@ const AppHeader = () => {
   const { totalItems } = useCartProductsStore();
 
   let displayTotalItems = "";
-  if (totalItems > 99) {
+  if (totalItems > MAX_DISPLAY_CART_ITEMS) {
     displayTotalItems = "99+";
   } else {
     displayTotalItems = totalItems.toString();

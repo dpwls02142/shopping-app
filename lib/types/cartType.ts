@@ -34,4 +34,4 @@ export type CartActions = {
   getItemById: (itemId: string) => CartItem | undefined;
 };
 
-export type CartStore = CartState & CartActions;
+export type CartProductsStore = CartState & CartActions;

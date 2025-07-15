@@ -1,13 +1,13 @@
 import {
   Product,
+  ProductDetailInfo,
   ProductDiscount,
   ProductImage,
+  ProductOption,
   Review,
   Seller,
-  ProductDetailInfo,
-  ProductOption,
-} from "../types/productType";
-import { getApiUrl, handleApiError } from "@/lib/utils/constant";
+} from "@/lib/types/productType";
+import { getApiUrl, handleApiError } from "@/lib/utils";
 
 export const fetchProductByProductId = async (
   productId: string
