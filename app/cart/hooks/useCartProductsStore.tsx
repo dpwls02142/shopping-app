@@ -1,14 +1,14 @@
 "use client";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { CartStore, CartItem } from "@/lib/types/cartType";
+import { CartProductsStore, CartItem } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
 
-const useCartProductsStore = create<CartStore>()(
+const useCartProductsStore = create<CartProductsStore>()(
   persist(
     (set, get) => ({
       items: [],
