@@ -1,17 +1,15 @@
 "use client";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
-import useDealTimer from "../hooks/useDealTimer";
 import Image from "next/image";
 import Link from "next/link";
+import ProductDealTimer from "@/app/(deal)/components/ProductDealTimer";
 
 type DailyProductCardProps = {
   product: ProductDetailInfo;
 };
 
 const DailyProductCard = ({ product }: DailyProductCardProps) => {
-  const { timeLeft, progress } = useDealTimer();
-
   return (
     <li key={product.product.id}>
       <Link href={`/product/${product.product.id}`}>
@@ -43,16 +41,8 @@ const DailyProductCard = ({ product }: DailyProductCardProps) => {
                 {product.averageRating} ({product.reviewCount})
               </span>
             </div>
-            <div className="mt-4 flex items-center">
-              <span className="text-xl font-bold text-red-500 whitespace-nowrap">
-                {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds} 남음
-              </span>
-              <div className="w-full bg-gray-200 rounded-full h-2.5 ml-2">
-                <div
-                  className="bg-red-500 h-2.5 rounded-full"
-                  style={{ width: `${100 - progress}%` }}
-                ></div>
-              </div>
+            <div>
+              <ProductDealTimer />
             </div>
           </div>
         </div>
