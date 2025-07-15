@@ -7,7 +7,7 @@ export default function CartProductsSummary() {
   const { totalItems, totalPrice } = useCartProductsStore();
 
   return (
-    <div className="bg-white border rounded-lg p-6 space-y-4">
+    <div className="bg-white p-6 space-y-4">
       <h3 className="text-lg font-semibold text-gray-900">
         {totalItems}건 주문 금액
       </h3>
