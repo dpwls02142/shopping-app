@@ -24,6 +24,23 @@ const useCartProductsStore = create<CartStore>()(
       ) => {
         const { items } = get();
 
+        if (quantity < 1) {
+          throw new Error(`수량은 1개 이상이어야 합니다.`);
+        }
+
+        if (!allAvailableOptions || allAvailableOptions.length === 0) {
+          throw new Error(
+            `상품 옵션 정보가 누락되어 장바구니에 추가할 수 없습니다.`
+          );
+        }
+
+        const selectedOptionConfig =
+          createOptionsFromSelection(selectedOptions);
+        const maxPurchaseQuantity = getMaxPurchaseQuantity(
+          allAvailableOptions,
+          selectedOptionConfig
+        );
+
         const existingItemIndex = items.findIndex((item) => {
           const isSameProduct = item.product.id === product.id;
           const isSameOptions =
@@ -36,6 +53,16 @@ const useCartProductsStore = create<CartStore>()(
           const updatedItems = [...items];
           const existingItem = updatedItems[existingItemIndex];
           const newQuantity = existingItem.quantity + quantity;
+
+          if (newQuantity > maxPurchaseQuantity) {
+            const remainingQuantity =
+              maxPurchaseQuantity - existingItem.quantity;
+            throw new Error(
+              `이미 장바구니에 ${existingItem.quantity}개가 담겨있습니다. 
+              최대 ${remainingQuantity}개까지 추가 가능합니다.`
+            );
+          }
+
           const itemPrice = discountedPrice || product.basePrice;
           const optionPrice = selectedOptions.reduce(
             (sum, option) => sum + option.additionalPrice,
@@ -59,6 +86,12 @@ const useCartProductsStore = create<CartStore>()(
             ),
           }));
         } else {
+          if (quantity > maxPurchaseQuantity) {
+            throw new Error(
+              `최대 구매 가능 수량은 ${maxPurchaseQuantity}개입니다.`
+            );
+          }
+
           const itemPrice = discountedPrice || product.basePrice;
           const optionPrice = selectedOptions.reduce(
             (sum, option) => sum + option.additionalPrice,
@@ -114,21 +147,19 @@ const useCartProductsStore = create<CartStore>()(
         if (itemIndex !== -1) {
           const existingItem = items[itemIndex];
 
-          if (allAvailableOptions && allAvailableOptions.length > 0) {
-            const optionsConfig = createOptionsFromSelection(
-              existingItem.selectedOptions
-            );
-            {
-              const maxQuantity = getMaxPurchaseQuantity(
-                allAvailableOptions,
-                optionsConfig
-              );
-              if (quantity > maxQuantity) {
-                throw new Error(
-                  `최대 구매 가능 수량은 ${maxQuantity}개입니다.`
-                );
-              }
-            }
+          if (quantity < 1) {
+            throw new Error(`수량은 1개 이상이어야 합니다.`);
+          }
+
+          const optionsConfig = createOptionsFromSelection(
+            existingItem.selectedOptions
+          );
+          const maxQuantity = getMaxPurchaseQuantity(
+            allAvailableOptions || [],
+            optionsConfig
+          );
+          if (quantity > maxQuantity) {
+            throw new Error(`최대 구매 가능 수량은 ${maxQuantity}개입니다.`);
           }
 
           const updatedItems = [...items];
