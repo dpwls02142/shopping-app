@@ -8,29 +8,8 @@ import { fetchCustomers } from "@/lib/api/customerApi";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
 import ProductImage from "@/app/product/components/ProductImage";
+import ProductPrice from "@/app/product/components/ProductPrice";
 
-function ProductPrice({ product }: { product: ProductPreviewInfo }) {
-  const { basePrice, discountedPrice } = product;
-  if (!discountedPrice) {
-    return (
-      <div>
-        <span className="text-lg font-bold text-gray-900">
-          {formatPriceToKor(basePrice)}원
-        </span>
-      </div>
-    );
-  }
-  return (
-    <div>
-      <span className="text-lg font-bold text-gray-900">
-        {formatPriceToKor(discountedPrice)}원
-      </span>
-      <span className="text-sm text-gray-500 line-through ml-1">
-        {formatPriceToKor(basePrice)}원
-      </span>
-    </div>
-  );
-}
 
 function ProductRating({ product }: { product: ProductPreviewInfo }) {
   return (
