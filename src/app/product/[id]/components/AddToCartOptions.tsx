@@ -21,8 +21,7 @@ import useProductOptions from "@/app/product/[id]/hooks/forms/useProductOptions"
 
 type AddToCartOptionsProps = {
   productOptions: ProductOption[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any>;
+  control: Control<{ options: Record<string, string> }>;
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
 };
 
