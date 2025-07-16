@@ -1,8 +1,8 @@
 "use client";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
-
 import { formatPriceToKor } from "@/lib/utils";
+
+import useCartStore from "@/app/cart/stores/useCartStore";
 
 function CartSummary() {
   const { totalItems, totalPrice } = useCartStore();

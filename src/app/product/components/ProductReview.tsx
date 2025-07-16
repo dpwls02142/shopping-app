@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { Review } from "@/lib/types/productType";
-
 import { formatDateToKor } from "@/lib/utils";
 
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";

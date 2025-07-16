@@ -3,11 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import DealTimer from "@/app/(main)/deal/components/DealTimer";
-
 import { ProductDetailInfo } from "@/lib/types/productType";
-
 import { formatPriceToKor } from "@/lib/utils";
+
+import DealTimer from "@/app/(main)/deal/components/DealTimer";
 
 type DailyProductProps = {
   product: ProductDetailInfo;

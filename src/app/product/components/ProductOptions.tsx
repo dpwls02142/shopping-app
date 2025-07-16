@@ -1,8 +1,8 @@
 import { Control } from "react-hook-form";
 
-import useProductOptions from "@/app/product/hooks/forms/useProductOptions";
-
 import { ProductOption } from "@/lib/types/productType";
+
+import useProductOptions from "@/app/product/hooks/forms/useProductOptions";
 
 import {
   FormControl,
