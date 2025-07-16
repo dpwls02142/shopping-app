@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
 
-import { formatPriceToKor } from "@/lib/utils";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
 import { fetchCustomers } from "@/lib/api/customerApi";
@@ -9,17 +8,7 @@ import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
 import ProductImage from "@/app/product/components/ProductImage";
 import ProductPrice from "@/app/product/components/ProductPrice";
-
-
-function ProductRating({ product }: { product: ProductPreviewInfo }) {
-  return (
-    <div>
-      <span className="text-yellow-400">★</span>
-      <span>{product.averageRating}</span>
-      <span>({product.reviewCount})</span>
-    </div>
-  );
-}
+import ProductRating from "@/app/product/components/ProductRating";
 
 function PersonalizedProductCard({ product }: { product: ProductPreviewInfo }) {
   return (
