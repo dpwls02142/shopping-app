@@ -1,10 +1,14 @@
-import { ProductOption } from "@/lib/types/productType";
+import {
+  ProductDetailInfo,
+  ProductOption,
+  ProductPreviewInfo,
+} from "@/lib/types/productType";
 
 /**
  * ProductOption의 optionValue를 Record<string, string> 형태로 반환
  */
 const safelyParseOptionValue = (
-  option: ProductOption,
+  option: ProductOption
 ): Record<string, string> => {
   try {
     const parsed = JSON.parse(option.optionValue);
@@ -14,7 +18,7 @@ const safelyParseOptionValue = (
           acc[key] = String(value);
           return acc;
         },
-        {} as Record<string, string>,
+        {} as Record<string, string>
       );
     }
   } catch (error) {
@@ -30,7 +34,7 @@ const extractOptionKeys = (options: ProductOption[]): string[] => {
   if (!options || options.length === 0) return [];
   // flatMap으로 모든 키를 배열로 펼친 후 Set을 사용해 중복을 제거
   const allKeys = options.flatMap((option) =>
-    Object.keys(safelyParseOptionValue(option)),
+    Object.keys(safelyParseOptionValue(option))
   );
   return [...new Set(allKeys)];
 };
@@ -40,10 +44,10 @@ const extractOptionKeys = (options: ProductOption[]): string[] => {
  */
 const findMatchingOption = (
   options: ProductOption[],
-  selectedOptions: Record<string, string>,
+  selectedOptions: Record<string, string>
 ): ProductOption | null => {
   const validSelected = Object.fromEntries(
-    Object.entries(selectedOptions).filter(([_, value]) => value?.trim()),
+    Object.entries(selectedOptions).filter(([_, value]) => value?.trim())
   );
 
   if (Object.keys(validSelected).length === 0) return null;
@@ -52,7 +56,7 @@ const findMatchingOption = (
     options.find((option) => {
       const parsedOption = safelyParseOptionValue(option);
       return Object.entries(validSelected).every(
-        ([key, value]) => parsedOption[key] === value,
+        ([key, value]) => parsedOption[key] === value
       );
     }) || null
   );
@@ -62,7 +66,7 @@ const findMatchingOption = (
  * 선택된 옵션들로부터 하나의 옵션 설정 객체(Record)를 생성
  */
 const createOptionsFromSelection = (
-  selectedOptions: ProductOption[],
+  selectedOptions: ProductOption[]
 ): Record<string, string> => {
   // reduce를 사용하여 모든 옵션을 하나의 객체로 병합
   return selectedOptions.reduce(
@@ -70,7 +74,7 @@ const createOptionsFromSelection = (
       ...acc,
       ...safelyParseOptionValue(option),
     }),
-    {},
+    {}
   );
 };
 
@@ -79,7 +83,7 @@ const createOptionsFromSelection = (
  */
 const getMaxPurchaseQuantity = (
   options: ProductOption[],
-  selectedOptions: Record<string, string>,
+  selectedOptions: Record<string, string>
 ): number => {
   const matchingOption = findMatchingOption(options, selectedOptions);
   return matchingOption?.maxPurchaseQuantity ?? 0;
@@ -90,7 +94,7 @@ const getMaxPurchaseQuantity = (
  */
 const areAllOptionsSelected = (
   optionKeys: string[],
-  selectedOptions: Record<string, string>,
+  selectedOptions: Record<string, string>
 ): boolean => {
   return optionKeys.every((key) => selectedOptions[key]?.trim());
 };
@@ -99,12 +103,31 @@ const areAllOptionsSelected = (
  * 옵션 객체를 키-값 쌍의 배열로 변환
  */
 const convertRecordToKeyValueArray = (
-  options: Record<string, string>,
+  options: Record<string, string>
 ): Array<{ key: string; value: string }> => {
   return Object.entries(options)
     .filter(([_, value]) => value?.trim())
     .map(([key, value]) => ({ key, value }));
 };
+
+function toProductPreview(
+  productDetail: ProductDetailInfo
+): ProductPreviewInfo {
+  const { product, discount, thumbnailImage, reviewCount, averageRating } =
+    productDetail;
+
+  return {
+    id: product.id,
+    name: product.name,
+    basePrice: product.basePrice,
+    discountedPrice: discount?.discountedPrice,
+    discountRate: discount?.discountRate,
+    discountType: discount?.discountType,
+    thumbnailImage: thumbnailImage,
+    reviewCount: reviewCount ?? 0,
+    averageRating: averageRating ?? 0,
+  };
+}
 
 export {
   areAllOptionsSelected,
@@ -114,4 +137,5 @@ export {
   findMatchingOption,
   getMaxPurchaseQuantity,
   safelyParseOptionValue,
+  toProductPreview,
 };

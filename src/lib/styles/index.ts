@@ -51,3 +51,48 @@ export const CART_ALERT =
 export const BACK_BUTTON =
   "absolute top-4 left-4 z-50 flex items-center justify-center";
 export const SUBMIT_BUTTON = "w-full h-12 text-lg";
+
+export const PRODUCT_IMAGE_CONTAINER = {
+  small: "relative w-16 h-16 overflow-hidden rounded-md",
+  medium: "relative w-full aspect-square mb-2 overflow-hidden rounded-lg",
+  large: "relative w-full aspect-square overflow-hidden",
+};
+
+export const PRODUCT_PRICE_SIZE = {
+  small: {
+    main: "text-sm font-bold text-gray-900",
+    secondary: "text-xs text-gray-500 line-through ml-1",
+    discount: "text-xs font-bold text-red-500",
+  },
+  medium: {
+    main: "text-lg font-bold text-gray-900",
+    secondary: "text-sm text-gray-500 line-through ml-1",
+    discount: "text-sm font-bold text-red-500",
+  },
+  large: {
+    main: DISCOUNT_PRICE_TEXT,
+    secondary: BASE_PRICE_TEXT,
+    discount: DISCOUNT_RATE_TEXT,
+  },
+};
+
+export const PRODUCT_RATING_SIZE = {
+  small: {
+    container: "flex items-center",
+    rating: "flex items-center mr-1",
+    count: "text-xs text-gray-500",
+    starSize: 10,
+  },
+  medium: {
+    container: "flex items-center",
+    rating: "flex items-center mr-2",
+    count: "text-sm text-gray-500",
+    starSize: 12,
+  },
+  large: {
+    container: "flex items-center",
+    rating: "flex items-center mr-2",
+    count: "text-sm text-gray-500",
+    starSize: 16,
+  },
+};

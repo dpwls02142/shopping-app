@@ -1,6 +1,6 @@
 import MainView from "@/app/_shared/components/MainView";
 import DealView from "@/app/product/(deal)/components/DealView";
-import PersonalizedProduct from "@/app/product/components/PersonalizedProduct";
+import PersonalizedProductList from "@/app/product/components/PersonalizedProductList";
 
 type Props = {
   searchParams: Promise<{
@@ -15,7 +15,7 @@ async function Home({ searchParams }: Props) {
 
   return (
     <MainView
-      shoppingHome={<PersonalizedProduct />}
+      shoppingHome={<PersonalizedProductList />}
       deal={<DealView searchParams={{ view }} />}
     />
   );

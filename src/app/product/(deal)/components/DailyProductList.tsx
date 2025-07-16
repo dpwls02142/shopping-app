@@ -1,11 +1,11 @@
-import DailyProduct from "@/app/product/(deal)/components/DailyProduct";
+import ProductCard from "@/app/product/components/ProductCard";
 
-import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
+import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
 async function DailyProductList() {
-  const products = await fetchAllProductsWithDetails();
+  const products = await fetchProductPreviewInfo();
   const dailyDealProducts = products.filter(
-    (p) => p.discount?.discountType === "daily_deal",
+    (product) => product.discountType === "daily_deal"
   );
 
   return (
@@ -14,8 +14,12 @@ async function DailyProductList() {
       <p className="text-gray-500 px-4">할인 기간이 하루 남은 상품이에요</p>
       <div className="flex flex-col space-y-4 p-4 max-w-4xl mx-auto">
         <ul className="list-none p-0 m-0">
-          {dailyDealProducts.map((p) => (
-            <DailyProduct key={p.product.id} product={p} />
+          {dailyDealProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              variant="daily_deal"
+            />
           ))}
         </ul>
       </div>
