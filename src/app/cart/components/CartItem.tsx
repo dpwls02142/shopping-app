@@ -71,7 +71,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
           <div className="flex-1">
             <div className="flex flex-wrap gap-2">
               {Object.entries(selectedOptions).map(([key, value]) => (
-                <span key={key} className="text-sm text-gray-600">
+                <span key={key} className={OPTION_TEXT}>
                   {key}: {value}
                 </span>
               ))}

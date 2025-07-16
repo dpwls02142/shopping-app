@@ -40,7 +40,7 @@ export const TITLE = "text-lg font-bold text-gray-900";
 export const OPTION_TEXT = "text-sm text-gray-600";
 export const DISCOUNT_RATE_TEXT = "text-2xl font-bold text-red-500";
 export const DISCOUNT_PRICE_TEXT = "text-2xl font-bold text-gray-900";
-export const BASE_PRICE_TEXT = "text-2xl font-bold text-gray-900";
+export const BASE_PRICE_TEXT = "text-m text-gray-500 line-through";
 export const EMPTY_STATE_TEXT = "text-gray-500 text-xl mb-4";
 
 export const ICON = "w-5 h-5 text-gray-700";

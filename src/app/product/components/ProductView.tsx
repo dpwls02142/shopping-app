@@ -10,7 +10,7 @@ import { formatPriceToKor } from "@/lib/utils";
 import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
 import { Button } from "@/ui/button";
-import { FLEX_LAYOUT, CART_BOTTOM_CONTAINER } from "@/lib/styles";
+import { FLEX_LAYOUT, CART_BOTTOM_CONTAINER, DISCOUNT_PRICE_TEXT, BASE_PRICE_TEXT, DISCOUNT_RATE_TEXT } from "@/lib/styles";
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 import {
   Sheet,
@@ -61,22 +61,22 @@ const ProductPrice = ({
   if (discount) {
     return (
       <div>
-        <div className="flex items-center mb-1">
-          <span className="text-2xl font-bold text-red-500 mr-2">
+        <div className="flex items-center mb-1 space-x-2">
+          <span className={DISCOUNT_RATE_TEXT}>
             {discount.discountRate}%
           </span>
-          <span className="text-2xl font-bold text-gray-900">
+          <span className={DISCOUNT_PRICE_TEXT}>
             {formatPriceToKor(discount.discountedPrice)}원
           </span>
         </div>
-        <div className="text-sm text-gray-500 line-through">
+        <div className={BASE_PRICE_TEXT}>
           {formatPriceToKor(basePrice)}원
         </div>
       </div>
     );
   } else {
     return (
-      <div className="text-2xl font-bold text-gray-900">
+      <div className={DISCOUNT_PRICE_TEXT}>
         {formatPriceToKor(basePrice)}원
       </div>
     );
