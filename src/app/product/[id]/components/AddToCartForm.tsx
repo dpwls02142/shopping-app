@@ -65,23 +65,22 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
             </div>
           </div>
         </div>
-
-        <div>
-          <div className={FLEX_CENTER}>
-            <span className={OPTION_TEXT}>상품 금액</span>
-            <span className={TITLE}>
-              {formatPriceToKor(addToCartForm.totalAmount)}원
-            </span>
-          </div>
-          <Button
-            type="submit"
-            className={SUBMIT_BUTTON}
-            disabled={!addToCartForm.allOptionsSelected}
-          >
-            장바구니
-          </Button>
-        </div>
       </form>
+      <div className="fixed bottom-0 inset-x-0 mx-auto max-w-[468px] w-full bg-white p-4 border-t z-50">
+        <div className={cn(FLEX_CENTER, "mb-4")}>
+          <span className={OPTION_TEXT}>상품 금액</span>
+          <span className={TITLE}>
+            {formatPriceToKor(addToCartForm.totalAmount)}원
+          </span>
+        </div>
+        <Button
+          type="submit"
+          className={SUBMIT_BUTTON}
+          disabled={!addToCartForm.allOptionsSelected}
+        >
+          장바구니
+        </Button>
+      </div>
     </Form>
   );
 }
