@@ -42,9 +42,6 @@ export const DEAL_NAV_LABEL_INACTIVE = "text-gray-500";
 
 export const TITLE = "text-lg font-bold text-gray-900";
 export const OPTION_TEXT = "text-sm text-gray-600";
-export const DISCOUNT_RATE_TEXT = "text-2xl font-bold text-red-500";
-export const DISCOUNT_PRICE_TEXT = "text-2xl font-bold text-gray-900";
-export const BASE_PRICE_TEXT = "text-m text-gray-500 line-through";
 export const EMPTY_STATE_TEXT = "text-gray-500 text-xl mb-4";
 
 export const ICON = "w-5 h-5 text-gray-700";
@@ -70,12 +67,12 @@ export const PRODUCT_PRICE_SIZE = {
   medium: {
     main: "text-lg font-bold text-gray-900",
     secondary: "text-sm text-gray-500 line-through ml-1",
-    discount: "text-sm font-bold text-red-500",
+    discount: "text-lg font-bold text-red-500",
   },
   large: {
-    main: DISCOUNT_PRICE_TEXT,
-    secondary: BASE_PRICE_TEXT,
-    discount: DISCOUNT_RATE_TEXT,
+    main: "text-2xl font-bold text-gray-900",
+    secondary: "text-lg text-gray-500 line-through ml-1",
+    discount: "text-2xl font-bold text-red-500",
   },
 };
 
