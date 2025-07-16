@@ -15,8 +15,16 @@ import {
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
 const navItems = [
-  { page: "home", label: "쇼핑 홈", href: "/" },
-  { page: "deal", label: "특가", href: "/?tab=deal" },
+  {
+    id: "home",
+    label: "쇼핑 홈",
+    href: "/",
+  },
+  {
+    id: "deal",
+    label: "특가",
+    href: "/?tab=deal",
+  },
 ];
 
 function AppNavbar() {
@@ -33,11 +41,11 @@ function AppNavbar() {
       <div className={cn(FLEX_ITEMS_CENTER, "px-4")}>
         {navItems.map((item) => (
           <Link
-            key={item.page}
+            key={item.id}
             href={item.href}
-            onClick={(e) => handleTabClick(item.page, e)}
+            onClick={(e) => handleTabClick(item.id, e)}
             className={`${NAV_ITEM_BASE} ${
-              currentPage === item.page ? NAV_ITEM_ACTIVE : NAV_ITEM_INACTIVE
+              currentPage === item.id ? NAV_ITEM_ACTIVE : NAV_ITEM_INACTIVE
             }`}
           >
             <span className={NAV_ITEM_LABEL}>{item.label}</span>
