@@ -4,11 +4,12 @@ import { cn } from "@/lib/utils";
 import { toProductPreview } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
+import { FLEX_ITEMS_START_BETWEEN } from "@/lib/styles";
+
 import DealTimer from "@/app/product/(deal)/components/DealTimer";
 import ProductImage from "@/app/product/components/ProductImage";
 import ProductPrice from "@/app/product/components/ProductPrice";
 import ProductRating from "@/app/product/components/ProductRating";
-import { FLEX_ITEMS_START_BETWEEN } from "@/lib/styles";
 
 const ProductOverview = ({
   productDetail,

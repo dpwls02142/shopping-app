@@ -1,7 +1,7 @@
 import { formatPriceToKor } from "@/lib/utils";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
-import { FLEX_ITEMS_CENTER, PRODUCT_PRICE_SIZE } from "@/lib/styles";
+import { PRODUCT_PRICE_SIZE } from "@/lib/styles";
 
 type ProductPriceProps = {
   product: ProductPreviewInfo;

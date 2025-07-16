@@ -5,11 +5,11 @@ import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
 import {
+  ADD_TO_CART_BOTTOM_CONTAINER,
   FLEX_CENTER,
   FLEX_ITEMS_START_BETWEEN,
   FLEX_WRAP,
   OPTION_TEXT,
-  ADD_TO_CART_BOTTOM_CONTAINER,
   SUBMIT_BUTTON,
   TITLE,
 } from "@/lib/styles";

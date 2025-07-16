@@ -1,10 +1,10 @@
 import { Control, useWatch } from "react-hook-form";
 
-import { ProductOption } from "@/lib/types/productType";
 import {
   extractOptionKeys,
   safelyParseOptionValue,
 } from "@/lib/utils/productOptionUtils";
+import { ProductOption } from "@/lib/types/productType";
 
 function useProductOptions(
   productOptions: ProductOption[],
