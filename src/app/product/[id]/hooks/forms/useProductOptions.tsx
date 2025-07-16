@@ -1,39 +1,38 @@
 import { Control, useWatch } from "react-hook-form";
 
 import { ProductOption } from "@/lib/types/productType";
+import {
+  extractOptionKeys,
+  safelyParseOptionValue,
+} from "@/lib/utils/productOptionUtils";
 
 function useProductOptions(
   productOptions: ProductOption[],
-  control: Control<{ options: Record<string, string> }>,
+  control: Control<{ options: Record<string, string> }>
 ) {
+  const optionKeys = extractOptionKeys(productOptions);
   const watchedOptions = useWatch({ control, name: "options" });
-
   const separated: Record<string, { value: string; option: ProductOption }[]> =
     {};
-  const keys: string[] = [];
 
   productOptions?.forEach((option) => {
-    try {
-      const parsed = JSON.parse(option.optionValue);
-      Object.entries(parsed).forEach(([key, value]) => {
-        if (!separated[key]) {
-          separated[key] = [];
-          keys.push(key);
-        }
+    const parsed = safelyParseOptionValue(option);
 
-        if (!separated[key].some((item) => item.value === value)) {
-          separated[key].push({ value: value as string, option });
-        }
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    Object.entries(parsed).forEach(([key, value]) => {
+      if (!separated[key]) {
+        separated[key] = [];
+      }
+
+      if (!separated[key].some((item) => item.value === value)) {
+        separated[key].push({ value, option });
+      }
+    });
   });
 
   const handleOptionChange = (
     key: string,
     value: string,
-    onChange: (opts: Record<string, string>) => void,
+    onChange: (opts: Record<string, string>) => void
   ) => {
     const newOptions = { ...watchedOptions, [key]: value };
     onChange(newOptions);
@@ -42,7 +41,7 @@ function useProductOptions(
   return {
     watchedOptions,
     separatedOptions: separated,
-    optionKeys: keys,
+    optionKeys,
     handleOptionChange,
   };
 }
