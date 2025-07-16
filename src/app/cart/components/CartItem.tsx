@@ -23,12 +23,13 @@ type CartItemProps = {
 };
 
 function CartItem({ item, onRemove }: CartItemProps) {
+  const selectedOptions = createOptionsFromSelection(item.selectedOptions);
   const form = useForm({
     defaultValues: {
+      options: selectedOptions,
       quantity: item.quantity,
     },
   });
-  const selectedOptions = createOptionsFromSelection(item.selectedOptions);
   const updateCartItemQuantity = useCartStore((state) => state.updateQuantity);
   const handleQuantityChange = (newQuantity: number) => {
     try {
