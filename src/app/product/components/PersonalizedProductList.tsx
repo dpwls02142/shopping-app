@@ -60,7 +60,7 @@ function ProductListSkeleton() {
   );
 }
 
-function PersonalizedProduct() {
+function PersonalizedProductList() {
   return (
     <Suspense fallback={<ProductListSkeleton />}>
       <PersonalizedProductsContent />
@@ -68,4 +68,4 @@ function PersonalizedProduct() {
   );
 }
 
-export default PersonalizedProduct;
+export default PersonalizedProductList;
