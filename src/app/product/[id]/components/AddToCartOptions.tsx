@@ -19,18 +19,18 @@ import {
 
 import useProductOptions from "@/app/product/[id]/hooks/forms/useProductOptions";
 
-type ProductOptionsProps = {
+type AddToCartOptionsProps = {
   productOptions: ProductOption[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
 };
 
-function ProductOptions({
+function AddToCartOptions({
   productOptions,
   control,
   onSelectionChange,
-}: ProductOptionsProps) {
+}: AddToCartOptionsProps) {
   const { separatedOptions, optionKeys, watchedOptions, handleOptionChange } =
     useProductOptions(productOptions, control);
 
@@ -81,4 +81,4 @@ function ProductOptions({
   );
 }
 
-export default ProductOptions;
+export default AddToCartOptions;

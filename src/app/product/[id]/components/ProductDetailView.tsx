@@ -18,7 +18,7 @@ import {
 
 import useProductTab from "@/app/product/[id]/hooks/useProductTab";
 
-import AddToCartForm from "@/app/product/[id]/components/forms/AddToCartForm";
+import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
 import ProductDescription from "@/app/product/[id]/components/ProductDescription";
 import ProductOverview from "@/app/product/[id]/components/ProductOverview";
 import ProductReview from "@/app/product/[id]/components/ProductReview";

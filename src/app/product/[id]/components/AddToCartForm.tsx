@@ -17,8 +17,8 @@ import { Form } from "@/ui/form";
 
 import useAddToCartForm from "@/app/product/[id]/hooks/forms/useAddToCartForm";
 
-import ProductOptions from "@/app/product/[id]/components/forms/ProductOptions";
-import ProductQuantity from "@/app/product/[id]/components/forms/ProductQuantity";
+import ProductOptions from "@/app/product/[id]/components/AddToCartOptions";
+import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
 
 type AddToCartFormProps = {
   productDetail: ProductDetailInfo;

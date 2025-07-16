@@ -10,7 +10,7 @@ import { MinusIcon, PlusIcon } from "lucide-react";
 
 import useProductQuantity from "@/app/product/[id]/hooks/forms/useProductQuantity";
 
-type ProductQuantityProps = {
+type AddToCartQuantityProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   maxPurchaseQuantity?: number;
@@ -19,13 +19,13 @@ type ProductQuantityProps = {
   showSelectedOptions?: boolean;
 };
 
-function ProductQuantity({
+function AddToCartQuantity({
   control,
   maxPurchaseQuantity = 0,
   onQuantityChange,
   selectedOptions = {},
   showSelectedOptions = true,
-}: ProductQuantityProps) {
+}: AddToCartQuantityProps) {
   const { setQuantity } = useProductQuantity({
     control,
     max: maxPurchaseQuantity,
@@ -96,4 +96,4 @@ function ProductQuantity({
   );
 }
 
-export default ProductQuantity;
+export default AddToCartQuantity;
