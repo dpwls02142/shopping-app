@@ -29,7 +29,7 @@ import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
 import DealTimer from "@/app/product/(deal)/components/DealTimer";
 import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
-import ProductDetail from "@/app/product/[id]/components/ProductDetail";
+import ProductDescription from "@/app/product/[id]/components/ProductDescription";
 import ProductReview from "@/app/product/[id]/components/ProductReview";
 import ProductNavbar from "@/app/product/components/ProductNavbar";
 
@@ -148,7 +148,7 @@ const ProductContent = ({
       />
     );
   } else if (activeTab === "details") {
-    return <ProductDetail detailImages={productDetail.detailImages} />;
+    return <ProductDescription detailImages={productDetail.detailImages} />;
   }
 };
 
