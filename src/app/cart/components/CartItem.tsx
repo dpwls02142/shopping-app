@@ -3,7 +3,6 @@ import { FormProvider, useForm } from "react-hook-form";
 import Link from "next/link";
 import { X } from "lucide-react";
 
-import { Button } from "@/app/components/ui/button";
 import ProductQuantity from "@/app/product/components/ProductQuantity";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
@@ -15,6 +14,8 @@ import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
+
+import { Button } from "@/ui/button";
 
 type CartItemProps = {
   item: CartItemType;

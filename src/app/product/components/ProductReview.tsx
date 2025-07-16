@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import { Rating, RatingButton } from "@/app/components/ui/shadcn-io/rating";
-
 import { Review } from "@/lib/types/productType";
 
 import { formatDateToKor } from "@/lib/utils";
+
+import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 
 type ProductReviewProps = {
   reviews: Review[];

@@ -7,16 +7,6 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
 import DealTimer from "@/app/(main)/deal/components/DealTimer";
-import { Button } from "@/app/components/ui/button";
-import { Rating, RatingButton } from "@/app/components/ui/shadcn-io/rating";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/app/components/ui/sheet";
 import AddToCartForm from "@/app/product/components/AddToCartForm";
 import ProductDetail from "@/app/product/components/ProductDetail";
 import ProductNavbar from "@/app/product/components/ProductNavbar";
@@ -25,6 +15,17 @@ import ProductReview from "@/app/product/components/ProductReview";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
 import { formatPriceToKor } from "@/lib/utils";
+
+import { Button } from "@/ui/button";
+import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/ui/sheet";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;
