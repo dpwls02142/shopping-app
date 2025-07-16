@@ -1,7 +1,7 @@
 import { formatPriceToKor } from "@/lib/utils";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
-import { PRODUCT_PRICE_SIZE } from "@/lib/styles";
+import { FLEX_ITEMS_CENTER, PRODUCT_PRICE_SIZE } from "@/lib/styles";
 
 type ProductPriceProps = {
   product: ProductPreviewInfo;
@@ -21,7 +21,7 @@ function ProductPrice({ product, size = "medium" }: ProductPriceProps) {
     );
   } else {
     return (
-      <div className="space-x-2">
+      <div className="space-x-1">
         <span className={classes.discount}>{discountRate}%</span>
         <span className={classes.main}>
           {formatPriceToKor(discountedPrice)}원
