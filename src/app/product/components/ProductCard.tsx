@@ -1,13 +1,10 @@
 "use client";
 
-import { ProductPreviewInfo } from "@/lib/types/productType";
 import Link from "next/link";
 
-import ProductImage from "./ProductImage";
-import ProductPrice from "./ProductPrice";
-import ProductRating from "./ProductRating";
-import DealTimer from "@/app/product/(deal)/components/DealTimer";
 import { formatPriceToKor } from "@/lib/utils";
+import { ProductPreviewInfo } from "@/lib/types/productType";
+
 import {
   BASE_PRICE_TEXT,
   DISCOUNT_PRICE_TEXT,
@@ -15,6 +12,10 @@ import {
   OPTION_TEXT,
   TITLE,
 } from "@/lib/styles";
+
+import DealTimer from "@/app/product/(deal)/components/DealTimer";
+import ProductImage from "@/app/product/components/ProductImage";
+import ProductPrice from "@/app/product/components/ProductPrice";
 
 type ProductCardProps = {
   product: ProductPreviewInfo;

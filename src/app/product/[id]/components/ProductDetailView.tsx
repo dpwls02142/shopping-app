@@ -4,6 +4,7 @@ import { useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
+
 import { CART_BOTTOM_CONTAINER, FLEX_LAYOUT } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import {
@@ -17,9 +18,9 @@ import {
 
 import useProductTab from "@/app/product/[id]/hooks/useProductTab";
 
-import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
-import ProductTab from "@/app/product/[id]/components/ProductTab";
+import AddToCartForm from "@/app/product/[id]/components/forms/AddToCartForm";
 import ProductOverview from "@/app/product/[id]/components/ProductOverview";
+import ProductTab from "@/app/product/[id]/components/ProductTab";
 import ProductContent from "@/app/product/[id]/components/ProductTabContent";
 
 type ProductDetailProps = {

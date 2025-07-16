@@ -1,4 +1,5 @@
 import ProductCard from "@/app/product/components/ProductCard";
+
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
 async function DailyProductList() {

@@ -1,5 +1,6 @@
-import { ProductPreviewInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
+import { ProductPreviewInfo } from "@/lib/types/productType";
+
 import { PRODUCT_PRICE_SIZE } from "@/lib/styles";
 
 type ProductPriceProps = {

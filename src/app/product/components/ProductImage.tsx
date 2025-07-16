@@ -1,6 +1,8 @@
-import { PRODUCT_IMAGE_CONTAINER } from "@/lib/styles";
-import { ProductPreviewInfo } from "@/lib/types/productType";
 import Image from "next/image";
+
+import { ProductPreviewInfo } from "@/lib/types/productType";
+
+import { PRODUCT_IMAGE_CONTAINER } from "@/lib/styles";
 
 type ProductImageProps = {
   product: ProductPreviewInfo;

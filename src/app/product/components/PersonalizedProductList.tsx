@@ -1,8 +1,10 @@
 import { Suspense } from "react";
-import { fetchCustomers } from "@/lib/api/customerApi";
-import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
+
 import ProductCard from "@/app/product/components/ProductCard";
 import ProductListSkeleton from "@/app/product/components/ProductListSkeleton";
+
+import { fetchCustomers } from "@/lib/api/customerApi";
+import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
 async function PersonalizedProductList() {
   const [products, customers] = await Promise.all([

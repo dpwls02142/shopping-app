@@ -1,11 +1,12 @@
 "use client";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
-import ProductPrice from "../../components/ProductPrice";
-import DealTimer from "../../(deal)/components/DealTimer";
-import ProductRating from "../../components/ProductRating";
-import ProductImage from "../../components/ProductImage";
 import { toProductPreview } from "@/lib/utils/productOptionUtils";
+import { ProductDetailInfo } from "@/lib/types/productType";
+
+import DealTimer from "@/app/product/(deal)/components/DealTimer";
+import ProductImage from "@/app/product/components/ProductImage";
+import ProductPrice from "@/app/product/components/ProductPrice";
+import ProductRating from "@/app/product/components/ProductRating";
 
 const ProductOverview = ({
   productDetail,

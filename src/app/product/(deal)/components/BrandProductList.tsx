@@ -1,5 +1,6 @@
-import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 import ProductCard from "@/app/product/components/ProductCard";
+
+import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
 async function BrandProductList() {
   const products = await fetchProductPreviewInfo();

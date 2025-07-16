@@ -1,5 +1,6 @@
-import { PRODUCT_RATING_SIZE } from "@/lib/styles";
 import { ProductPreviewInfo } from "@/lib/types/productType";
+
+import { PRODUCT_RATING_SIZE } from "@/lib/styles";
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 
 type ProductRatingProps = {

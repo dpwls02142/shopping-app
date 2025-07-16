@@ -1,6 +1,7 @@
 import { ProductDetailInfo } from "@/lib/types/productType";
-import ProductReview from "./ProductReview";
+
 import ProductDescription from "./ProductDescription";
+import ProductReview from "./ProductReview";
 
 const ProductTabContent = ({
   productDetail,
