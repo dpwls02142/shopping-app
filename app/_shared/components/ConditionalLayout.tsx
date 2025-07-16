@@ -8,11 +8,11 @@ import {
   useShowBackButton,
   useShowHeader,
   useShowNavbar,
-} from "@/app/hooks/useAppNavigation";
+} from "@/app/_shared/hooks/useAppNavigation";
 
-import AppHeader from "@/app/components/AppHeader";
-import AppNavbar from "@/app/components/AppNavbar";
-import BackButton from "@/app/components/BackButton";
+import AppHeader from "@/app/_shared/components/AppHeader";
+import BackButton from "@/app/_shared/components/BackButton";
+import AppNavbar from "@/app/(main)/components/AppNavbar";
 
 interface ConditionalLayoutProps {
   children: ReactNode;

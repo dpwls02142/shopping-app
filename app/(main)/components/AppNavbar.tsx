@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { useAppNavigation } from "@/app/hooks/useAppNavigation";
+import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
 import { NavigationPage } from "@/lib/types/navgationType";
 

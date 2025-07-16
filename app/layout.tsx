@@ -2,9 +2,9 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import ConditionalLayout from "@/app/components/ConditionalLayout";
+import ConditionalLayout from "@/app/_shared/components/ConditionalLayout";
 
-import QueryProvider from "@/app/providers/QueryProvider";
+import QueryProvider from "@/app/_shared/providers/QueryProvider";
 
 import "./globals.css";
 

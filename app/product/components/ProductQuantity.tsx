@@ -3,7 +3,7 @@
 import { Control } from "react-hook-form";
 import { MinusIcon, PlusIcon } from "lucide-react";
 
-import useProductQuantity from "@/app/product/[id]/hooks/forms/useProductQuantity";
+import useProductQuantity from "@/app/product/hooks/forms/useProductQuantity";
 
 import { Button } from "@/components/ui/button";
 import {

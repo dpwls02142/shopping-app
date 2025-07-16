@@ -3,7 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import Link from "next/link";
 import { X } from "lucide-react";
 
-import ProductQuantity from "@/app/product/[id]/components/ProductQuantity";
+import ProductQuantity from "@/app/product/components/ProductQuantity";
 import { Button } from "@/components/ui/button";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
