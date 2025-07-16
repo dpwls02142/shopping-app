@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { motion, PanInfo } from "framer-motion";
 
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
+import { SWIPE_CONTAINER } from "@/lib/styles";
 
 interface SwipeContainerProps {
   children: ReactNode;
@@ -36,7 +37,7 @@ function AppSwipeNavbar({ children }: SwipeContainerProps) {
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       onDragEnd={handleDragEnd}
-      className="h-full cursor-grab active:cursor-grabbing"
+      className={SWIPE_CONTAINER}
     >
       {children}
     </motion.div>

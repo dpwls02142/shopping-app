@@ -4,6 +4,15 @@ import { NavigationPage } from "@/lib/types/navgationType";
 
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
+import {
+  NAV_ITEM_LABEL,
+  NAV_CONTAINER,
+  FLEX_ITEMS_CENTER,
+  NAV_ITEM_BASE,
+  NAV_ITEM_ACTIVE,
+  NAV_ITEM_INACTIVE,
+} from "@/lib/styles";
+
 const navItems = [
   { page: "home", label: "쇼핑 홈", href: "/" },
   { page: "deal", label: "특가", href: "/?tab=deal" },
@@ -19,20 +28,18 @@ function AppNavbar() {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-200 flex-shrink-0 z-40">
-      <div className="flex items-center px-4">
+    <nav className={NAV_CONTAINER}>
+      <div className={FLEX_ITEMS_CENTER + " px-4"}>
         {navItems.map((item) => (
           <Link
             key={item.page}
             href={item.href}
             onClick={(e) => handleTabClick(item.page, e)}
-            className={`flex items-center space-x-2 px-4 py-3 border-b-2 ${
-              currentPage === item.page
-                ? "border-black text-black"
-                : "border-transparent text-gray-600"
+            className={`${NAV_ITEM_BASE} ${
+              currentPage === item.page ? NAV_ITEM_ACTIVE : NAV_ITEM_INACTIVE
             }`}
           >
-            <span className="text-sm font-medium">{item.label}</span>
+            <span className={NAV_ITEM_LABEL}>{item.label}</span>
           </Link>
         ))}
       </div>

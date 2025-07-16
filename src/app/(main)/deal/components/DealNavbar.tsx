@@ -2,6 +2,16 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import {
+  DEAL_NAV_CONTAINER,
+  DEAL_NAV_LINK,
+  DEAL_NAV_ICON_BASE,
+  DEAL_NAV_ICON_ACTIVE,
+  DEAL_NAV_ICON_INACTIVE,
+  DEAL_NAV_LABEL_BASE,
+  DEAL_NAV_LABEL_ACTIVE,
+  DEAL_NAV_LABEL_INACTIVE,
+} from "@/lib/styles";
 
 const navItems = [
   {
@@ -29,26 +39,28 @@ function DealNavbar() {
   };
 
   return (
-    <nav className="flex justify-around items-center py-4 bg-white">
+    <nav className={DEAL_NAV_CONTAINER}>
       {navItems.map((item) => (
         <Link
           key={item.view}
           href={`/?${createQueryString(item.params)}`}
-          className="flex flex-col items-center space-y-2"
+          className={DEAL_NAV_LINK}
           replace
         >
           <div
-            className={`w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold ${
+            className={`${DEAL_NAV_ICON_BASE} ${
               currentView === item.view
-                ? "bg-black text-white scale-105"
-                : "bg-gray-100 text-gray-500"
+                ? DEAL_NAV_ICON_ACTIVE
+                : DEAL_NAV_ICON_INACTIVE
             }`}
           >
             {item.name.charAt(0)}
           </div>
           <span
-            className={`text-sm font-medium ${
-              currentView === item.view ? "text-black" : "text-gray-500"
+            className={`${DEAL_NAV_LABEL_BASE} ${
+              currentView === item.view
+                ? DEAL_NAV_LABEL_ACTIVE
+                : DEAL_NAV_LABEL_INACTIVE
             }`}
           >
             {item.name}

@@ -1,0 +1,48 @@
+export const HEADER_CONTAINER = "bg-white px-4 py-4 flex-shrink-0 z-50";
+export const HEADER_LEFT_AREA = "flex items-center w-20 h-6";
+export const HEADER_RIGHT_AREA = "flex items-center justify-end";
+export const MAIN_CONTAINER = "flex-1 overflow-y-auto";
+
+export const FLEX_LAYOUT = "h-full flex flex-col";
+export const FLEX_CENTER = "flex items-center justify-between";
+export const FLEX_WRAP = "flex flex-wrap";
+export const FLEX_ITEMS_START = "flex items-start";
+export const FLEX_ITEMS_CENTER = "flex items-center";
+export const FLEX_ITEMS_SPACE = "flex items-center space-x-2";
+
+export const NAV_CONTAINER = "bg-white border-b border-gray-200 sticky z-40";
+export const NAV_ITEM_BASE = "flex items-center space-x-2 px-4 py-3 border-b-2";
+export const NAV_ITEM_LABEL = "text-sm font-medium";
+export const NAV_ITEM_ACTIVE = "border-black text-black";
+export const NAV_ITEM_INACTIVE = "border-transparent text-gray-600";
+
+export const TAB_BUTTON_BASE = "flex-1 py-3 px-4 text-center font-medium";
+export const TAB_BUTTON_ACTIVE = "text-black border-b-2 border-black";
+export const TAB_BUTTON_INACTIVE = "text-gray-600 hover:text-gray-900";
+
+export const CART_BOTTOM_CONTAINER =
+  "fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[468px] bg-white border-t border-gray-200 p-4 z-50";
+export const CART_EMPTY_CONTAINER =
+  "flex flex-col items-center justify-center min-h-[60vh]";
+
+export const DEAL_NAV_CONTAINER =
+  "flex justify-around items-center py-4 bg-white";
+export const DEAL_NAV_LINK = "flex flex-col items-center space-y-2";
+export const DEAL_NAV_ICON_BASE =
+  "w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold";
+export const DEAL_NAV_ICON_ACTIVE = "bg-black text-white scale-105";
+export const DEAL_NAV_ICON_INACTIVE = "bg-gray-100 text-gray-500";
+export const DEAL_NAV_LABEL_BASE = "text-sm font-medium";
+export const DEAL_NAV_LABEL_ACTIVE = "text-black";
+export const DEAL_NAV_LABEL_INACTIVE = "text-gray-500";
+
+export const OPTION_TEXT = "text-sm text-gray-600";
+
+export const ICON = "w-5 h-5 text-gray-700";
+export const TITLE = "text-lg font-bold text-gray-900";
+export const SWIPE_CONTAINER = "h-full cursor-grab active:cursor-grabbing";
+export const EMPTY_STATE_TEXT = "text-gray-500 text-xl mb-4";
+export const CART_ALERT =
+  "absolute -top-3 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center min-w-[20px] font-medium";
+export const BACK_BUTTON = "flex items-center justify-center h-6";
+export const SUBMIT_BUTTON = "w-full h-12 text-lg";

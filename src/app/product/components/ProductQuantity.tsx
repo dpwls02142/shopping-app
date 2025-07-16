@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/ui/form";
 import { Input } from "@/ui/input";
+import { OPTION_TEXT } from "@/lib/styles";
 
 type ProductQuantityProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,7 +44,7 @@ function ProductQuantity({
   return (
     <div className="bg-gray-50 rounded-lg">
       {hasSelectedOptions && showSelectedOptions && (
-        <div className="mb-2 text-sm text-gray-600">
+        <div className={OPTION_TEXT}>
           {Object.entries(selectedOptions)
             .filter(([_, value]) => value !== "")
             .map(([key, value]) => `${key}: ${value}`)

@@ -13,6 +13,7 @@ import {
 import AppHeader from "@/app/_shared/components/AppHeader";
 import AppNavbar from "@/app/_shared/components/AppNavbar";
 import BackButton from "@/app/_shared/components/BackButton";
+import { FLEX_LAYOUT, MAIN_CONTAINER } from "@/lib/styles";
 
 interface ConditionalLayoutProps {
   children: ReactNode;
@@ -31,11 +32,11 @@ function ConditionalLayout({ children }: ConditionalLayoutProps) {
   }, [pathname, searchParams, initializeFromUrl]);
 
   return (
-    <div className="h-full flex flex-col">
+    <div className={FLEX_LAYOUT}>
       {showHeader && <AppHeader />}
       {showNavbar && <AppNavbar />}
       {showBackButton && <BackButton />}
-      <main className="flex-1 overflow-y-auto">{children}</main>
+      <main className={MAIN_CONTAINER}>{children}</main>
     </div>
   );
 }

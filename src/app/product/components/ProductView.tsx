@@ -10,6 +10,11 @@ import { formatPriceToKor } from "@/lib/utils";
 import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
 import { Button } from "@/ui/button";
+import {
+  FLEX_LAYOUT,
+  PRODUCT_CONTENT_WRAPPER,
+  CART_BOTTOM_CONTAINER,
+} from "@/lib/styles";
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 import {
   Sheet,
@@ -160,7 +165,7 @@ function ProductView({ productDetail }: ProductDetailProps) {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className={FLEX_LAYOUT}>
       <div className="flex-1 pb-20">
         <ProductInfo productDetail={productDetail} />
         <div className="bg-gray-100 pt-2">
@@ -173,7 +178,7 @@ function ProductView({ productDetail }: ProductDetailProps) {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[468px] bg-white border-t border-gray-200 p-4 z-50">
+      <div className={CART_BOTTOM_CONTAINER}>
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild>
             <Button className="w-full h-12 text-lg font-bold">장바구니</Button>

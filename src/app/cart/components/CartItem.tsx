@@ -15,6 +15,7 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 import { Button } from "@/ui/button";
 
 import ProductQuantity from "@/app/product/components/ProductQuantity";
+import { FLEX_CENTER, OPTION_TEXT, TITLE } from "@/lib/styles";
 
 type CartItemProps = {
   item: CartItemType;
@@ -48,7 +49,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
       <div className="p-4">
         <div className="flex items-start justify-between mb-2">
           <Link href={`/product/${item.product.id}`} className="flex-1">
-            <h3 className="font-semibold text-lg text-gray-900">
+            <h3 className={TITLE}>
               {item.product.name}
             </h3>
           </Link>
@@ -93,9 +94,9 @@ function CartItem({ item, onRemove }: CartItemProps) {
           </div>
         </div>
 
-        <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-          <span className="text-sm text-gray-600">주문 금액</span>
-          <span className="font-semibold text-lg text-gray-900">
+        <div className={FLEX_CENTER}>
+          <span className={OPTION_TEXT}>주문 금액</span>
+          <span className={TITLE}>
             {formatPriceToKor(item.totalPrice)}원
           </span>
         </div>

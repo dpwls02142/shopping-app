@@ -11,6 +11,14 @@ import { Form } from "@/ui/form";
 
 import ProductOptions from "@/app/product/components/ProductOptions";
 import ProductQuantity from "@/app/product/components/ProductQuantity";
+import {
+  FLEX_CENTER,
+  FLEX_ITEMS_START,
+  FLEX_WRAP,
+  OPTION_TEXT,
+  SUBMIT_BUTTON,
+  TITLE,
+} from "@/lib/styles";
 
 type AddToCartFormProps = {
   productDetail: ProductDetailInfo;
@@ -38,11 +46,11 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
               선택한 옵션
             </span>
 
-            <div className="flex justify-between items-start">
-              <div className="flex flex-wrap items-center gap-2">
+            <div className={FLEX_ITEMS_START}>
+              <div className={FLEX_WRAP}>
                 {convertRecordToKeyValueArray(addToCartForm.watchedOptions).map(
                   (option) => (
-                    <span key={option.key} className="text-sm text-gray-600">
+                    <span key={option.key} className={OPTION_TEXT}>
                       {option.key}: {option.value}
                     </span>
                   )
@@ -61,15 +69,15 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
         </div>
 
         <div className="pt-2">
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-lg text-gray-600">상품 금액</span>
-            <span className="text-2xl font-bold text-gray-900">
+          <div className={FLEX_CENTER}>
+            <span className={OPTION_TEXT}>상품 금액</span>
+            <span className={TITLE}>
               {formatPriceToKor(addToCartForm.totalAmount)}원
             </span>
           </div>
           <Button
             type="submit"
-            className="w-full h-12 text-lg"
+            className={SUBMIT_BUTTON}
             disabled={!addToCartForm.allOptionsSelected}
           >
             장바구니
