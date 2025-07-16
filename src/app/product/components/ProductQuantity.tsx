@@ -5,14 +5,14 @@ import { MinusIcon, PlusIcon } from "lucide-react";
 
 import useProductQuantity from "@/app/product/hooks/forms/useProductQuantity";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 import {
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/app/components/ui/form";
+import { Input } from "@/app/components/ui/input";
 
 type ProductQuantityProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

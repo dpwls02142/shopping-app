@@ -2,10 +2,10 @@
 
 import useAddToCartForm from "@/app/product/hooks/forms/useAddToCartForm";
 
+import { Button } from "@/app/components/ui/button";
+import { Form } from "@/app/components/ui/form";
 import ProductOptions from "@/app/product/components/ProductOptions";
 import ProductQuantity from "@/app/product/components/ProductQuantity";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
 

@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 
-import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
+import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 
 import AppSwipeNavbar from "@/app/(main)/components/AppSwipeNavbar";
 

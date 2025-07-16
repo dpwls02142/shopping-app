@@ -7,12 +7,8 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
 import DealTimer from "@/app/(main)/deal/components/DealTimer";
-import AddToCartForm from "@/app/product/components/AddToCartForm";
-import ProductDetail from "@/app/product/components/ProductDetail";
-import ProductNavbar from "@/app/product/components/ProductNavbar";
-import ProductReview from "@/app/product/components/ProductReview";
-import { Button } from "@/components/ui/button";
-import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
+import { Button } from "@/app/components/ui/button";
+import { Rating, RatingButton } from "@/app/components/ui/shadcn-io/rating";
 import {
   Sheet,
   SheetContent,
@@ -20,7 +16,11 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@/app/components/ui/sheet";
+import AddToCartForm from "@/app/product/components/AddToCartForm";
+import ProductDetail from "@/app/product/components/ProductDetail";
+import ProductNavbar from "@/app/product/components/ProductNavbar";
+import ProductReview from "@/app/product/components/ProductReview";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
 

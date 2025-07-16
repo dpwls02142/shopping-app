@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Rating, RatingButton } from "@/components/ui/shadcn-io/rating";
+import { Rating, RatingButton } from "@/app/components/ui/shadcn-io/rating";
 
 import { Review } from "@/lib/types/productType";
 

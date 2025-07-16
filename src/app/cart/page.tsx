@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import CartItemList from "@/app/cart/components/CartItemList";
 import CartSummary from "@/app/cart/components/CartSummary";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
 
