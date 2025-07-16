@@ -1,4 +1,4 @@
-import ProductView from "@/app/product/components/ProductView";
+import ProductDetailView from "@/app/product/[id]/components/ProductDetailView";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
 
@@ -15,7 +15,7 @@ async function ProductPage(props: ProductPageProps) {
 
     return (
       <div className="min-h-screen bg-gray-50">
-        <ProductView productDetail={productDetail} productId={productId} />
+        <ProductDetailView productDetail={productDetail} productId={productId} />
       </div>
     );
   } catch {

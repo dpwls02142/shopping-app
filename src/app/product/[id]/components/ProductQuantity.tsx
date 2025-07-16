@@ -8,7 +8,7 @@ import { FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
 import { Input } from "@/ui/input";
 import { MinusIcon, PlusIcon } from "lucide-react";
 
-import useProductQuantity from "@/app/product/hooks/forms/useProductQuantity";
+import useProductQuantity from "@/app/product/[id]/hooks/forms/useProductQuantity";
 
 type ProductQuantityProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

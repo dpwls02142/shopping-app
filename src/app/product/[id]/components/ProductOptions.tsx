@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/ui/select";
 
-import useProductOptions from "@/app/product/hooks/forms/useProductOptions";
+import useProductOptions from "@/app/product/[id]/hooks/forms/useProductOptions";
 
 type ProductOptionsProps = {
   productOptions: ProductOption[];

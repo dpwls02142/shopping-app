@@ -14,7 +14,7 @@ import {
   TITLE,
 } from "@/lib/styles";
 
-import DealTimer from "@/app/(main)/deal/components/DealTimer";
+import DealTimer from "@/app/product/(deal)/components/DealTimer";
 
 type DailyProductProps = {
   product: ProductDetailInfo;

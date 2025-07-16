@@ -25,13 +25,13 @@ import {
   SheetTrigger,
 } from "@/ui/sheet";
 
-import useProductNavigation from "@/app/product/hooks/useProductNavigation";
+import useProductTab from "@/app/product/[id]/hooks/useProductTab";
 
-import DealTimer from "@/app/(main)/deal/components/DealTimer";
-import AddToCartForm from "@/app/product/components/AddToCartForm";
-import ProductDetail from "@/app/product/components/ProductDetail";
-import ProductNavbar from "@/app/product/components/ProductNavbar";
-import ProductReview from "@/app/product/components/ProductReview";
+import DealTimer from "@/app/product/(deal)/components/DealTimer";
+import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
+import ProductDescription from "@/app/product/[id]/components/ProductDescription";
+import ProductReview from "@/app/product/[id]/components/ProductReview";
+import ProductTab from "@/app/product/[id]/components/ProductTab";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;
@@ -148,12 +148,12 @@ const ProductContent = ({
       />
     );
   } else if (activeTab === "details") {
-    return <ProductDetail detailImages={productDetail.detailImages} />;
+    return <ProductDescription detailImages={productDetail.detailImages} />;
   }
 };
 
-function ProductView({ productDetail }: ProductDetailProps) {
-  const { activeTab, setActiveTab, isVisible } = useProductNavigation();
+function ProductDetailView({ productDetail }: ProductDetailProps) {
+  const { activeTab, setActiveTab, isVisible } = useProductTab();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleAddToCartSuccess = () => {
@@ -165,7 +165,7 @@ function ProductView({ productDetail }: ProductDetailProps) {
       <div className="flex-1 pb-20">
         <ProductInfo productDetail={productDetail} />
         <div className="bg-gray-100 pt-2">
-          <ProductNavbar
+          <ProductTab
             activeTab={activeTab}
             onTabChange={setActiveTab}
             isVisible={isVisible}
@@ -207,4 +207,4 @@ function ProductView({ productDetail }: ProductDetailProps) {
   );
 }
 
-export default ProductView;
+export default ProductDetailView;

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-function ProductDetail({ detailImages }: { detailImages: string[] }) {
+function ProductDescription({ detailImages }: { detailImages: string[] }) {
   return (
     <div className="bg-white">
       <div className="space-y-4">
@@ -19,4 +19,4 @@ function ProductDetail({ detailImages }: { detailImages: string[] }) {
   );
 }
 
-export default ProductDetail;
+export default ProductDescription;
