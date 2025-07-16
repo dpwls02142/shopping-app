@@ -66,7 +66,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
           </div>
         </div>
 
-        <div className="pt-2">
+        <div>
           <div className={FLEX_CENTER}>
             <span className={OPTION_TEXT}>상품 금액</span>
             <span className={TITLE}>

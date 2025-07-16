@@ -11,7 +11,7 @@ import { MinusIcon, PlusIcon } from "lucide-react";
 import useProductQuantity from "@/app/product/[id]/hooks/forms/useProductQuantity";
 
 type AddToCartQuantityProps = {
-  control: Control<{ quantity: number }>;
+  control: Control<{ options: Record<string, string>; quantity: number }>;
   maxPurchaseQuantity?: number;
   onQuantityChange?: (quantity: number) => void;
   selectedOptions?: Record<string, string>;

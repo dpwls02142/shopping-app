@@ -8,7 +8,7 @@ import {
 
 function useProductOptions(
   productOptions: ProductOption[],
-  control: Control<{ options: Record<string, string> }>
+  control: Control<{ options: Record<string, string>; quantity: number }>
 ) {
   const optionKeys = extractOptionKeys(productOptions);
   const watchedOptions = useWatch({ control, name: "options" });

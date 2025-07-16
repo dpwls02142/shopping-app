@@ -1,7 +1,7 @@
 import { Control, useWatch } from "react-hook-form";
 
 type UseQuantityFieldProps = {
-  control: Control<{ quantity: number }>;
+  control: Control<{ options: Record<string, string>; quantity: number }>;
   max: number;
   onChange?: (quantity: number) => void;
 };

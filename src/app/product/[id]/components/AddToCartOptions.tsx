@@ -21,7 +21,7 @@ import useProductOptions from "@/app/product/[id]/hooks/forms/useProductOptions"
 
 type AddToCartOptionsProps = {
   productOptions: ProductOption[];
-  control: Control<{ options: Record<string, string> }>;
+  control: Control<{ options: Record<string, string>; quantity: number }>;
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
 };
 
