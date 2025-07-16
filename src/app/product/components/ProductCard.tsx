@@ -68,7 +68,10 @@ function ProductCard({ product, variant = "default" }: ProductCardProps) {
             <ProductPrice product={product} />
           </div>
           <div className="flex items-center text-xs text-gray-500 gap-1">
-            <ProductRating product={product} />
+            <span className="text-yellow-400">★</span>
+            <span className={OPTION_TEXT}>
+              {product.averageRating} ({product.reviewCount})
+            </span>
           </div>
         </div>
       </Link>
