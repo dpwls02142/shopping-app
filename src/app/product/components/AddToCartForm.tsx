@@ -42,7 +42,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
 
         <div className="space-y-4 pt-4">
           <div className="bg-gray-50 p-4 rounded-lg">
-            <span className="text-sm text-gray-600 mb-1 block">
+            <span className={OPTION_TEXT}>
               선택한 옵션
             </span>
 

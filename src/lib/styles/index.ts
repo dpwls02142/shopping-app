@@ -36,13 +36,17 @@ export const DEAL_NAV_LABEL_BASE = "text-sm font-medium";
 export const DEAL_NAV_LABEL_ACTIVE = "text-black";
 export const DEAL_NAV_LABEL_INACTIVE = "text-gray-500";
 
+export const TITLE = "text-lg font-bold text-gray-900";
 export const OPTION_TEXT = "text-sm text-gray-600";
+export const DISCOUNT_RATE_TEXT = "text-2xl font-bold text-red-500";
+export const DISCOUNT_PRICE_TEXT = "text-2xl font-bold text-gray-900";
+export const BASE_PRICE_TEXT = "text-2xl font-bold text-gray-900";
+export const EMPTY_STATE_TEXT = "text-gray-500 text-xl mb-4";
 
 export const ICON = "w-5 h-5 text-gray-700";
-export const TITLE = "text-lg font-bold text-gray-900";
 export const SWIPE_CONTAINER = "h-full cursor-grab active:cursor-grabbing";
-export const EMPTY_STATE_TEXT = "text-gray-500 text-xl mb-4";
 export const CART_ALERT =
   "absolute -top-3 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center min-w-[20px] font-medium";
-export const BACK_BUTTON = "absolute top-4 left-4 z-50 flex items-center justify-center";
+export const BACK_BUTTON =
+  "absolute top-4 left-4 z-50 flex items-center justify-center";
 export const SUBMIT_BUTTON = "w-full h-12 text-lg";

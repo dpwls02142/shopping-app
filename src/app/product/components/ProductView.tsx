@@ -10,11 +10,7 @@ import { formatPriceToKor } from "@/lib/utils";
 import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
 import { Button } from "@/ui/button";
-import {
-  FLEX_LAYOUT,
-  PRODUCT_CONTENT_WRAPPER,
-  CART_BOTTOM_CONTAINER,
-} from "@/lib/styles";
+import { FLEX_LAYOUT, CART_BOTTOM_CONTAINER } from "@/lib/styles";
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 import {
   Sheet,
@@ -197,6 +193,7 @@ function ProductView({ productDetail }: ProductDetailProps) {
                 </SheetDescription>
               </SheetHeader>
             </VisuallyHidden>
+
             <div className="flex-1 overflow-hidden">
               <AddToCartForm
                 productDetail={productDetail}

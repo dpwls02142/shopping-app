@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/ui/form";
 import { Input } from "@/ui/input";
-import { OPTION_TEXT } from "@/lib/styles";
+import { FLEX_ITEMS_CENTER, OPTION_TEXT } from "@/lib/styles";
 
 type ProductQuantityProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -58,7 +58,7 @@ function ProductQuantity({
         render={({ field }) => (
           <FormItem>
             <FormControl>
-              <div className="flex items-center space-x-2">
+              <div className={FLEX_ITEMS_CENTER}>
                 <Button
                   type="button"
                   variant="ghost"
