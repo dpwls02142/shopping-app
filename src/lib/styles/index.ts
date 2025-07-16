@@ -75,3 +75,24 @@ export const PRODUCT_PRICE_SIZE = {
     discount: DISCOUNT_RATE_TEXT,
   },
 };
+
+export const PRODUCT_RATING_SIZE = {
+  small: {
+    container: "flex items-center",
+    rating: "flex items-center mr-1",
+    count: "text-xs text-gray-500",
+    starSize: 10,
+  },
+  medium: {
+    container: "flex items-center",
+    rating: "flex items-center mr-2",
+    count: "text-sm text-gray-500",
+    starSize: 12,
+  },
+  large: {
+    container: "flex items-center",
+    rating: "flex items-center mr-2",
+    count: "text-sm text-gray-500",
+    starSize: 16,
+  },
+};
