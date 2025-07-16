@@ -1,12 +1,12 @@
 "use client";
 
-import { formatPriceToKor } from "@/lib/utils";
+import { cn, formatPriceToKor } from "@/lib/utils";
 import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
 import {
   FLEX_CENTER,
-  FLEX_ITEMS_START,
+  FLEX_ITEMS_START_BETWEEN,
   FLEX_WRAP,
   OPTION_TEXT,
   SUBMIT_BUTTON,
@@ -44,14 +44,14 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
           <div className="bg-gray-50 p-4 rounded-lg">
             <span className={OPTION_TEXT}>선택한 옵션</span>
 
-            <div className={FLEX_ITEMS_START}>
+            <div className={FLEX_ITEMS_START_BETWEEN}>
               <div className={FLEX_WRAP}>
                 {convertRecordToKeyValueArray(addToCartForm.watchedOptions).map(
                   (option) => (
-                    <span key={option.key} className={OPTION_TEXT}>
+                    <span key={option.key} className={cn(OPTION_TEXT, "mr-2")}>
                       {option.key}: {option.value}
                     </span>
-                  ),
+                  )
                 )}
               </div>
 

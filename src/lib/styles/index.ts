@@ -7,6 +7,7 @@ export const FLEX_LAYOUT = "h-full flex flex-col";
 export const FLEX_CENTER = "flex items-center justify-between";
 export const FLEX_WRAP = "flex flex-wrap";
 export const FLEX_ITEMS_START = "flex items-start";
+export const FLEX_ITEMS_START_BETWEEN = "flex items-start justify-between";
 export const FLEX_ITEMS_CENTER = "flex items-center";
 export const FLEX_ITEMS_SPACE = "flex items-center space-x-2";
 
