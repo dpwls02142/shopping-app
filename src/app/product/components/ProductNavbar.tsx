@@ -1,5 +1,7 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 import {
   NAV_CONTAINER,
   TAB_BUTTON_ACTIVE,
@@ -20,7 +22,7 @@ function ProductNavbar({
 }: ProductNavbarProps) {
   const topStyle = isVisible ? "top-[60px]" : "top-0";
   return (
-    <div className={`${NAV_CONTAINER} ${topStyle}`}>
+    <div className={cn(NAV_CONTAINER, topStyle)}>
       <div className="flex">
         <button
           onClick={() => onTabChange("reviews")}

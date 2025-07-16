@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { cn } from "@/lib/utils";
 import { NavigationPage } from "@/lib/types/navgationType";
 
 import {
@@ -29,7 +30,7 @@ function AppNavbar() {
 
   return (
     <nav className={NAV_CONTAINER}>
-      <div className={FLEX_ITEMS_CENTER + " px-4"}>
+      <div className={cn(FLEX_ITEMS_CENTER, "px-4")}>
         {navItems.map((item) => (
           <Link
             key={item.page}
