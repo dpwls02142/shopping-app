@@ -44,5 +44,5 @@ export const SWIPE_CONTAINER = "h-full cursor-grab active:cursor-grabbing";
 export const EMPTY_STATE_TEXT = "text-gray-500 text-xl mb-4";
 export const CART_ALERT =
   "absolute -top-3 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center min-w-[20px] font-medium";
-export const BACK_BUTTON = "flex items-center justify-center h-6";
+export const BACK_BUTTON = "absolute top-4 left-4 z-50 flex items-center justify-center";
 export const SUBMIT_BUTTON = "w-full h-12 text-lg";
