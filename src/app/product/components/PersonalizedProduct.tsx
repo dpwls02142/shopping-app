@@ -1,37 +1,10 @@
 import { Suspense } from "react";
-import Link from "next/link";
-
-import { ProductPreviewInfo } from "@/lib/types/productType";
-
 import { fetchCustomers } from "@/lib/api/customerApi";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
-import ProductImage from "@/app/product/components/ProductImage";
-import ProductPrice from "@/app/product/components/ProductPrice";
-import ProductRating from "@/app/product/components/ProductRating";
+import ProductCard from "@/app/product/components/ProductCard";
 
-function PersonalizedProductCard({ product }: { product: ProductPreviewInfo }) {
-  return (
-    <li key={product.id}>
-      <Link href={`/product/${product.id}`}>
-        <ProductImage product={product} />
-        <div className="space-y-1">
-          <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
-            {product.name}
-          </h3>
-          <div className="flex items-center space-x-2">
-            <ProductPrice product={product} />
-          </div>
-          <div className="flex items-center text-xs text-gray-500 gap-1">
-            <ProductRating product={product} />
-          </div>
-        </div>
-      </Link>
-    </li>
-  );
-}
-
-async function PersonalizedProductsContent() {
+async function ProductsContent() {
   const [products, customers] = await Promise.all([
     fetchProductPreviewInfo(),
     fetchCustomers(),
@@ -43,7 +16,7 @@ async function PersonalizedProductsContent() {
       </h2>
       <ul className="grid grid-cols-2 gap-4">
         {products.map((product) => (
-          <PersonalizedProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </ul>
     </section>
