@@ -4,30 +4,30 @@ import { PRODUCT_RATING_SIZE } from "@/lib/styles";
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 
 type ProductRatingProps = {
-  product: ProductPreviewInfo;
-  size?: "small" | "medium" | "large";
+  averageRating?: number;
+  reviewCount?: number;
   showCount?: boolean;
+  size?: "small" | "medium" | "large";
 };
 
 function ProductRating({
-  product,
-  size = "medium",
+  averageRating,
+  reviewCount,
   showCount = true,
+  size = "medium",
 }: ProductRatingProps) {
   const classes = PRODUCT_RATING_SIZE[size];
 
   return (
     <div className={classes.container}>
       <div className={classes.rating}>
-        <Rating value={product.averageRating} readOnly>
+        <Rating value={averageRating} readOnly>
           {Array.from({ length: 5 }).map((_, index) => (
             <RatingButton key={index} size={classes.starSize} />
           ))}
         </Rating>
       </div>
-      {showCount && (
-        <span className={classes.count}>({product.reviewCount})</span>
-      )}
+      {showCount && <span className={classes.count}>({reviewCount})</span>}
     </div>
   );
 }

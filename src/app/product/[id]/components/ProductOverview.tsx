@@ -28,7 +28,8 @@ const ProductOverview = ({
             {product.name}
           </h1>
           <ProductRating
-            product={toProductPreview(productDetail)}
+            averageRating={productDetail.averageRating}
+            reviewCount={productDetail.reviewCount}
             size="large"
           />
         </div>

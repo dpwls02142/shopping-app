@@ -3,23 +3,11 @@ import Image from "next/image";
 import { formatDateToKor } from "@/lib/utils";
 import { Review } from "@/lib/types/productType";
 
-import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
+import ProductRating from "../../components/ProductRating";
 
 type ProductReviewProps = {
   reviews: Review[];
-  averageRating: number;
-  reviewCount: number;
 };
-
-function renderStars(rating: number) {
-  return (
-    <Rating value={rating} readOnly={true}>
-      {Array.from({ length: 5 }).map((_, index) => (
-        <RatingButton key={index} size={12} />
-      ))}
-    </Rating>
-  );
-}
 
 function ProductReview({ reviews }: ProductReviewProps) {
   return (
@@ -30,7 +18,11 @@ function ProductReview({ reviews }: ProductReviewProps) {
             <div key={review.id} className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center">
-                  {renderStars(review.reviewScore)}
+                  <ProductRating
+                    averageRating={review.reviewScore}
+                    showCount={false}
+                    size="medium"
+                  />
                   <span className="ml-2 text-sm text-gray-600">
                     {formatDateToKor(review.createdAt)}
                   </span>
