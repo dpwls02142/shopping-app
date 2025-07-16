@@ -11,8 +11,7 @@ import { MinusIcon, PlusIcon } from "lucide-react";
 import useProductQuantity from "@/app/product/[id]/hooks/forms/useProductQuantity";
 
 type AddToCartQuantityProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any>;
+  control: Control<{ quantity: number }>;
   maxPurchaseQuantity?: number;
   onQuantityChange?: (quantity: number) => void;
   selectedOptions?: Record<string, string>;
@@ -23,8 +22,6 @@ function AddToCartQuantity({
   control,
   maxPurchaseQuantity = 0,
   onQuantityChange,
-  selectedOptions = {},
-  showSelectedOptions = true,
 }: AddToCartQuantityProps) {
   const { setQuantity } = useProductQuantity({
     control,
@@ -32,21 +29,8 @@ function AddToCartQuantity({
     onChange: onQuantityChange,
   });
 
-  const hasSelectedOptions = Object.values(selectedOptions).some(
-    (value) => value !== "",
-  );
-
   return (
     <div className="bg-gray-50 rounded-lg">
-      {hasSelectedOptions && showSelectedOptions && (
-        <div className={OPTION_TEXT}>
-          {Object.entries(selectedOptions)
-            .filter(([_, value]) => value !== "")
-            .map(([key, value]) => `${key}: ${value}`)
-            .join(" / ")}
-        </div>
-      )}
-
       <FormField
         control={control}
         name="quantity"
