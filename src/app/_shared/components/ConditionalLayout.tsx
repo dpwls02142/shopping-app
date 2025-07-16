@@ -3,6 +3,8 @@
 import { ReactNode, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
+import { FLEX_LAYOUT, MAIN_CONTAINER } from "@/lib/styles";
+
 import {
   useInitializeFromUrl,
   useShowBackButton,
@@ -31,11 +33,11 @@ function ConditionalLayout({ children }: ConditionalLayoutProps) {
   }, [pathname, searchParams, initializeFromUrl]);
 
   return (
-    <div className="h-full flex flex-col">
+    <div className={FLEX_LAYOUT}>
       {showHeader && <AppHeader />}
       {showNavbar && <AppNavbar />}
       {showBackButton && <BackButton />}
-      <main className="flex-1 overflow-y-auto">{children}</main>
+      <main className={MAIN_CONTAINER}>{children}</main>
     </div>
   );
 }

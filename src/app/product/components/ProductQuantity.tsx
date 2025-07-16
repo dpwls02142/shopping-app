@@ -1,18 +1,14 @@
 "use client";
 
 import { Control } from "react-hook-form";
+
+import { FLEX_ITEMS_CENTER, OPTION_TEXT } from "@/lib/styles";
+import { Button } from "@/ui/button";
+import { FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
+import { Input } from "@/ui/input";
 import { MinusIcon, PlusIcon } from "lucide-react";
 
 import useProductQuantity from "@/app/product/hooks/forms/useProductQuantity";
-
-import { Button } from "@/ui/button";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/ui/form";
-import { Input } from "@/ui/input";
 
 type ProductQuantityProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,13 +33,13 @@ function ProductQuantity({
   });
 
   const hasSelectedOptions = Object.values(selectedOptions).some(
-    (value) => value !== ""
+    (value) => value !== "",
   );
 
   return (
     <div className="bg-gray-50 rounded-lg">
       {hasSelectedOptions && showSelectedOptions && (
-        <div className="mb-2 text-sm text-gray-600">
+        <div className={OPTION_TEXT}>
           {Object.entries(selectedOptions)
             .filter(([_, value]) => value !== "")
             .map(([key, value]) => `${key}: ${value}`)
@@ -57,7 +53,7 @@ function ProductQuantity({
         render={({ field }) => (
           <FormItem>
             <FormControl>
-              <div className="flex items-center space-x-2">
+              <div className={FLEX_ITEMS_CENTER}>
                 <Button
                   type="button"
                   variant="ghost"

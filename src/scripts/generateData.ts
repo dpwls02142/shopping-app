@@ -58,7 +58,7 @@ const productOptions = products.flatMap((p) => {
       additionalPrice: faker.number.int({ min: 0, max: 1000 }),
       stockQuantity: faker.number.int({ min: 5, max: 50 }),
       maxPurchaseQuantity: faker.number.int({ min: 3, max: 5 }),
-    }))
+    })),
   );
 });
 
@@ -156,7 +156,7 @@ const db = {
 
 fs.writeFileSync(
   path.join("lib", "db", "db.json"),
-  JSON.stringify(db, null, 2)
+  JSON.stringify(db, null, 2),
 );
 
 console.log("더미 데이터 생성: lib/db/db.json");

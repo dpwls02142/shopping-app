@@ -1,11 +1,11 @@
-import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
-
 import DailyProduct from "@/app/(main)/deal/components/DailyProduct";
+
+import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 
 async function DailyProductList() {
   const products = await fetchAllProductsWithDetails();
   const dailyDealProducts = products.filter(
-    (p) => p.discount?.discountType === "daily_deal"
+    (p) => p.discount?.discountType === "daily_deal",
   );
 
   return (

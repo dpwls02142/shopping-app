@@ -3,6 +3,8 @@
 import { ReactNode } from "react";
 import { motion, PanInfo } from "framer-motion";
 
+import { SWIPE_CONTAINER } from "@/lib/styles";
+
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
 interface SwipeContainerProps {
@@ -16,7 +18,7 @@ function AppSwipeNavbar({ children }: SwipeContainerProps) {
 
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
+    info: PanInfo,
   ) => {
     const { offset } = info;
 
@@ -36,7 +38,7 @@ function AppSwipeNavbar({ children }: SwipeContainerProps) {
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       onDragEnd={handleDragEnd}
-      className="h-full cursor-grab active:cursor-grabbing"
+      className={SWIPE_CONTAINER}
     >
       {children}
     </motion.div>

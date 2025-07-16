@@ -2,10 +2,11 @@ import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { formatPriceToKor } from "@/lib/utils";
+import { ProductPreviewInfo } from "@/lib/types/productType";
+
 import { fetchCustomers } from "@/lib/api/customerApi";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
-import { ProductPreviewInfo } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils";
 
 function ProductImage({ product }: { product: ProductPreviewInfo }) {
   return (

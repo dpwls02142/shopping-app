@@ -3,8 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
+import { ProductDetailInfo } from "@/lib/types/productType";
+
+import {
+  BASE_PRICE_TEXT,
+  DISCOUNT_PRICE_TEXT,
+  FLEX_ITEMS_CENTER,
+  OPTION_TEXT,
+  TITLE,
+} from "@/lib/styles";
 
 import DealTimer from "@/app/(main)/deal/components/DealTimer";
 
@@ -27,20 +35,18 @@ function DailyProduct({ product }: DailyProductProps) {
             />
           </div>
           <div className="p-4">
-            <h3 className="text-lg font-semibold truncate">
-              {product.product.name}
-            </h3>
+            <h3 className={TITLE}>{product.product.name}</h3>
             <div className="flex items-baseline my-2">
-              <span className="text-xl font-bold">
+              <span className={DISCOUNT_PRICE_TEXT}>
                 {formatPriceToKor(product.discount?.discountedPrice ?? 0)}원
               </span>
-              <span className="text-gray-500 line-through ml-2">
+              <span className={BASE_PRICE_TEXT}>
                 {formatPriceToKor(product.product.basePrice)}원
               </span>
             </div>
-            <div className="text-sm text-gray-600">
+            <div className={FLEX_ITEMS_CENTER}>
               <span className="text-yellow-400">★</span>
-              <span className="text-sm text-gray-500">
+              <span className={OPTION_TEXT}>
                 {product.averageRating} ({product.reviewCount})
               </span>
             </div>

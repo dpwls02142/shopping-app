@@ -1,18 +1,19 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
 import Link from "next/link";
-import { X } from "lucide-react";
 
-import { CartItem as CartItemType } from "@/lib/types/cartType";
 import { formatPriceToKor } from "@/lib/utils";
 import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
+import { CartItem as CartItemType } from "@/lib/types/cartType";
+
+import { FLEX_CENTER, OPTION_TEXT, TITLE } from "@/lib/styles";
+import { Button } from "@/ui/button";
+import { X } from "lucide-react";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
-
-import { Button } from "@/ui/button";
 
 import ProductQuantity from "@/app/product/components/ProductQuantity";
 
@@ -48,9 +49,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
       <div className="p-4">
         <div className="flex items-start justify-between mb-2">
           <Link href={`/product/${item.product.id}`} className="flex-1">
-            <h3 className="font-semibold text-lg text-gray-900">
-              {item.product.name}
-            </h3>
+            <h3 className={TITLE}>{item.product.name}</h3>
           </Link>
           <Button
             variant="ghost"
@@ -70,7 +69,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
           <div className="flex-1">
             <div className="flex flex-wrap gap-2">
               {Object.entries(selectedOptions).map(([key, value]) => (
-                <span key={key} className="text-sm text-gray-600">
+                <span key={key} className={OPTION_TEXT}>
                   {key}: {value}
                 </span>
               ))}
@@ -83,7 +82,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
                 control={form.control}
                 maxPurchaseQuantity={getMaxPurchaseQuantity(
                   item.productOptions,
-                  selectedOptions
+                  selectedOptions,
                 )}
                 selectedOptions={selectedOptions}
                 showSelectedOptions={false}
@@ -93,11 +92,9 @@ function CartItem({ item, onRemove }: CartItemProps) {
           </div>
         </div>
 
-        <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-          <span className="text-sm text-gray-600">주문 금액</span>
-          <span className="font-semibold text-lg text-gray-900">
-            {formatPriceToKor(item.totalPrice)}원
-          </span>
+        <div className={FLEX_CENTER}>
+          <span className={OPTION_TEXT}>주문 금액</span>
+          <span className={TITLE}>{formatPriceToKor(item.totalPrice)}원</span>
         </div>
       </div>
     </div>

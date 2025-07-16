@@ -32,7 +32,7 @@ function useDealTimer() {
       if (remainingSeconds > 0) {
         const hours = Math.floor(remainingSeconds / SECONDS_PER_HOUR);
         const minutes = Math.floor(
-          (remainingSeconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE
+          (remainingSeconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE,
         );
         const seconds = remainingSeconds % SECONDS_PER_MINUTE;
 
@@ -43,7 +43,7 @@ function useDealTimer() {
         });
 
         setProgress(
-          (secondsPassed / TOTAL_SECONDS_IN_DAY) * PERCENTAGE_MULTIPLIER
+          (secondsPassed / TOTAL_SECONDS_IN_DAY) * PERCENTAGE_MULTIPLIER,
         );
       }
     }, TIMER_INTERVAL_MS);

@@ -4,11 +4,16 @@ import { useState } from "react";
 import Image from "next/image";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
+import { ProductDetailInfo } from "@/lib/types/productType";
 
-import useProductNavigation from "@/app/product/hooks/useProductNavigation";
-
+import {
+  BASE_PRICE_TEXT,
+  CART_BOTTOM_CONTAINER,
+  DISCOUNT_PRICE_TEXT,
+  DISCOUNT_RATE_TEXT,
+  FLEX_LAYOUT,
+} from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 import {
@@ -19,6 +24,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/ui/sheet";
+
+import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
 import DealTimer from "@/app/(main)/deal/components/DealTimer";
 import AddToCartForm from "@/app/product/components/AddToCartForm";
@@ -60,24 +67,18 @@ const ProductPrice = ({
   if (discount) {
     return (
       <div>
-        <div className="flex items-center mb-1">
-          <span className="text-2xl font-bold text-red-500 mr-2">
-            {discount.discountRate}%
-          </span>
-          <span className="text-2xl font-bold text-gray-900">
+        <div className="flex items-center mb-1 space-x-2">
+          <span className={DISCOUNT_RATE_TEXT}>{discount.discountRate}%</span>
+          <span className={DISCOUNT_PRICE_TEXT}>
             {formatPriceToKor(discount.discountedPrice)}원
           </span>
         </div>
-        <div className="text-sm text-gray-500 line-through">
-          {formatPriceToKor(basePrice)}원
-        </div>
+        <div className={BASE_PRICE_TEXT}>{formatPriceToKor(basePrice)}원</div>
       </div>
     );
   } else {
     return (
-      <div className="text-2xl font-bold text-gray-900">
-        {formatPriceToKor(basePrice)}원
-      </div>
+      <div className={DISCOUNT_PRICE_TEXT}>{formatPriceToKor(basePrice)}원</div>
     );
   }
 };
@@ -160,7 +161,7 @@ function ProductView({ productDetail }: ProductDetailProps) {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className={FLEX_LAYOUT}>
       <div className="flex-1 pb-20">
         <ProductInfo productDetail={productDetail} />
         <div className="bg-gray-100 pt-2">
@@ -173,7 +174,7 @@ function ProductView({ productDetail }: ProductDetailProps) {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[468px] bg-white border-t border-gray-200 p-4 z-50">
+      <div className={CART_BOTTOM_CONTAINER}>
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild>
             <Button className="w-full h-12 text-lg font-bold">장바구니</Button>
@@ -192,6 +193,7 @@ function ProductView({ productDetail }: ProductDetailProps) {
                 </SheetDescription>
               </SheetHeader>
             </VisuallyHidden>
+
             <div className="flex-1 overflow-hidden">
               <AddToCartForm
                 productDetail={productDetail}

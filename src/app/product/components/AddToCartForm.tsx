@@ -1,13 +1,21 @@
 "use client";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
-import { formatPriceToKor } from "@/lib/utils";
+import { cn, formatPriceToKor } from "@/lib/utils";
 import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
+import { ProductDetailInfo } from "@/lib/types/productType";
 
-import useAddToCartForm from "@/app/product/hooks/forms/useAddToCartForm";
-
+import {
+  FLEX_CENTER,
+  FLEX_ITEMS_START_BETWEEN,
+  FLEX_WRAP,
+  OPTION_TEXT,
+  SUBMIT_BUTTON,
+  TITLE,
+} from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { Form } from "@/ui/form";
+
+import useAddToCartForm from "@/app/product/hooks/forms/useAddToCartForm";
 
 import ProductOptions from "@/app/product/components/ProductOptions";
 import ProductQuantity from "@/app/product/components/ProductQuantity";
@@ -34,15 +42,13 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
 
         <div className="space-y-4 pt-4">
           <div className="bg-gray-50 p-4 rounded-lg">
-            <span className="text-sm text-gray-600 mb-1 block">
-              선택한 옵션
-            </span>
+            <span className={OPTION_TEXT}>선택한 옵션</span>
 
-            <div className="flex justify-between items-start">
-              <div className="flex flex-wrap items-center gap-2">
+            <div className={FLEX_ITEMS_START_BETWEEN}>
+              <div className={FLEX_WRAP}>
                 {convertRecordToKeyValueArray(addToCartForm.watchedOptions).map(
                   (option) => (
-                    <span key={option.key} className="text-sm text-gray-600">
+                    <span key={option.key} className={cn(OPTION_TEXT, "mr-2")}>
                       {option.key}: {option.value}
                     </span>
                   )
@@ -61,15 +67,15 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
         </div>
 
         <div className="pt-2">
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-lg text-gray-600">상품 금액</span>
-            <span className="text-2xl font-bold text-gray-900">
+          <div className={FLEX_CENTER}>
+            <span className={OPTION_TEXT}>상품 금액</span>
+            <span className={TITLE}>
               {formatPriceToKor(addToCartForm.totalAmount)}원
             </span>
           </div>
           <Button
             type="submit"
-            className="w-full h-12 text-lg"
+            className={SUBMIT_BUTTON}
             disabled={!addToCartForm.allOptionsSelected}
           >
             장바구니

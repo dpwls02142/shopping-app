@@ -1,5 +1,14 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
+import {
+  NAV_CONTAINER,
+  TAB_BUTTON_ACTIVE,
+  TAB_BUTTON_BASE,
+  TAB_BUTTON_INACTIVE,
+} from "@/lib/styles";
+
 type ProductNavbarProps = {
   activeTab: "reviews" | "details";
   onTabChange: (tab: "reviews" | "details") => void;
@@ -13,26 +22,20 @@ function ProductNavbar({
 }: ProductNavbarProps) {
   const topStyle = isVisible ? "top-[60px]" : "top-0";
   return (
-    <div
-      className={`bg-white border-b border-gray-200 sticky z-40 ${topStyle}`}
-    >
+    <div className={cn(NAV_CONTAINER, topStyle)}>
       <div className="flex">
         <button
           onClick={() => onTabChange("reviews")}
-          className={`flex-1 py-3 px-4 text-center font-medium ${
-            activeTab === "reviews"
-              ? "text-black border-b-2 border-black"
-              : "text-gray-600 hover:text-gray-900"
+          className={`${TAB_BUTTON_BASE} ${
+            activeTab === "reviews" ? TAB_BUTTON_ACTIVE : TAB_BUTTON_INACTIVE
           }`}
         >
           리뷰
         </button>
         <button
           onClick={() => onTabChange("details")}
-          className={`flex-1 py-3 px-4 text-center font-medium ${
-            activeTab === "details"
-              ? "text-black border-b-2 border-black"
-              : "text-gray-600 hover:text-gray-900"
+          className={`${TAB_BUTTON_BASE} ${
+            activeTab === "details" ? TAB_BUTTON_ACTIVE : TAB_BUTTON_INACTIVE
           }`}
         >
           상품정보

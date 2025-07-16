@@ -1,6 +1,16 @@
 import Link from "next/link";
 
+import { cn } from "@/lib/utils";
 import { NavigationPage } from "@/lib/types/navgationType";
+
+import {
+  FLEX_ITEMS_CENTER,
+  NAV_CONTAINER,
+  NAV_ITEM_ACTIVE,
+  NAV_ITEM_BASE,
+  NAV_ITEM_INACTIVE,
+  NAV_ITEM_LABEL,
+} from "@/lib/styles";
 
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
@@ -19,20 +29,18 @@ function AppNavbar() {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-200 flex-shrink-0 z-40">
-      <div className="flex items-center px-4">
+    <nav className={NAV_CONTAINER}>
+      <div className={cn(FLEX_ITEMS_CENTER, "px-4")}>
         {navItems.map((item) => (
           <Link
             key={item.page}
             href={item.href}
             onClick={(e) => handleTabClick(item.page, e)}
-            className={`flex items-center space-x-2 px-4 py-3 border-b-2 ${
-              currentPage === item.page
-                ? "border-black text-black"
-                : "border-transparent text-gray-600"
+            className={`${NAV_ITEM_BASE} ${
+              currentPage === item.page ? NAV_ITEM_ACTIVE : NAV_ITEM_INACTIVE
             }`}
           >
-            <span className="text-sm font-medium">{item.label}</span>
+            <span className={NAV_ITEM_LABEL}>{item.label}</span>
           </Link>
         ))}
       </div>

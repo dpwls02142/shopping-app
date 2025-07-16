@@ -4,7 +4,7 @@ import { ProductOption } from "@/lib/types/productType";
 
 function useProductOptions(
   productOptions: ProductOption[],
-  control: Control<{ options: Record<string, string> }>
+  control: Control<{ options: Record<string, string> }>,
 ) {
   const watchedOptions = useWatch({ control, name: "options" });
 
@@ -33,7 +33,7 @@ function useProductOptions(
   const handleOptionChange = (
     key: string,
     value: string,
-    onChange: (opts: Record<string, string>) => void
+    onChange: (opts: Record<string, string>) => void,
   ) => {
     const newOptions = { ...watchedOptions, [key]: value };
     onChange(newOptions);

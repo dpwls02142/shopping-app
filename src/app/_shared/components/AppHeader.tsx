@@ -1,13 +1,23 @@
 import Link from "next/link";
+
+import {
+  CART_ALERT,
+  FLEX_CENTER,
+  HEADER_CONTAINER,
+  HEADER_LEFT_AREA,
+  HEADER_RIGHT_AREA,
+  ICON,
+  TITLE,
+} from "@/lib/styles";
 import { ShoppingCart } from "lucide-react";
 
 import { useCurrentPage } from "@/app/_shared/hooks/useAppNavigation";
-
 import useCartStore from "@/app/cart/stores/useCartStore";
 
 import BackButton from "@/app/_shared/components/BackButton";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
+
 function AppHeader() {
   const currentPage = useCurrentPage();
   const isMainPage = currentPage === "home" || currentPage === "deal";
@@ -22,28 +32,20 @@ function AppHeader() {
   }
 
   return (
-    <header className="bg-white px-4 py-3 flex-shrink-0 z-50">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          {isMainPage ? (
-            <span className="text-lg font-bold text-gray-900">쇼핑</span>
-          ) : (
-            <BackButton />
-          )}
+    <header className={HEADER_CONTAINER}>
+      <div className={FLEX_CENTER}>
+        <div className={HEADER_LEFT_AREA}>
+          {isMainPage ? <span className={TITLE}>쇼핑</span> : <BackButton />}
         </div>
         {!isCartPage && (
-          <Link
-            href="/cart"
-            className="flex items-center space-x-1 p-2 relative"
-            aria-label="장바구니"
-          >
-            <ShoppingCart className="w-5 h-5 text-gray-700" />
-            {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center min-w-[20px] font-medium">
-                {displayTotalItems}
-              </span>
-            )}
-          </Link>
+          <div className={HEADER_RIGHT_AREA}>
+            <Link href="/cart" className="relative" aria-label="장바구니">
+              <ShoppingCart className={ICON} />
+              {totalItems > 0 && (
+                <span className={CART_ALERT}>{displayTotalItems}</span>
+              )}
+            </Link>
+          </div>
         )}
       </div>
     </header>

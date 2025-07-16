@@ -33,7 +33,7 @@ function useAppNavigation() {
           break;
       }
     },
-    [store, router]
+    [store, router],
   );
 
   const goBack = useCallback(() => {
@@ -86,7 +86,7 @@ function useInitializeFromUrl() {
 
       navigateTo(page);
     },
-    [navigateTo]
+    [navigateTo],
   );
 }
 

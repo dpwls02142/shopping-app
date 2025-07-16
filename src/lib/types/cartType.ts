@@ -23,17 +23,17 @@ type CartActions = {
     selectedOptions: ProductOption[],
     quantity: number,
     discountedPrice?: number,
-    allAvailableOptions?: ProductOption[]
+    allAvailableOptions?: ProductOption[],
   ) => void;
   removeFromCart: (itemId: string) => void;
   updateQuantity: (
     itemId: string,
     quantity: number,
-    allAvailableOptions?: ProductOption[]
+    allAvailableOptions?: ProductOption[],
   ) => void;
   getItemById: (itemId: string) => CartItem | undefined;
 };
 
 type CartStore = CartState & CartActions;
 
-export type { CartActions, CartItem, CartState,CartStore };
+export type { CartActions, CartItem, CartState, CartStore };
