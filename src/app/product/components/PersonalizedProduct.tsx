@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { formatPriceToKor } from "@/lib/utils";
@@ -8,20 +7,7 @@ import { ProductPreviewInfo } from "@/lib/types/productType";
 import { fetchCustomers } from "@/lib/api/customerApi";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
-function ProductImage({ product }: { product: ProductPreviewInfo }) {
-  return (
-    <div className="relative w-full aspect-square mb-2 overflow-hidden rounded-lg">
-      <Image
-        src={product.thumbnailImage ?? ""}
-        alt={product.name}
-        fill
-        sizes="50vw"
-        className="object-cover"
-        priority
-      />
-    </div>
-  );
-}
+import ProductImage from "@/app/product/components/ProductImage";
 
 function ProductPrice({ product }: { product: ProductPreviewInfo }) {
   const { basePrice, discountedPrice } = product;
@@ -118,7 +104,7 @@ function ProductCardSkeleton() {
   );
 }
 
-function PersonalizedProductSkeleton() {
+function ProductListSkeleton() {
   return (
     <section className="px-4 py-6">
       <div className="mb-4">
@@ -135,7 +121,7 @@ function PersonalizedProductSkeleton() {
 
 function PersonalizedProduct() {
   return (
-    <Suspense fallback={<PersonalizedProductSkeleton />}>
+    <Suspense fallback={<ProductListSkeleton />}>
       <PersonalizedProductsContent />
     </Suspense>
   );
