@@ -15,7 +15,7 @@ const eslintConfig = [
   {
     plugins: {
       "simple-import-sort": simpleImportSort,
-      "import": importPlugin,
+      import: importPlugin,
     },
     rules: {
       "@typescript-eslint/no-unused-vars": [
@@ -29,27 +29,27 @@ const eslintConfig = [
         "error",
         {
           groups: [
-            // 1. 외부 라이브러리 (React 생태계 먼저)
+            // 1. 외부 라이브러리
             ["^react", "^next", "^@?\\w"],
 
-            // 2. 내부 모듈 (상위 레벨 → 하위 레벨)
-            ["^@/types"],
-            ["^@/lib", "^@/utils"],
-            ["^@/app/.*/hooks", "^@/.*hooks"],     // hooks
-            ["^@/app/.*/stores", "^@/.*stores"],   // stores  
-            ["^@/ui"],                             // UI 컴포넌트
-            ["^@/app/.*/components", "^@/.*components"], // components
-            ["^@/"],                               // 기타
+            // 2. 내부 경로
+            ["^@/lib/utils", "^@/lib/types"],
+            ["^@/lib/styles", "^@/ui"],
+            ["^@/.*hooks"],
+            ["^@/.*components"],
 
-            // 3. 상대 경로
+            // 3. 기타 내부 모듈 (예비 catch-all)
+            ["^@/"],
+
+            // 4. 상대 경로
             ["^\\.\\.(?!/?$)", "^\\.\\./?$", "^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
 
-            // 4. 사이드 이펙트
+            // 5. 사이드 이펙트 (예: CSS import)
             ["^\\u0000"]
           ]
         }
       ],
-      "prettier/prettier": "off"
+      "prettier/prettier": "off",
     },
   },
 ];

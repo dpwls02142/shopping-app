@@ -1,3 +1,4 @@
+import { fetchWithErrorHandling, getApiUrl, handleApiError } from "@/lib/utils";
 import {
   Product,
   ProductDetailInfo,
@@ -9,13 +10,12 @@ import {
   Review,
   Seller,
 } from "@/lib/types/productType";
-import { fetchWithErrorHandling, getApiUrl, handleApiError } from "@/lib/utils";
 
 export const fetchProducts = async (): Promise<Product[]> => {
   return fetchWithErrorHandling(
     getApiUrl("products"),
     "Failed to fetch products",
-    []
+    [],
   );
 };
 
@@ -25,7 +25,7 @@ export const fetchProductInventories = async (): Promise<
   return fetchWithErrorHandling(
     getApiUrl("productInventories"),
     "Failed to fetch product inventories",
-    []
+    [],
   );
 };
 
@@ -33,7 +33,7 @@ export const fetchProductOptions = async (): Promise<ProductOption[]> => {
   return fetchWithErrorHandling(
     getApiUrl("productOptions"),
     "Failed to fetch product options",
-    []
+    [],
   );
 };
 
@@ -41,7 +41,7 @@ export const fetchProductDiscounts = async (): Promise<ProductDiscount[]> => {
   return fetchWithErrorHandling(
     getApiUrl("productDiscounts"),
     "Failed to fetch product discounts",
-    []
+    [],
   );
 };
 
@@ -49,7 +49,7 @@ export const fetchProductImages = async (): Promise<ProductImage[]> => {
   return fetchWithErrorHandling(
     getApiUrl("productImages"),
     "Failed to fetch product images",
-    []
+    [],
   );
 };
 
@@ -57,7 +57,7 @@ export const fetchSellers = async (): Promise<Seller[]> => {
   return fetchWithErrorHandling(
     getApiUrl("sellers"),
     "Failed to fetch sellers",
-    []
+    [],
   );
 };
 
@@ -65,7 +65,7 @@ export const fetchProductReviews = async (): Promise<Review[]> => {
   return fetchWithErrorHandling(
     getApiUrl("productReviews"),
     "Failed to fetch product reviews",
-    []
+    [],
   );
 };
 
@@ -133,7 +133,7 @@ export const fetchAllProductsWithDetails = async (): Promise<
             ? Math.round(
                 (productReviews.reduce((sum, r) => sum + r.reviewScore, 0) /
                   reviewCount) *
-                  10
+                  10,
               ) / 10
             : 0;
 

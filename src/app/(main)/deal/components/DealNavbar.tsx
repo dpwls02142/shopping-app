@@ -2,15 +2,16 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+
 import {
   DEAL_NAV_CONTAINER,
-  DEAL_NAV_LINK,
-  DEAL_NAV_ICON_BASE,
   DEAL_NAV_ICON_ACTIVE,
+  DEAL_NAV_ICON_BASE,
   DEAL_NAV_ICON_INACTIVE,
-  DEAL_NAV_LABEL_BASE,
   DEAL_NAV_LABEL_ACTIVE,
+  DEAL_NAV_LABEL_BASE,
   DEAL_NAV_LABEL_INACTIVE,
+  DEAL_NAV_LINK,
 } from "@/lib/styles";
 
 const navItems = [

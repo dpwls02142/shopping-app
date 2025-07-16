@@ -3,6 +3,8 @@
 import { ReactNode, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
+import { FLEX_LAYOUT, MAIN_CONTAINER } from "@/lib/styles";
+
 import {
   useInitializeFromUrl,
   useShowBackButton,
@@ -13,7 +15,6 @@ import {
 import AppHeader from "@/app/_shared/components/AppHeader";
 import AppNavbar from "@/app/_shared/components/AppNavbar";
 import BackButton from "@/app/_shared/components/BackButton";
-import { FLEX_LAYOUT, MAIN_CONTAINER } from "@/lib/styles";
 
 interface ConditionalLayoutProps {
   children: ReactNode;

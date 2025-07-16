@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { Review } from "@/lib/types/productType";
 import { formatDateToKor } from "@/lib/utils";
+import { Review } from "@/lib/types/productType";
 
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 
@@ -19,7 +19,7 @@ function renderStars(rating: number) {
       ))}
     </Rating>
   );
-};
+}
 
 function ProductReview({ reviews }: ProductReviewProps) {
   return (
@@ -60,6 +60,6 @@ function ProductReview({ reviews }: ProductReviewProps) {
       </div>
     </div>
   );
-};
+}
 
 export default ProductReview;

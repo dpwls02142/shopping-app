@@ -3,19 +3,19 @@ import { FormProvider, useForm } from "react-hook-form";
 import Link from "next/link";
 import { X } from "lucide-react";
 
-import { CartItem as CartItemType } from "@/lib/types/cartType";
 import { formatPriceToKor } from "@/lib/utils";
 import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
+import { CartItem as CartItemType } from "@/lib/types/cartType";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
-
+import { FLEX_CENTER, OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
 
 import ProductQuantity from "@/app/product/components/ProductQuantity";
-import { FLEX_CENTER, OPTION_TEXT, TITLE } from "@/lib/styles";
+
+import useCartStore from "@/app/cart/stores/useCartStore";
 
 type CartItemProps = {
   item: CartItemType;
@@ -49,9 +49,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
       <div className="p-4">
         <div className="flex items-start justify-between mb-2">
           <Link href={`/product/${item.product.id}`} className="flex-1">
-            <h3 className={TITLE}>
-              {item.product.name}
-            </h3>
+            <h3 className={TITLE}>{item.product.name}</h3>
           </Link>
           <Button
             variant="ghost"
@@ -84,7 +82,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
                 control={form.control}
                 maxPurchaseQuantity={getMaxPurchaseQuantity(
                   item.productOptions,
-                  selectedOptions
+                  selectedOptions,
                 )}
                 selectedOptions={selectedOptions}
                 showSelectedOptions={false}
@@ -96,9 +94,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
 
         <div className={FLEX_CENTER}>
           <span className={OPTION_TEXT}>주문 금액</span>
-          <span className={TITLE}>
-            {formatPriceToKor(item.totalPrice)}원
-          </span>
+          <span className={TITLE}>{formatPriceToKor(item.totalPrice)}원</span>
         </div>
       </div>
     </div>

@@ -3,8 +3,9 @@
 import { ReactNode } from "react";
 import { motion, PanInfo } from "framer-motion";
 
-import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 import { SWIPE_CONTAINER } from "@/lib/styles";
+
+import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
 interface SwipeContainerProps {
   children: ReactNode;
@@ -17,7 +18,7 @@ function AppSwipeNavbar({ children }: SwipeContainerProps) {
 
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
+    info: PanInfo,
   ) => {
     const { offset } = info;
 

@@ -1,3 +1,4 @@
+import { getApiUrl, handleApiError } from "@/lib/utils";
 import {
   Product,
   ProductDetailInfo,
@@ -7,10 +8,9 @@ import {
   Review,
   Seller,
 } from "@/lib/types/productType";
-import { getApiUrl, handleApiError } from "@/lib/utils";
 
 export const fetchProductByProductId = async (
-  productId: string
+  productId: string,
 ): Promise<Product> => {
   const response = await fetch(getApiUrl(`products/${productId}`));
   if (!response.ok) {
@@ -20,11 +20,11 @@ export const fetchProductByProductId = async (
 };
 
 export const fetchProductDiscountByProductId = async (
-  productId: string
+  productId: string,
 ): Promise<ProductDiscount | null> => {
   try {
     const response = await fetch(
-      getApiUrl(`productDiscounts?productId=${productId}`)
+      getApiUrl(`productDiscounts?productId=${productId}`),
     );
     if (!response.ok) {
       console.warn("No discount found for product", productId);
@@ -38,11 +38,11 @@ export const fetchProductDiscountByProductId = async (
 };
 
 export const fetchProductImageByProductId = async (
-  productId: string
+  productId: string,
 ): Promise<ProductImage[]> => {
   try {
     const response = await fetch(
-      getApiUrl(`productImages?productId=${productId}`)
+      getApiUrl(`productImages?productId=${productId}`),
     );
     if (!response.ok) {
       throw new Error(`Failed to fetch product images: ${response.statusText}`);
@@ -54,11 +54,11 @@ export const fetchProductImageByProductId = async (
 };
 
 export const fetchProductReviewByProductId = async (
-  productId: string
+  productId: string,
 ): Promise<Review[]> => {
   try {
     const response = await fetch(
-      getApiUrl(`productReviews?productId=${productId}`)
+      getApiUrl(`productReviews?productId=${productId}`),
     );
     if (!response.ok) {
       return [];
@@ -70,11 +70,11 @@ export const fetchProductReviewByProductId = async (
 };
 
 export const fetchProductOptionsByProductId = async (
-  productId: string
+  productId: string,
 ): Promise<ProductOption[]> => {
   try {
     const response = await fetch(
-      getApiUrl(`productOptions?productId=${productId}`)
+      getApiUrl(`productOptions?productId=${productId}`),
     );
     if (!response.ok) {
       return [];
@@ -94,7 +94,7 @@ export const fetchSellerById = async (sellerId: string): Promise<Seller> => {
 };
 
 export const fetchProductDetail = async (
-  productId: string
+  productId: string,
 ): Promise<ProductDetailInfo> => {
   try {
     const product = await fetchProductByProductId(productId);
@@ -108,7 +108,7 @@ export const fetchProductDetail = async (
     ]);
 
     const thumbnailImage = images.find(
-      (img) => img.imageType === "thumbnail"
+      (img) => img.imageType === "thumbnail",
     )?.imageUrl;
     const detailImages = images
       .filter((img) => img.imageType === "detail")
@@ -119,7 +119,7 @@ export const fetchProductDetail = async (
       reviewCount > 0
         ? Math.round(
             (reviews.reduce((sum, r) => sum + r.reviewScore, 0) / reviewCount) *
-              10
+              10,
           ) / 10
         : 0;
 

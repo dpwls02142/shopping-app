@@ -3,17 +3,12 @@
 import { Control } from "react-hook-form";
 import { MinusIcon, PlusIcon } from "lucide-react";
 
-import useProductQuantity from "@/app/product/hooks/forms/useProductQuantity";
-
-import { Button } from "@/ui/button";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/ui/form";
-import { Input } from "@/ui/input";
 import { FLEX_ITEMS_CENTER, OPTION_TEXT } from "@/lib/styles";
+import { Button } from "@/ui/button";
+import { FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
+import { Input } from "@/ui/input";
+
+import useProductQuantity from "@/app/product/hooks/forms/useProductQuantity";
 
 type ProductQuantityProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,7 +33,7 @@ function ProductQuantity({
   });
 
   const hasSelectedOptions = Object.values(selectedOptions).some(
-    (value) => value !== ""
+    (value) => value !== "",
   );
 
   return (

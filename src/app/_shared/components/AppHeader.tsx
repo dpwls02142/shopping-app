@@ -1,21 +1,21 @@
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 
-import { useCurrentPage } from "@/app/_shared/hooks/useAppNavigation";
+import {
+  CART_ALERT,
+  FLEX_CENTER,
+  HEADER_CONTAINER,
+  HEADER_LEFT_AREA,
+  HEADER_RIGHT_AREA,
+  ICON,
+  TITLE,
+} from "@/lib/styles";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import { useCurrentPage } from "@/app/_shared/hooks/useAppNavigation";
 
 import BackButton from "@/app/_shared/components/BackButton";
 
-import {
-  CART_ALERT,
-  ICON,
-  TITLE,
-  HEADER_CONTAINER,
-  FLEX_CENTER,
-  HEADER_LEFT_AREA,
-  HEADER_RIGHT_AREA,
-} from "@/lib/styles";
+import useCartStore from "@/app/cart/stores/useCartStore";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
 

@@ -1,16 +1,9 @@
 "use client";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
 import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
+import { ProductDetailInfo } from "@/lib/types/productType";
 
-import useAddToCartForm from "@/app/product/hooks/forms/useAddToCartForm";
-
-import { Button } from "@/ui/button";
-import { Form } from "@/ui/form";
-
-import ProductOptions from "@/app/product/components/ProductOptions";
-import ProductQuantity from "@/app/product/components/ProductQuantity";
 import {
   FLEX_CENTER,
   FLEX_ITEMS_START,
@@ -19,6 +12,13 @@ import {
   SUBMIT_BUTTON,
   TITLE,
 } from "@/lib/styles";
+import { Button } from "@/ui/button";
+import { Form } from "@/ui/form";
+
+import useAddToCartForm from "@/app/product/hooks/forms/useAddToCartForm";
+
+import ProductOptions from "@/app/product/components/ProductOptions";
+import ProductQuantity from "@/app/product/components/ProductQuantity";
 
 type AddToCartFormProps = {
   productDetail: ProductDetailInfo;
@@ -42,9 +42,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
 
         <div className="space-y-4 pt-4">
           <div className="bg-gray-50 p-4 rounded-lg">
-            <span className={OPTION_TEXT}>
-              선택한 옵션
-            </span>
+            <span className={OPTION_TEXT}>선택한 옵션</span>
 
             <div className={FLEX_ITEMS_START}>
               <div className={FLEX_WRAP}>
@@ -53,7 +51,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
                     <span key={option.key} className={OPTION_TEXT}>
                       {option.key}: {option.value}
                     </span>
-                  )
+                  ),
                 )}
               </div>
 

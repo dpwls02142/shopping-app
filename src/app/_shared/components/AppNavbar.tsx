@@ -2,16 +2,16 @@ import Link from "next/link";
 
 import { NavigationPage } from "@/lib/types/navgationType";
 
-import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
-
 import {
-  NAV_ITEM_LABEL,
-  NAV_CONTAINER,
   FLEX_ITEMS_CENTER,
-  NAV_ITEM_BASE,
+  NAV_CONTAINER,
   NAV_ITEM_ACTIVE,
+  NAV_ITEM_BASE,
   NAV_ITEM_INACTIVE,
+  NAV_ITEM_LABEL,
 } from "@/lib/styles";
+
+import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
 const navItems = [
   { page: "home", label: "쇼핑 홈", href: "/" },

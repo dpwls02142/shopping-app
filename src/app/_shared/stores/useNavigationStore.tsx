@@ -73,8 +73,8 @@ const useNavigationStore = create<NavigationStore>()(
         showNavbar: state.showNavbar,
         showBackButton: state.showBackButton,
       }),
-    }
-  )
+    },
+  ),
 );
 
 export default useNavigationStore;

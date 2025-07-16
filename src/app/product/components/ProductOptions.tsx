@@ -2,8 +2,6 @@ import { Control } from "react-hook-form";
 
 import { ProductOption } from "@/lib/types/productType";
 
-import useProductOptions from "@/app/product/hooks/forms/useProductOptions";
-
 import {
   FormControl,
   FormField,
@@ -18,6 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/ui/select";
+
+import useProductOptions from "@/app/product/hooks/forms/useProductOptions";
 
 type ProductOptionsProps = {
   productOptions: ProductOption[];

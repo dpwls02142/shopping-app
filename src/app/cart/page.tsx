@@ -2,19 +2,19 @@
 
 import Link from "next/link";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
-
+import {
+  CART_BOTTOM_CONTAINER,
+  CART_EMPTY_CONTAINER,
+  EMPTY_STATE_TEXT,
+  SUBMIT_BUTTON,
+  TITLE,
+} from "@/lib/styles";
 import { Button } from "@/ui/button";
 
 import CartItemList from "@/app/cart/components/CartItemList";
 import CartSummary from "@/app/cart/components/CartSummary";
-import {
-  TITLE,
-  CART_EMPTY_CONTAINER,
-  EMPTY_STATE_TEXT,
-  CART_BOTTOM_CONTAINER,
-  SUBMIT_BUTTON,
-} from "@/lib/styles";
+
+import useCartStore from "@/app/cart/stores/useCartStore";
 
 export default function CartPage() {
   const { items, totalItems } = useCartStore();
@@ -37,9 +37,7 @@ export default function CartPage() {
             </div>
             <div className={CART_BOTTOM_CONTAINER}>
               <CartSummary />
-              <Button className={SUBMIT_BUTTON}>
-                {totalItems}건 주문하기
-              </Button>
+              <Button className={SUBMIT_BUTTON}>{totalItems}건 주문하기</Button>
             </div>
           </div>
         )}

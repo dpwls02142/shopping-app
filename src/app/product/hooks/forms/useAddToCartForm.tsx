@@ -4,13 +4,13 @@ import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
 import {
   areAllOptionsSelected,
   extractOptionKeys,
   findMatchingOption,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
+import { ProductDetailInfo } from "@/lib/types/productType";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
 
@@ -45,12 +45,12 @@ function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
   const optionKeys = extractOptionKeys(productOptions || []);
   const currentMatchingOption = findMatchingOption(
     productOptions || [],
-    watchedOptions
+    watchedOptions,
   );
   const allOptionsSelected = areAllOptionsSelected(optionKeys, watchedOptions);
   const maxPurchaseQuantity = getMaxPurchaseQuantity(
     productOptions || [],
-    watchedOptions
+    watchedOptions,
   );
 
   const totalAmount = (() => {
@@ -91,7 +91,7 @@ function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
         [currentMatchingOption],
         values.quantity,
         discount?.discountedPrice,
-        productOptions
+        productOptions,
       );
       onSuccess?.();
     } catch (error) {

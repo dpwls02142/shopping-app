@@ -4,13 +4,17 @@ import { useState } from "react";
 import Image from "next/image";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
+import { ProductDetailInfo } from "@/lib/types/productType";
 
-import useProductNavigation from "@/app/product/hooks/useProductNavigation";
-
+import {
+  BASE_PRICE_TEXT,
+  CART_BOTTOM_CONTAINER,
+  DISCOUNT_PRICE_TEXT,
+  DISCOUNT_RATE_TEXT,
+  FLEX_LAYOUT,
+} from "@/lib/styles";
 import { Button } from "@/ui/button";
-import { FLEX_LAYOUT, CART_BOTTOM_CONTAINER, DISCOUNT_PRICE_TEXT, BASE_PRICE_TEXT, DISCOUNT_RATE_TEXT } from "@/lib/styles";
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 import {
   Sheet,
@@ -20,6 +24,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/ui/sheet";
+
+import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
 import DealTimer from "@/app/(main)/deal/components/DealTimer";
 import AddToCartForm from "@/app/product/components/AddToCartForm";
@@ -62,23 +68,17 @@ const ProductPrice = ({
     return (
       <div>
         <div className="flex items-center mb-1 space-x-2">
-          <span className={DISCOUNT_RATE_TEXT}>
-            {discount.discountRate}%
-          </span>
+          <span className={DISCOUNT_RATE_TEXT}>{discount.discountRate}%</span>
           <span className={DISCOUNT_PRICE_TEXT}>
             {formatPriceToKor(discount.discountedPrice)}원
           </span>
         </div>
-        <div className={BASE_PRICE_TEXT}>
-          {formatPriceToKor(basePrice)}원
-        </div>
+        <div className={BASE_PRICE_TEXT}>{formatPriceToKor(basePrice)}원</div>
       </div>
     );
   } else {
     return (
-      <div className={DISCOUNT_PRICE_TEXT}>
-        {formatPriceToKor(basePrice)}원
-      </div>
+      <div className={DISCOUNT_PRICE_TEXT}>{formatPriceToKor(basePrice)}원</div>
     );
   }
 };

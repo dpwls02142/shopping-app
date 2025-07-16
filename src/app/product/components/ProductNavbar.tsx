@@ -2,8 +2,8 @@
 
 import {
   NAV_CONTAINER,
-  TAB_BUTTON_BASE,
   TAB_BUTTON_ACTIVE,
+  TAB_BUTTON_BASE,
   TAB_BUTTON_INACTIVE,
 } from "@/lib/styles";
 

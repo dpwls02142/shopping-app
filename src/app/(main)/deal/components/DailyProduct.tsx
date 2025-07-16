@@ -3,11 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
 import { formatPriceToKor } from "@/lib/utils";
+import { ProductDetailInfo } from "@/lib/types/productType";
+
+import {
+  BASE_PRICE_TEXT,
+  DISCOUNT_PRICE_TEXT,
+  FLEX_ITEMS_CENTER,
+  OPTION_TEXT,
+  TITLE,
+} from "@/lib/styles";
 
 import DealTimer from "@/app/(main)/deal/components/DealTimer";
-import { BASE_PRICE_TEXT, DISCOUNT_PRICE_TEXT, OPTION_TEXT, FLEX_ITEMS_CENTER, TITLE } from "@/lib/styles";
 
 type DailyProductProps = {
   product: ProductDetailInfo;
@@ -28,9 +35,7 @@ function DailyProduct({ product }: DailyProductProps) {
             />
           </div>
           <div className="p-4">
-            <h3 className={TITLE}>
-              {product.product.name}
-            </h3>
+            <h3 className={TITLE}>{product.product.name}</h3>
             <div className="flex items-baseline my-2">
               <span className={DISCOUNT_PRICE_TEXT}>
                 {formatPriceToKor(product.discount?.discountedPrice ?? 0)}원
