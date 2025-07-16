@@ -57,3 +57,21 @@ export const PRODUCT_IMAGE_CONTAINER = {
   medium: "relative w-full aspect-square mb-2 overflow-hidden rounded-lg",
   large: "relative w-full aspect-square overflow-hidden",
 };
+
+export const PRODUCT_PRICE_SIZE = {
+  small: {
+    main: "text-sm font-bold text-gray-900",
+    secondary: "text-xs text-gray-500 line-through ml-1",
+    discount: "text-xs font-bold text-red-500",
+  },
+  medium: {
+    main: "text-lg font-bold text-gray-900",
+    secondary: "text-sm text-gray-500 line-through ml-1",
+    discount: "text-sm font-bold text-red-500",
+  },
+  large: {
+    main: DISCOUNT_PRICE_TEXT,
+    secondary: BASE_PRICE_TEXT,
+    discount: DISCOUNT_RATE_TEXT,
+  },
+};
