@@ -21,7 +21,7 @@ import useProductTab from "@/app/product/[id]/hooks/useProductTab";
 import AddToCartForm from "@/app/product/[id]/components/forms/AddToCartForm";
 import ProductOverview from "@/app/product/[id]/components/ProductOverview";
 import ProductTab from "@/app/product/[id]/components/ProductTab";
-import ProductContent from "@/app/product/[id]/components/ProductTabContent";
+import ProductTabContent from "@/app/product/[id]/components/ProductTabContent";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;
@@ -46,7 +46,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
             onTabChange={setActiveTab}
             isVisible={isVisible}
           />
-          <ProductContent productDetail={productDetail} activeTab={activeTab} />
+          <ProductTabContent productDetail={productDetail} activeTab={activeTab} />
         </div>
       </div>
 
