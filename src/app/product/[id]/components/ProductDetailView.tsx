@@ -152,7 +152,7 @@ const ProductContent = ({
   }
 };
 
-function ProductView({ productDetail }: ProductDetailProps) {
+function ProductDetailView({ productDetail }: ProductDetailProps) {
   const { activeTab, setActiveTab, isVisible } = useProductNavigation();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
@@ -207,4 +207,4 @@ function ProductView({ productDetail }: ProductDetailProps) {
   );
 }
 
-export default ProductView;
+export default ProductDetailView;
