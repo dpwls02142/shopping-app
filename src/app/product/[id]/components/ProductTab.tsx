@@ -9,17 +9,17 @@ import {
   TAB_BUTTON_INACTIVE,
 } from "@/lib/styles";
 
-type ProductNavbarProps = {
+type ProductDetailNavbarProps = {
   activeTab: "reviews" | "details";
   onTabChange: (tab: "reviews" | "details") => void;
   isVisible: boolean;
 };
 
-function ProductNavbar({
+function ProductDetailNavbar({
   activeTab,
   onTabChange,
   isVisible,
-}: ProductNavbarProps) {
+}: ProductDetailNavbarProps) {
   const topStyle = isVisible ? "top-[60px]" : "top-0";
   return (
     <div className={cn(NAV_CONTAINER, topStyle)}>
@@ -45,4 +45,4 @@ function ProductNavbar({
   );
 }
 
-export default ProductNavbar;
+export default ProductDetailNavbar;
