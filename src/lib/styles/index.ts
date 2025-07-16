@@ -26,6 +26,9 @@ export const CART_BOTTOM_CONTAINER =
 export const CART_EMPTY_CONTAINER =
   "flex flex-col items-center justify-center min-h-[60vh]";
 
+export const ADD_TO_CART_BOTTOM_CONTAINER =
+  "fixed bottom-0 inset-x-0 mx-auto max-w-[468px] w-full bg-white p-4 border-t z-50";
+
 export const DEAL_NAV_CONTAINER =
   "flex justify-around items-center py-4 bg-white";
 export const DEAL_NAV_LINK = "flex flex-col items-center space-y-2";

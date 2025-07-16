@@ -9,6 +9,7 @@ import {
   FLEX_ITEMS_START_BETWEEN,
   FLEX_WRAP,
   OPTION_TEXT,
+  ADD_TO_CART_BOTTOM_CONTAINER,
   SUBMIT_BUTTON,
   TITLE,
 } from "@/lib/styles";
@@ -66,7 +67,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
           </div>
         </div>
       </form>
-      <div className="fixed bottom-0 inset-x-0 mx-auto max-w-[468px] w-full bg-white p-4 border-t z-50">
+      <div className={ADD_TO_CART_BOTTOM_CONTAINER}>
         <div className={cn(FLEX_CENTER, "mb-4")}>
           <span className={OPTION_TEXT}>상품 금액</span>
           <span className={TITLE}>
