@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 import { useAppNavigation } from "@/app/hooks/useAppNavigation";
 
-import AppSwipeNavbar from "@/app/(main)/components/AppSwipeNavbar";
+import AppSwipeNavbar from "@/app/components/AppSwipeNavbar";
 
 interface MainViewProps {
   shoppingHome: ReactNode;

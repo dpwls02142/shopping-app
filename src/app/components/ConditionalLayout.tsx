@@ -10,8 +10,8 @@ import {
   useShowNavbar,
 } from "@/app/hooks/useAppNavigation";
 
-import AppNavbar from "@/app/(main)/components/AppNavbar";
 import AppHeader from "@/app/components/AppHeader";
+import AppNavbar from "@/app/components/AppNavbar";
 import BackButton from "@/app/components/BackButton";
 
 interface ConditionalLayoutProps {
