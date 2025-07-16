@@ -25,7 +25,6 @@ const ProductOverview = ({
         className="w-full aspect-square bg-gray-100"
       />
       <div className="p-4">
-
         <div className={cn(FLEX_ITEMS_START_BETWEEN, "mb-4")}>
           <h1 className="text-xl font-bold text-gray-900 flex-1">
             {product.name}
@@ -36,14 +35,8 @@ const ProductOverview = ({
             size="large"
           />
         </div>
-
-        <ProductPrice
-          product={toProductPreview(productDetail)}
-          size="large"
-          showDiscountRate={true}
-        />
+        <ProductPrice product={toProductPreview(productDetail)} size="large" />
         {discount?.discountType === "daily_deal" && <DealTimer />}
-        
       </div>
     </div>
   );
