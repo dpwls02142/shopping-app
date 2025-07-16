@@ -6,7 +6,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import useProductNavigation from "@/app/product/[id]/hooks/useProductNavigation";
 
-import DealTimer from "@/app/product/(deal)/components/DealTimer";
+import DealTimer from "@/app/(deal)/components/DealTimer";
 import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
 import ProductDetail from "@/app/product/[id]/components/ProductDetail";
 import ProductNavbar from "@/app/product/[id]/components/ProductNavbar";

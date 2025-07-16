@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import DealTimer from "@/app/product/(deal)/components/DealTimer";
+import DealTimer from "@/app/(deal)/components/DealTimer";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
 
