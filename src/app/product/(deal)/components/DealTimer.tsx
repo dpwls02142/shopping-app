@@ -1,7 +1,17 @@
-import useDealTimer from "@/app/product/(deal)/hooks/useDealTimer";
+"use client";
+import { useEffect } from "react";
+
+import useDealTimerStore from "@/app/product/(deal)/stores/useDealTimerStore";
 
 function DealTimer() {
-  const { timeLeft, progress } = useDealTimer();
+  const { timeLeft, progress, startTimer, stopTimer } = useDealTimerStore();
+
+  useEffect(() => {
+    startTimer();
+    return () => {
+      stopTimer();
+    };
+  }, [startTimer, stopTimer]);
 
   return (
     <div className="mt-4 flex items-center p-4 rounded-lg bg-gray-100">
