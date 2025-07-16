@@ -15,7 +15,7 @@ import { X } from "lucide-react";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
 
-import ProductQuantity from "@/app/product/components/ProductQuantity";
+import ProductQuantity from "@/app/product/[id]/components/ProductQuantity";
 
 type CartItemProps = {
   item: CartItemType;
@@ -82,7 +82,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
                 control={form.control}
                 maxPurchaseQuantity={getMaxPurchaseQuantity(
                   item.productOptions,
-                  selectedOptions,
+                  selectedOptions
                 )}
                 selectedOptions={selectedOptions}
                 showSelectedOptions={false}

@@ -27,11 +27,11 @@ import {
 
 import useProductNavigation from "@/app/product/hooks/useProductNavigation";
 
-import DealTimer from "@/app/(main)/deal/components/DealTimer";
-import AddToCartForm from "@/app/product/components/AddToCartForm";
-import ProductDetail from "@/app/product/components/ProductDetail";
+import DealTimer from "@/app/product/(deal)/components/DealTimer";
+import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
+import ProductDetail from "@/app/product/[id]/components/ProductDetail";
+import ProductReview from "@/app/product/[id]/components/ProductReview";
 import ProductNavbar from "@/app/product/components/ProductNavbar";
-import ProductReview from "@/app/product/components/ProductReview";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;

@@ -1,4 +1,4 @@
-import useDealTimer from "@/app/(main)/deal/hooks/useDealTimer";
+import useDealTimer from "@/app/product/(deal)/hooks/useDealTimer";
 
 function DealTimer() {
   const { timeLeft, progress } = useDealTimer();

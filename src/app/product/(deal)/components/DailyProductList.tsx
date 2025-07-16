@@ -1,4 +1,4 @@
-import DailyProduct from "@/app/(main)/deal/components/DailyProduct";
+import DailyProduct from "@/app/product/(deal)/components/DailyProduct";
 
 import { fetchAllProductsWithDetails } from "@/lib/api/productsApi";
 

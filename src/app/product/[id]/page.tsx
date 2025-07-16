@@ -1,4 +1,4 @@
-import ProductView from "@/app/product/components/ProductView";
+import ProductView from "@/app/product/[id]/components/ProductView";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
 
