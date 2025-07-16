@@ -34,8 +34,8 @@ const eslintConfig = [
 
             // 2. 내부 경로
             ["^@/lib/utils", "^@/lib/types"],
-            ["^@/lib/styles", "^@/ui"],
-            ["^@/.*hooks"],
+            ["^@/lib/styles", "^@/ui", "^lucide-react"],
+            ["^@/.*hooks", "^@/.*stores"],
             ["^@/.*components"],
 
             // 3. 기타 내부 모듈 (예비 catch-all)

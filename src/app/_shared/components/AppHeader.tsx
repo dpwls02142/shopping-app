@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
 
 import {
   CART_ALERT,
@@ -10,12 +9,12 @@ import {
   ICON,
   TITLE,
 } from "@/lib/styles";
+import { ShoppingCart } from "lucide-react";
 
 import { useCurrentPage } from "@/app/_shared/hooks/useAppNavigation";
+import useCartStore from "@/app/cart/stores/useCartStore";
 
 import BackButton from "@/app/_shared/components/BackButton";
-
-import useCartStore from "@/app/cart/stores/useCartStore";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
 

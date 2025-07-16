@@ -1,7 +1,6 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
 import Link from "next/link";
-import { X } from "lucide-react";
 
 import { formatPriceToKor } from "@/lib/utils";
 import {
@@ -12,10 +11,11 @@ import { CartItem as CartItemType } from "@/lib/types/cartType";
 
 import { FLEX_CENTER, OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
-
-import ProductQuantity from "@/app/product/components/ProductQuantity";
+import { X } from "lucide-react";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
+
+import ProductQuantity from "@/app/product/components/ProductQuantity";
 
 type CartItemProps = {
   item: CartItemType;

@@ -1,8 +1,8 @@
 "use client";
 
-import CartItem from "@/app/cart/components/CartItem";
-
 import useCartStore from "@/app/cart/stores/useCartStore";
+
+import CartItem from "@/app/cart/components/CartItem";
 
 type CartItemListProps = {
   onProductRemove?: (itemId: string) => void;
