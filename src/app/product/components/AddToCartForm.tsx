@@ -2,8 +2,9 @@
 
 import useAddToCartForm from "@/app/product/hooks/forms/useAddToCartForm";
 
-import { Button } from "@/app/components/ui/button";
-import { Form } from "@/app/components/ui/form";
+import { Button } from "@/ui/button";
+import { Form } from "@/ui/form";
+
 import ProductOptions from "@/app/product/components/ProductOptions";
 import ProductQuantity from "@/app/product/components/ProductQuantity";
 

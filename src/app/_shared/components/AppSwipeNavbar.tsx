@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 import { motion, PanInfo } from "framer-motion";
 
-import { useAppNavigation } from "@/app/hooks/useAppNavigation";
+import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
 interface SwipeContainerProps {
   children: ReactNode;
