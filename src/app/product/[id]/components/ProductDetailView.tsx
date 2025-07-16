@@ -19,9 +19,10 @@ import {
 import useProductTab from "@/app/product/[id]/hooks/useProductTab";
 
 import AddToCartForm from "@/app/product/[id]/components/forms/AddToCartForm";
+import ProductDescription from "@/app/product/[id]/components/ProductDescription";
 import ProductOverview from "@/app/product/[id]/components/ProductOverview";
+import ProductReview from "@/app/product/[id]/components/ProductReview";
 import ProductTab from "@/app/product/[id]/components/ProductTab";
-import ProductTabContent from "@/app/product/[id]/components/ProductTabContent";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;
@@ -36,6 +37,20 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
     setIsSheetOpen(false);
   };
 
+  const renderTabContent = () => {
+    if (activeTab === "reviews") {
+      return (
+        <ProductReview
+          reviews={productDetail.reviews ?? []}
+          averageRating={productDetail.averageRating ?? 0}
+          reviewCount={productDetail.reviewCount ?? 0}
+        />
+      );
+    } else if (activeTab === "details") {
+      return <ProductDescription detailImages={productDetail.detailImages} />;
+    }
+  };
+
   return (
     <div className={FLEX_LAYOUT}>
       <div className="flex-1 pb-20">
@@ -46,7 +61,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
             onTabChange={setActiveTab}
             isVisible={isVisible}
           />
-          <ProductTabContent productDetail={productDetail} activeTab={activeTab} />
+          {renderTabContent()}
         </div>
       </div>
 
