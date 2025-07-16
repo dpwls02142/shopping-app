@@ -2,7 +2,7 @@
 
 import { Control } from "react-hook-form";
 
-import { FLEX_ITEMS_CENTER, OPTION_TEXT } from "@/lib/styles";
+import { FLEX_ITEMS_CENTER, ICON } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
 import { Input } from "@/ui/input";
@@ -45,7 +45,7 @@ function AddToCartQuantity({
                   onClick={() => setQuantity(field.value - 1, field.onChange)}
                   disabled={field.value <= 1}
                 >
-                  <MinusIcon className="h-4 w-4" />
+                  <MinusIcon className={ICON} />
                 </Button>
 
                 <Input
@@ -68,7 +68,7 @@ function AddToCartQuantity({
                   onClick={() => setQuantity(field.value + 1, field.onChange)}
                   disabled={field.value >= maxPurchaseQuantity}
                 >
-                  <PlusIcon className="h-4 w-4" />
+                  <PlusIcon className={ICON} />
                 </Button>
               </div>
             </FormControl>
