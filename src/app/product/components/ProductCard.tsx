@@ -58,7 +58,7 @@ function ProductCard({ product, variant = "default" }: ProductCardProps) {
           <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
             {product.name}
           </h3>
-          <div className="flex items-center space-x-2">
+          <div>
             <ProductPrice product={product} />
           </div>
           <div className="flex items-center text-xs text-gray-500 gap-1">
