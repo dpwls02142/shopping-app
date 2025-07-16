@@ -15,7 +15,7 @@ import { X } from "lucide-react";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
 
-import ProductQuantity from "@/app/product/[id]/components/forms/ProductQuantity";
+import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
 
 type CartItemProps = {
   item: CartItemType;
@@ -23,12 +23,13 @@ type CartItemProps = {
 };
 
 function CartItem({ item, onRemove }: CartItemProps) {
+  const selectedOptions = createOptionsFromSelection(item.selectedOptions);
   const form = useForm({
     defaultValues: {
+      options: selectedOptions,
       quantity: item.quantity,
     },
   });
-  const selectedOptions = createOptionsFromSelection(item.selectedOptions);
   const updateCartItemQuantity = useCartStore((state) => state.updateQuantity);
   const handleQuantityChange = (newQuantity: number) => {
     try {

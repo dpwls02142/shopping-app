@@ -2,7 +2,7 @@
 
 import { Control } from "react-hook-form";
 
-import { FLEX_ITEMS_CENTER, OPTION_TEXT } from "@/lib/styles";
+import { FLEX_ITEMS_CENTER, ICON } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
 import { Input } from "@/ui/input";
@@ -10,43 +10,27 @@ import { MinusIcon, PlusIcon } from "lucide-react";
 
 import useProductQuantity from "@/app/product/[id]/hooks/forms/useProductQuantity";
 
-type ProductQuantityProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any>;
+type AddToCartQuantityProps = {
+  control: Control<{ options: Record<string, string>; quantity: number }>;
   maxPurchaseQuantity?: number;
   onQuantityChange?: (quantity: number) => void;
   selectedOptions?: Record<string, string>;
   showSelectedOptions?: boolean;
 };
 
-function ProductQuantity({
+function AddToCartQuantity({
   control,
   maxPurchaseQuantity = 0,
   onQuantityChange,
-  selectedOptions = {},
-  showSelectedOptions = true,
-}: ProductQuantityProps) {
+}: AddToCartQuantityProps) {
   const { setQuantity } = useProductQuantity({
     control,
     max: maxPurchaseQuantity,
     onChange: onQuantityChange,
   });
 
-  const hasSelectedOptions = Object.values(selectedOptions).some(
-    (value) => value !== "",
-  );
-
   return (
     <div className="bg-gray-50 rounded-lg">
-      {hasSelectedOptions && showSelectedOptions && (
-        <div className={OPTION_TEXT}>
-          {Object.entries(selectedOptions)
-            .filter(([_, value]) => value !== "")
-            .map(([key, value]) => `${key}: ${value}`)
-            .join(" / ")}
-        </div>
-      )}
-
       <FormField
         control={control}
         name="quantity"
@@ -61,7 +45,7 @@ function ProductQuantity({
                   onClick={() => setQuantity(field.value - 1, field.onChange)}
                   disabled={field.value <= 1}
                 >
-                  <MinusIcon className="h-4 w-4" />
+                  <MinusIcon className={ICON} />
                 </Button>
 
                 <Input
@@ -84,7 +68,7 @@ function ProductQuantity({
                   onClick={() => setQuantity(field.value + 1, field.onChange)}
                   disabled={field.value >= maxPurchaseQuantity}
                 >
-                  <PlusIcon className="h-4 w-4" />
+                  <PlusIcon className={ICON} />
                 </Button>
               </div>
             </FormControl>
@@ -96,4 +80,4 @@ function ProductQuantity({
   );
 }
 
-export default ProductQuantity;
+export default AddToCartQuantity;

@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 
-import { formatPriceToKor } from "@/lib/utils";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
 import {
-  BASE_PRICE_TEXT,
-  DISCOUNT_PRICE_TEXT,
+  FLEX_CENTER,
   FLEX_ITEMS_CENTER,
   OPTION_TEXT,
   TITLE,
@@ -33,19 +31,14 @@ function ProductCard({ product, variant = "default" }: ProductCardProps) {
             </div>
             <div className="p-4">
               <h3 className={TITLE}>{product.name}</h3>
-              <div className="flex items-baseline my-2">
-                <span className={DISCOUNT_PRICE_TEXT}>
-                  {formatPriceToKor(product.discountedPrice ?? 0)}원
-                </span>
-                <span className={BASE_PRICE_TEXT}>
-                  {formatPriceToKor(product.basePrice)}원
-                </span>
-              </div>
-              <div className={FLEX_ITEMS_CENTER}>
-                <span className="text-yellow-400">★</span>
-                <span className={OPTION_TEXT}>
-                  {product.averageRating} ({product.reviewCount})
-                </span>
+              <div className={FLEX_CENTER}>
+                <ProductPrice product={product} size="large" />
+                <div className={FLEX_ITEMS_CENTER}>
+                  <span className="text-yellow-400">★</span>
+                  <span className={OPTION_TEXT}>
+                    {product.averageRating} ({product.reviewCount})
+                  </span>
+                </div>
               </div>
               <div>
                 <DealTimer />
@@ -65,7 +58,7 @@ function ProductCard({ product, variant = "default" }: ProductCardProps) {
           <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
             {product.name}
           </h3>
-          <div className="flex items-center space-x-2">
+          <div>
             <ProductPrice product={product} />
           </div>
           <div className="flex items-center text-xs text-gray-500 gap-1">

@@ -26,6 +26,9 @@ export const CART_BOTTOM_CONTAINER =
 export const CART_EMPTY_CONTAINER =
   "flex flex-col items-center justify-center min-h-[60vh]";
 
+export const ADD_TO_CART_BOTTOM_CONTAINER =
+  "fixed bottom-0 inset-x-0 mx-auto max-w-[468px] w-full bg-white p-4 border-t z-50";
+
 export const DEAL_NAV_CONTAINER =
   "flex justify-around items-center py-4 bg-white";
 export const DEAL_NAV_LINK = "flex flex-col items-center space-y-2";
@@ -39,9 +42,6 @@ export const DEAL_NAV_LABEL_INACTIVE = "text-gray-500";
 
 export const TITLE = "text-lg font-bold text-gray-900";
 export const OPTION_TEXT = "text-sm text-gray-600";
-export const DISCOUNT_RATE_TEXT = "text-2xl font-bold text-red-500";
-export const DISCOUNT_PRICE_TEXT = "text-2xl font-bold text-gray-900";
-export const BASE_PRICE_TEXT = "text-m text-gray-500 line-through";
 export const EMPTY_STATE_TEXT = "text-gray-500 text-xl mb-4";
 
 export const ICON = "w-5 h-5 text-gray-700";
@@ -67,12 +67,12 @@ export const PRODUCT_PRICE_SIZE = {
   medium: {
     main: "text-lg font-bold text-gray-900",
     secondary: "text-sm text-gray-500 line-through ml-1",
-    discount: "text-sm font-bold text-red-500",
+    discount: "text-lg font-bold text-red-500",
   },
   large: {
-    main: DISCOUNT_PRICE_TEXT,
-    secondary: BASE_PRICE_TEXT,
-    discount: DISCOUNT_RATE_TEXT,
+    main: "text-2xl font-bold text-gray-900",
+    secondary: "text-lg text-gray-500 line-through ml-1",
+    discount: "text-2xl font-bold text-red-500",
   },
 };
 

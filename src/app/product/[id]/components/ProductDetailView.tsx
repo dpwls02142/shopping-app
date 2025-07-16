@@ -18,7 +18,7 @@ import {
 
 import useProductTab from "@/app/product/[id]/hooks/useProductTab";
 
-import AddToCartForm from "@/app/product/[id]/components/forms/AddToCartForm";
+import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
 import ProductDescription from "@/app/product/[id]/components/ProductDescription";
 import ProductOverview from "@/app/product/[id]/components/ProductOverview";
 import ProductReview from "@/app/product/[id]/components/ProductReview";
@@ -39,13 +39,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
 
   const renderTabContent = () => {
     if (activeTab === "reviews") {
-      return (
-        <ProductReview
-          reviews={productDetail.reviews ?? []}
-          averageRating={productDetail.averageRating ?? 0}
-          reviewCount={productDetail.reviewCount ?? 0}
-        />
-      );
+      return <ProductReview reviews={productDetail.reviews ?? []} />;
     } else if (activeTab === "details") {
       return <ProductDescription detailImages={productDetail.detailImages} />;
     }

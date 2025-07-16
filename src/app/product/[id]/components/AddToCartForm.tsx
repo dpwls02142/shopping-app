@@ -5,6 +5,7 @@ import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
 import {
+  ADD_TO_CART_BOTTOM_CONTAINER,
   FLEX_CENTER,
   FLEX_ITEMS_START_BETWEEN,
   FLEX_WRAP,
@@ -17,8 +18,8 @@ import { Form } from "@/ui/form";
 
 import useAddToCartForm from "@/app/product/[id]/hooks/forms/useAddToCartForm";
 
-import ProductOptions from "@/app/product/[id]/components/forms/ProductOptions";
-import ProductQuantity from "@/app/product/[id]/components/forms/ProductQuantity";
+import ProductOptions from "@/app/product/[id]/components/AddToCartOptions";
+import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
 
 type AddToCartFormProps = {
   productDetail: ProductDetailInfo;
@@ -65,9 +66,8 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
             </div>
           </div>
         </div>
-
-        <div className="pt-2">
-          <div className={FLEX_CENTER}>
+        <div className={ADD_TO_CART_BOTTOM_CONTAINER}>
+          <div className={cn(FLEX_CENTER, "mb-4")}>
             <span className={OPTION_TEXT}>상품 금액</span>
             <span className={TITLE}>
               {formatPriceToKor(addToCartForm.totalAmount)}원
