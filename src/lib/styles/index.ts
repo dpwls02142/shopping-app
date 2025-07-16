@@ -51,3 +51,9 @@ export const CART_ALERT =
 export const BACK_BUTTON =
   "absolute top-4 left-4 z-50 flex items-center justify-center";
 export const SUBMIT_BUTTON = "w-full h-12 text-lg";
+
+export const PRODUCT_IMAGE_CONTAINER = {
+  small: "relative w-16 h-16 overflow-hidden rounded-md",
+  medium: "relative w-full aspect-square mb-2 overflow-hidden rounded-lg",
+  large: "relative w-full aspect-square overflow-hidden",
+};

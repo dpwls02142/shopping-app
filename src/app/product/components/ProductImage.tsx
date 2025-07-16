@@ -1,17 +1,30 @@
+import { PRODUCT_IMAGE_CONTAINER } from "@/lib/styles";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 import Image from "next/image";
-function ProductImage({ product }: { product: ProductPreviewInfo }) {
+
+type ProductImageProps = {
+  product: ProductPreviewInfo;
+  containerSize?: "small" | "medium" | "large";
+  className?: string;
+};
+
+function ProductImage({
+  product,
+  containerSize = "medium",
+  className = "",
+}: ProductImageProps) {
   return (
-    <div className="relative w-full aspect-square mb-2 overflow-hidden rounded-lg">
+    <div className={`${PRODUCT_IMAGE_CONTAINER[containerSize]} ${className}`}>
       <Image
         src={product.thumbnailImage ?? ""}
         alt={product.name}
         fill
-        sizes="50vw"
+        sizes={containerSize}
         className="object-cover"
-        priority
+        priority={containerSize !== "small"}
       />
     </div>
   );
 }
+
 export default ProductImage;
