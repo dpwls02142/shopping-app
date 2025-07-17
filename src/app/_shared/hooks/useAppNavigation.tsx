@@ -1,28 +1,23 @@
 import { useCallback } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-type NavigationPage = "home" | "product" | "cart" | "deal";
+import {
+  MAIN_NAV_ITEMS,
+  NAV_ITEMS,
+  NavigationPage,
+} from "@/lib/constants/navigation";
 
 function useAppNavigation() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentPage = ((): NavigationPage => {
-    if (pathname === "/cart") return "cart";
-    if (pathname.startsWith("/product/")) return "product";
-    if (pathname === "/") {
-      const tab = searchParams.get("tab");
-      const view = searchParams.get("view");
-      if (tab === "deal" || view === "brand" || view === "daily") {
-        return "deal";
-      }
-      return "home";
-    }
-    return "home";
-  })();
+  const currentPage: NavigationPage =
+    NAV_ITEMS.find((item) => item.match(pathname, searchParams))?.id || "home";
 
-  const isMainPage = currentPage === "home" || currentPage === "deal";
+  const isMainPage = MAIN_NAV_ITEMS.some(
+    (item) => item.id === currentPage
+  );
 
   const goBack = useCallback(() => {
     router.back();
@@ -32,6 +27,7 @@ function useAppNavigation() {
     currentPage,
     isMainPage,
     goBack,
+    mainNavItems: MAIN_NAV_ITEMS,
   };
 }
 

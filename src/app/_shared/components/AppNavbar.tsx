@@ -14,35 +14,22 @@ import {
 
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
-const navItems = [
-  {
-    id: "home",
-    label: "쇼핑 홈",
-    href: "/",
-  },
-  {
-    id: "deal",
-    label: "특가",
-    href: "/?tab=deal",
-  },
-];
-
 function AppNavbar() {
-  const { currentPage } = useAppNavigation();
+  const { currentPage, mainNavItems } = useAppNavigation();
   const router = useRouter();
 
-  const handleTabClick = (page: string, event: React.MouseEvent) => {
+  const handleTabClick = (pageId: string, event: React.MouseEvent) => {
     event.preventDefault();
-    if (currentPage === page) return;
+    if (currentPage === pageId) return;
     else {
-      router.push(navItems.find((item) => item.id === page)?.href || "/");
+      router.push(mainNavItems.find((item) => item.id === pageId)?.href || "/");
     }
   };
 
   return (
     <nav className={NAV_CONTAINER}>
       <div className={cn(FLEX_ITEMS_CENTER, "px-4")}>
-        {navItems.map((item) => (
+        {mainNavItems.map((item) => (
           <Link
             key={item.id}
             href={item.href}
