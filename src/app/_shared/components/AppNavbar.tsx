@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { NavigationPage } from "@/lib/types/navgationType";
 
 import {
   FLEX_ITEMS_CENTER,
@@ -28,12 +28,15 @@ const navItems = [
 ];
 
 function AppNavbar() {
-  const { currentPage, navigateToWithUrl } = useAppNavigation();
+  const { currentPage } = useAppNavigation();
+  const router = useRouter();
 
   const handleTabClick = (page: string, event: React.MouseEvent) => {
     event.preventDefault();
     if (currentPage === page) return;
-    navigateToWithUrl(page as NavigationPage);
+    else {
+      router.push(navItems.find((item) => item.id === page)?.href || "/");
+    }
   };
 
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import { motion, PanInfo } from "framer-motion";
 
 import { SWIPE_CONTAINER } from "@/lib/styles";
@@ -14,7 +15,8 @@ interface SwipeContainerProps {
 const SWIPE_THRESHOLD = 50;
 
 function AppSwipeNavbar({ children }: SwipeContainerProps) {
-  const { currentPage, navigateToWithUrl } = useAppNavigation();
+  const { currentPage } = useAppNavigation();
+  const router = useRouter();
 
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
@@ -24,11 +26,11 @@ function AppSwipeNavbar({ children }: SwipeContainerProps) {
 
     if (offset.x > SWIPE_THRESHOLD) {
       if (currentPage === "deal") {
-        navigateToWithUrl("home");
+        router.push("/");
       }
     } else if (offset.x < -SWIPE_THRESHOLD) {
       if (currentPage === "home") {
-        navigateToWithUrl("deal");
+        router.push("/?tab=deal");
       }
     }
   };

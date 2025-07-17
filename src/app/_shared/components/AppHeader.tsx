@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import {
+  BACK_BUTTON,
   CART_ALERT,
   FLEX_CENTER,
   HEADER_CONTAINER,
@@ -9,18 +10,24 @@ import {
   ICON,
   TITLE,
 } from "@/lib/styles";
-import { ShoppingCart } from "lucide-react";
+import { ArrowLeft, ShoppingCart } from "lucide-react";
 
-import { useCurrentPage } from "@/app/_shared/hooks/useAppNavigation";
+import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 import useCartStore from "@/app/cart/stores/useCartStore";
-
-import BackButton from "@/app/_shared/components/BackButton";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
 
+function BackButton() {
+  const { goBack } = useAppNavigation();
+  return (
+    <button onClick={goBack} className={BACK_BUTTON} aria-label="뒤로가기">
+      <ArrowLeft className={ICON} />
+    </button>
+  );
+}
+
 function AppHeader() {
-  const currentPage = useCurrentPage();
-  const isMainPage = currentPage === "home" || currentPage === "deal";
+  const { currentPage, isMainPage } = useAppNavigation();
   const isCartPage = currentPage === "cart";
   const { totalItems } = useCartStore();
 
