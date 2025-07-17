@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import {
+  BACK_BUTTON,
   CART_ALERT,
   FLEX_CENTER,
-  BACK_BUTTON,
   HEADER_CONTAINER,
   HEADER_LEFT_AREA,
   HEADER_RIGHT_AREA,
