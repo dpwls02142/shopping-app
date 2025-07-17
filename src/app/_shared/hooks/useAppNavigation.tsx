@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
-import { NavigationPage } from "@/lib/types/navgationType";
+type NavigationPage = "home" | "product" | "cart" | "deal";
 
 function useAppNavigation() {
   const router = useRouter();
