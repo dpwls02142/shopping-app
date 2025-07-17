@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import { NAV_ITEMS, NavigationPage } from "@/lib/constants/navigation";
 
 function useAppNavigation() {
