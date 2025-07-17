@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 
 import { NavigationPage, NavigationStore } from "@/lib/types/navgationType";
 
-const useNavigationStore = create<NavigationStore>()(
+const useAppNavigationStore = create<NavigationStore>()(
   persist(
     (set, get) => ({
       currentPage: "home",
@@ -67,4 +67,4 @@ const useNavigationStore = create<NavigationStore>()(
   )
 );
 
-export default useNavigationStore;
+export default useAppNavigationStore;

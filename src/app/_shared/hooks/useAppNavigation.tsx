@@ -3,10 +3,10 @@ import { useRouter } from "next/navigation";
 
 import { NavigationPage } from "@/lib/types/navgationType";
 
-import useNavigationStore from "@/app/_shared/stores/useNavigationStore";
+import useAppNavigationStore from "@/app/_shared/stores/useAppNavigationStore";
 
 function useAppNavigation() {
-  const store = useNavigationStore();
+  const store = useAppNavigationStore();
   const router = useRouter();
 
   const navigateToWithUrl = useCallback(
@@ -48,19 +48,19 @@ function useAppNavigation() {
 }
 
 function useCurrentPage() {
-  return useNavigationStore((state) => state.currentPage);
+  return useAppNavigationStore((state) => state.currentPage);
 }
 
 function useShowHeader() {
-  return useNavigationStore((state) => state.showHeader);
+  return useAppNavigationStore((state) => state.showHeader);
 }
 
 function useShowNavbar() {
-  return useNavigationStore((state) => state.showNavbar);
+  return useAppNavigationStore((state) => state.showNavbar);
 }
 
 function useInitializeFromUrl() {
-  const { navigateTo } = useNavigationStore();
+  const { navigateTo } = useAppNavigationStore();
 
   return useCallback(
     (pathname: string, searchParams: URLSearchParams) => {
