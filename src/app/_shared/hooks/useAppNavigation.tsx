@@ -1,18 +1,31 @@
 import { useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 import { NavigationPage } from "@/lib/types/navgationType";
 
-import useAppNavigationStore from "@/app/_shared/stores/useAppNavigationStore";
-
 function useAppNavigation() {
-  const store = useAppNavigationStore();
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const currentPage = ((): NavigationPage => {
+    if (pathname === "/cart") return "cart";
+    if (pathname.startsWith("/product/")) return "product";
+    if (pathname === "/") {
+      const tab = searchParams.get("tab");
+      const view = searchParams.get("view");
+      if (tab === "deal" || view === "brand" || view === "daily") {
+        return "deal";
+      }
+      return "home";
+    }
+    return "home";
+  })();
+
+  const showNavbar = currentPage === "home" || currentPage === "deal";
 
   const navigateToWithUrl = useCallback(
     (page: NavigationPage, params?: { productId?: string }) => {
-      const isProduct = params?.productId;
-      store.navigateTo(page);
       switch (page) {
         case "home":
           router.push("/");
@@ -24,7 +37,7 @@ function useAppNavigation() {
           router.push("/cart");
           break;
         case "product":
-          if (isProduct) {
+          if (params?.productId) {
             router.push(`/product/${params.productId}`);
           }
           break;
@@ -33,7 +46,7 @@ function useAppNavigation() {
           break;
       }
     },
-    [store, router]
+    [router]
   );
 
   const goBack = useCallback(() => {
@@ -41,50 +54,11 @@ function useAppNavigation() {
   }, [router]);
 
   return {
-    ...store,
+    currentPage,
+    showNavbar,
     navigateToWithUrl,
     goBack,
   };
 }
 
-function useCurrentPage() {
-  return useAppNavigationStore((state) => state.currentPage);
-}
-
-function useShowNavbar() {
-  return useAppNavigationStore((state) => state.showNavbar);
-}
-
-function useInitializeFromUrl() {
-  const { navigateTo } = useAppNavigationStore();
-
-  return useCallback(
-    (pathname: string, searchParams: URLSearchParams) => {
-      let page: NavigationPage = "home";
-
-      if (pathname === "/cart") {
-        page = "cart";
-      } else if (pathname.startsWith("/product/")) {
-        page = "product";
-      } else if (pathname === "/") {
-        const tab = searchParams.get("tab");
-        const view = searchParams.get("view");
-        if (tab === "deal" || view === "brand" || view === "daily") {
-          page = "deal";
-        } else {
-          page = "home";
-        }
-      }
-
-      navigateTo(page);
-    },
-    [navigateTo]
-  );
-}
-
-export {
-  useAppNavigation,
-  useCurrentPage,
-  useInitializeFromUrl,
-  useShowNavbar,
-};
+export { useAppNavigation };
