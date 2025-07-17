@@ -22,38 +22,12 @@ function useAppNavigation() {
     return "home";
   })();
 
-  const navigateToWithUrl = useCallback(
-    (page: NavigationPage, params?: { productId?: string }) => {
-      switch (page) {
-        case "home":
-          router.push("/");
-          break;
-        case "deal":
-          router.push("/?tab=deal");
-          break;
-        case "cart":
-          router.push("/cart");
-          break;
-        case "product":
-          if (params?.productId) {
-            router.push(`/product/${params.productId}`);
-          }
-          break;
-        default:
-          router.push("/");
-          break;
-      }
-    },
-    [router]
-  );
-
   const goBack = useCallback(() => {
     router.back();
   }, [router]);
 
   return {
     currentPage,
-    navigateToWithUrl,
     goBack,
   };
 }
