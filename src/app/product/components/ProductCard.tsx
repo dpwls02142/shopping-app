@@ -11,7 +11,7 @@ import {
   TITLE,
 } from "@/lib/styles";
 
-import DealTimer from "@/app/product/(deal)/components/DealTimer";
+import DealTimer from "@/app/product/_deal/components/DealTimer";
 import ProductImage from "@/app/product/components/ProductImage";
 import ProductPrice from "@/app/product/components/ProductPrice";
 
