@@ -2,9 +2,9 @@ import { useCallback } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import {
+  MAIN_NAV_ITEMS,
   NAV_ITEMS,
   NavigationPage,
-  MAIN_NAV_ITEMS,
 } from "@/lib/constants/navigation";
 
 function useAppNavigation() {
