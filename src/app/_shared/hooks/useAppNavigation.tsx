@@ -12,17 +12,11 @@ function useAppNavigation() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentPage: NavigationPage = ((): NavigationPage => {
-    for (const item of NAV_ITEMS) {
-      if (item.match(pathname, searchParams)) {
-        return item.id;
-      }
-    }
-    return "home";
-  })();
+  const currentPage: NavigationPage =
+    NAV_ITEMS.find((item) => item.match(pathname, searchParams))?.id || "home";
 
-  const isMainPage = NAV_ITEMS.some(
-    (item) => item.id === currentPage && item.isMain
+  const isMainPage = MAIN_NAV_ITEMS.some(
+    (item) => item.id === currentPage
   );
 
   const goBack = useCallback(() => {
