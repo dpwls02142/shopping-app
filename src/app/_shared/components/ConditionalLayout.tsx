@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+
 import { FLEX_LAYOUT, MAIN_CONTAINER } from "@/lib/styles";
 
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";

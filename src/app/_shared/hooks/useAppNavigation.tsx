@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type NavigationPage = "home" | "product" | "cart" | "deal";
 

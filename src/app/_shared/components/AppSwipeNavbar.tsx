@@ -1,8 +1,8 @@
 "use client";
 
 import { ReactNode } from "react";
-import { motion, PanInfo } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { motion, PanInfo } from "framer-motion";
 
 import { SWIPE_CONTAINER } from "@/lib/styles";
 
