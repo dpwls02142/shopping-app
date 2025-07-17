@@ -7,7 +7,6 @@ import { FLEX_LAYOUT, MAIN_CONTAINER } from "@/lib/styles";
 
 import {
   useInitializeFromUrl,
-  useShowHeader,
   useShowNavbar,
 } from "@/app/_shared/hooks/useAppNavigation";
 
@@ -19,7 +18,6 @@ interface ConditionalLayoutProps {
 }
 
 function ConditionalLayout({ children }: ConditionalLayoutProps) {
-  const showHeader = useShowHeader();
   const showNavbar = useShowNavbar();
   const initializeFromUrl = useInitializeFromUrl();
   const pathname = usePathname();
@@ -31,7 +29,7 @@ function ConditionalLayout({ children }: ConditionalLayoutProps) {
 
   return (
     <div className={FLEX_LAYOUT}>
-      {showHeader && <AppHeader />}
+      <AppHeader />
       {showNavbar && <AppNavbar />}
       <main className={MAIN_CONTAINER}>{children}</main>
     </div>

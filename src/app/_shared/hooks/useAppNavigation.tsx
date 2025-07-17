@@ -51,10 +51,6 @@ function useCurrentPage() {
   return useAppNavigationStore((state) => state.currentPage);
 }
 
-function useShowHeader() {
-  return useAppNavigationStore((state) => state.showHeader);
-}
-
 function useShowNavbar() {
   return useAppNavigationStore((state) => state.showNavbar);
 }
@@ -90,6 +86,5 @@ export {
   useAppNavigation,
   useCurrentPage,
   useInitializeFromUrl,
-  useShowHeader,
   useShowNavbar,
 };

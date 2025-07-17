@@ -26,20 +26,16 @@ const useAppNavigationStore = create<NavigationStore>()(
 
           switch (page) {
             case "cart":
-              newState.showHeader = true;
               newState.showNavbar = false;
               break;
             case "product":
-              newState.showHeader = true;
               newState.showNavbar = false;
               break;
             case "home":
             case "deal":
-              newState.showHeader = true;
               newState.showNavbar = true;
               break;
             default:
-              newState.showHeader = true;
               newState.showNavbar = true;
           }
 
@@ -47,9 +43,6 @@ const useAppNavigationStore = create<NavigationStore>()(
         });
       },
 
-      setShowHeader: (show: boolean) => {
-        set({ showHeader: show });
-      },
 
       setShowNavbar: (show: boolean) => {
         set({ showNavbar: show });
@@ -60,7 +53,6 @@ const useAppNavigationStore = create<NavigationStore>()(
       partialize: (state) => ({
         currentPage: state.currentPage,
         previousPage: state.previousPage,
-        showHeader: state.showHeader,
         showNavbar: state.showNavbar,
       }),
     }
