@@ -12,10 +12,7 @@ import {
 } from "@/lib/styles";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 
-import {
-  useAppNavigation,
-  useCurrentPage,
-} from "@/app/_shared/hooks/useAppNavigation";
+import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 import useCartStore from "@/app/cart/stores/useCartStore";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
@@ -30,7 +27,7 @@ function BackButton() {
 }
 
 function AppHeader() {
-  const currentPage = useCurrentPage();
+  const { currentPage } = useAppNavigation();
   const isMainPage = currentPage === "home" || currentPage === "deal";
   const isCartPage = currentPage === "cart";
   const { totalItems } = useCartStore();
