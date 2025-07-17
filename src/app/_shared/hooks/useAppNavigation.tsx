@@ -22,12 +22,15 @@ function useAppNavigation() {
     return "home";
   })();
 
+  const isMainPage = currentPage === "home" || currentPage === "deal";
+
   const goBack = useCallback(() => {
     router.back();
   }, [router]);
 
   return {
     currentPage,
+    isMainPage,
     goBack,
   };
 }

@@ -14,12 +14,11 @@ interface ConditionalLayoutProps {
 }
 
 function ConditionalLayout({ children }: ConditionalLayoutProps) {
-  const { currentPage } = useAppNavigation();
-  const showNavbar = currentPage === "home" || currentPage === "deal";
+  const { isMainPage } = useAppNavigation();
   return (
     <div className={FLEX_LAYOUT}>
       <AppHeader />
-      {showNavbar && <AppNavbar />}
+      {isMainPage && <AppNavbar />}
       <main className={MAIN_CONTAINER}>{children}</main>
     </div>
   );

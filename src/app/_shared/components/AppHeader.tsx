@@ -27,8 +27,7 @@ function BackButton() {
 }
 
 function AppHeader() {
-  const { currentPage } = useAppNavigation();
-  const isMainPage = currentPage === "home" || currentPage === "deal";
+  const { currentPage, isMainPage } = useAppNavigation();
   const isCartPage = currentPage === "cart";
   const { totalItems } = useCartStore();
 
