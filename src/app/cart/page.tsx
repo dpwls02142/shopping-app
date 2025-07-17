@@ -15,14 +15,15 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 
 import CartItemList from "@/app/cart/components/CartItemList";
 import CartSummary from "@/app/cart/components/CartSummary";
+import { cn } from "@/lib/utils";
 
 export default function CartPage() {
   const { items, totalItems } = useCartStore();
   const isCartNull = items.length === 0;
   return (
     <div className="flex flex-col min-h-screen relative bg-gray-50">
-      <div className="flex-1 px-4 pt-14 overflow-y-auto">
-        <h1 className={TITLE}>장바구니</h1>
+      <div className="flex-1 px-4 py-4 overflow-y-auto">
+        <h1 className={cn(TITLE, "mb-4")}>장바구니</h1>
         {isCartNull ? (
           <div className={CART_EMPTY_CONTAINER}>
             <div className={EMPTY_STATE_TEXT}>장바구니가 비어있습니다</div>
@@ -32,7 +33,7 @@ export default function CartPage() {
           </div>
         ) : (
           <div>
-            <div className="grid grid-cols-1 gap-6 pb-60">
+            <div className="grid grid-cols-1 gap-6">
               <CartItemList />
             </div>
             <div className={CART_BOTTOM_CONTAINER}>
