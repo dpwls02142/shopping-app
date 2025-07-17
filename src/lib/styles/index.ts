@@ -50,7 +50,7 @@ export const CART_ALERT =
   "absolute -top-3 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center min-w-[20px] font-medium";
 export const BACK_BUTTON =
   "absolute top-4 left-4 z-50 flex items-center justify-center";
-export const SUBMIT_BUTTON = "w-full h-12 text-lg";
+export const SUBMIT_BUTTON = "w-full h-12 text-lg font-bold";
 
 export const PRODUCT_IMAGE_CONTAINER = {
   small: "relative w-16 h-16 overflow-hidden rounded-md",
