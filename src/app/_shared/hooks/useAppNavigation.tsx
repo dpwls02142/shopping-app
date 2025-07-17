@@ -22,8 +22,6 @@ function useAppNavigation() {
     return "home";
   })();
 
-  const showNavbar = currentPage === "home" || currentPage === "deal";
-
   const navigateToWithUrl = useCallback(
     (page: NavigationPage, params?: { productId?: string }) => {
       switch (page) {
@@ -55,7 +53,6 @@ function useAppNavigation() {
 
   return {
     currentPage,
-    showNavbar,
     navigateToWithUrl,
     goBack,
   };

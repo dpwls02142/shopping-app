@@ -13,8 +13,8 @@ interface ConditionalLayoutProps {
 }
 
 function ConditionalLayout({ children }: ConditionalLayoutProps) {
-  const { showNavbar } = useAppNavigation();
-
+  const { currentPage } = useAppNavigation();
+  const showNavbar = currentPage === "home" || currentPage === "deal";
   return (
     <div className={FLEX_LAYOUT}>
       <AppHeader />
