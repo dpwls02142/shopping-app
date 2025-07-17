@@ -3,6 +3,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { NAV_ITEMS, NavigationPage } from "@/lib/constants/navigation";
 
+const mainNavItems = NAV_ITEMS.filter((item) => item.isMain);
+
 function useAppNavigation() {
   const router = useRouter();
   const pathname = usePathname();
@@ -20,8 +22,6 @@ function useAppNavigation() {
   const isMainPage = NAV_ITEMS.some(
     (item) => item.id === currentPage && item.isMain
   );
-
-  const mainNavItems = NAV_ITEMS.filter((item) => item.isMain);
 
   const goBack = useCallback(() => {
     router.back();
