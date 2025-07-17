@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { cn } from "@/lib/utils";
+
 import {
   CART_BOTTOM_CONTAINER,
   CART_EMPTY_CONTAINER,
@@ -15,7 +17,6 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 
 import CartItemList from "@/app/cart/components/CartItemList";
 import CartSummary from "@/app/cart/components/CartSummary";
-import { cn } from "@/lib/utils";
 
 export default function CartPage() {
   const { items, totalItems } = useCartStore();
