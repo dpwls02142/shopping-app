@@ -43,3 +43,5 @@ export const NAV_ITEMS: NavItem[] = [
     match: (pathname) => pathname.startsWith("/product/"),
   },
 ];
+
+export const MAIN_NAV_ITEMS = NAV_ITEMS.filter((item) => item.isMain);

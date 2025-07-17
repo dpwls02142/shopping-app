@@ -1,9 +1,11 @@
 import { useCallback } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { NAV_ITEMS, NavigationPage } from "@/lib/constants/navigation";
-
-const mainNavItems = NAV_ITEMS.filter((item) => item.isMain);
+import {
+  NAV_ITEMS,
+  NavigationPage,
+  MAIN_NAV_ITEMS,
+} from "@/lib/constants/navigation";
 
 function useAppNavigation() {
   const router = useRouter();
@@ -30,8 +32,8 @@ function useAppNavigation() {
   return {
     currentPage,
     isMainPage,
-    mainNavItems,
     goBack,
+    mainNavItems: MAIN_NAV_ITEMS,
   };
 }
 
