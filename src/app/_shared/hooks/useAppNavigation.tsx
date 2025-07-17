@@ -33,7 +33,7 @@ function useAppNavigation() {
           break;
       }
     },
-    [store, router],
+    [store, router]
   );
 
   const goBack = useCallback(() => {
@@ -59,10 +59,6 @@ function useShowNavbar() {
   return useNavigationStore((state) => state.showNavbar);
 }
 
-function useShowBackButton() {
-  return useNavigationStore((state) => state.showBackButton);
-}
-
 function useInitializeFromUrl() {
   const { navigateTo } = useNavigationStore();
 
@@ -86,7 +82,7 @@ function useInitializeFromUrl() {
 
       navigateTo(page);
     },
-    [navigateTo],
+    [navigateTo]
   );
 }
 
@@ -94,7 +90,6 @@ export {
   useAppNavigation,
   useCurrentPage,
   useInitializeFromUrl,
-  useShowBackButton,
   useShowHeader,
   useShowNavbar,
 };
