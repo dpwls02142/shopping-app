@@ -23,7 +23,6 @@ const ProductOverview = ({
       <ProductImage
         product={toProductPreview(productDetail)}
         containerSize="large"
-        className="w-full aspect-square bg-gray-100"
       />
       <div className="p-4">
         <div className={cn(FLEX_ITEMS_START_BETWEEN, "mb-4")}>
