@@ -2,7 +2,7 @@
 
 import { Control } from "react-hook-form";
 
-import { FLEX_ITEMS_CENTER, ICON } from "@/lib/styles";
+import { ICON } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
 import { Input } from "@/ui/input";
@@ -37,7 +37,7 @@ function AddToCartQuantity({
         render={({ field }) => (
           <FormItem>
             <FormControl>
-              <div className={FLEX_ITEMS_CENTER}>
+              <div className="flex items-center">
                 <Button
                   type="button"
                   variant="ghost"

@@ -6,9 +6,6 @@ import { ProductDetailInfo } from "@/lib/types/productType";
 
 import {
   ADD_TO_CART_BOTTOM_CONTAINER,
-  FLEX_CENTER,
-  FLEX_ITEMS_START_BETWEEN,
-  FLEX_WRAP,
   OPTION_TEXT,
   SUBMIT_BUTTON,
   TITLE,
@@ -45,8 +42,8 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
           <div className="bg-gray-50 p-4 rounded-lg">
             <span className={OPTION_TEXT}>선택한 옵션</span>
 
-            <div className={FLEX_ITEMS_START_BETWEEN}>
-              <div className={FLEX_WRAP}>
+            <div className="flex items-start justify-between">
+              <div className="flex flex-wrap">
                 {convertRecordToKeyValueArray(addToCartForm.watchedOptions).map(
                   (option) => (
                     <span key={option.key} className={cn(OPTION_TEXT, "mr-2")}>
@@ -67,7 +64,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
           </div>
         </div>
         <div className={ADD_TO_CART_BOTTOM_CONTAINER}>
-          <div className={cn(FLEX_CENTER, "mb-4")}>
+          <div className="flex items-center justify-between mb-4">
             <span className={OPTION_TEXT}>상품 금액</span>
             <span className={TITLE}>
               {formatPriceToKor(addToCartForm.totalAmount)}원

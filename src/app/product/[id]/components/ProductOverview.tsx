@@ -1,10 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { toProductPreview } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
-
-import { FLEX_ITEMS_START_BETWEEN } from "@/lib/styles";
 
 import DealTimer from "@/app/product/_deal/components/DealTimer";
 import ProductImage from "@/app/product/components/ProductImage";
@@ -23,10 +20,9 @@ const ProductOverview = ({
       <ProductImage
         product={toProductPreview(productDetail)}
         containerSize="large"
-        className="w-full aspect-square bg-gray-100"
       />
       <div className="p-4">
-        <div className={cn(FLEX_ITEMS_START_BETWEEN, "mb-4")}>
+        <div className="flex items-start justify-between mb-4">
           <h1 className="text-xl font-bold text-gray-900 flex-1">
             {product.name}
           </h1>

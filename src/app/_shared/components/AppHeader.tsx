@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import {
   BACK_BUTTON,
   CART_ALERT,
-  FLEX_CENTER,
   HEADER_CONTAINER,
   HEADER_LEFT_AREA,
   HEADER_RIGHT_AREA,
@@ -18,9 +18,13 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 const MAX_DISPLAY_CART_ITEMS = 99;
 
 function BackButton() {
-  const { goBack } = useAppNavigation();
+  const router = useRouter();
   return (
-    <button onClick={goBack} className={BACK_BUTTON} aria-label="뒤로가기">
+    <button
+      onClick={() => router.back()}
+      className={BACK_BUTTON}
+      aria-label="뒤로가기"
+    >
       <ArrowLeft className={ICON} />
     </button>
   );
@@ -40,7 +44,7 @@ function AppHeader() {
 
   return (
     <header className={HEADER_CONTAINER}>
-      <div className={FLEX_CENTER}>
+      <div className="flex items-center justify-between">
         <div className={HEADER_LEFT_AREA}>
           {isMainPage ? <span className={TITLE}>쇼핑</span> : <BackButton />}
         </div>
