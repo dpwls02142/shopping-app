@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
-import { TOTAL_SCROLL_TIME_FOR_POINTS_MS } from "@/lib/constants/point";
+
 import { POINT_DISPLAY } from "@/lib/styles";
+
+import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
+
+import { TOTAL_SCROLL_TIME_FOR_POINTS_MS } from "@/lib/constants/point";
 
 function PointDisplay() {
   const {

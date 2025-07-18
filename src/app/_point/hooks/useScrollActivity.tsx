@@ -3,11 +3,11 @@ import { RefObject, useCallback, useEffect, useRef } from "react";
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
 
 import {
+  MIN_SCROLL_DELTA,
   POINTS_PER_INTERVAL,
   SCROLL_INACTIVITY_THRESHOLD_MS,
   SCROLL_POINT_GAIN_INTERVAL_MS,
   TOTAL_SCROLL_TIME_FOR_POINTS_MS,
-  MIN_SCROLL_DELTA,
 } from "@/lib/constants/point";
 
 export function useScrollActivity(
