@@ -5,7 +5,7 @@ type PointTimerState = {
   isScrolling: boolean;
   points: number;
   lastScrollActivity: number;
-}
+};
 
 interface PointTimerActions {
   startScrollTimer: () => void;
@@ -16,7 +16,7 @@ interface PointTimerActions {
 }
 
 const usePointTimerStore = create<PointTimerState & PointTimerActions>(
-  (set, get) => ({
+  (set, _get) => ({
     scrollTimeElapsed: 0,
     isScrolling: false,
     points: 0,

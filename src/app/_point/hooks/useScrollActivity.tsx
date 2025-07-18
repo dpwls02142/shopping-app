@@ -1,4 +1,5 @@
-import { useEffect, useCallback, useRef, RefObject } from "react";
+import { RefObject,useCallback, useEffect, useRef } from "react";
+
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
 
 const SCROLL_INACTIVITY_THRESHOLD_MS = 1000;
