@@ -4,12 +4,7 @@ import Link from "next/link";
 
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
-import {
-  FLEX_CENTER,
-  FLEX_ITEMS_CENTER,
-  OPTION_TEXT,
-  TITLE,
-} from "@/lib/styles";
+import { OPTION_TEXT, TITLE } from "@/lib/styles";
 
 import DealTimer from "@/app/product/_deal/components/DealTimer";
 import ProductImage from "@/app/product/components/ProductImage";
@@ -31,9 +26,9 @@ function ProductCard({ product, variant = "default" }: ProductCardProps) {
             </div>
             <div className="p-4">
               <h3 className={TITLE}>{product.name}</h3>
-              <div className={FLEX_CENTER}>
+              <div className="flex items-center justify-between">
                 <ProductPrice product={product} size="large" />
-                <div className={FLEX_ITEMS_CENTER}>
+                <div className="flex items-center">
                   <span className="text-yellow-400">★</span>
                   <span className={OPTION_TEXT}>
                     {product.averageRating} ({product.reviewCount})

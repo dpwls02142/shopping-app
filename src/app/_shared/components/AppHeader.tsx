@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import {
   BACK_BUTTON,
   CART_ALERT,
-  FLEX_CENTER,
   HEADER_CONTAINER,
   HEADER_LEFT_AREA,
   HEADER_RIGHT_AREA,
@@ -45,7 +44,7 @@ function AppHeader() {
 
   return (
     <header className={HEADER_CONTAINER}>
-      <div className={FLEX_CENTER}>
+      <div className="flex items-center justify-between">
         <div className={HEADER_LEFT_AREA}>
           {isMainPage ? <span className={TITLE}>쇼핑</span> : <BackButton />}
         </div>

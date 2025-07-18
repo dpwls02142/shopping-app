@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 
-import { FLEX_LAYOUT, MAIN_CONTAINER } from "@/lib/styles";
+import { MAIN_CONTAINER } from "@/lib/styles";
 
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
@@ -16,7 +16,7 @@ interface ConditionalLayoutProps {
 function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const { isMainPage } = useAppNavigation();
   return (
-    <div className={FLEX_LAYOUT}>
+    <div className="h-full flex flex-col">
       <AppHeader />
       {isMainPage && <AppNavbar />}
       <main className={MAIN_CONTAINER}>{children}</main>

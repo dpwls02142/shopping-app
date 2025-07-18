@@ -9,7 +9,7 @@ import {
 } from "@/lib/utils/productOptionUtils";
 import { CartItem as CartItemType } from "@/lib/types/cartType";
 
-import { FLEX_CENTER, OPTION_TEXT, TITLE } from "@/lib/styles";
+import { OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { X } from "lucide-react";
 
@@ -93,7 +93,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
           </div>
         </div>
 
-        <div className={FLEX_CENTER}>
+        <div className="flex items-center justify-between">
           <span className={OPTION_TEXT}>주문 금액</span>
           <span className={TITLE}>{formatPriceToKor(item.totalPrice)}원</span>
         </div>

@@ -5,7 +5,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
 
-import { CART_BOTTOM_CONTAINER, FLEX_LAYOUT } from "@/lib/styles";
+import { CART_BOTTOM_CONTAINER } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import {
   Sheet,
@@ -46,7 +46,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
   };
 
   return (
-    <div className={FLEX_LAYOUT}>
+    <div className="h-full flex flex-col">
       <div className="flex-1 pb-20">
         <ProductOverview productDetail={productDetail} />
         <div className="bg-gray-100 pt-2">

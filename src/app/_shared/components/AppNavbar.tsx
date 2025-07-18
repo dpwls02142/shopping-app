@@ -1,10 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { cn } from "@/lib/utils";
-
 import {
-  FLEX_ITEMS_CENTER,
   NAV_CONTAINER,
   NAV_ITEM_ACTIVE,
   NAV_ITEM_BASE,
@@ -28,7 +25,7 @@ function AppNavbar() {
 
   return (
     <nav className={NAV_CONTAINER}>
-      <div className={cn(FLEX_ITEMS_CENTER, "px-4")}>
+      <div className="flex items-center px-4">
         {mainNavItems.map((item) => (
           <Link
             key={item.id}
