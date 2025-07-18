@@ -1,12 +1,31 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
-
 import { TOTAL_SCROLL_TIME_FOR_POINTS_MS } from "@/lib/constants/point";
 import { POINT_DISPLAY } from "@/lib/styles";
 
 function PointDisplay() {
-  const { scrollTimeElapsed } = usePointTimerStore();
+  const {
+    scrollTimeElapsed,
+    pauseScrollTimer,
+    lastPointsAdded,
+    clearLastPointsAdded,
+  } = usePointTimerStore();
+  const [showPointMessage, setShowPointMessage] = useState(false);
+
+  useEffect(() => {
+    if (lastPointsAdded > 0) {
+      pauseScrollTimer();
+      setShowPointMessage(true);
+      const timeout = setTimeout(() => {
+        setShowPointMessage(false);
+        clearLastPointsAdded();
+      }, 2000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [lastPointsAdded, clearLastPointsAdded]);
 
   const clampedRemaining = Math.max(
     TOTAL_SCROLL_TIME_FOR_POINTS_MS - scrollTimeElapsed,
@@ -20,7 +39,9 @@ function PointDisplay() {
 
   return (
     <div className={POINT_DISPLAY}>
-      <p className="text-xs font-bold">{displayTime}</p>
+      <p className="text-xs font-bold">
+        {showPointMessage ? `${lastPointsAdded}포인트 적립` : displayTime}
+      </p>
     </div>
   );
 }

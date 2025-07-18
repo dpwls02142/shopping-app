@@ -5,6 +5,7 @@ type PointTimerState = {
   isScrolling: boolean;
   points: number;
   lastScrollActivity: number;
+  lastPointsAdded: number;
 };
 
 interface PointTimerActions {
@@ -13,6 +14,7 @@ interface PointTimerActions {
   incrementScrollTime: (time: number) => void;
   resetScrollTimer: () => void;
   addPoints: (amount: number) => void;
+  clearLastPointsAdded: () => void;
 }
 
 const usePointTimerStore = create<PointTimerState & PointTimerActions>(
@@ -21,6 +23,7 @@ const usePointTimerStore = create<PointTimerState & PointTimerActions>(
     isScrolling: false,
     points: 0,
     lastScrollActivity: 0,
+    lastPointsAdded: 0,
 
     startScrollTimer: () => {
       set({ isScrolling: true, lastScrollActivity: Date.now() });
@@ -39,7 +42,11 @@ const usePointTimerStore = create<PointTimerState & PointTimerActions>(
     addPoints: (amount: number) => {
       set((state) => ({
         points: state.points + amount,
+        lastPointsAdded: amount,
       }));
+    },
+    clearLastPointsAdded: () => {
+      set({ lastPointsAdded: 0 });
     },
   })
 );
