@@ -7,6 +7,7 @@ import {
   SCROLL_INACTIVITY_THRESHOLD_MS,
   SCROLL_POINT_GAIN_INTERVAL_MS,
   TOTAL_SCROLL_TIME_FOR_POINTS_MS,
+  MIN_SCROLL_DELTA,
 } from "@/lib/constants/point";
 
 export function useScrollActivity(
@@ -37,7 +38,7 @@ export function useScrollActivity(
       currentScrollPosition - lastScrollPositionRef.current
     );
 
-    if (scrollDelta > 5) {
+    if (scrollDelta > MIN_SCROLL_DELTA) {
       lastScrollPositionRef.current = currentScrollPosition;
       if (inactivityTimeoutIdRef.current) {
         window.clearTimeout(inactivityTimeoutIdRef.current);
