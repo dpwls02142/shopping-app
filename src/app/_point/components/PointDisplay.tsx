@@ -3,6 +3,7 @@
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
 
 import { TOTAL_SCROLL_TIME_FOR_POINTS_MS } from "@/lib/constants/point";
+import { POINT_DISPLAY } from "@/lib/styles";
 
 function PointDisplay() {
   const { scrollTimeElapsed } = usePointTimerStore();
@@ -18,7 +19,7 @@ function PointDisplay() {
   const displayTime = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
   return (
-    <div className="fixed left-1/2 transform -translate-x-1/2 top-[14px] bg-white text-blue-400 border border-gray-200 p-1 rounded-3xl z-50">
+    <div className={POINT_DISPLAY}>
       <p className="text-xs font-bold">{displayTime}</p>
     </div>
   );
