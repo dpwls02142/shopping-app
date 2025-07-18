@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import {
   BACK_BUTTON,
@@ -18,9 +19,13 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 const MAX_DISPLAY_CART_ITEMS = 99;
 
 function BackButton() {
-  const { goBack } = useAppNavigation();
+  const router = useRouter();
   return (
-    <button onClick={goBack} className={BACK_BUTTON} aria-label="뒤로가기">
+    <button
+      onClick={() => router.back()}
+      className={BACK_BUTTON}
+      aria-label="뒤로가기"
+    >
       <ArrowLeft className={ICON} />
     </button>
   );
