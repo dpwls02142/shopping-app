@@ -28,7 +28,7 @@ function PointDisplay() {
 
       return () => clearTimeout(timeout);
     }
-  }, [lastPointsAdded, clearLastPointsAdded]);
+  }, [lastPointsAdded, clearLastPointsAdded, pauseScrollTimer]);
 
   const clampedRemaining = Math.max(
     TOTAL_SCROLL_TIME_FOR_POINTS_MS - scrollTimeElapsed,
