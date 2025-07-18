@@ -3,14 +3,6 @@ export const HEADER_LEFT_AREA = "flex items-center w-20 h-6";
 export const HEADER_RIGHT_AREA = "flex items-center justify-end";
 export const MAIN_CONTAINER = "flex-1 overflow-y-auto";
 
-export const FLEX_LAYOUT = "h-full flex flex-col";
-export const FLEX_CENTER = "flex items-center justify-between";
-export const FLEX_WRAP = "flex flex-wrap";
-export const FLEX_ITEMS_START = "flex items-start";
-export const FLEX_ITEMS_START_BETWEEN = "flex items-start justify-between";
-export const FLEX_ITEMS_CENTER = "flex items-center";
-export const FLEX_ITEMS_SPACE = "flex items-center space-x-2";
-
 export const NAV_CONTAINER = "bg-white border-b border-gray-200 sticky z-40";
 export const NAV_ITEM_BASE = "flex items-center space-x-2 px-4 py-3 border-b-2";
 export const NAV_ITEM_LABEL = "text-sm font-medium";
