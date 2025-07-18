@@ -1,11 +1,13 @@
-import { RefObject,useCallback, useEffect, useRef } from "react";
+import { RefObject, useCallback, useEffect, useRef } from "react";
 
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
 
-const SCROLL_INACTIVITY_THRESHOLD_MS = 1000;
-const SCROLL_POINT_GAIN_INTERVAL_MS = 1000;
-const TOTAL_SCROLL_TIME_FOR_POINTS_MS = 60000;
-const POINTS_PER_INTERVAL = 4;
+import {
+  POINTS_PER_INTERVAL,
+  SCROLL_INACTIVITY_THRESHOLD_MS,
+  SCROLL_POINT_GAIN_INTERVAL_MS,
+  TOTAL_SCROLL_TIME_FOR_POINTS_MS,
+} from "@/lib/constants/point";
 
 export function useScrollActivity(
   mainRef: RefObject<HTMLElement | null>,
@@ -46,7 +48,6 @@ export function useScrollActivity(
       }, SCROLL_INACTIVITY_THRESHOLD_MS);
     }
   }, [mainRef, startScrollTimer, pauseScrollTimer, isEnabled]);
-
 
   useEffect(() => {
     if (!isEnabled) return;

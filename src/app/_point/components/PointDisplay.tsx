@@ -1,12 +1,15 @@
 "use client";
 
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
+
+import { SCROLL_INACTIVITY_THRESHOLD_MS, TOTAL_SCROLL_TIME_FOR_POINTS_MS } from "@/lib/constants/point";
+
 function PointDisplay() {
   const { scrollTimeElapsed } = usePointTimerStore();
 
-  const remainingTime = Math.max(0, 60000 - scrollTimeElapsed);
-  const minutes = Math.floor(remainingTime / 60000);
-  const seconds = Math.floor((remainingTime % 60000) / 1000);
+  const remainingTime = Math.max(0, TOTAL_SCROLL_TIME_FOR_POINTS_MS - scrollTimeElapsed);
+  const minutes = Math.floor(remainingTime / TOTAL_SCROLL_TIME_FOR_POINTS_MS);
+  const seconds = Math.floor((remainingTime % TOTAL_SCROLL_TIME_FOR_POINTS_MS) / SCROLL_INACTIVITY_THRESHOLD_MS);
 
   const displayTime = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
