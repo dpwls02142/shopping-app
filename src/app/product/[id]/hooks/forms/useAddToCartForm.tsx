@@ -114,6 +114,7 @@ function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
     watchedQuantity,
     productOptions,
     product,
+    currentMatchingOption,
     handleOptionSelectionChange,
     handleQuantityChange,
     onSubmit,
