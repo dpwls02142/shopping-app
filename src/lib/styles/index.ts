@@ -3,6 +3,8 @@ export const HEADER_LEFT_AREA = "flex items-center w-20 h-6";
 export const HEADER_RIGHT_AREA = "flex items-center justify-end";
 export const MAIN_CONTAINER = "flex-1 overflow-y-auto";
 
+export const POINT_DISPLAY = "fixed left-1/2 transform -translate-x-1/2 top-[14px] bg-white text-blue-400 border border-gray-200 p-1 rounded-3xl z-50";
+
 export const NAV_CONTAINER = "bg-white border-b border-gray-200 sticky z-40";
 export const NAV_ITEM_BASE = "flex items-center space-x-2 px-4 py-3 border-b-2";
 export const NAV_ITEM_LABEL = "text-sm font-medium";
