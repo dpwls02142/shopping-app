@@ -8,6 +8,7 @@ import {
   POINTS_PER_INTERVAL,
   SCROLL_INACTIVITY_THRESHOLD_MS,
   SCROLL_POINT_GAIN_INTERVAL_MS,
+  SCROLL_THROTTLE_INTERVAL_MS,
   TOTAL_SCROLL_TIME_FOR_POINTS_MS,
 } from "@/lib/constants/point";
 
@@ -49,7 +50,7 @@ export function useScrollActivity(
           SCROLL_INACTIVITY_THRESHOLD_MS
         );
       }
-    }, 100)
+    }, SCROLL_THROTTLE_INTERVAL_MS)
   );
 
   // 스크롤 이벤트 등록
