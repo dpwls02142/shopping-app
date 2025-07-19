@@ -17,10 +17,30 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 
 import CartItemList from "@/app/cart/components/CartItemList";
 import CartSummary from "@/app/cart/components/CartSummary";
+import useUpdateStock from "../product/[id]/hooks/useUpdateStock";
 
 export default function CartPage() {
-  const { items, totalItems } = useCartStore();
+  const { items, totalItems, removeFromCart } = useCartStore();
+  const updateStockMutation = useUpdateStock();
+
   const isCartNull = items.length === 0;
+
+  const handleBuyNow = async () => {
+    const options = items.flatMap((item) =>
+      item.selectedOptions.map((option) => ({
+        optionId: option.id,
+        quantityToDeduct: item.quantity,
+      }))
+    );
+    try {
+      await updateStockMutation.mutateAsync(options);
+      items.forEach((item) => removeFromCart(item.id));
+      alert(`주문 완료`);
+    } catch (error: any) {
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen relative bg-gray-50">
       <div className="flex-1 px-4 py-4 overflow-y-auto">
@@ -39,7 +59,15 @@ export default function CartPage() {
             </div>
             <div className={CART_BOTTOM_CONTAINER}>
               <CartSummary />
-              <Button className={SUBMIT_BUTTON}>{totalItems}건 주문하기</Button>
+              <Button
+                className={SUBMIT_BUTTON}
+                onClick={handleBuyNow}
+                disabled={updateStockMutation.isPending}
+              >
+                {updateStockMutation.isPending
+                  ? "주문 중..."
+                  : `${totalItems}건 주문하기`}
+              </Button>
             </div>
           </div>
         )}
