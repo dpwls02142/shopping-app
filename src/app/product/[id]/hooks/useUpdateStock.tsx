@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateProductStock, updateProductStocks } from "@/lib/api/productApi";
+
 import { ProductOption } from "@/lib/types/productType";
+
+import { updateProductStock, updateProductStocks } from "@/lib/api/productApi";
 
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
 type MultipleUpdate = Array<{ optionId: string; quantityToDeduct: number }>;

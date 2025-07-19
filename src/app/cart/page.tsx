@@ -17,6 +17,7 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 
 import CartItemList from "@/app/cart/components/CartItemList";
 import CartSummary from "@/app/cart/components/CartSummary";
+
 import useUpdateStock from "../product/[id]/hooks/useUpdateStock";
 
 export default function CartPage() {
