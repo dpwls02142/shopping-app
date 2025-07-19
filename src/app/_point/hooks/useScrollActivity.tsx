@@ -57,13 +57,15 @@ export function useScrollActivity(
     if (!isEnabled || !mainRef.current) return;
 
     const el = mainRef.current;
+    const scrollHandler = throttledScrollHandler.current;
     lastScrollPosition.current = el.scrollTop;
-    el.addEventListener("scroll", throttledScrollHandler.current, {
+
+    el.addEventListener("scroll", scrollHandler, {
       passive: true,
     });
 
     return () => {
-      el.removeEventListener("scroll", throttledScrollHandler.current!);
+      el.removeEventListener("scroll", scrollHandler);
       clearTimeout(inactivityTimeout.current);
     };
   }, [isEnabled, mainRef]);
