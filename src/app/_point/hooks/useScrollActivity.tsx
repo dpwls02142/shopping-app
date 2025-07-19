@@ -1,7 +1,6 @@
-import { RefObject, useCallback, useEffect, useRef } from "react";
-
+import { RefObject, useEffect, useRef } from "react";
+import { throttle } from "lodash";
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
-
 import {
   MIN_SCROLL_DELTA,
   POINTS_PER_INTERVAL,
@@ -24,68 +23,67 @@ export function useScrollActivity(
     pauseScrollTimer,
   } = usePointTimerStore();
 
-  const inactivityTimeoutIdRef = useRef<number | undefined>(undefined);
-  const lastScrollPositionRef = useRef<number>(0);
+  const inactivityTimeout = useRef<number | undefined>(undefined);
+  const lastScrollPosition = useRef<number>(0);
 
-  const handleScroll = useCallback(() => {
-    if (!isEnabled) return;
+  // 스크롤 이벤트 핸들러
+  const throttledScrollHandler = useRef(
+    throttle(() => {
+      if (!isEnabled || !mainRef.current) return;
 
-    const mainElement = mainRef.current;
-    if (!mainElement) return;
+      const currentScrollPosition = mainRef.current.scrollTop;
+      const delta = Math.abs(
+        currentScrollPosition - lastScrollPosition.current
+      );
 
-    const currentScrollPosition = mainElement.scrollTop;
-    const scrollDelta = Math.abs(
-      currentScrollPosition - lastScrollPositionRef.current
-    );
+      if (delta > MIN_SCROLL_DELTA) {
+        lastScrollPosition.current = currentScrollPosition;
 
-    if (scrollDelta > MIN_SCROLL_DELTA) {
-      lastScrollPositionRef.current = currentScrollPosition;
-      if (inactivityTimeoutIdRef.current) {
-        window.clearTimeout(inactivityTimeoutIdRef.current);
+        clearTimeout(inactivityTimeout.current);
+        startScrollTimer();
+
+        inactivityTimeout.current = window.setTimeout(
+          pauseScrollTimer,
+          SCROLL_INACTIVITY_THRESHOLD_MS
+        );
       }
-      startScrollTimer();
-      inactivityTimeoutIdRef.current = window.setTimeout(() => {
-        pauseScrollTimer();
-      }, SCROLL_INACTIVITY_THRESHOLD_MS);
-    }
-  }, [mainRef, startScrollTimer, pauseScrollTimer, isEnabled]);
+    }, 100)
+  );
 
+  // 스크롤 이벤트 등록
   useEffect(() => {
-    if (!isEnabled) return;
-    const mainElement = mainRef.current;
-    if (mainElement) {
-      lastScrollPositionRef.current = mainElement.scrollTop;
-      mainElement.addEventListener("scroll", handleScroll, { passive: true });
-      return () => {
-        mainElement.removeEventListener("scroll", handleScroll);
-        if (inactivityTimeoutIdRef.current) {
-          window.clearTimeout(inactivityTimeoutIdRef.current);
-        }
-      };
-    }
-  }, [mainRef, handleScroll, isEnabled]);
+    if (!isEnabled || !mainRef.current) return;
 
-  useEffect(() => {
-    if (!isEnabled) return;
-    let scrollIncrementInterval: number | undefined;
-    if (isScrolling) {
-      scrollIncrementInterval = window.setInterval(() => {
-        incrementScrollTime(SCROLL_POINT_GAIN_INTERVAL_MS);
-      }, SCROLL_POINT_GAIN_INTERVAL_MS);
-    }
+    const el = mainRef.current;
+    lastScrollPosition.current = el.scrollTop;
+    el.addEventListener("scroll", throttledScrollHandler.current, {
+      passive: true,
+    });
 
     return () => {
-      if (scrollIncrementInterval) {
-        window.clearInterval(scrollIncrementInterval);
-      }
+      el.removeEventListener("scroll", throttledScrollHandler.current!);
+      clearTimeout(inactivityTimeout.current);
     };
-  }, [isScrolling, incrementScrollTime, isEnabled]);
+  }, [isEnabled, mainRef]);
 
+  // 타이머로 시간 누적
   useEffect(() => {
-    if (!isEnabled) return;
-    if (scrollTimeElapsed >= TOTAL_SCROLL_TIME_FOR_POINTS_MS) {
+    if (!isEnabled || !isScrolling) return;
+
+    const intervalId = window.setInterval(() => {
+      incrementScrollTime(SCROLL_POINT_GAIN_INTERVAL_MS);
+    }, SCROLL_POINT_GAIN_INTERVAL_MS);
+
+    return () => clearInterval(intervalId);
+  }, [isEnabled, isScrolling, incrementScrollTime]);
+
+  // 포인트 지급
+  useEffect(() => {
+    if (!isEnabled || scrollTimeElapsed < TOTAL_SCROLL_TIME_FOR_POINTS_MS) {
+      return;
+    } else {
       addPoints(POINTS_PER_INTERVAL);
       resetScrollTimer();
     }
-  }, [scrollTimeElapsed, addPoints, resetScrollTimer, isEnabled]);
+  }, [isEnabled, scrollTimeElapsed, addPoints, resetScrollTimer]);
 }
