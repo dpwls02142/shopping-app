@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef } from "react";
+import { RefObject, useCallback, useEffect, useMemo, useRef } from "react";
 import { throttle } from "lodash";
 
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
@@ -29,49 +29,57 @@ export function useScrollActivity(
   const inactivityTimeout = useRef<number | undefined>(undefined);
   const lastScrollPosition = useRef<number>(0);
 
-  // 스크롤 이벤트 핸들러
-  const throttledScrollHandler = useRef(
-    throttle(() => {
-      if (!isEnabled || !mainRef.current) return;
+  /**
+   * 스크롤 이벤트 핸들러
+   */
+  const scrollHandler = useCallback(() => {
+    if (!isEnabled || !mainRef.current) return;
 
-      const currentScrollPosition = mainRef.current.scrollTop;
-      const delta = Math.abs(
-        currentScrollPosition - lastScrollPosition.current
+    const currentScrollPosition = mainRef.current.scrollTop;
+    const delta = Math.abs(currentScrollPosition - lastScrollPosition.current);
+
+    if (delta > MIN_SCROLL_DELTA) {
+      lastScrollPosition.current = currentScrollPosition;
+      clearTimeout(inactivityTimeout.current);
+      startScrollTimer();
+      inactivityTimeout.current = window.setTimeout(
+        pauseScrollTimer,
+        SCROLL_INACTIVITY_THRESHOLD_MS
       );
+    }
+  }, [isEnabled, mainRef, pauseScrollTimer, startScrollTimer]);
 
-      if (delta > MIN_SCROLL_DELTA) {
-        lastScrollPosition.current = currentScrollPosition;
-
-        clearTimeout(inactivityTimeout.current);
-        startScrollTimer();
-
-        inactivityTimeout.current = window.setTimeout(
-          pauseScrollTimer,
-          SCROLL_INACTIVITY_THRESHOLD_MS
-        );
-      }
-    }, SCROLL_THROTTLE_INTERVAL_MS)
+  /**
+   * 스크롤 이벤트 핸들러를 throttle 처리
+   */
+  const throttledScrollHandler = useMemo(
+    () => throttle(scrollHandler, SCROLL_THROTTLE_INTERVAL_MS),
+    [scrollHandler]
   );
 
-  // 스크롤 이벤트 등록
+  /**
+   * 스크롤 이벤트 등록
+   */
   useEffect(() => {
     if (!isEnabled || !mainRef.current) return;
 
     const el = mainRef.current;
-    const scrollHandler = throttledScrollHandler.current;
     lastScrollPosition.current = el.scrollTop;
 
-    el.addEventListener("scroll", scrollHandler, {
+    el.addEventListener("scroll", throttledScrollHandler, {
       passive: true,
     });
 
     return () => {
-      el.removeEventListener("scroll", scrollHandler);
+      el.removeEventListener("scroll", throttledScrollHandler);
+      throttledScrollHandler.cancel(); // 대기 중인 throttle 취소
       clearTimeout(inactivityTimeout.current);
     };
-  }, [isEnabled, mainRef]);
+  }, [isEnabled, mainRef, throttledScrollHandler]);
 
-  // 타이머로 시간 누적
+  /**
+   * 타이머로 시간 누적
+   */
   useEffect(() => {
     if (!isEnabled || !isScrolling) return;
 
@@ -82,7 +90,9 @@ export function useScrollActivity(
     return () => clearInterval(intervalId);
   }, [isEnabled, isScrolling, incrementScrollTime]);
 
-  // 포인트 지급
+  /**
+   * 포인트 지급
+   */
   useEffect(() => {
     if (!isEnabled || scrollTimeElapsed < TOTAL_SCROLL_TIME_FOR_POINTS_MS) {
       return;
