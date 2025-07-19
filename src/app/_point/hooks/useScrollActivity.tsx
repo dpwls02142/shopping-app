@@ -12,6 +12,12 @@ import {
   TOTAL_SCROLL_TIME_FOR_POINTS_MS,
 } from "@/lib/constants/point";
 
+/**
+ * 스크롤 감지 훅 (스크롤 시간 누적 및 포인트 지급)
+ * @param mainRef - 스크롤 메인 요소 참조
+ * @param isEnabled - 스크롤 감지 훅 활성화 여부 (기본값: true)
+ * cart(장바구니) 도메인에서는 스크롤 감지 훅 비활성화
+ */
 export function useScrollActivity(
   mainRef: RefObject<HTMLElement | null>,
   isEnabled: boolean = true
