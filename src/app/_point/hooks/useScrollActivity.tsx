@@ -1,6 +1,8 @@
 import { RefObject, useEffect, useRef } from "react";
 import { throttle } from "lodash";
+
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
+
 import {
   MIN_SCROLL_DELTA,
   POINTS_PER_INTERVAL,
