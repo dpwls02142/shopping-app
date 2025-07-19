@@ -99,7 +99,7 @@ const productImages = products.flatMap((p) => [
   },
 ]);
 
-const reviews = Array.from({ length: NUM_REVIEWS }, () => {
+const productReviews = Array.from({ length: NUM_REVIEWS }, () => {
   const product = faker.helpers.arrayElement(products);
   const createdAt = faker.date.between({
     from: new Date(product.createdAt),
@@ -149,14 +149,14 @@ const db = {
   productOptions,
   productDiscounts,
   productImages,
-  reviews,
+  productReviews,
   cart,
   cartProduct,
 };
 
 fs.writeFileSync(
-  path.join("lib", "db", "db.json"),
+  path.join("src", "lib", "db", "db.json"),
   JSON.stringify(db, null, 2),
 );
 
-console.log("더미 데이터 생성: lib/db/db.json");
+console.log("더미 데이터 생성: src/lib/db/db.json");

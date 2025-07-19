@@ -4,16 +4,12 @@ import { cn, formatPriceToKor } from "@/lib/utils";
 import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
-import {
-  ADD_TO_CART_BOTTOM_CONTAINER,
-  OPTION_TEXT,
-  SUBMIT_BUTTON,
-  TITLE,
-} from "@/lib/styles";
+import { ADD_TO_CART_BOTTOM_CONTAINER, OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { Form } from "@/ui/form";
 
 import useAddToCartForm from "@/app/product/[id]/hooks/forms/useAddToCartForm";
+import useUpdateStock from "@/app/product/[id]/hooks/useUpdateStock";
 
 import ProductOptions from "@/app/product/[id]/components/AddToCartOptions";
 import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
@@ -25,6 +21,30 @@ type AddToCartFormProps = {
 
 function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
   const addToCartForm = useAddToCartForm({ productDetail, onSuccess });
+  const updateStockMutation = useUpdateStock();
+
+  const handleBuyNow = async () => {
+    if (!addToCartForm.allOptionsSelected) {
+      alert(`옵션을 모두 선택해주세요.`);
+      return;
+    }
+    if (!addToCartForm.currentMatchingOption) {
+      alert(`선택된 옵션을 찾을 수 없습니다.`);
+      return;
+    }
+    try {
+      await updateStockMutation.mutateAsync({
+        optionId: addToCartForm.currentMatchingOption.id,
+        quantityToDeduct: addToCartForm.watchedQuantity,
+      });
+      alert(`구매 완료`);
+      onSuccess?.();
+    } catch (error: unknown) {
+      alert(
+        error instanceof Error ? error.message : `구매 중 오류가 발생했습니다.`
+      );
+    }
+  };
 
   return (
     <Form {...addToCartForm.form}>
@@ -70,13 +90,26 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
               {formatPriceToKor(addToCartForm.totalAmount)}원
             </span>
           </div>
-          <Button
-            type="submit"
-            className={SUBMIT_BUTTON}
-            disabled={!addToCartForm.allOptionsSelected}
-          >
-            장바구니
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              type="submit"
+              className="flex-1"
+              disabled={!addToCartForm.allOptionsSelected}
+            >
+              장바구니
+            </Button>
+            <Button
+              type="button"
+              className="flex-1 bg-blue-500 hover:bg-blue-600"
+              disabled={
+                !addToCartForm.allOptionsSelected ||
+                updateStockMutation.isPending
+              }
+              onClick={handleBuyNow}
+            >
+              {updateStockMutation.isPending ? "구매 중..." : "구매하기"}
+            </Button>
+          </div>
         </div>
       </form>
     </Form>

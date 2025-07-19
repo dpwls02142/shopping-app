@@ -3,12 +3,35 @@
 > 본 리포지토리는 [토스쇼핑](https://toss.im/shopping-seller) 클론 코딩 프로젝트입니다.
 > 프로젝트 데모는 [해당 사이트](https://shopping-app-ivory.vercel.app/)에서 볼 수 있습니다.
 
+## ⚠️ 안내 사항
+본 프로젝트는 mock DB를 기반으로 작동하기에 배포 환경에서는 상품을 장바구니에 담는 기능까지만 제공합니다. 하지만 로컬 환경에서는 PATCH 요청을 테스트 할 수 있습니다.
+
+### 로컬 환경에서 전체 기능 테스트 방법
+1. 다음 명령어로 로컬 환경에서 json-server를 실행합니다.
+```
+pnpm json-server
+```
+2. lib/utils/index.ts 파일 내 getApiUrl 함수를 아래와 같이 수정합니다.
+```ts
+const getApiUrl = (endpoint: string) => {
+  // 서버 측
+  if (typeof window === "undefined") {
+    const apiBaseUrl = "http://localhost:3001";
+    if (apiBaseUrl) {
+      return `${apiBaseUrl}/${endpoint}`;
+    }
+  }
+  // 클라이언트 측에선 상대 경로
+  return `http://localhost:3001/${endpoint}`;
+};
+```
+
 ## 사용 기술 스택
 
 | 분류        | 기술 스택                                                            |
 | ----------- | -------------------------------------------------------------------- |
 | 프레임워크  | React v19.0.0, Next.js v15.1.0 (App Router), TypeScript v5           |
-| 상태 관리   | Zustand v5.0.6 (클라이언트 상태) |
+| 상태 관리   | Zustand v5.0.6 (클라이언트 상태), tanstack-query v.5.83.0 (서버 상태) |
 | 폼 관리     | React Hook Form v7.60.0                                              |
 | 스타일링    | Tailwind CSS v3.4.1, shadcn/ui, radix-ui                             |
 | 패키지 관리 | pnpm                                                                 |
@@ -29,6 +52,9 @@
 
 - **Zustand**
   - 장바구니에 상품을 담거나 하루 특가의 타이머등 전역에서 관리되어야 하는 상태가 있기 때문에
+
+- **tanstack-query**
+  - 상품 주문시 mutate를 활용해 데이터 업데이트를 효율적으로 관리하기 위해서 
 
 ### 폼 관리
 
