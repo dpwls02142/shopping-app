@@ -39,8 +39,10 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
       });
       alert(`구매 완료`);
       onSuccess?.();
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error: unknown) {
+      alert(
+        error instanceof Error ? error.message : `구매 중 오류가 발생했습니다.`
+      );
     }
   };
 

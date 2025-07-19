@@ -37,8 +37,10 @@ export default function CartPage() {
       await updateStockMutation.mutateAsync(options);
       items.forEach((item) => removeFromCart(item.id));
       alert(`주문 완료`);
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error: unknown) {
+      alert(
+        error instanceof Error ? error.message : `주문 중 오류가 발생했습니다.`
+      );
     }
   };
 
