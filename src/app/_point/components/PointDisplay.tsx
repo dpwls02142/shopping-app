@@ -6,7 +6,10 @@ import { POINT_DISPLAY } from "@/lib/styles";
 
 import usePointTimerStore from "@/app/_point/stores/usePointTimerStore";
 
-import { TOTAL_SCROLL_TIME_FOR_POINTS_MS } from "@/lib/constants/point";
+import {
+  POINT_MESSAGE_DURATION_MS,
+  TOTAL_SCROLL_TIME_FOR_POINTS_MS,
+} from "@/lib/constants/point";
 
 function PointDisplay() {
   const {
@@ -24,7 +27,7 @@ function PointDisplay() {
       const timeout = setTimeout(() => {
         setShowPointMessage(false);
         clearLastPointsAdded();
-      }, 2000);
+      }, POINT_MESSAGE_DURATION_MS);
 
       return () => clearTimeout(timeout);
     }
