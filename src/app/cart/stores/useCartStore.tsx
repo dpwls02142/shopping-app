@@ -3,9 +3,9 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import {
+  calculateItemPrice,
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
-  calculateItemPrice,
 } from "@/lib/utils/productOptionUtils";
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
