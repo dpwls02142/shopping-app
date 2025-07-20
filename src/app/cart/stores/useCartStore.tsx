@@ -5,6 +5,7 @@ import { persist } from "zustand/middleware";
 import {
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
+  calculateItemPrice,
 } from "@/lib/utils/productOptionUtils";
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
@@ -17,20 +18,6 @@ const ERROR_MESSAGE = {
     `이미 장바구니에 ${current}개가 담겨있습니다. 
   최대 ${remaining}개까지 추가 가능합니다.`,
 } as const;
-
-const calculateItemPrice = (
-  basePrice: number,
-  selectedOptions: ProductOption[],
-  quantity: number,
-  discountedPrice?: number
-) => {
-  const itemPrice = discountedPrice || basePrice;
-  const optionPrice = selectedOptions.reduce(
-    (sum, option) => sum + option.additionalPrice,
-    0
-  );
-  return (itemPrice + optionPrice) * quantity;
-};
 
 const findExistingItemIndex = (
   items: CartItem[],
