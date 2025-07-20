@@ -139,6 +139,9 @@ const useCartStore = create<CartStore>()(
 
       removeFromCart: (itemId: string) => {
         const { items } = get();
+        const itemIndex = items.findIndex((item) => item.id === itemId);
+        if (itemIndex === -1) return;
+
         const updatedItems = items.filter((item) => item.id !== itemId);
 
         const totalItems = updatedItems.reduce(
