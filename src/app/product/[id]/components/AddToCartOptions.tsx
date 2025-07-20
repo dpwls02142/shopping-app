@@ -30,8 +30,14 @@ function AddToCartOptions({
   control,
   onSelectionChange,
 }: AddToCartOptionsProps) {
-  const { separatedOptions, optionKeys, watchedOptions, handleOptionChange } =
-    useProductOptions(productOptions, control);
+  const {
+    separatedOptions,
+    optionKeys,
+    watchedOptions,
+    openDropdowns,
+    handleOptionChange,
+    handleDropdownToggle,
+  } = useProductOptions(productOptions, control);
 
   return (
     <div className="space-y-4">
@@ -52,6 +58,8 @@ function AddToCartOptions({
                 <FormLabel>{key}</FormLabel>
                 <Select
                   value={field.value || ""}
+                  open={openDropdowns[key] || false}
+                  onOpenChange={(isOpen) => handleDropdownToggle(key, isOpen)}
                   onValueChange={(value) =>
                     handleOptionChange(key, value, onSelectionChange)
                   }
