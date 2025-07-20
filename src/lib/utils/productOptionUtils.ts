@@ -129,6 +129,20 @@ function toProductPreview(
   };
 }
 
+const calculateItemPrice = (
+  basePrice: number,
+  selectedOptions: ProductOption[],
+  quantity: number,
+  discountedPrice?: number
+) => {
+  const itemPrice = discountedPrice || basePrice;
+  const optionPrice = selectedOptions.reduce(
+    (sum, option) => sum + option.additionalPrice,
+    0
+  );
+  return (itemPrice + optionPrice) * quantity;
+};
+
 export {
   areAllOptionsSelected,
   convertRecordToKeyValueArray,
@@ -138,4 +152,5 @@ export {
   getMaxPurchaseQuantity,
   safelyParseOptionValue,
   toProductPreview,
+  calculateItemPrice,
 };
