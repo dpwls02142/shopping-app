@@ -25,13 +25,13 @@ const findExistingItemIndex = (
   selectedOptions: ProductOption[]
 ): number => {
   return items.findIndex((item) => {
-    return (
-      item.product.id === productId &&
-      JSON.stringify(item.selectedOptions) === JSON.stringify(selectedOptions)
+    if (item.product.id !== productId) return false;
+    if (item.selectedOptions.length !== selectedOptions.length) return false;
+    return item.selectedOptions.every((option) =>
+      selectedOptions.some((opt) => opt.id === option.id)
     );
   });
 };
-
 const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
