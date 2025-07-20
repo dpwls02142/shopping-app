@@ -1,5 +1,5 @@
+import { useEffect, useRef, useState, useMemo } from "react";
 import { Control, useWatch } from "react-hook-form";
-import { useState, useEffect, useRef } from "react";
 
 import {
   extractOptionKeys,
@@ -18,22 +18,28 @@ function useProductOptions(
   );
   const isInitialized = useRef(false);
 
-  const separated: Record<string, { value: string; option: ProductOption }[]> =
-    {};
+  const separatedOptions = useMemo(() => {
+    const separated: Record<
+      string,
+      { value: string; option: ProductOption }[]
+    > = {};
 
-  productOptions?.forEach((option) => {
-    const parsed = safelyParseOptionValue(option);
+    productOptions?.forEach((option) => {
+      const parsed = safelyParseOptionValue(option);
 
-    Object.entries(parsed).forEach(([key, value]) => {
-      if (!separated[key]) {
-        separated[key] = [];
-      }
+      Object.entries(parsed).forEach(([key, value]) => {
+        if (!separated[key]) {
+          separated[key] = [];
+        }
 
-      if (!separated[key].some((item) => item.value === value)) {
-        separated[key].push({ value, option });
-      }
+        if (!separated[key].some((item) => item.value === value)) {
+          separated[key].push({ value, option });
+        }
+      });
     });
-  });
+
+    return separated;
+  }, [productOptions]);
 
   useEffect(() => {
     if (optionKeys.length > 0 && !isInitialized.current) {
@@ -43,7 +49,7 @@ function useProductOptions(
         [optionKeys[0]]: true,
       }));
     }
-  }, [optionKeys.length]);
+  }, [optionKeys]);
 
   const handleOptionChange = (
     key: string,
@@ -86,7 +92,7 @@ function useProductOptions(
 
   return {
     watchedOptions,
-    separatedOptions: separated,
+    separatedOptions,
     optionKeys,
     openDropdowns,
     handleOptionChange,
