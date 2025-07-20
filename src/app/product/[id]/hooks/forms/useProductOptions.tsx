@@ -1,4 +1,4 @@
-import { useEffect, useMemo,useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Control, useWatch } from "react-hook-form";
 
 import {
@@ -11,12 +11,14 @@ function useProductOptions(
   productOptions: ProductOption[],
   control: Control<{ options: Record<string, string>; quantity: number }>
 ) {
-  const optionKeys = extractOptionKeys(productOptions);
+  const optionKeys = useMemo(
+    () => extractOptionKeys(productOptions),
+    [productOptions]
+  );
   const watchedOptions = useWatch({ control, name: "options" });
   const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>(
     {}
   );
-  const isInitialized = useRef(false);
 
   const separatedOptions = useMemo(() => {
     const separated: Record<
@@ -42,12 +44,10 @@ function useProductOptions(
   }, [productOptions]);
 
   useEffect(() => {
-    if (optionKeys.length > 0 && !isInitialized.current) {
-      isInitialized.current = true;
-      setOpenDropdowns((prev) => ({
-        ...prev,
-        [optionKeys[0]]: true,
-      }));
+    if (optionKeys.length > 0) {
+      setOpenDropdowns({ [optionKeys[0]]: true });
+    } else {
+      setOpenDropdowns({});
     }
   }, [optionKeys]);
 
