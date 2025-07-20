@@ -31,6 +31,19 @@ const calculateItemPrice = (
   return (itemPrice + optionPrice) * quantity;
 };
 
+const findExistingItemIndex = (
+  items: CartItem[],
+  productId: string,
+  selectedOptions: ProductOption[]
+): number => {
+  return items.findIndex((item) => {
+    return (
+      item.product.id === productId &&
+      JSON.stringify(item.selectedOptions) === JSON.stringify(selectedOptions)
+    );
+  });
+};
+
 const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
