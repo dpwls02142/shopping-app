@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import { Control, useWatch } from "react-hook-form";
 
 import {
@@ -10,24 +11,45 @@ function useProductOptions(
   productOptions: ProductOption[],
   control: Control<{ options: Record<string, string>; quantity: number }>
 ) {
-  const optionKeys = extractOptionKeys(productOptions);
+  const optionKeys = useMemo(
+    () => extractOptionKeys(productOptions),
+    [productOptions]
+  );
   const watchedOptions = useWatch({ control, name: "options" });
-  const separated: Record<string, { value: string; option: ProductOption }[]> =
-    {};
+  const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>(
+    {}
+  );
 
-  productOptions?.forEach((option) => {
-    const parsed = safelyParseOptionValue(option);
+  const separatedOptions = useMemo(() => {
+    const separated: Record<
+      string,
+      { value: string; option: ProductOption }[]
+    > = {};
 
-    Object.entries(parsed).forEach(([key, value]) => {
-      if (!separated[key]) {
-        separated[key] = [];
-      }
+    productOptions?.forEach((option) => {
+      const parsed = safelyParseOptionValue(option);
 
-      if (!separated[key].some((item) => item.value === value)) {
-        separated[key].push({ value, option });
-      }
+      Object.entries(parsed).forEach(([key, value]) => {
+        if (!separated[key]) {
+          separated[key] = [];
+        }
+
+        if (!separated[key].some((item) => item.value === value)) {
+          separated[key].push({ value, option });
+        }
+      });
     });
-  });
+
+    return separated;
+  }, [productOptions]);
+
+  useEffect(() => {
+    if (optionKeys.length > 0) {
+      setOpenDropdowns({ [optionKeys[0]]: true });
+    } else {
+      setOpenDropdowns({});
+    }
+  }, [optionKeys]);
 
   const handleOptionChange = (
     key: string,
@@ -36,13 +58,45 @@ function useProductOptions(
   ) => {
     const newOptions = { ...watchedOptions, [key]: value };
     onChange(newOptions);
+
+    const currentIndex = optionKeys.indexOf(key);
+    const nextKey = optionKeys[currentIndex + 1];
+
+    setOpenDropdowns((prev) => {
+      const newState = { ...prev };
+
+      newState[key] = false;
+
+      if (nextKey) {
+        const allPreviousSelected = optionKeys
+          .slice(0, currentIndex + 1)
+          .every(
+            (prevKey) => newOptions[prevKey] && newOptions[prevKey] !== ""
+          );
+
+        if (allPreviousSelected) {
+          newState[nextKey] = true;
+        }
+      }
+
+      return newState;
+    });
+  };
+
+  const handleDropdownToggle = (key: string, isOpen: boolean) => {
+    setOpenDropdowns((prev) => ({
+      ...prev,
+      [key]: isOpen,
+    }));
   };
 
   return {
     watchedOptions,
-    separatedOptions: separated,
+    separatedOptions,
     optionKeys,
+    openDropdowns,
     handleOptionChange,
+    handleDropdownToggle,
   };
 }
 
