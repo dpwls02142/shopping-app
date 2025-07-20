@@ -3,12 +3,35 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import {
+  calculateItemPrice,
   createOptionsFromSelection,
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 
+const ERROR_MESSAGE = {
+  QUANTITY_MINIMUM: `수량은 1개 이상이어야 합니다.`,
+  MISSING_OPTIONS: `상품 옵션 정보가 누락되어 장바구니에 추가할 수 없습니다.`,
+  QUANTITY_MAXIMUM: (max: number) => `최대 구매 가능 수량은 ${max}개입니다.`,
+  QUANTITY_EXCEEDED: (current: number, remaining: number) =>
+    `이미 장바구니에 ${current}개가 담겨있습니다. 
+  최대 ${remaining}개까지 추가 가능합니다.`,
+} as const;
+
+const findExistingItemIndex = (
+  items: CartItem[],
+  productId: string,
+  selectedOptions: ProductOption[]
+): number => {
+  return items.findIndex((item) => {
+    if (item.product.id !== productId) return false;
+    if (item.selectedOptions.length !== selectedOptions.length) return false;
+    return item.selectedOptions.every((option) =>
+      selectedOptions.some((opt) => opt.id === option.id)
+    );
+  });
+};
 const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
@@ -21,37 +44,33 @@ const useCartStore = create<CartStore>()(
         selectedOptions: ProductOption[],
         quantity: number,
         discountedPrice?: number,
-        allAvailableOptions?: ProductOption[],
+        allAvailableOptions?: ProductOption[]
       ) => {
-        const { items } = get();
-
         if (quantity < 1) {
-          throw new Error(`수량은 1개 이상이어야 합니다.`);
+          throw new Error(ERROR_MESSAGE.QUANTITY_MINIMUM);
         }
 
         if (!allAvailableOptions || allAvailableOptions.length === 0) {
-          throw new Error(
-            `상품 옵션 정보가 누락되어 장바구니에 추가할 수 없습니다.`,
-          );
+          throw new Error(ERROR_MESSAGE.MISSING_OPTIONS);
         }
 
+        const { items } = get();
         const selectedOptionConfig =
           createOptionsFromSelection(selectedOptions);
         const maxPurchaseQuantity = getMaxPurchaseQuantity(
           allAvailableOptions,
-          selectedOptionConfig,
+          selectedOptionConfig
         );
 
-        const existingItemIndex = items.findIndex((item) => {
-          const isSameProduct = item.product.id === product.id;
-          const isSameOptions =
-            JSON.stringify(item.selectedOptions) ===
-            JSON.stringify(selectedOptions);
-          return isSameProduct && isSameOptions;
-        });
+        const existingItemIndex = findExistingItemIndex(
+          items,
+          product.id,
+          selectedOptions
+        );
+
+        const updatedItems = [...items];
 
         if (existingItemIndex !== -1) {
-          const updatedItems = [...items];
           const existingItem = updatedItems[existingItemIndex];
           const newQuantity = existingItem.quantity + quantity;
 
@@ -59,17 +78,19 @@ const useCartStore = create<CartStore>()(
             const remainingQuantity =
               maxPurchaseQuantity - existingItem.quantity;
             throw new Error(
-              `이미 장바구니에 ${existingItem.quantity}개가 담겨있습니다. 
-              최대 ${remainingQuantity}개까지 추가 가능합니다.`,
+              ERROR_MESSAGE.QUANTITY_EXCEEDED(
+                existingItem.quantity,
+                remainingQuantity
+              )
             );
           }
 
-          const itemPrice = discountedPrice || product.basePrice;
-          const optionPrice = selectedOptions.reduce(
-            (sum, option) => sum + option.additionalPrice,
-            0,
+          const totalItemPrice = calculateItemPrice(
+            product.basePrice,
+            selectedOptions,
+            newQuantity,
+            discountedPrice
           );
-          const totalItemPrice = (itemPrice + optionPrice) * newQuantity;
 
           updatedItems[existingItemIndex] = {
             ...existingItem,
@@ -77,119 +98,115 @@ const useCartStore = create<CartStore>()(
             totalPrice: totalItemPrice,
             discountPrice: discountedPrice,
           };
-
-          set((state) => ({
-            items: updatedItems,
-            totalItems: state.totalItems + quantity,
-            totalPrice: updatedItems.reduce(
-              (sum, item) => sum + item.totalPrice,
-              0,
-            ),
-          }));
         } else {
           if (quantity > maxPurchaseQuantity) {
             throw new Error(
-              `최대 구매 가능 수량은 ${maxPurchaseQuantity}개입니다.`,
+              ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity)
             );
           }
 
-          const itemPrice = discountedPrice || product.basePrice;
-          const optionPrice = selectedOptions.reduce(
-            (sum, option) => sum + option.additionalPrice,
-            0,
+          const totalItemPrice = calculateItemPrice(
+            product.basePrice,
+            selectedOptions,
+            quantity,
+            discountedPrice
           );
-          const totalItemPrice = (itemPrice + optionPrice) * quantity;
 
           const newItem: CartItem = {
             id: `${product.id}-${crypto.randomUUID()}`,
             product,
             selectedOptions,
-            productOptions: allAvailableOptions || [],
+            productOptions: allAvailableOptions,
             quantity,
             totalPrice: totalItemPrice,
             discountPrice: discountedPrice,
             createdAt: new Date().toISOString(),
           };
 
-          set((state) => ({
-            items: [...state.items, newItem],
-            totalItems: state.totalItems + quantity,
-            totalPrice: state.totalPrice + totalItemPrice,
-          }));
+          updatedItems.push(newItem);
         }
+        const totalItems = updatedItems.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const totalPrice = updatedItems.reduce(
+          (sum, item) => sum + item.totalPrice,
+          0
+        );
+
+        set({ items: updatedItems, totalItems, totalPrice });
       },
 
       removeFromCart: (itemId: string) => {
         const { items } = get();
-        const itemToRemove = items.find((item) => item.id === itemId);
+        const itemIndex = items.findIndex((item) => item.id === itemId);
+        if (itemIndex === -1) return;
 
-        if (itemToRemove) {
-          const updatedItems = items.filter((item) => item.id !== itemId);
+        const updatedItems = items.filter((item) => item.id !== itemId);
 
-          set((state) => ({
-            items: updatedItems,
-            totalItems: state.totalItems - itemToRemove.quantity,
-            totalPrice: updatedItems.reduce(
-              (sum, item) => sum + item.totalPrice,
-              0,
-            ),
-          }));
-        }
+        const totalItems = updatedItems.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const totalPrice = updatedItems.reduce(
+          (sum, item) => sum + item.totalPrice,
+          0
+        );
+
+        set({ items: updatedItems, totalItems, totalPrice });
       },
 
       updateQuantity: (
         itemId: string,
         quantity: number,
-        allAvailableOptions?: ProductOption[],
+        allAvailableOptions?: ProductOption[]
       ) => {
+        if (quantity < 1) {
+          throw new Error(ERROR_MESSAGE.QUANTITY_MINIMUM);
+        }
+
         const { items } = get();
         const itemIndex = items.findIndex((item) => item.id === itemId);
 
-        if (itemIndex !== -1) {
-          const existingItem = items[itemIndex];
+        if (itemIndex === -1) return;
 
-          if (quantity < 1) {
-            throw new Error(`수량은 1개 이상이어야 합니다.`);
-          }
+        const existingItem = items[itemIndex];
+        const optionsConfig = createOptionsFromSelection(
+          existingItem.selectedOptions
+        );
+        const maxQuantity = getMaxPurchaseQuantity(
+          allAvailableOptions || [],
+          optionsConfig
+        );
 
-          const optionsConfig = createOptionsFromSelection(
-            existingItem.selectedOptions,
-          );
-          const maxQuantity = getMaxPurchaseQuantity(
-            allAvailableOptions || [],
-            optionsConfig,
-          );
-          if (quantity > maxQuantity) {
-            throw new Error(`최대 구매 가능 수량은 ${maxQuantity}개입니다.`);
-          }
-
-          const updatedItems = [...items];
-          const itemPrice =
-            existingItem.discountPrice || existingItem.product.basePrice;
-          const optionPrice = existingItem.selectedOptions.reduce(
-            (sum, option) => sum + option.additionalPrice,
-            0,
-          );
-          const totalItemPrice = (itemPrice + optionPrice) * quantity;
-
-          updatedItems[itemIndex] = {
-            ...existingItem,
-            quantity,
-            totalPrice: totalItemPrice,
-          };
-
-          set((_state) => ({
-            items: updatedItems,
-            totalItems: updatedItems.reduce(
-              (sum, item) => sum + item.quantity,
-              0,
-            ),
-            totalPrice: updatedItems.reduce(
-              (sum, item) => sum + item.totalPrice,
-              0,
-            ),
-          }));
+        if (quantity > maxQuantity) {
+          throw new Error(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxQuantity));
         }
+
+        const totalItemPrice = calculateItemPrice(
+          existingItem.product.basePrice,
+          existingItem.selectedOptions,
+          quantity,
+          existingItem.discountPrice
+        );
+
+        const updatedItems = [...items];
+        updatedItems[itemIndex] = {
+          ...existingItem,
+          quantity,
+          totalPrice: totalItemPrice,
+        };
+
+        const totalItems = updatedItems.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const totalPrice = updatedItems.reduce(
+          (sum, item) => sum + item.totalPrice,
+          0
+        );
+
+        set({ items: updatedItems, totalItems, totalPrice });
       },
 
       getItemById: (itemId: string) => {
@@ -204,8 +221,8 @@ const useCartStore = create<CartStore>()(
         totalItems: state.totalItems,
         totalPrice: state.totalPrice,
       }),
-    },
-  ),
+    }
+  )
 );
 
 export default useCartStore;

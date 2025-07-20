@@ -93,14 +93,14 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
           <div className="flex gap-2">
             <Button
               type="submit"
-              className="flex-1"
+              className="flex-1 h-12 text-lg font-bold"
               disabled={!addToCartForm.allOptionsSelected}
             >
               장바구니
             </Button>
             <Button
               type="button"
-              className="flex-1 bg-blue-500 hover:bg-blue-600"
+              className="flex-1 h-12 text-lg font-bold bg-blue-500 hover:bg-blue-600"
               disabled={
                 !addToCartForm.allOptionsSelected ||
                 updateStockMutation.isPending

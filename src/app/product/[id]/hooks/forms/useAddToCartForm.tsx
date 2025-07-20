@@ -6,6 +6,7 @@ import * as z from "zod";
 
 import {
   areAllOptionsSelected,
+  calculateItemPrice,
   extractOptionKeys,
   findMatchingOption,
   getMaxPurchaseQuantity,
@@ -53,12 +54,14 @@ function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
     watchedOptions,
   );
 
-  const totalAmount = (() => {
-    if (!currentMatchingOption) return 0;
-    const basePrice = discount?.discountedPrice || product.basePrice;
-    const optionPrice = currentMatchingOption.additionalPrice;
-    return (basePrice + optionPrice) * watchedQuantity;
-  })();
+  const totalAmount = currentMatchingOption
+    ? calculateItemPrice(
+        product.basePrice,
+        [currentMatchingOption],
+        watchedQuantity,
+        discount?.discountedPrice
+      )
+    : 0;
 
   const handleOptionSelectionChange = (newOptions: Record<string, string>) => {
     form.setValue("options", newOptions);
