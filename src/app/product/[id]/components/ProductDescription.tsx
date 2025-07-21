@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-function ProductDescription({ descriptionImages }: { descriptionImages: string[] }) {
+function ProductDescription({
+  descriptionImages,
+}: {
+  descriptionImages: string[];
+}) {
   return (
     <div className="bg-white">
       <div className="space-y-4">

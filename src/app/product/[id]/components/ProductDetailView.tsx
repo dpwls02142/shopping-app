@@ -47,7 +47,9 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
             <ProductReview reviews={productDetail.reviews ?? []} />
           )}
           {activeTab === "details" && (
-            <ProductDescription descriptionImages={productDetail.detailImages} />
+            <ProductDescription
+              descriptionImages={productDetail.detailImages}
+            />
           )}
         </div>
       </div>
@@ -66,7 +68,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
             >
               구매하기
             </Button>
-            
+
             <SheetContent
               side="bottom"
               className="h-[85vh] max-w-[468px] mx-auto rounded-t-2xl p-0 flex flex-col"
