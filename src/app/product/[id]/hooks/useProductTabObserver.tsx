@@ -18,15 +18,16 @@ const useProductTabObserver = ({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-            if (entry.target === reviewEl) {
-              setActiveTab("reviews");
-            } else if (entry.target === descriptionEl) {
-              setActiveTab("details");
-            }
-          }
-        });
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+        if (visibleEntries.length === 0) return;
+        const mostVisible = visibleEntries.reduce((a, b) =>
+          a.intersectionRatio > b.intersectionRatio ? a : b
+        );
+        if (mostVisible.target === reviewEl) {
+          setActiveTab("reviews");
+        } else if (mostVisible.target === descriptionEl) {
+          setActiveTab("details");
+        }
       },
       {
         rootMargin: "0px 0px -30% 0px",
