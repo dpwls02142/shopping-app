@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-function ProductDescription({ detailImages }: { detailImages: string[] }) {
+function ProductDescription({ descriptionImages }: { descriptionImages: string[] }) {
   return (
     <div className="bg-white">
       <div className="space-y-4">
-        {detailImages.map((imageUrl, index) => (
+        {descriptionImages.map((imageUrl, index) => (
           <div key={index} className="w-full h-auto">
             <Image
               src={imageUrl}

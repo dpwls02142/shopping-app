@@ -47,7 +47,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
             <ProductReview reviews={productDetail.reviews ?? []} />
           )}
           {activeTab === "details" && (
-            <ProductDescription detailImages={productDetail.detailImages} />
+            <ProductDescription descriptionImages={productDetail.detailImages} />
           )}
         </div>
       </div>
