@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
@@ -23,6 +23,7 @@ import ProductDescription from "@/app/product/[id]/components/ProductDescription
 import ProductOverview from "@/app/product/[id]/components/ProductOverview";
 import ProductReview from "@/app/product/[id]/components/ProductReview";
 import ProductTab from "@/app/product/[id]/components/ProductTab";
+import useProductTabObserver from "@/app/product/[id]/hooks/useProductTabObserver";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;
@@ -31,7 +32,12 @@ type ProductDetailProps = {
 
 function ProductDetailView({ productDetail }: ProductDetailProps) {
   const { activeTab, setActiveTab, isVisible } = useProductTab();
+  const reviewRef = useRef<HTMLDivElement | null>(null);
+  const descriptionRef = useRef<HTMLDivElement | null>(null);
+
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+
+  useProductTabObserver({ reviewRef, descriptionRef, setActiveTab });
 
   return (
     <div className="h-full flex flex-col">
@@ -40,17 +46,24 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
         <div className="bg-gray-100 pt-2">
           <ProductTab
             activeTab={activeTab}
-            onTabChange={setActiveTab}
+            onTabChange={(tab) => {
+              setActiveTab(tab);
+              if (tab === "reviews") {
+                reviewRef.current?.scrollIntoView({ behavior: "smooth" });
+              } else if (tab === "details") {
+                descriptionRef.current?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
             isVisible={isVisible}
           />
-          {activeTab === "reviews" && (
+          <div ref={reviewRef}>
             <ProductReview reviews={productDetail.reviews ?? []} />
-          )}
-          {activeTab === "details" && (
+          </div>
+          <div ref={descriptionRef}>
             <ProductDescription
               descriptionImages={productDetail.detailImages}
             />
-          )}
+          </div>
         </div>
       </div>
 
