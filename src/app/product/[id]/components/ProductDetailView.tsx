@@ -33,18 +33,6 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
   const { activeTab, setActiveTab, isVisible } = useProductTab();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  const handleAddToCartSuccess = () => {
-    setIsSheetOpen(false);
-  };
-
-  const renderTabContent = () => {
-    if (activeTab === "reviews") {
-      return <ProductReview reviews={productDetail.reviews ?? []} />;
-    } else if (activeTab === "details") {
-      return <ProductDescription detailImages={productDetail.detailImages} />;
-    }
-  };
-
   return (
     <div className="h-full flex flex-col">
       <div className="flex-1 pb-20">
@@ -55,7 +43,12 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
             onTabChange={setActiveTab}
             isVisible={isVisible}
           />
-          {renderTabContent()}
+          {activeTab === "reviews" && (
+            <ProductReview reviews={productDetail.reviews ?? []} />
+          )}
+          {activeTab === "details" && (
+            <ProductDescription detailImages={productDetail.detailImages} />
+          )}
         </div>
       </div>
 
@@ -73,6 +66,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
             >
               구매하기
             </Button>
+            
             <SheetContent
               side="bottom"
               className="h-[85vh] max-w-[468px] mx-auto rounded-t-2xl p-0 flex flex-col"
@@ -91,7 +85,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
               <div className="flex-1 overflow-hidden">
                 <AddToCartForm
                   productDetail={productDetail}
-                  onSuccess={handleAddToCartSuccess}
+                  onSuccess={() => setIsSheetOpen(false)}
                 />
               </div>
             </SheetContent>
