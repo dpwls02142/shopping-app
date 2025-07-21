@@ -1,11 +1,12 @@
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
 
 import { formatDateToKor } from "@/lib/utils";
 import { Review } from "@/lib/types/productType";
 
-import ProductRating from "../../components/ProductRating";
 import { Button } from "@/ui/button";
+
+import ProductRating from "../../components/ProductRating";
 
 type ProductReviewProps = {
   reviews: Review[];

@@ -17,13 +17,13 @@ import {
 } from "@/ui/sheet";
 
 import useProductTab from "@/app/product/[id]/hooks/useProductTab";
+import useProductTabObserver from "@/app/product/[id]/hooks/useProductTabObserver";
 
 import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
 import ProductDescription from "@/app/product/[id]/components/ProductDescription";
 import ProductOverview from "@/app/product/[id]/components/ProductOverview";
 import ProductReview from "@/app/product/[id]/components/ProductReview";
 import ProductTab from "@/app/product/[id]/components/ProductTab";
-import useProductTabObserver from "@/app/product/[id]/hooks/useProductTabObserver";
 
 type ProductDetailProps = {
   productDetail: ProductDetailInfo;
