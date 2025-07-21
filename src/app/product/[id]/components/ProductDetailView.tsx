@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
@@ -17,6 +17,7 @@ import {
 } from "@/ui/sheet";
 
 import useProductTab from "@/app/product/[id]/hooks/useProductTab";
+import useProductTabObserver from "@/app/product/[id]/hooks/useProductTabObserver";
 
 import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
 import ProductDescription from "@/app/product/[id]/components/ProductDescription";
@@ -31,19 +32,12 @@ type ProductDetailProps = {
 
 function ProductDetailView({ productDetail }: ProductDetailProps) {
   const { activeTab, setActiveTab, isVisible } = useProductTab();
+  const reviewRef = useRef<HTMLDivElement | null>(null);
+  const descriptionRef = useRef<HTMLDivElement | null>(null);
+
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  const handleAddToCartSuccess = () => {
-    setIsSheetOpen(false);
-  };
-
-  const renderTabContent = () => {
-    if (activeTab === "reviews") {
-      return <ProductReview reviews={productDetail.reviews ?? []} />;
-    } else if (activeTab === "details") {
-      return <ProductDescription detailImages={productDetail.detailImages} />;
-    }
-  };
+  useProductTabObserver({ reviewRef, descriptionRef, setActiveTab });
 
   return (
     <div className="h-full flex flex-col">
@@ -52,10 +46,24 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
         <div className="bg-gray-100 pt-2">
           <ProductTab
             activeTab={activeTab}
-            onTabChange={setActiveTab}
+            onTabChange={(tab) => {
+              setActiveTab(tab);
+              if (tab === "reviews") {
+                reviewRef.current?.scrollIntoView({ behavior: "smooth" });
+              } else if (tab === "details") {
+                descriptionRef.current?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
             isVisible={isVisible}
           />
-          {renderTabContent()}
+          <div ref={reviewRef}>
+            <ProductReview reviews={productDetail.reviews ?? []} />
+          </div>
+          <div ref={descriptionRef}>
+            <ProductDescription
+              descriptionImages={productDetail.detailImages}
+            />
+          </div>
         </div>
       </div>
 
@@ -73,6 +81,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
             >
               구매하기
             </Button>
+
             <SheetContent
               side="bottom"
               className="h-[85vh] max-w-[468px] mx-auto rounded-t-2xl p-0 flex flex-col"
@@ -91,7 +100,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
               <div className="flex-1 overflow-hidden">
                 <AddToCartForm
                   productDetail={productDetail}
-                  onSuccess={handleAddToCartSuccess}
+                  onSuccess={() => setIsSheetOpen(false)}
                 />
               </div>
             </SheetContent>
