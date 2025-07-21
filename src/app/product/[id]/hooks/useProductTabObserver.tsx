@@ -30,7 +30,7 @@ const useProductTabObserver = ({
       },
       {
         rootMargin: "0px 0px -30% 0px",
-        threshold: [0.3, 0.5, 0.7],
+        threshold: 0.3,
       }
     );
 
