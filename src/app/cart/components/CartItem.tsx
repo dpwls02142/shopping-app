@@ -17,7 +17,7 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 
 import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
 
-type CartItemProps = {
+interface CartItemProps {
   item: CartItemType;
   onRemove: (itemId: string) => void;
 };
