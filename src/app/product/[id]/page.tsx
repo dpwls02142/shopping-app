@@ -2,11 +2,11 @@ import ProductDetailView from "@/app/product/[id]/components/ProductDetailView";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
 
-type ProductPageProps = {
+interface ProductPageProps {
   params: Promise<{
     id: string;
   }>;
-};
+}
 
 async function ProductPage(props: ProductPageProps) {
   try {
@@ -15,7 +15,10 @@ async function ProductPage(props: ProductPageProps) {
 
     return (
       <div className="min-h-screen bg-gray-50">
-        <ProductDetailView productDetail={productDetail} productId={productId} />
+        <ProductDetailView
+          productDetail={productDetail}
+          productId={productId}
+        />
       </div>
     );
   } catch {

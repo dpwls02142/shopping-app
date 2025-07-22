@@ -25,10 +25,10 @@ import ProductOverview from "@/app/product/[id]/components/ProductOverview";
 import ProductReview from "@/app/product/[id]/components/ProductReview";
 import ProductTab from "@/app/product/[id]/components/ProductTab";
 
-type ProductDetailProps = {
+interface ProductDetailProps {
   productDetail: ProductDetailInfo;
   productId: string;
-};
+}
 
 function ProductDetailView({ productDetail }: ProductDetailProps) {
   const { activeTab, setActiveTab, isVisible } = useProductTab();
