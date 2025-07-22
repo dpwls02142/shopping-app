@@ -9,11 +9,13 @@ import {
   TAB_BUTTON_INACTIVE,
 } from "@/lib/styles";
 
-type ProductTabProps = {
-  activeTab: "reviews" | "details";
-  onTabChange: (tab: "reviews" | "details") => void;
+type ProductTabType = "reviews" | "details";
+
+interface ProductTabProps {
+  activeTab: ProductTabType;
+  onTabChange: (tab: ProductTabType) => void;
   isVisible: boolean;
-};
+}
 
 function ProductTab({ activeTab, onTabChange, isVisible }: ProductTabProps) {
   const topStyle = isVisible ? "top-[60px]" : "top-0";
