@@ -49,17 +49,16 @@ const useCartStore = create<CartStore>()(
         if (quantity < 1) {
           throw new Error(ERROR_MESSAGE.QUANTITY_MINIMUM);
         }
-
         if (!allAvailableOptions || allAvailableOptions.length === 0) {
           throw new Error(ERROR_MESSAGE.MISSING_OPTIONS);
         }
 
         const { items } = get();
-        const selectedOptionConfig =
+        const selectedOption =
           createOptionsFromSelection(selectedOptions);
         const maxPurchaseQuantity = getMaxPurchaseQuantity(
           allAvailableOptions,
-          selectedOptionConfig
+          selectedOption
         );
 
         const existingItemIndex = findExistingItemIndex(
@@ -70,7 +69,10 @@ const useCartStore = create<CartStore>()(
 
         const updatedItems = [...items];
 
-        if (existingItemIndex !== -1) {
+        const existingItemInCart = existingItemIndex !== -1;
+        const isNewItem = existingItemIndex === -1;
+
+        if (existingItemInCart) { 
           const existingItem = updatedItems[existingItemIndex];
           const newQuantity = existingItem.quantity + quantity;
 
@@ -98,7 +100,9 @@ const useCartStore = create<CartStore>()(
             totalPrice: totalItemPrice,
             discountPrice: discountedPrice,
           };
-        } else {
+        }
+
+        if (isNewItem) {
           if (quantity > maxPurchaseQuantity) {
             throw new Error(
               ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity)
