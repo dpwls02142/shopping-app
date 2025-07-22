@@ -18,7 +18,6 @@ type ProductInventory = {
 type ProductOption = {
   id: string;
   productId: string;
-  optionName: string;
   optionValue: string;
   additionalPrice: number;
   stockQuantity: number;
