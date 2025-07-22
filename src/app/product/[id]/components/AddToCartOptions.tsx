@@ -19,11 +19,11 @@ import {
 
 import useProductOptions from "@/app/product/[id]/hooks/forms/useProductOptions";
 
-type AddToCartOptionsProps = {
+interface AddToCartOptionsProps {
   productOptions: ProductOption[];
   control: Control<{ options: Record<string, string>; quantity: number }>;
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
-};
+}
 
 function AddToCartOptions({
   productOptions,

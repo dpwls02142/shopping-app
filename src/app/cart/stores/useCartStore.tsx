@@ -10,6 +10,9 @@ import {
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 
+/**
+ * 장바구니에 상품 추가 시 발생할 수 있는 에러 메시지
+ */
 const ERROR_MESSAGE = {
   QUANTITY_MINIMUM: `수량은 1개 이상이어야 합니다.`,
   MISSING_OPTIONS: `상품 옵션 정보가 누락되어 장바구니에 추가할 수 없습니다.`,
@@ -19,6 +22,9 @@ const ERROR_MESSAGE = {
   최대 ${remaining}개까지 추가 가능합니다.`,
 } as const;
 
+/**
+ * 이미 장바구니에 존재하는 상품인지 확인
+ */
 const findExistingItemIndex = (
   items: CartItem[],
   productId: string,
@@ -32,6 +38,7 @@ const findExistingItemIndex = (
     );
   });
 };
+
 const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
@@ -49,17 +56,16 @@ const useCartStore = create<CartStore>()(
         if (quantity < 1) {
           throw new Error(ERROR_MESSAGE.QUANTITY_MINIMUM);
         }
-
         if (!allAvailableOptions || allAvailableOptions.length === 0) {
           throw new Error(ERROR_MESSAGE.MISSING_OPTIONS);
         }
 
         const { items } = get();
-        const selectedOptionConfig =
+        const selectedOption =
           createOptionsFromSelection(selectedOptions);
         const maxPurchaseQuantity = getMaxPurchaseQuantity(
           allAvailableOptions,
-          selectedOptionConfig
+          selectedOption
         );
 
         const existingItemIndex = findExistingItemIndex(
@@ -70,7 +76,10 @@ const useCartStore = create<CartStore>()(
 
         const updatedItems = [...items];
 
-        if (existingItemIndex !== -1) {
+        const existingItemInCart = existingItemIndex !== -1;
+        const isNewItem = existingItemIndex === -1;
+
+        if (existingItemInCart) { 
           const existingItem = updatedItems[existingItemIndex];
           const newQuantity = existingItem.quantity + quantity;
 
@@ -98,7 +107,9 @@ const useCartStore = create<CartStore>()(
             totalPrice: totalItemPrice,
             discountPrice: discountedPrice,
           };
-        } else {
+        }
+
+        if (isNewItem) {
           if (quantity > maxPurchaseQuantity) {
             throw new Error(
               ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity)

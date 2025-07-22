@@ -3,10 +3,12 @@ import { ProductPreviewInfo } from "@/lib/types/productType";
 
 import { PRODUCT_PRICE_SIZE } from "@/lib/styles";
 
-type ProductPriceProps = {
+type ProductPriceSize = "small" | "medium" | "large";
+
+interface ProductPriceProps {
   product: ProductPreviewInfo;
-  size?: "small" | "medium" | "large";
-};
+  size?: ProductPriceSize;
+}
 
 function ProductPrice({ product, size = "medium" }: ProductPriceProps) {
   const { basePrice, discountedPrice, discountRate } = product;

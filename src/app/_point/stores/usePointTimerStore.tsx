@@ -8,7 +8,7 @@ type PointTimerState = {
   lastPointsAdded: number;
 };
 
-interface PointTimerActions {
+type PointTimerActions = {
   startScrollTimer: () => void;
   pauseScrollTimer: () => void;
   incrementScrollTime: (time: number) => void;

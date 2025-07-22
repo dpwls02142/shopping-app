@@ -15,10 +15,10 @@ import { ProductDetailInfo } from "@/lib/types/productType";
 
 import useCartStore from "@/app/cart/stores/useCartStore";
 
-type UseAddToCartFormProps = {
+interface UseAddToCartFormProps {
   productDetail: ProductDetailInfo;
   onSuccess?: () => void;
-};
+}
 
 function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
   const { product, options: productOptions, discount } = productDetail;
@@ -46,12 +46,12 @@ function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
   const optionKeys = extractOptionKeys(productOptions || []);
   const currentMatchingOption = findMatchingOption(
     productOptions || [],
-    watchedOptions,
+    watchedOptions
   );
   const allOptionsSelected = areAllOptionsSelected(optionKeys, watchedOptions);
   const maxPurchaseQuantity = getMaxPurchaseQuantity(
     productOptions || [],
-    watchedOptions,
+    watchedOptions
   );
 
   const totalAmount = currentMatchingOption
@@ -94,7 +94,7 @@ function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
         [currentMatchingOption],
         values.quantity,
         discount?.discountedPrice,
-        productOptions,
+        productOptions
       );
       onSuccess?.();
     } catch (error) {

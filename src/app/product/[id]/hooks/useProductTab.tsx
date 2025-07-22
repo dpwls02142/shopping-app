@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-type UseProductTabReturn = {
-  activeTab: "reviews" | "details";
-  setActiveTab: (tab: "reviews" | "details") => void;
+type ProductTabType = "reviews" | "details";
+interface UseProductTabReturn {
+  activeTab: ProductTabType;
+  setActiveTab: (tab: ProductTabType) => void;
   isVisible: boolean;
-};
+}
 
 const useProductTab = (): UseProductTabReturn => {
-  const [activeTab, setActiveTab] = useState<"reviews" | "details">("reviews");
+  const [activeTab, setActiveTab] = useState<ProductTabType>("reviews");
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

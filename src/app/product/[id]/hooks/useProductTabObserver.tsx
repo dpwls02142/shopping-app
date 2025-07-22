@@ -1,16 +1,18 @@
 import { useEffect } from "react";
 
-type Props = {
+type ProductTabType = "reviews" | "details";
+
+interface UseProductTabObserverProps {
   reviewRef: React.RefObject<HTMLDivElement | null>;
   descriptionRef: React.RefObject<HTMLDivElement | null>;
-  setActiveTab: (tab: "reviews" | "details") => void;
-};
+  setActiveTab: (tab: ProductTabType) => void;
+}
 
 const useProductTabObserver = ({
   reviewRef,
   descriptionRef,
   setActiveTab,
-}: Props) => {
+}: UseProductTabObserverProps) => {
   useEffect(() => {
     const reviewEl = reviewRef.current;
     const descriptionEl = descriptionRef.current;

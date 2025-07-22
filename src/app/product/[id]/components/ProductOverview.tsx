@@ -8,11 +8,11 @@ import ProductImage from "@/app/product/components/ProductImage";
 import ProductPrice from "@/app/product/components/ProductPrice";
 import ProductRating from "@/app/product/components/ProductRating";
 
-const ProductOverview = ({
-  productDetail,
-}: {
+interface ProductOverviewProps {
   productDetail: ProductDetailInfo;
-}) => {
+}
+
+function ProductOverview({ productDetail }: ProductOverviewProps) {
   const { product, discount } = productDetail;
 
   return (
@@ -37,6 +37,6 @@ const ProductOverview = ({
       </div>
     </div>
   );
-};
+}
 
 export default ProductOverview;

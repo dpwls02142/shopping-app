@@ -8,16 +8,18 @@ import { Button } from "@/ui/button";
 
 import ProductRating from "../../components/ProductRating";
 
-type ProductReviewProps = {
+interface ProductReviewProps {
   reviews: Review[];
-};
+}
 
 const MORE_REVIEW_COUNT = 5;
 
 function ProductReview({ reviews }: ProductReviewProps) {
   const [showAll, setShowAll] = useState(false);
   const hasMore = reviews.length > MORE_REVIEW_COUNT;
-  const displayedReviews = showAll ? reviews : reviews.slice(0, MORE_REVIEW_COUNT);
+  const displayedReviews = showAll
+    ? reviews
+    : reviews.slice(0, MORE_REVIEW_COUNT);
 
   return (
     <div className="bg-white">
