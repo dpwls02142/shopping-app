@@ -4,9 +4,11 @@ import { ProductPreviewInfo } from "@/lib/types/productType";
 
 import { PRODUCT_IMAGE_CONTAINER } from "@/lib/styles";
 
+type ProductImageContainerSize = "small" | "medium" | "large";
+
 interface ProductImageProps {
   product: ProductPreviewInfo;
-  containerSize?: "small" | "medium" | "large";
+  containerSize?: ProductImageContainerSize;
 }
 
 function ProductImage({

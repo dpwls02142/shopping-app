@@ -10,9 +10,10 @@ import DealTimer from "@/app/product/_deal/components/DealTimer";
 import ProductImage from "@/app/product/components/ProductImage";
 import ProductPrice from "@/app/product/components/ProductPrice";
 
+type ProductCardVariant = "default" | "daily_deal";
 interface ProductCardProps {
   product: ProductPreviewInfo;
-  variant?: "default" | "daily_deal";
+  variant?: ProductCardVariant;
 }
 
 function ProductCard({ product, variant = "default" }: ProductCardProps) {
