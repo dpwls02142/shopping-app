@@ -20,7 +20,7 @@ import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
 interface CartItemProps {
   item: CartItemType;
   onRemove: (itemId: string) => void;
-};
+}
 
 function CartItem({ item, onRemove }: CartItemProps) {
   const selectedOptions = createOptionsFromSelection(item.selectedOptions);

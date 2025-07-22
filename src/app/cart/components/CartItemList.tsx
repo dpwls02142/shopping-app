@@ -4,7 +4,7 @@ import useCartStore from "@/app/cart/stores/useCartStore";
 
 import CartItem from "@/app/cart/components/CartItem";
 
-type CartItemListProps = {
+interface CartItemListProps {
   onProductRemove?: (itemId: string) => void;
 };
 
