@@ -13,13 +13,13 @@ type Time = {
   seconds: string;
 };
 
-interface DealTimerStore {
+type DealTimerStore = {
   timeLeft: Time;
   progress: number;
   isActive: boolean;
   startTimer: () => void;
   stopTimer: () => void;
-}
+};
 
 let timerInterval: NodeJS.Timeout | null = null;
 
