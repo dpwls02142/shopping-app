@@ -24,7 +24,7 @@ const safelyParseOptionValue = (
   } catch (error) {
     console.error(error);
   }
-  return { [option.optionName]: option.optionValue };
+  return { [option.optionValue]: option.optionValue };
 };
 
 /**
