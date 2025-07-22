@@ -10,6 +10,9 @@ import {
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 
+/**
+ * 장바구니에 상품 추가 시 발생할 수 있는 에러 메시지
+ */
 const ERROR_MESSAGE = {
   QUANTITY_MINIMUM: `수량은 1개 이상이어야 합니다.`,
   MISSING_OPTIONS: `상품 옵션 정보가 누락되어 장바구니에 추가할 수 없습니다.`,
@@ -19,6 +22,9 @@ const ERROR_MESSAGE = {
   최대 ${remaining}개까지 추가 가능합니다.`,
 } as const;
 
+/**
+ * 이미 장바구니에 존재하는 상품인지 확인
+ */
 const findExistingItemIndex = (
   items: CartItem[],
   productId: string,
@@ -32,6 +38,7 @@ const findExistingItemIndex = (
     );
   });
 };
+
 const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
