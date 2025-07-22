@@ -21,8 +21,7 @@ const mockOptions = [
   {
     id: "option1",
     productId: "1",
-    optionName: "색상",
-    optionValue: '{"색상":"빨강"}',
+    optionValue: '{"color":"빨강","size":"S"}',
     additionalPrice: 0,
     stockQuantity: 10,
     maxPurchaseQuantity: 10,
@@ -30,8 +29,7 @@ const mockOptions = [
   {
     id: "option2",
     productId: "1",
-    optionName: "사이즈",
-    optionValue: '{"사이즈":"M"}',
+    optionValue: '{"color":"빨강","size":"M"}',
     additionalPrice: 0,
     stockQuantity: 5,
     maxPurchaseQuantity: 5,
