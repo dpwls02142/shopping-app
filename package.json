@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
-    "json-server": "json-server --watch src/lib/db/db.json --port 3001"
+    "json-server": "json-server --watch src/lib/db/db.json --port 3001",
+    "test": "vitest"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -50,6 +51,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
     "eslint-plugin-import": "^2.32.0",
+    "jsdom": "^26.1.0",
     "json-server": "1.0.0-beta.3",
     "postcss": "^8",
     "prettier": "^3.6.2",
