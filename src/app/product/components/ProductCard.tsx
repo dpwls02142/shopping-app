@@ -10,10 +10,10 @@ import DealTimer from "@/app/product/_deal/components/DealTimer";
 import ProductImage from "@/app/product/components/ProductImage";
 import ProductPrice from "@/app/product/components/ProductPrice";
 
-type ProductCardProps = {
+interface ProductCardProps {
   product: ProductPreviewInfo;
   variant?: "default" | "daily_deal";
-};
+}
 
 function ProductCard({ product, variant = "default" }: ProductCardProps) {
   if (variant === "daily_deal") {

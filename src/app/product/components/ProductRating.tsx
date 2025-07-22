@@ -1,12 +1,12 @@
 import { PRODUCT_RATING_SIZE } from "@/lib/styles";
 import { Rating, RatingButton } from "@/ui/shadcn-io/rating";
 
-type ProductRatingProps = {
+interface ProductRatingProps {
   averageRating?: number;
   reviewCount?: number;
   showCount?: boolean;
   size?: "small" | "medium" | "large";
-};
+}
 
 function ProductRating({
   averageRating,
