@@ -8,6 +8,9 @@ interface UseProductTabObserverProps {
   setActiveTab: (tab: ProductTabType) => void;
 }
 
+const ROOT_MARGIN = "0px 0px -10% 0px";
+const INTERSECTION_THRESHOLD = 0.1;
+
 const useProductTabObserver = ({
   reviewRef,
   descriptionRef,
@@ -32,8 +35,8 @@ const useProductTabObserver = ({
         }
       },
       {
-        rootMargin: "0px 0px -30% 0px",
-        threshold: 0.3,
+        rootMargin: ROOT_MARGIN,
+        threshold: INTERSECTION_THRESHOLD,
       }
     );
 
