@@ -25,7 +25,7 @@ interface AddToCartOptionsProps {
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
 }
 
-function AddToCartOptions({
+function ProductOptions({
   productOptions,
   control,
   onSelectionChange,
@@ -88,4 +88,4 @@ function AddToCartOptions({
   );
 }
 
-export { AddToCartOptions };
+export { ProductOptions };

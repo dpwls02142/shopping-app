@@ -18,7 +18,7 @@ interface AddToCartQuantityProps {
   showSelectedOptions?: boolean;
 }
 
-function AddToCartQuantity({
+function ProductQuantity({
   control,
   maxPurchaseQuantity = 0,
   onQuantityChange,
@@ -80,4 +80,4 @@ function AddToCartQuantity({
   );
 }
 
-export { AddToCartQuantity };
+export { ProductQuantity };

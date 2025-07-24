@@ -11,8 +11,8 @@ import { Form } from "@/ui/form";
 import { useAddToCartForm } from "@/app/product/[id]/hooks/forms/useAddToCartForm";
 import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
 
-import { AddToCartOptions } from "@/app/product/[id]/components/AddToCartOptions";
-import { AddToCartQuantity } from "@/app/product/[id]/components/AddToCartQuantity";
+import { ProductOptions } from "@/app/product/[id]/components/ProductOptions";
+import { ProductQuantity } from "@/app/product/[id]/components/ProductQuantity";
 
 interface AddToCartFormProps {
   productDetail: ProductDetailInfo;
@@ -52,7 +52,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
         onSubmit={addToCartForm.form.handleSubmit(addToCartForm.onSubmit)}
         className="p-4"
       >
-        <AddToCartOptions
+        <ProductOptions
           productOptions={addToCartForm.productOptions || []}
           control={addToCartForm.form.control}
           onSelectionChange={addToCartForm.handleOptionSelectionChange}
@@ -74,7 +74,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
               </div>
 
               <div>
-                <AddToCartQuantity
+                <ProductQuantity
                   control={addToCartForm.form.control}
                   maxPurchaseQuantity={addToCartForm.maxPurchaseQuantity}
                   onQuantityChange={addToCartForm.handleQuantityChange}

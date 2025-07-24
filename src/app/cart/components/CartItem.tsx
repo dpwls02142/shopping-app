@@ -15,7 +15,7 @@ import { X } from "lucide-react";
 
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-import { AddToCartQuantity } from "@/app/product/[id]/components/AddToCartQuantity";
+import { ProductQuantity } from "@/app/product/[id]/components/ProductQuantity";
 
 interface CartItemProps {
   item: CartItemType;
@@ -79,7 +79,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
 
           <div onClick={(e) => e.stopPropagation()}>
             <FormProvider {...form}>
-              <AddToCartQuantity
+              <ProductQuantity
                 control={form.control}
                 maxPurchaseQuantity={getMaxPurchaseQuantity(
                   item.productOptions,
