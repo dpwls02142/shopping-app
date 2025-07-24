@@ -9,10 +9,10 @@ import { Button } from "@/ui/button";
 import { Form } from "@/ui/form";
 
 import { useAddToCartForm } from "@/app/product/[id]/hooks/forms/useAddToCartForm";
-import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
+import { useProductPurchase } from "@/app/product/hooks/useProductPurchase";
 
-import { ProductOptions } from "@/app/product/[id]/components/ProductOptions";
-import { ProductQuantity } from "@/app/product/[id]/components/ProductQuantity";
+import { ProductOptions } from "@/app/product/components/ProductOptions";
+import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
 interface AddToCartFormProps {
   productDetail: ProductDetailInfo;
@@ -21,7 +21,7 @@ interface AddToCartFormProps {
 
 function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
   const addToCartForm = useAddToCartForm({ productDetail, onSuccess });
-  const updateStockMutation = useUpdateStock();
+  const updateStockMutation = useProductPurchase();
 
   const handleBuyNow = async () => {
     if (!addToCartForm.allOptionsSelected) {

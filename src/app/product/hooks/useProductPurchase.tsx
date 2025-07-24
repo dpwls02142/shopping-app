@@ -7,7 +7,7 @@ import { updateProductStock, updateProductStocks } from "@/lib/api/productApi";
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
 type MultipleUpdate = Array<{ optionId: string; quantityToDeduct: number }>;
 
-const useUpdateStock = () => {
+function useProductPurchase() {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -35,6 +35,6 @@ const useUpdateStock = () => {
       console.error(`재고 차감 실패: ${error}`);
     },
   });
-};
+}
 
-export { useUpdateStock };
+export { useProductPurchase };

@@ -15,7 +15,7 @@ import { X } from "lucide-react";
 
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-import { ProductQuantity } from "@/app/product/[id]/components/ProductQuantity";
+import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
 interface CartItemProps {
   item: CartItemType;
