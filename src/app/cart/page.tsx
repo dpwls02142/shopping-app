@@ -13,12 +13,11 @@ import {
 } from "@/lib/styles";
 import { Button } from "@/ui/button";
 
+import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 import { CartItemList } from "@/app/cart/components/CartItemList";
 import { CartSummary } from "@/app/cart/components/CartSummary";
-
-import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
 
 function CartPage() {
   const { items, totalItems, removeFromCart } = useCartStore();
