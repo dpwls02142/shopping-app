@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { ProductOption } from "@/lib/types/productType";
 
-import { updateProductStock, updateProductStocks } from "@/lib/api/productApi";
+import { purchaseProduct, purchaseProducts } from "@/lib/api/productApi";
 
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
 type MultipleUpdate = Array<{ optionId: string; quantityToDeduct: number }>;
@@ -13,8 +13,8 @@ function useProductPurchase() {
   return useMutation({
     mutationFn: async (params: SingleUpdate | MultipleUpdate) => {
       return Array.isArray(params)
-        ? updateProductStocks(params)
-        : updateProductStock(params.optionId, params.quantityToDeduct);
+        ? purchaseProducts(params)
+        : purchaseProduct(params.optionId, params.quantityToDeduct);
     },
     onSuccess: (result: ProductOption | ProductOption[]) => {
       const options = Array.isArray(result) ? result : [result];
