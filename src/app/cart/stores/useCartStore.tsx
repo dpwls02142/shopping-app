@@ -9,18 +9,7 @@ import {
 } from "@/lib/utils/productOptionUtils";
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
-
-/**
- * 장바구니에 상품 추가 시 발생할 수 있는 에러 메시지
- */
-const ERROR_MESSAGE = {
-  QUANTITY_MINIMUM: `수량은 1개 이상이어야 합니다.`,
-  MISSING_OPTIONS: `상품 옵션 정보가 누락되어 장바구니에 추가할 수 없습니다.`,
-  QUANTITY_MAXIMUM: (max: number) => `최대 구매 가능 수량은 ${max}개입니다.`,
-  QUANTITY_EXCEEDED: (current: number, remaining: number) =>
-    `이미 장바구니에 ${current}개가 담겨있습니다. 
-  최대 ${remaining}개까지 추가 가능합니다.`,
-} as const;
+import { ERROR_MESSAGE } from "@/lib/constants/errorMessage";
 
 /**
  * 이미 장바구니에 존재하는 상품인지 확인
