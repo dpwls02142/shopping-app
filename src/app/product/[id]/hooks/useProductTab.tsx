@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 
 type ProductTabType = "reviews" | "details";
-interface UseProductTabProps {
+interface UseProductTabReturn {
+  activeTab: ProductTabType;
+  setActiveTab: (tab: ProductTabType) => void;
+  isVisible: boolean;
+}
   activeTab: ProductTabType;
   setActiveTab: (tab: ProductTabType) => void;
   isVisible: boolean;
