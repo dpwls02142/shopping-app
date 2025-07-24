@@ -19,7 +19,10 @@ interface ProductActionFormProps {
   onSuccess?: () => void;
 }
 
-function ProductActionForm({ productDetail, onSuccess }: ProductActionFormProps) {
+function ProductActionForm({
+  productDetail,
+  onSuccess,
+}: ProductActionFormProps) {
   const productActionForm = useProductActionForm({ productDetail, onSuccess });
   const purchaseMutation = useProductPurchase();
 
@@ -49,7 +52,9 @@ function ProductActionForm({ productDetail, onSuccess }: ProductActionFormProps)
   return (
     <Form {...productActionForm.form}>
       <form
-        onSubmit={productActionForm.form.handleSubmit(productActionForm.onSubmit)}
+        onSubmit={productActionForm.form.handleSubmit(
+          productActionForm.onSubmit
+        )}
         className="p-4"
       >
         <ProductOptions
@@ -64,13 +69,13 @@ function ProductActionForm({ productDetail, onSuccess }: ProductActionFormProps)
 
             <div className="flex items-start justify-between">
               <div className="flex flex-wrap">
-                {convertRecordToKeyValueArray(productActionForm.watchedOptions).map(
-                  (option) => (
-                    <span key={option.key} className={cn(OPTION_TEXT, "mr-2")}>
-                      {option.key}: {option.value}
-                    </span>
-                  )
-                )}
+                {convertRecordToKeyValueArray(
+                  productActionForm.watchedOptions
+                ).map((option) => (
+                  <span key={option.key} className={cn(OPTION_TEXT, "mr-2")}>
+                    {option.key}: {option.value}
+                  </span>
+                ))}
               </div>
 
               <div>
