@@ -22,4 +22,4 @@ function MainView({ shoppingHome, deal }: MainViewProps) {
   );
 }
 
-export default MainView;
+export { MainView };
