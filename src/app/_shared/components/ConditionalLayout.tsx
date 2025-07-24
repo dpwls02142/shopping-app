@@ -4,7 +4,7 @@ import { ReactNode, useRef } from "react";
 
 import { MAIN_CONTAINER } from "@/lib/styles";
 
-import { useScrollActivity } from "@/app/_point/hooks/useScrollActivity";
+import useScrollActivity from "@/app/_point/hooks/useScrollActivity";
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
 
 import PointDisplay from "@/app/_point/components/PointDisplay";

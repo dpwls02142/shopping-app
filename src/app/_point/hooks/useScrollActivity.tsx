@@ -23,7 +23,7 @@ interface UseScrollActivityProps {
  * @param isEnabled - 스크롤 감지 훅 활성화 여부 (기본값: true)
  * cart(장바구니) 도메인에서는 스크롤 감지 훅 비활성화
  */
-export function useScrollActivity({
+function useScrollActivity({
   mainRef,
   isEnabled = true,
 }: UseScrollActivityProps) {
@@ -113,3 +113,5 @@ export function useScrollActivity({
     }
   }, [isEnabled, scrollTimeElapsed, addPoints, resetScrollTimer]);
 }
+
+export default useScrollActivity;
