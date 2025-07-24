@@ -20,7 +20,7 @@ import { CartSummary } from "@/app/cart/components/CartSummary";
 
 import useUpdateStock from "../product/[id]/hooks/useUpdateStock";
 
-export default function CartPage() {
+function CartPage() {
   const { items, totalItems, removeFromCart } = useCartStore();
   const updateStockMutation = useUpdateStock();
 
@@ -78,3 +78,5 @@ export default function CartPage() {
     </div>
   );
 }
+
+export default CartPage;
