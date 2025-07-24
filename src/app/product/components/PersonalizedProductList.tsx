@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import ProductListSkeleton from "@/ui/ProductListSkeleton";
+import { ProductListSkeleton } from "@/ui/ProductListSkeleton";
 
 import { ProductCard } from "@/app/product/components/ProductCard";
 

@@ -35,4 +35,4 @@ function ProductListSkeleton() {
   );
 }
 
-export default ProductListSkeleton;
+export { ProductListSkeleton };
