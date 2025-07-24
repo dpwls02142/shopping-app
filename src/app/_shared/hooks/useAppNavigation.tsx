@@ -1,7 +1,8 @@
 import { usePathname, useSearchParams } from "next/navigation";
 
-import { MAIN_NAV_ITEMS, NAV_ITEMS } from "@/lib/constants/navigation";
 import { NavigationPage } from "@/lib/types/navigationType";
+
+import { MAIN_NAV_ITEMS, NAV_ITEMS } from "@/lib/constants/navigation";
 
 function useAppNavigation() {
   const pathname = usePathname();
