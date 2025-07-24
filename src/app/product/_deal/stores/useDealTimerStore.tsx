@@ -71,4 +71,4 @@ const useDealTimerStore = create<DealTimerStore>((set, get) => ({
   },
 }));
 
-export default useDealTimerStore;
+export { useDealTimerStore };

@@ -1,6 +1,6 @@
-import BrandProductList from "@/app/product/_deal/components/BrandProductList";
-import DailyProductList from "@/app/product/_deal/components/DailyProductList";
-import DealNavbar from "@/app/product/_deal/components/DealNavbar";
+import { BrandProductList } from "@/app/product/_deal/components/BrandProductList";
+import { DailyProductList } from "@/app/product/_deal/components/DailyProductList";
+import { DealNavbar } from "@/app/product/_deal/components/DealNavbar";
 
 interface DealViewProps {
   searchParams: {
@@ -21,4 +21,4 @@ function DealView({ searchParams }: DealViewProps) {
   );
 }
 
-export default DealView;
+export { DealView };

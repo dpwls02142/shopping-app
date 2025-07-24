@@ -27,4 +27,4 @@ async function DailyProductList() {
   );
 }
 
-export default DailyProductList;
+export { DailyProductList };

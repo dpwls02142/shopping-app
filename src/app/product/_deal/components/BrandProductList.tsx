@@ -20,4 +20,4 @@ async function BrandProductList() {
   );
 }
 
-export default BrandProductList;
+export { BrandProductList };
