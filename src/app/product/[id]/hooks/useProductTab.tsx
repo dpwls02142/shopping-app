@@ -8,12 +8,8 @@ interface UseProductTabReturn {
   setActiveTab: (tab: ProductTabType) => void;
   isVisible: boolean;
 }
-  activeTab: ProductTabType;
-  setActiveTab: (tab: ProductTabType) => void;
-  isVisible: boolean;
-}
 
-const useProductTab = (): UseProductTabProps => {
+const useProductTab = (): UseProductTabReturn => {
   const [activeTab, setActiveTab] = useState<ProductTabType>("reviews");
   const [isVisible, setIsVisible] = useState(false);
 
