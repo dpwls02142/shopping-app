@@ -14,10 +14,10 @@ import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
 import { AddToCartOptions } from "@/app/product/[id]/components/AddToCartOptions";
 import { AddToCartQuantity } from "@/app/product/[id]/components/AddToCartQuantity";
 
-type AddToCartFormProps = {
+interface AddToCartFormProps {
   productDetail: ProductDetailInfo;
   onSuccess?: () => void;
-};
+}
 
 function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
   const addToCartForm = useAddToCartForm({ productDetail, onSuccess });
