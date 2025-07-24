@@ -140,7 +140,7 @@ export const fetchProductDetail = async (
   }
 };
 
-export const updateProductStock = async (
+export const purchaseProduct = async (
   optionId: string,
   quantityToDeduct: number
 ): Promise<ProductOption> => {
@@ -187,12 +187,12 @@ export const updateProductStock = async (
   }
 };
 
-export const updateProductStocks = async (
+export const purchaseProducts = async (
   stockUpdates: Array<{ optionId: string; quantityToDeduct: number }>
 ): Promise<ProductOption[]> => {
   try {
     const updatePromises = stockUpdates.map(({ optionId, quantityToDeduct }) =>
-      updateProductStock(optionId, quantityToDeduct)
+      purchaseProduct(optionId, quantityToDeduct)
     );
 
     return await Promise.all(updatePromises);

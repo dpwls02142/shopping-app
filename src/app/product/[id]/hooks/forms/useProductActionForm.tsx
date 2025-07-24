@@ -15,12 +15,12 @@ import { ProductDetailInfo } from "@/lib/types/productType";
 
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-interface UseAddToCartFormProps {
+interface UseProductActionFormProps {
   productDetail: ProductDetailInfo;
   onSuccess?: () => void;
 }
 
-function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
+function useProductActionForm({ productDetail, onSuccess }: UseProductActionFormProps) {
   const { product, options: productOptions, discount } = productDetail;
   const addToCart = useCartStore((state) => state.addToCart);
 
@@ -124,4 +124,4 @@ function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
   };
 }
 
-export { useAddToCartForm };
+export { useProductActionForm };

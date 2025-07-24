@@ -2,19 +2,19 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { ProductOption } from "@/lib/types/productType";
 
-import { updateProductStock, updateProductStocks } from "@/lib/api/productApi";
+import { purchaseProduct, purchaseProducts } from "@/lib/api/productApi";
 
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
 type MultipleUpdate = Array<{ optionId: string; quantityToDeduct: number }>;
 
-const useUpdateStock = () => {
+function useProductPurchase() {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (params: SingleUpdate | MultipleUpdate) => {
       return Array.isArray(params)
-        ? updateProductStocks(params)
-        : updateProductStock(params.optionId, params.quantityToDeduct);
+        ? purchaseProducts(params)
+        : purchaseProduct(params.optionId, params.quantityToDeduct);
     },
     onSuccess: (result: ProductOption | ProductOption[]) => {
       const options = Array.isArray(result) ? result : [result];
@@ -35,6 +35,6 @@ const useUpdateStock = () => {
       console.error(`재고 차감 실패: ${error}`);
     },
   });
-};
+}
 
-export { useUpdateStock };
+export { useProductPurchase };
