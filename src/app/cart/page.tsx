@@ -13,14 +13,13 @@ import {
 } from "@/lib/styles";
 import { Button } from "@/ui/button";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
+import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-import CartItemList from "@/app/cart/components/CartItemList";
-import CartSummary from "@/app/cart/components/CartSummary";
+import { CartItemList } from "@/app/cart/components/CartItemList";
+import { CartSummary } from "@/app/cart/components/CartSummary";
 
-import useUpdateStock from "../product/[id]/hooks/useUpdateStock";
-
-export default function CartPage() {
+function CartPage() {
   const { items, totalItems, removeFromCart } = useCartStore();
   const updateStockMutation = useUpdateStock();
 
@@ -78,3 +77,5 @@ export default function CartPage() {
     </div>
   );
 }
+
+export default CartPage;

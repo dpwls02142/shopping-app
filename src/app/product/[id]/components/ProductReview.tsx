@@ -6,7 +6,7 @@ import { Review } from "@/lib/types/productType";
 
 import { Button } from "@/ui/button";
 
-import ProductRating from "../../components/ProductRating";
+import { ProductRating } from "@/app/product/components/ProductRating";
 
 interface ProductReviewProps {
   reviews: Review[];
@@ -78,4 +78,4 @@ function ProductReview({ reviews }: ProductReviewProps) {
   );
 }
 
-export default ProductReview;
+export { ProductReview };

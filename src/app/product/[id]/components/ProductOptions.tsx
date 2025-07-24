@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/ui/select";
 
-import useProductOptions from "@/app/product/[id]/hooks/forms/useProductOptions";
+import { useProductOptions } from "@/app/product/[id]/hooks/forms/useProductOptions";
 
 interface AddToCartOptionsProps {
   productOptions: ProductOption[];
@@ -25,7 +25,7 @@ interface AddToCartOptionsProps {
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
 }
 
-function AddToCartOptions({
+function ProductOptions({
   productOptions,
   control,
   onSelectionChange,
@@ -37,7 +37,7 @@ function AddToCartOptions({
     openDropdowns,
     handleOptionChange,
     handleDropdownToggle,
-  } = useProductOptions(productOptions, control);
+  } = useProductOptions({ productOptions, control });
 
   return (
     <div className="space-y-4">
@@ -88,4 +88,4 @@ function AddToCartOptions({
   );
 }
 
-export default AddToCartOptions;
+export { ProductOptions };

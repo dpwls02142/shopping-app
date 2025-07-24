@@ -47,4 +47,4 @@ const useProductTabObserver = ({
   }, [reviewRef, descriptionRef, setActiveTab]);
 };
 
-export default useProductTabObserver;
+export { useProductTabObserver };

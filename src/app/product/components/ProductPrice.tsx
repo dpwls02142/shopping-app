@@ -36,4 +36,4 @@ function ProductPrice({ product, size = "medium" }: ProductPriceProps) {
   }
 }
 
-export default ProductPrice;
+export { ProductPrice };

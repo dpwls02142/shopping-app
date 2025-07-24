@@ -8,16 +8,16 @@ import { ADD_TO_CART_BOTTOM_CONTAINER, OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { Form } from "@/ui/form";
 
-import useAddToCartForm from "@/app/product/[id]/hooks/forms/useAddToCartForm";
-import useUpdateStock from "@/app/product/[id]/hooks/useUpdateStock";
+import { useAddToCartForm } from "@/app/product/[id]/hooks/forms/useAddToCartForm";
+import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
 
-import ProductOptions from "@/app/product/[id]/components/AddToCartOptions";
-import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
+import { ProductOptions } from "@/app/product/[id]/components/ProductOptions";
+import { ProductQuantity } from "@/app/product/[id]/components/ProductQuantity";
 
-type AddToCartFormProps = {
+interface AddToCartFormProps {
   productDetail: ProductDetailInfo;
   onSuccess?: () => void;
-};
+}
 
 function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
   const addToCartForm = useAddToCartForm({ productDetail, onSuccess });
@@ -116,4 +116,4 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
   );
 }
 
-export default AddToCartForm;
+export { AddToCartForm };

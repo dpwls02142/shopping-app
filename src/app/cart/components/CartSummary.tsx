@@ -4,7 +4,7 @@ import { formatPriceToKor } from "@/lib/utils";
 
 import { OPTION_TEXT, TITLE } from "@/lib/styles";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 function CartSummary() {
   const { totalItems, totalPrice } = useCartStore();
@@ -21,4 +21,4 @@ function CartSummary() {
   );
 }
 
-export default CartSummary;
+export { CartSummary };

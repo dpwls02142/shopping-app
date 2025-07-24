@@ -7,10 +7,15 @@ import {
 } from "@/lib/utils/productOptionUtils";
 import { ProductOption } from "@/lib/types/productType";
 
-function useProductOptions(
-  productOptions: ProductOption[],
-  control: Control<{ options: Record<string, string>; quantity: number }>
-) {
+interface UseProductOptionsProps {
+  productOptions: ProductOption[];
+  control: Control<{ options: Record<string, string>; quantity: number }>;
+}
+
+function useProductOptions({
+  productOptions,
+  control,
+}: UseProductOptionsProps) {
   const optionKeys = useMemo(
     () => extractOptionKeys(productOptions),
     [productOptions]
@@ -100,4 +105,4 @@ function useProductOptions(
   };
 }
 
-export default useProductOptions;
+export { useProductOptions };

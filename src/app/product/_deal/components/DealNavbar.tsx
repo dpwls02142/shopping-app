@@ -59,4 +59,4 @@ function DealNavbar() {
   );
 }
 
-export default DealNavbar;
+export { DealNavbar };

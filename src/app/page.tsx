@@ -1,6 +1,6 @@
-import MainView from "@/app/_shared/components/MainView";
-import DealView from "@/app/product/_deal/components/DealView";
-import PersonalizedProductList from "@/app/product/components/PersonalizedProductList";
+import { MainView } from "@/app/_shared/components/MainView";
+import { DealView } from "@/app/product/_deal/components/DealView";
+import { PersonalizedProductList } from "@/app/product/components/PersonalizedProductList";
 
 interface HomeProps {
   searchParams: Promise<{

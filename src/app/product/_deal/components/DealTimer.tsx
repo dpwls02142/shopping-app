@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 
-import useDealTimerStore from "@/app/product/_deal/stores/useDealTimerStore";
+import { useDealTimerStore } from "@/app/product/_deal/stores/useDealTimerStore";
 
 function DealTimer() {
   const { timeLeft, progress, startTimer, stopTimer } = useDealTimerStore();
@@ -28,4 +28,4 @@ function DealTimer() {
   );
 }
 
-export default DealTimer;
+export { DealTimer };

@@ -13,9 +13,9 @@ import { OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { X } from "lucide-react";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
+import { ProductQuantity } from "@/app/product/[id]/components/ProductQuantity";
 
 interface CartItemProps {
   item: CartItemType;
@@ -102,4 +102,4 @@ function CartItem({ item, onRemove }: CartItemProps) {
   );
 }
 
-export default CartItem;
+export { CartItem };

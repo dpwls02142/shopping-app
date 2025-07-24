@@ -1,14 +1,6 @@
-export type NavigationPage = "home" | "product" | "cart" | "deal";
+import { NavItem } from "@/lib/types/navigationType";
 
-type NavItem = {
-  id: NavigationPage;
-  label: string;
-  href: string;
-  isMain: boolean;
-  match: (pathname: string, searchParams: URLSearchParams) => boolean;
-};
-
-export const NAV_ITEMS: NavItem[] = [
+const NAV_ITEMS: NavItem[] = [
   {
     id: "home",
     label: "쇼핑 홈",
@@ -44,4 +36,6 @@ export const NAV_ITEMS: NavItem[] = [
   },
 ];
 
-export const MAIN_NAV_ITEMS = NAV_ITEMS.filter((item) => item.isMain);
+const MAIN_NAV_ITEMS = NAV_ITEMS.filter((item) => item.isMain);
+
+export { MAIN_NAV_ITEMS, NAV_ITEMS };

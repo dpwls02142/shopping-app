@@ -8,7 +8,7 @@ import { FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
 import { Input } from "@/ui/input";
 import { MinusIcon, PlusIcon } from "lucide-react";
 
-import useProductQuantity from "@/app/product/[id]/hooks/forms/useProductQuantity";
+import { useProductQuantity } from "@/app/product/[id]/hooks/forms/useProductQuantity";
 
 interface AddToCartQuantityProps {
   control: Control<{ options: Record<string, string>; quantity: number }>;
@@ -18,7 +18,7 @@ interface AddToCartQuantityProps {
   showSelectedOptions?: boolean;
 }
 
-function AddToCartQuantity({
+function ProductQuantity({
   control,
   maxPurchaseQuantity = 0,
   onQuantityChange,
@@ -80,4 +80,4 @@ function AddToCartQuantity({
   );
 }
 
-export default AddToCartQuantity;
+export { ProductQuantity };

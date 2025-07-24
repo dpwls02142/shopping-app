@@ -25,4 +25,4 @@ function useProductQuantity({
   };
 }
 
-export default useProductQuantity;
+export { useProductQuantity };

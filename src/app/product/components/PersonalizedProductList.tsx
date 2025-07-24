@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 
-import ProductListSkeleton from "@/ui/ProductListSkeleton";
+import { ProductListSkeleton } from "@/ui/ProductListSkeleton";
 
-import ProductCard from "@/app/product/components/ProductCard";
+import { ProductCard } from "@/app/product/components/ProductCard";
 
 import { fetchCustomers } from "@/lib/api/customerApi";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
@@ -28,4 +28,4 @@ async function PersonalizedProductList() {
   );
 }
 
-export default PersonalizedProductList;
+export { PersonalizedProductList };

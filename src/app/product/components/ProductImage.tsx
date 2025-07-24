@@ -28,4 +28,4 @@ function ProductImage({
   );
 }
 
-export default ProductImage;
+export { ProductImage };

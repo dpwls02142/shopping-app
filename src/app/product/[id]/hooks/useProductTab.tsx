@@ -30,4 +30,4 @@ const useProductTab = (): UseProductTabReturn => {
   };
 };
 
-export default useProductTab;
+export { useProductTab };

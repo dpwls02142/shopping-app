@@ -1,12 +1,12 @@
 "use client";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-import CartItem from "@/app/cart/components/CartItem";
+import { CartItem } from "@/app/cart/components/CartItem";
 
 interface CartItemListProps {
   onProductRemove?: (itemId: string) => void;
-};
+}
 
 function CartItemList({ onProductRemove }: CartItemListProps) {
   const { items, removeFromCart } = useCartStore();
@@ -25,4 +25,4 @@ function CartItemList({ onProductRemove }: CartItemListProps) {
   );
 }
 
-export default CartItemList;
+export { CartItemList };
