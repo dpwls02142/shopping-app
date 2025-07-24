@@ -21,7 +21,7 @@ interface AddToCartFormProps {
 
 function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
   const addToCartForm = useAddToCartForm({ productDetail, onSuccess });
-  const updateStockMutation = useProductPurchase();
+  const purchaseMutation = useProductPurchase();
 
   const handleBuyNow = async () => {
     if (!addToCartForm.allOptionsSelected) {
@@ -33,7 +33,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
       return;
     }
     try {
-      await updateStockMutation.mutateAsync({
+      await purchaseMutation.mutateAsync({
         optionId: addToCartForm.currentMatchingOption.id,
         quantityToDeduct: addToCartForm.watchedQuantity,
       });
@@ -103,11 +103,11 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
               className="flex-1 h-12 text-lg font-bold bg-blue-500 hover:bg-blue-600"
               disabled={
                 !addToCartForm.allOptionsSelected ||
-                updateStockMutation.isPending
+                purchaseMutation.isPending
               }
               onClick={handleBuyNow}
             >
-              {updateStockMutation.isPending ? "구매 중..." : "구매하기"}
+              {purchaseMutation.isPending ? "구매 중..." : "구매하기"}
             </Button>
           </div>
         </div>
