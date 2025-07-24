@@ -61,8 +61,7 @@ const useCartStore = create<CartStore>()(
         }
 
         const { items } = get();
-        const selectedOption =
-          createOptionsFromSelection(selectedOptions);
+        const selectedOption = createOptionsFromSelection(selectedOptions);
         const maxPurchaseQuantity = getMaxPurchaseQuantity(
           allAvailableOptions,
           selectedOption
@@ -79,7 +78,7 @@ const useCartStore = create<CartStore>()(
         const existingItemInCart = existingItemIndex !== -1;
         const isNewItem = existingItemIndex === -1;
 
-        if (existingItemInCart) { 
+        if (existingItemInCart) {
           const existingItem = updatedItems[existingItemIndex];
           const newQuantity = existingItem.quantity + quantity;
 
@@ -236,4 +235,4 @@ const useCartStore = create<CartStore>()(
   )
 );
 
-export default useCartStore;
+export { useCartStore };

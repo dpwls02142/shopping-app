@@ -22,4 +22,4 @@ function useAppNavigation() {
   };
 }
 
-export default useAppNavigation;
+export { useAppNavigation };

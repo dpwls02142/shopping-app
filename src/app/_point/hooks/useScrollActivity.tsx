@@ -114,4 +114,4 @@ function useScrollActivity({
   }, [isEnabled, scrollTimeElapsed, addPoints, resetScrollTimer]);
 }
 
-export default useScrollActivity;
+export { useScrollActivity };

@@ -13,7 +13,7 @@ import {
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 
 import { useAppNavigation } from "@/app/_shared/hooks/useAppNavigation";
-import useCartStore from "@/app/cart/stores/useCartStore";
+import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 const MAX_DISPLAY_CART_ITEMS = 99;
 
@@ -63,4 +63,4 @@ function AppHeader() {
   );
 }
 
-export default AppHeader;
+export { AppHeader };

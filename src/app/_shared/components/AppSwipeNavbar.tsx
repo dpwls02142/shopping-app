@@ -55,4 +55,4 @@ function AppSwipeNavbar({ children }: SwipeContainerProps) {
   );
 }
 
-export default AppSwipeNavbar;
+export { AppSwipeNavbar };

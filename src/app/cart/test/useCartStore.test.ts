@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 let uuidCounter = 0;
 vi.stubGlobal("crypto", {

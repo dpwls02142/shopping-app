@@ -52,4 +52,4 @@ function PointDisplay() {
   );
 }
 
-export default PointDisplay;
+export { PointDisplay };
