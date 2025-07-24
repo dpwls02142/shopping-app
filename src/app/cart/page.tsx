@@ -18,7 +18,7 @@ import { useCartStore } from "@/app/cart/stores/useCartStore";
 import { CartItemList } from "@/app/cart/components/CartItemList";
 import { CartSummary } from "@/app/cart/components/CartSummary";
 
-import useUpdateStock from "../product/[id]/hooks/useUpdateStock";
+import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
 
 function CartPage() {
   const { items, totalItems, removeFromCart } = useCartStore();

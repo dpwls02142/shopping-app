@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/ui/select";
 
-import useProductOptions from "@/app/product/[id]/hooks/forms/useProductOptions";
+import { useProductOptions } from "@/app/product/[id]/hooks/forms/useProductOptions";
 
 interface AddToCartOptionsProps {
   productOptions: ProductOption[];
@@ -88,4 +88,4 @@ function AddToCartOptions({
   );
 }
 
-export default AddToCartOptions;
+export { AddToCartOptions };

@@ -32,4 +32,4 @@ function ProductRating({
   );
 }
 
-export default ProductRating;
+export { ProductRating };

@@ -13,7 +13,7 @@ import {
 } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
-import useCartStore from "@/app/cart/stores/useCartStore";
+import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 interface UseAddToCartFormProps {
   productDetail: ProductDetailInfo;
@@ -124,4 +124,4 @@ function useAddToCartForm({ productDetail, onSuccess }: UseAddToCartFormProps) {
   };
 }
 
-export default useAddToCartForm;
+export { useAddToCartForm };

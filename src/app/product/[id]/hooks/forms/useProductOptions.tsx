@@ -100,4 +100,4 @@ function useProductOptions(
   };
 }
 
-export default useProductOptions;
+export { useProductOptions };

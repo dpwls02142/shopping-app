@@ -8,11 +8,11 @@ import { ADD_TO_CART_BOTTOM_CONTAINER, OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
 import { Form } from "@/ui/form";
 
-import useAddToCartForm from "@/app/product/[id]/hooks/forms/useAddToCartForm";
-import useUpdateStock from "@/app/product/[id]/hooks/useUpdateStock";
+import { useAddToCartForm } from "@/app/product/[id]/hooks/forms/useAddToCartForm";
+import { useUpdateStock } from "@/app/product/[id]/hooks/useUpdateStock";
 
-import ProductOptions from "@/app/product/[id]/components/AddToCartOptions";
-import ProductQuantity from "@/app/product/[id]/components/AddToCartQuantity";
+import { AddToCartOptions } from "@/app/product/[id]/components/AddToCartOptions";
+import { AddToCartQuantity } from "@/app/product/[id]/components/AddToCartQuantity";
 
 type AddToCartFormProps = {
   productDetail: ProductDetailInfo;
@@ -52,7 +52,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
         onSubmit={addToCartForm.form.handleSubmit(addToCartForm.onSubmit)}
         className="p-4"
       >
-        <ProductOptions
+        <AddToCartOptions
           productOptions={addToCartForm.productOptions || []}
           control={addToCartForm.form.control}
           onSelectionChange={addToCartForm.handleOptionSelectionChange}
@@ -74,7 +74,7 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
               </div>
 
               <div>
-                <ProductQuantity
+                <AddToCartQuantity
                   control={addToCartForm.form.control}
                   maxPurchaseQuantity={addToCartForm.maxPurchaseQuantity}
                   onQuantityChange={addToCartForm.handleQuantityChange}
@@ -116,4 +116,4 @@ function AddToCartForm({ productDetail, onSuccess }: AddToCartFormProps) {
   );
 }
 
-export default AddToCartForm;
+export { AddToCartForm };

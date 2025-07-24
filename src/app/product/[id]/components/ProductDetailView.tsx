@@ -16,14 +16,14 @@ import {
   SheetTrigger,
 } from "@/ui/sheet";
 
-import useProductTab from "@/app/product/[id]/hooks/useProductTab";
-import useProductTabObserver from "@/app/product/[id]/hooks/useProductTabObserver";
+import { useProductTab } from "@/app/product/[id]/hooks/useProductTab";
+import { useProductTabObserver } from "@/app/product/[id]/hooks/useProductTabObserver";
 
-import AddToCartForm from "@/app/product/[id]/components/AddToCartForm";
-import ProductDescription from "@/app/product/[id]/components/ProductDescription";
-import ProductOverview from "@/app/product/[id]/components/ProductOverview";
-import ProductReview from "@/app/product/[id]/components/ProductReview";
-import ProductTab from "@/app/product/[id]/components/ProductTab";
+import { AddToCartForm } from "@/app/product/[id]/components/AddToCartForm";
+import { ProductDescription } from "@/app/product/[id]/components/ProductDescription";
+import { ProductOverview } from "@/app/product/[id]/components/ProductOverview";
+import { ProductReview } from "@/app/product/[id]/components/ProductReview";
+import { ProductTab } from "@/app/product/[id]/components/ProductTab";
 
 interface ProductDetailProps {
   productDetail: ProductDetailInfo;
@@ -111,4 +111,4 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
   );
 }
 
-export default ProductDetailView;
+export { ProductDetailView };

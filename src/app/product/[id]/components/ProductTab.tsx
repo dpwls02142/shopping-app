@@ -43,4 +43,4 @@ function ProductTab({ activeTab, onTabChange, isVisible }: ProductTabProps) {
   );
 }
 
-export default ProductTab;
+export { ProductTab };

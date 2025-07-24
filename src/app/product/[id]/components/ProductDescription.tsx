@@ -23,4 +23,4 @@ function ProductDescription({
   );
 }
 
-export default ProductDescription;
+export { ProductDescription };

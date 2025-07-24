@@ -3,10 +3,10 @@
 import { toProductPreview } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
-import DealTimer from "@/app/product/_deal/components/DealTimer";
-import ProductImage from "@/app/product/components/ProductImage";
-import ProductPrice from "@/app/product/components/ProductPrice";
-import ProductRating from "@/app/product/components/ProductRating";
+import { DealTimer } from "@/app/product/_deal/components/DealTimer";
+import { ProductImage } from "@/app/product/components/ProductImage";
+import { ProductPrice } from "@/app/product/components/ProductPrice";
+import { ProductRating } from "@/app/product/components/ProductRating";
 
 interface ProductOverviewProps {
   productDetail: ProductDetailInfo;
@@ -39,4 +39,4 @@ function ProductOverview({ productDetail }: ProductOverviewProps) {
   );
 }
 
-export default ProductOverview;
+export { ProductOverview };

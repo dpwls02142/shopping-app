@@ -37,4 +37,4 @@ const useUpdateStock = () => {
   });
 };
 
-export default useUpdateStock;
+export { useUpdateStock };
