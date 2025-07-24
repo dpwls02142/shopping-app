@@ -37,7 +37,7 @@ function AddToCartOptions({
     openDropdowns,
     handleOptionChange,
     handleDropdownToggle,
-  } = useProductOptions(productOptions, control);
+  } = useProductOptions({ productOptions, control });
 
   return (
     <div className="space-y-4">
