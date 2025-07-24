@@ -8,7 +8,7 @@ import { FormControl, FormField, FormItem, FormMessage } from "@/ui/form";
 import { Input } from "@/ui/input";
 import { MinusIcon, PlusIcon } from "lucide-react";
 
-import { useProductQuantity } from "@/app/product/[id]/hooks/forms/useProductQuantity";
+import { useProductQuantity } from "@/app/product/hooks/forms/useProductQuantity";
 
 interface AddToCartQuantityProps {
   control: Control<{ options: Record<string, string>; quantity: number }>;
