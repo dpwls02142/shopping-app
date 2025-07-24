@@ -18,15 +18,14 @@ import {
 
 import { useProductTab } from "@/app/product/[id]/hooks/useProductTab";
 import { useProductTabObserver } from "@/app/product/[id]/hooks/useProductTabObserver";
+import { useProductPurchase } from "@/app/product/hooks/useProductPurchase";
+import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 import { ProductActionForm } from "@/app/product/[id]/components/ProductActionForm";
 import { ProductDescription } from "@/app/product/[id]/components/ProductDescription";
 import { ProductOverview } from "@/app/product/[id]/components/ProductOverview";
 import { ProductReview } from "@/app/product/[id]/components/ProductReview";
 import { ProductTab } from "@/app/product/[id]/components/ProductTab";
-
-import { useProductPurchase } from "@/app/product/hooks/useProductPurchase";
-import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 interface ProductDetailProps {
   productDetail: ProductDetailInfo;
