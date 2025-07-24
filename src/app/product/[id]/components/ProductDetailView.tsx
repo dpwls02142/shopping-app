@@ -19,7 +19,7 @@ import {
 import { useProductTab } from "@/app/product/[id]/hooks/useProductTab";
 import { useProductTabObserver } from "@/app/product/[id]/hooks/useProductTabObserver";
 
-import { AddToCartForm } from "@/app/product/[id]/components/AddToCartForm";
+import { ProductActionForm } from "@/app/product/[id]/components/ProductActionForm";
 import { ProductDescription } from "@/app/product/[id]/components/ProductDescription";
 import { ProductOverview } from "@/app/product/[id]/components/ProductOverview";
 import { ProductReview } from "@/app/product/[id]/components/ProductReview";
@@ -98,7 +98,7 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
               </VisuallyHidden>
 
               <div className="flex-1 overflow-hidden">
-                <AddToCartForm
+                <ProductActionForm
                   productDetail={productDetail}
                   onSuccess={() => setIsSheetOpen(false)}
                 />
