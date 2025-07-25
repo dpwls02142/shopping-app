@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { ProductOption } from "@/lib/types/productType";
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/errorMessage";
 
 import { purchaseProduct, purchaseProducts } from "@/lib/api/productApi";
 
@@ -23,17 +24,19 @@ function useProductPurchase() {
       ];
 
       productIds.forEach((productId) => {
-        // 상품 상세 페이지용 쿼리 무효화
         queryClient.invalidateQueries({
           queryKey: ["productDetail", productId],
         });
-        // 장바구니용 productOptions 쿼리 무효화
         queryClient.invalidateQueries({
           queryKey: ["productOptions", productId],
         });
       });
+      alert(SUCCESS_MESSAGE.PURCHASE_COMPLETE);
     },
-    onError: (error) => {
+    onError: (error: unknown) => {
+      const errorMessage =
+        error instanceof Error ? error.message : ERROR_MESSAGE.BUY_NOW_ERROR;
+      alert(errorMessage);
       console.error(`재고 차감 실패: ${error}`);
     },
   });
