@@ -29,6 +29,7 @@ import { ProductReview } from "@/app/product/[id]/components/ProductReview";
 import { ProductTab } from "@/app/product/[id]/components/ProductTab";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/errorMessage";
 
 interface ProductDetailProps {
   productId: string;
@@ -85,11 +86,11 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         productDetail.discount?.discountedPrice,
         productDetail.options
       );
-      alert(`장바구니에 추가되었습니다.`);
+      alert(SUCCESS_MESSAGE.ADD_TO_CART);
       setIsSheetOpen(false);
     } catch (error: unknown) {
       alert(
-        error instanceof Error ? error.message : `장바구니 추가 중 오류가 발생했습니다.`
+        error instanceof Error ? error.message : ERROR_MESSAGE.ADD_TO_CART_ERROR
       );
     }
   };
@@ -130,12 +131,10 @@ function ProductDetailView({ productId }: ProductDetailProps) {
             );
         }
       }
-      alert(`구매 완료`);
+      alert(SUCCESS_MESSAGE.PURCHASE_COMPLETE);
       setIsSheetOpen(false);
     } catch (error: unknown) {
-      alert(
-        error instanceof Error ? error.message : `주문 중 오류가 발생했습니다.`
-      );
+      alert(error instanceof Error ? error.message : ERROR_MESSAGE.BUY_NOW_ERROR);
     }
   };
 

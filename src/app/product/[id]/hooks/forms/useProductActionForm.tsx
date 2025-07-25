@@ -106,7 +106,7 @@ function useProductActionForm({
       const errorMessage =
         error instanceof Error
           ? error.message
-          : "장바구니 추가 중 오류가 발생했습니다.";
+          : ERROR_MESSAGE.ADD_TO_CART_ERROR;
       form.setError("quantity", {
         message: errorMessage,
       });
