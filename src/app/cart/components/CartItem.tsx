@@ -1,6 +1,7 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
 import { formatPriceToKor } from "@/lib/utils";
 import {
@@ -8,6 +9,7 @@ import {
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
 import { CartItem as CartItemType } from "@/lib/types/cartType";
+import { fetchProductOptionsByProductId } from "@/lib/api/productApi";
 
 import { OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
@@ -30,10 +32,25 @@ function CartItem({ item, onRemove }: CartItemProps) {
       quantity: item.quantity,
     },
   });
+
+  // 실시간으로 최신 productOptions 가져오기
+  const { data: latestProductOptions } = useQuery({
+    queryKey: ["productOptions", item.product.id],
+    queryFn: () => fetchProductOptionsByProductId(item.product.id),
+    staleTime: 1000 * 30, // 30초간 fresh 상태 유지 (자주 업데이트될 수 있으므로 짧게 설정)
+  });
+
+  // 최신 데이터가 있으면 사용, 없으면 기존 데이터 사용 (fallback)
+  const productOptionsToUse = latestProductOptions || item.productOptions;
+  const maxPurchaseQuantity = getMaxPurchaseQuantity(
+    productOptionsToUse,
+    selectedOptions
+  );
+
   const updateCartItemQuantity = useCartStore((state) => state.updateQuantity);
   const handleQuantityChange = (newQuantity: number) => {
     try {
-      updateCartItemQuantity(item.id, newQuantity, item.productOptions);
+      updateCartItemQuantity(item.id, newQuantity, productOptionsToUse);
       form.clearErrors("quantity");
     } catch (error) {
       const errorMessage =
@@ -81,10 +98,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
             <FormProvider {...form}>
               <ProductQuantity
                 control={form.control}
-                maxPurchaseQuantity={getMaxPurchaseQuantity(
-                  item.productOptions,
-                  selectedOptions
-                )}
+                maxPurchaseQuantity={maxPurchaseQuantity}
                 selectedOptions={selectedOptions}
                 showSelectedOptions={false}
                 onQuantityChange={handleQuantityChange}
