@@ -1,6 +1,7 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
 import { formatPriceToKor } from "@/lib/utils";
 import {
@@ -17,6 +18,8 @@ import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
+import { fetchProductOptionsByProductId } from "@/lib/api/productApi";
+
 interface CartItemProps {
   item: CartItemType;
   onRemove: (itemId: string) => void;
@@ -30,10 +33,25 @@ function CartItem({ item, onRemove }: CartItemProps) {
       quantity: item.quantity,
     },
   });
+
+  const { data: latestProductOptions } = useQuery({
+    queryKey: ["productOptions", item.product.id],
+    queryFn: () => fetchProductOptionsByProductId(item.product.id),
+    staleTime: 1000 * 30,
+  });
+
+  const productOptions = latestProductOptions?.length
+    ? latestProductOptions
+    : item.productOptions;
+  const maxPurchaseQuantity = getMaxPurchaseQuantity(
+    productOptions,
+    selectedOptions
+  );
+
   const updateCartItemQuantity = useCartStore((state) => state.updateQuantity);
   const handleQuantityChange = (newQuantity: number) => {
     try {
-      updateCartItemQuantity(item.id, newQuantity, item.productOptions);
+      updateCartItemQuantity(item.id, newQuantity, productOptions);
       form.clearErrors("quantity");
     } catch (error) {
       const errorMessage =
@@ -81,10 +99,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
             <FormProvider {...form}>
               <ProductQuantity
                 control={form.control}
-                maxPurchaseQuantity={getMaxPurchaseQuantity(
-                  item.productOptions,
-                  selectedOptions
-                )}
+                maxPurchaseQuantity={maxPurchaseQuantity}
                 selectedOptions={selectedOptions}
                 showSelectedOptions={false}
                 onQuantityChange={handleQuantityChange}

@@ -23,11 +23,13 @@ function useProductPurchase() {
       ];
 
       productIds.forEach((productId) => {
-        queryClient.invalidateQueries({
-          queryKey: ["productOptions", productId],
-        });
+        // 상품 상세 페이지용 쿼리 무효화
         queryClient.invalidateQueries({
           queryKey: ["productDetail", productId],
+        });
+        // 장바구니용 productOptions 쿼리 무효화
+        queryClient.invalidateQueries({
+          queryKey: ["productOptions", productId],
         });
       });
     },

@@ -1,3 +1,9 @@
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+
 import { ProductDetailView } from "@/app/product/[id]/components/ProductDetailView";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
@@ -9,25 +15,27 @@ interface ProductPageProps {
 }
 
 async function ProductPage(props: ProductPageProps) {
-  try {
-    const { id: productId } = await props.params;
-    const productDetail = await fetchProductDetail(productId);
+  const { id: productId } = await props.params;
 
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <ProductDetailView
-          productDetail={productDetail}
-          productId={productId}
-        />
-      </div>
-    );
-  } catch {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div>상품을 불러올 수 없습니다.</div>
-      </div>
-    );
+  const queryClient = new QueryClient();
+
+  try {
+    await queryClient.prefetchQuery({
+      queryKey: ["productDetail", productId],
+      queryFn: () => fetchProductDetail(productId),
+      staleTime: 1000 * 60 * 5,
+    });
+  } catch (error) {
+    console.error(`fetch product detailerror: ${error}`);
   }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <ProductDetailView productId={productId} />
+      </HydrationBoundary>
+    </div>
+  );
 }
 
 export default ProductPage;

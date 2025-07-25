@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
 
@@ -27,12 +28,13 @@ import { ProductOverview } from "@/app/product/[id]/components/ProductOverview";
 import { ProductReview } from "@/app/product/[id]/components/ProductReview";
 import { ProductTab } from "@/app/product/[id]/components/ProductTab";
 
+import { fetchProductDetail } from "@/lib/api/productApi";
+
 interface ProductDetailProps {
-  productDetail: ProductDetailInfo;
   productId: string;
 }
 
-function ProductDetailView({ productDetail }: ProductDetailProps) {
+function ProductDetailView({ productId }: ProductDetailProps) {
   const { activeTab, setActiveTab, isVisible } = useProductTab();
   const reviewRef = useRef<HTMLDivElement | null>(null);
   const descriptionRef = useRef<HTMLDivElement | null>(null);
@@ -40,10 +42,37 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
 
   const addToCart = useCartStore((s) => s.addToCart);
   const purchaseMutation = useProductPurchase();
+  const queryClient = useQueryClient();
+
+  const {
+    data: productDetail,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["productDetail", productId],
+    queryFn: () => fetchProductDetail(productId),
+    staleTime: 1000 * 60 * 5,
+  });
 
   useProductTabObserver({ reviewRef, descriptionRef, setActiveTab });
 
-  const handleAddToCart = (optionId: string, quantity: number) => {
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-lg">상품 정보를 불러오는 중...</div>
+      </div>
+    );
+  }
+
+  if (isError || !productDetail) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-lg text-red-500">상품을 불러올 수 없습니다.</div>
+      </div>
+    );
+  }
+
+  const handleAddToCart = async (optionId: string, quantity: number) => {
     try {
       const selectedOption = productDetail.options?.find(
         (option) => option.id === optionId
@@ -56,14 +85,12 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
         productDetail.discount?.discountedPrice,
         productDetail.options
       );
-      alert("장바구니에 추가되었습니다.");
+      alert(`장바구니에 추가되었습니다.`);
       setIsSheetOpen(false);
-    } catch (e) {
-      if (e instanceof Error) {
-        alert(e.message);
-      } else {
-        alert("장바구니 추가 중 오류가 발생했습니다.");
-      }
+    } catch (error: unknown) {
+      alert(
+        error instanceof Error ? error.message : `장바구니 추가 중 오류가 발생했습니다.`
+      );
     }
   };
 
@@ -73,14 +100,42 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
         optionId,
         quantityToDeduct: quantity,
       });
-      alert("구매가 완료되었습니다!");
-      setIsSheetOpen(false);
-    } catch (e) {
-      if (e instanceof Error) {
-        alert(e.message);
-      } else {
-        alert("구매 중 오류가 발생했습니다.");
+
+      await queryClient.refetchQueries({
+        queryKey: ["productDetail", productId],
+      });
+
+      const freshProductDetail = queryClient.getQueryData<ProductDetailInfo>([
+        "productDetail",
+        productId,
+      ]);
+
+      const cartItems = useCartStore.getState().items;
+      const existingCartItem = cartItems.find((item) => {
+        if (item.product.id !== productDetail.product.id) return false;
+        return item.selectedOptions.some((option) => option.id === optionId);
+      });
+
+      if (existingCartItem && freshProductDetail) {
+        const updatedQuantity = existingCartItem.quantity - quantity;
+        if (updatedQuantity <= 0) {
+          useCartStore.getState().removeFromCart(existingCartItem.id);
+        } else {
+          useCartStore
+            .getState()
+            .updateQuantity(
+              existingCartItem.id,
+              updatedQuantity,
+              freshProductDetail.options
+            );
+        }
       }
+      alert(`구매 완료`);
+      setIsSheetOpen(false);
+    } catch (error: unknown) {
+      alert(
+        error instanceof Error ? error.message : `주문 중 오류가 발생했습니다.`
+      );
     }
   };
 
