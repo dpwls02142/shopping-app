@@ -157,10 +157,16 @@ export const purchaseProduct = async (
       throw new Error(`상품 재고가 부족합니다.`);
     }
 
-    // 재고 차감
+    if (currentOption.maxPurchaseQuantity < quantityToDeduct) {
+      throw new Error(
+        `최대 구매 가능 수량을 초과했습니다. 현재 최대 구매 가능 수량: ${currentOption.maxPurchaseQuantity}개`
+      );
+    }
+
     const updatedOption = {
       ...currentOption,
       stockQuantity: currentOption.stockQuantity - quantityToDeduct,
+      maxPurchaseQuantity: currentOption.maxPurchaseQuantity - quantityToDeduct,
     };
 
     const updateResponse = await fetch(
