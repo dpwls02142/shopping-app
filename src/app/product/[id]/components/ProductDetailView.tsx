@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useQuery } from "@tanstack/react-query";
 
-import { ProductDetailInfo } from "@/lib/types/productType";
 import { fetchProductDetail } from "@/lib/api/productApi";
 
 import { CART_BOTTOM_CONTAINER } from "@/lib/styles";
