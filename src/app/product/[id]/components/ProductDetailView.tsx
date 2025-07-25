@@ -87,12 +87,10 @@ function ProductDetailView({ productId }: ProductDetailProps) {
       );
       alert(`장바구니에 추가되었습니다.`);
       setIsSheetOpen(false);
-    } catch (e) {
-      if (e instanceof Error) {
-        alert(e.message);
-      } else {
-        alert("장바구니 추가 중 오류가 발생했습니다.");
-      }
+    } catch (error: unknown) {
+      alert(
+        error instanceof Error ? error.message : `장바구니 추가 중 오류가 발생했습니다.`
+      );
     }
   };
 
@@ -134,12 +132,10 @@ function ProductDetailView({ productId }: ProductDetailProps) {
       }
       alert(`구매 완료`);
       setIsSheetOpen(false);
-    } catch (e) {
-      if (e instanceof Error) {
-        alert(e.message);
-      } else {
-        alert("구매 중 오류가 발생했습니다.");
-      }
+    } catch (error: unknown) {
+      alert(
+        error instanceof Error ? error.message : `주문 중 오류가 발생했습니다.`
+      );
     }
   };
 
