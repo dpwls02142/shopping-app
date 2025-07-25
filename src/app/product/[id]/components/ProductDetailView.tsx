@@ -20,13 +20,13 @@ import { useProductTabObserver } from "@/app/product/[id]/hooks/useProductTabObs
 import { useProductPurchase } from "@/app/product/hooks/useProductPurchase";
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-import { fetchProductDetail } from "@/lib/api/productApi";
+import { ProductActionForm } from "@/app/product/[id]/components/ProductActionForm";
+import { ProductDescription } from "@/app/product/[id]/components/ProductDescription";
+import { ProductOverview } from "@/app/product/[id]/components/ProductOverview";
+import { ProductReview } from "@/app/product/[id]/components/ProductReview";
+import { ProductTab } from "@/app/product/[id]/components/ProductTab";
 
-import { ProductActionForm } from "./ProductActionForm";
-import { ProductDescription } from "./ProductDescription";
-import { ProductOverview } from "./ProductOverview";
-import { ProductReview } from "./ProductReview";
-import { ProductTab } from "./ProductTab";
+import { fetchProductDetail } from "@/lib/api/productApi";
 
 interface ProductDetailProps {
   productId: string;
