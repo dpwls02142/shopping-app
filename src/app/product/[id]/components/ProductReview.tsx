@@ -16,6 +16,7 @@ const MORE_REVIEW_COUNT = 5;
 
 function ProductReview({ reviews }: ProductReviewProps) {
   const [showAll, setShowAll] = useState(false);
+  const isReviewNull = reviews.length === 0;
   const hasMore = reviews.length > MORE_REVIEW_COUNT;
   const displayedReviews = showAll
     ? reviews
@@ -24,7 +25,7 @@ function ProductReview({ reviews }: ProductReviewProps) {
   return (
     <div className="bg-white">
       <div className="divide-y divide-gray-200">
-        {displayedReviews.length > 0 ? (
+        {isReviewNull ? (
           <>
             {displayedReviews.map((review) => (
               <div key={review.id} className="p-4">
