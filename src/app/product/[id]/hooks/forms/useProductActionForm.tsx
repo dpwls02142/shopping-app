@@ -14,19 +14,23 @@ import {
 import { ProductDetailInfo } from "@/lib/types/productType";
 
 import { useCartStore } from "@/app/cart/stores/useCartStore";
+import { ERROR_MESSAGE } from "@/lib/constants/errorMessage";
 
 interface UseProductActionFormProps {
   productDetail: ProductDetailInfo;
   onSuccess?: () => void;
 }
 
-function useProductActionForm({ productDetail, onSuccess }: UseProductActionFormProps) {
+function useProductActionForm({
+  productDetail,
+  onSuccess,
+}: UseProductActionFormProps) {
   const { product, options: productOptions, discount } = productDetail;
   const addToCart = useCartStore((state) => state.addToCart);
 
   const formSchema = z.object({
     options: z.record(z.string(), z.string()),
-    quantity: z.number().min(1, "수량은 1 이상이어야 합니다."),
+    quantity: z.number().min(1, ERROR_MESSAGE.QUANTITY_MINIMUM),
   });
 
   type FormValues = z.infer<typeof formSchema>;
@@ -76,14 +80,14 @@ function useProductActionForm({ productDetail, onSuccess }: UseProductActionForm
   const onSubmit = (values: FormValues) => {
     if (!allOptionsSelected) {
       form.setError("options", {
-        message: `모든 옵션을 선택해주세요.`,
+        message: ERROR_MESSAGE.MISSING_OPTIONS,
       });
       return;
     }
 
     if (!currentMatchingOption) {
       form.setError("options", {
-        message: `유효한 상품 옵션을 찾을 수 없습니다.`,
+        message: ERROR_MESSAGE.NOT_FOUND_OPTIONS,
       });
       return;
     }
