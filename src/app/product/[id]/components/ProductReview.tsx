@@ -25,7 +25,7 @@ function ProductReview({ reviews }: ProductReviewProps) {
   return (
     <div className="bg-white">
       <div className="divide-y divide-gray-200">
-        {isReviewNull ? (
+        {!isReviewNull ? (
           <>
             {displayedReviews.map((review) => (
               <div key={review.id} className="p-4">
