@@ -24,9 +24,6 @@ function useProductPurchase() {
 
       productIds.forEach((productId) => {
         queryClient.invalidateQueries({
-          queryKey: ["productOptions", productId],
-        });
-        queryClient.invalidateQueries({
           queryKey: ["productDetail", productId],
         });
       });

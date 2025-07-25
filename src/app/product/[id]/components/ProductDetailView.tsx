@@ -2,10 +2,13 @@
 
 import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { useQuery } from "@tanstack/react-query";
 
 import { ProductDetailInfo } from "@/lib/types/productType";
+import { fetchProductDetail } from "@/lib/api/productApi";
 
 import { CART_BOTTOM_CONTAINER } from "@/lib/styles";
+
 import { Button } from "@/ui/button";
 import {
   Sheet,
@@ -21,18 +24,17 @@ import { useProductTabObserver } from "@/app/product/[id]/hooks/useProductTabObs
 import { useProductPurchase } from "@/app/product/hooks/useProductPurchase";
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-import { ProductActionForm } from "@/app/product/[id]/components/ProductActionForm";
-import { ProductDescription } from "@/app/product/[id]/components/ProductDescription";
-import { ProductOverview } from "@/app/product/[id]/components/ProductOverview";
-import { ProductReview } from "@/app/product/[id]/components/ProductReview";
-import { ProductTab } from "@/app/product/[id]/components/ProductTab";
+import { ProductActionForm } from "./ProductActionForm";
+import { ProductDescription } from "./ProductDescription";
+import { ProductOverview } from "./ProductOverview";
+import { ProductReview } from "./ProductReview";
+import { ProductTab } from "./ProductTab";
 
 interface ProductDetailProps {
-  productDetail: ProductDetailInfo;
   productId: string;
 }
 
-function ProductDetailView({ productDetail }: ProductDetailProps) {
+function ProductDetailView({ productId }: ProductDetailProps) {
   const { activeTab, setActiveTab, isVisible } = useProductTab();
   const reviewRef = useRef<HTMLDivElement | null>(null);
   const descriptionRef = useRef<HTMLDivElement | null>(null);
@@ -41,9 +43,35 @@ function ProductDetailView({ productDetail }: ProductDetailProps) {
   const addToCart = useCartStore((s) => s.addToCart);
   const purchaseMutation = useProductPurchase();
 
+  const {
+    data: productDetail,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["productDetail", productId],
+    queryFn: () => fetchProductDetail(productId),
+    staleTime: 1000 * 60 * 5,
+  });
+
   useProductTabObserver({ reviewRef, descriptionRef, setActiveTab });
 
-  const handleAddToCart = (optionId: string, quantity: number) => {
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-lg">상품 정보를 불러오는 중...</div>
+      </div>
+    );
+  }
+
+  if (isError || !productDetail) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-lg text-red-500">상품을 불러올 수 없습니다.</div>
+      </div>
+    );
+  }
+
+  const handleAddToCart = async (optionId: string, quantity: number) => {
     try {
       const selectedOption = productDetail.options?.find(
         (option) => option.id === optionId
