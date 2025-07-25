@@ -10,7 +10,7 @@ import {
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 
-import { ERROR_MESSAGE } from "@/lib/constants/errorMessage";
+import { ERROR_MESSAGE } from "@/lib/constants/message";
 
 /**
  * 이미 장바구니에 존재하는 상품인지 확인

@@ -29,7 +29,7 @@ import { ProductReview } from "@/app/product/[id]/components/ProductReview";
 import { ProductTab } from "@/app/product/[id]/components/ProductTab";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
-import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/errorMessage";
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
 
 interface ProductDetailProps {
   productId: string;
@@ -134,7 +134,9 @@ function ProductDetailView({ productId }: ProductDetailProps) {
       alert(SUCCESS_MESSAGE.PURCHASE_COMPLETE);
       setIsSheetOpen(false);
     } catch (error: unknown) {
-      alert(error instanceof Error ? error.message : ERROR_MESSAGE.BUY_NOW_ERROR);
+      alert(
+        error instanceof Error ? error.message : ERROR_MESSAGE.BUY_NOW_ERROR
+      );
     }
   };
 

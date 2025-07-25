@@ -19,7 +19,7 @@ import { useCartStore } from "@/app/cart/stores/useCartStore";
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
 import { fetchProductOptionsByProductId } from "@/lib/api/productApi";
-import { ERROR_MESSAGE } from "@/lib/constants/errorMessage";
+import { ERROR_MESSAGE } from "@/lib/constants/message";
 
 interface CartItemProps {
   item: CartItemType;

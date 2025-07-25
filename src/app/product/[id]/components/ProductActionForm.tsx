@@ -13,7 +13,7 @@ import { useProductActionForm } from "@/app/product/[id]/hooks/forms/useProductA
 import { ProductOptions } from "@/app/product/components/ProductOptions";
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
-import { ERROR_MESSAGE } from "@/lib/constants/errorMessage";
+import { ERROR_MESSAGE } from "@/lib/constants/message";
 
 interface ProductActionFormProps {
   productDetail: ProductDetailInfo;

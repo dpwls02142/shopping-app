@@ -15,7 +15,7 @@ import { ProductDetailInfo } from "@/lib/types/productType";
 
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
-import { ERROR_MESSAGE } from "@/lib/constants/errorMessage";
+import { ERROR_MESSAGE } from "@/lib/constants/message";
 
 interface UseProductActionFormProps {
   productDetail: ProductDetailInfo;
