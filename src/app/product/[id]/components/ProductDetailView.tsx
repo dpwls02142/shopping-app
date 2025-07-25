@@ -85,7 +85,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         productDetail.discount?.discountedPrice,
         productDetail.options
       );
-      alert("장바구니에 추가되었습니다.");
+      alert(`장바구니에 추가되었습니다.`);
       setIsSheetOpen(false);
     } catch (e) {
       if (e instanceof Error) {
@@ -132,7 +132,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
             );
         }
       }
-      alert("구매가 완료되었습니다!");
+      alert(`구매 완료`);
       setIsSheetOpen(false);
     } catch (e) {
       if (e instanceof Error) {
