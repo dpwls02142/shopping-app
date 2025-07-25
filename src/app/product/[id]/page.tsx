@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-query";
 
 import { ProductDetailView } from "@/app/product/[id]/components/ProductDetailView";
+
 import { fetchProductDetail } from "@/lib/api/productApi";
 
 interface ProductPageProps {

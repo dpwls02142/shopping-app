@@ -4,10 +4,7 @@ import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useQuery } from "@tanstack/react-query";
 
-import { fetchProductDetail } from "@/lib/api/productApi";
-
 import { CART_BOTTOM_CONTAINER } from "@/lib/styles";
-
 import { Button } from "@/ui/button";
 import {
   Sheet,
@@ -22,6 +19,8 @@ import { useProductTab } from "@/app/product/[id]/hooks/useProductTab";
 import { useProductTabObserver } from "@/app/product/[id]/hooks/useProductTabObserver";
 import { useProductPurchase } from "@/app/product/hooks/useProductPurchase";
 import { useCartStore } from "@/app/cart/stores/useCartStore";
+
+import { fetchProductDetail } from "@/lib/api/productApi";
 
 import { ProductActionForm } from "./ProductActionForm";
 import { ProductDescription } from "./ProductDescription";

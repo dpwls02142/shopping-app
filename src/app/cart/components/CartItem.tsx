@@ -9,7 +9,6 @@ import {
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
 import { CartItem as CartItemType } from "@/lib/types/cartType";
-import { fetchProductOptionsByProductId } from "@/lib/api/productApi";
 
 import { OPTION_TEXT, TITLE } from "@/lib/styles";
 import { Button } from "@/ui/button";
@@ -18,6 +17,8 @@ import { X } from "lucide-react";
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
+
+import { fetchProductOptionsByProductId } from "@/lib/api/productApi";
 
 interface CartItemProps {
   item: CartItemType;
