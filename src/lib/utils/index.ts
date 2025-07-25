@@ -8,13 +8,13 @@ export function cn(...inputs: ClassValue[]) {
 const getApiUrl = (endpoint: string) => {
   // 서버 측
   if (typeof window === "undefined") {
-    const apiBaseUrl = "http://localhost:3001";
+    const apiBaseUrl = process.env.API_BASE_URL;
     if (apiBaseUrl) {
-      return `${apiBaseUrl}/${endpoint}`;
+      return `${apiBaseUrl}/api/${endpoint}`;
     }
   }
   // 클라이언트 측에선 상대 경로
-  return `http://localhost:3001/${endpoint}`;
+  return `/api/${endpoint}`;
 };
 
 const formatPriceToKor = (price: number) => {
