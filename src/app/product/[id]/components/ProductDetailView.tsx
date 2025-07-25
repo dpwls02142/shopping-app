@@ -100,6 +100,27 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         optionId,
         quantityToDeduct: quantity,
       });
+
+      const cartItems = useCartStore.getState().items;
+      const existingCartItem = cartItems.find((item) => {
+        if (item.product.id !== productDetail.product.id) return false;
+        return item.selectedOptions.some((option) => option.id === optionId);
+      });
+
+      if (existingCartItem) {
+        const updatedQuantity = existingCartItem.quantity - quantity;
+        if (updatedQuantity <= 0) {
+          useCartStore.getState().removeFromCart(existingCartItem.id);
+        } else {
+          useCartStore
+            .getState()
+            .updateQuantity(
+              existingCartItem.id,
+              updatedQuantity,
+              productDetail.options
+            );
+        }
+      }
       alert("구매가 완료되었습니다!");
       setIsSheetOpen(false);
     } catch (e) {
