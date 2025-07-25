@@ -2,7 +2,9 @@
 
 import { useRef, useState } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+
+import { ProductDetailInfo } from "@/lib/types/productType";
 
 import { CART_BOTTOM_CONTAINER } from "@/lib/styles";
 import { Button } from "@/ui/button";
@@ -40,6 +42,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
 
   const addToCart = useCartStore((s) => s.addToCart);
   const purchaseMutation = useProductPurchase();
+  const queryClient = useQueryClient();
 
   const {
     data: productDetail,
@@ -100,13 +103,22 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         quantityToDeduct: quantity,
       });
 
+      await queryClient.refetchQueries({
+        queryKey: ["productDetail", productId],
+      });
+
+      const freshProductDetail = queryClient.getQueryData<ProductDetailInfo>([
+        "productDetail",
+        productId,
+      ]);
+
       const cartItems = useCartStore.getState().items;
       const existingCartItem = cartItems.find((item) => {
         if (item.product.id !== productDetail.product.id) return false;
         return item.selectedOptions.some((option) => option.id === optionId);
       });
 
-      if (existingCartItem) {
+      if (existingCartItem && freshProductDetail) {
         const updatedQuantity = existingCartItem.quantity - quantity;
         if (updatedQuantity <= 0) {
           useCartStore.getState().removeFromCart(existingCartItem.id);
@@ -116,7 +128,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
             .updateQuantity(
               existingCartItem.id,
               updatedQuantity,
-              productDetail.options
+              freshProductDetail.options
             );
         }
       }
