@@ -19,6 +19,7 @@ import { useCartStore } from "@/app/cart/stores/useCartStore";
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
 import { fetchProductOptionsByProductId } from "@/lib/api/productApi";
+import { ERROR_MESSAGE } from "@/lib/constants/errorMessage";
 
 interface CartItemProps {
   item: CartItemType;
@@ -54,11 +55,11 @@ function CartItem({ item, onRemove }: CartItemProps) {
       updateCartItemQuantity(item.id, newQuantity, productOptions);
       form.clearErrors("quantity");
     } catch (error) {
-      const errorMessage =
+      alert(
         error instanceof Error
           ? error.message
-          : `수량 변경 중 오류가 발생했습니다.`;
-      form.setError("quantity", { message: errorMessage });
+          : ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity)
+      );
       form.setValue("quantity", item.quantity);
     }
   };
