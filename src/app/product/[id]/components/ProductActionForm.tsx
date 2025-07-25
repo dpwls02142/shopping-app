@@ -14,6 +14,7 @@ import { ProductOptions } from "@/app/product/components/ProductOptions";
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
 import { ERROR_MESSAGE } from "@/lib/constants/message";
+import { notification } from "@/lib/utils/notification";
 
 interface ProductActionFormProps {
   productDetail: ProductDetailInfo;
@@ -41,7 +42,7 @@ function ProductActionForm({
 
   function handleAddToCartClick() {
     if (!allOptionsSelected || !currentMatchingOption) {
-      alert(ERROR_MESSAGE.MISSING_OPTIONS);
+      notification.error(ERROR_MESSAGE.MISSING_OPTIONS);
       return;
     }
     onAddToCart?.(currentMatchingOption.id, watchedQuantity);
@@ -49,7 +50,7 @@ function ProductActionForm({
 
   function handleBuyNowClick() {
     if (!allOptionsSelected || !currentMatchingOption) {
-      alert(ERROR_MESSAGE.MISSING_OPTIONS);
+      notification.error(ERROR_MESSAGE.MISSING_OPTIONS);
       return;
     }
     onBuyNow?.(currentMatchingOption.id, watchedQuantity);

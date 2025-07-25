@@ -30,6 +30,7 @@ import { ProductTab } from "@/app/product/[id]/components/ProductTab";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
+import { notification } from "@/lib/utils/notification";
 
 interface ProductDetailProps {
   productId: string;
@@ -86,10 +87,10 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         productDetail.discount?.discountedPrice,
         productDetail.options
       );
-      alert(SUCCESS_MESSAGE.ADD_TO_CART);
+      notification.success(SUCCESS_MESSAGE.ADD_TO_CART);
       setIsSheetOpen(false);
     } catch (error: unknown) {
-      alert(
+      notification.error(
         error instanceof Error ? error.message : ERROR_MESSAGE.ADD_TO_CART_ERROR
       );
     }
@@ -131,10 +132,10 @@ function ProductDetailView({ productId }: ProductDetailProps) {
             );
         }
       }
-      alert(SUCCESS_MESSAGE.PURCHASE_COMPLETE);
+      notification.success(SUCCESS_MESSAGE.PURCHASE_COMPLETE);
       setIsSheetOpen(false);
     } catch (error: unknown) {
-      alert(
+      notification.error(
         error instanceof Error ? error.message : ERROR_MESSAGE.BUY_NOW_ERROR
       );
     }

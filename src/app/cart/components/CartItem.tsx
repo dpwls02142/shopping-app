@@ -20,6 +20,7 @@ import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
 import { fetchProductOptionsByProductId } from "@/lib/api/productApi";
 import { ERROR_MESSAGE } from "@/lib/constants/message";
+import { notification } from "@/lib/utils/notification";
 
 interface CartItemProps {
   item: CartItemType;
@@ -55,7 +56,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
       updateCartItemQuantity(item.id, newQuantity, productOptions);
       form.clearErrors("quantity");
     } catch (error) {
-      alert(
+      notification.error(
         error instanceof Error
           ? error.message
           : ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity)

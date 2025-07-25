@@ -4,6 +4,7 @@ import { ProductOption } from "@/lib/types/productType";
 
 import { purchaseProduct, purchaseProducts } from "@/lib/api/productApi";
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
+import { notification } from "@/lib/utils/notification";
 
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
 type MultipleUpdate = Array<{ optionId: string; quantityToDeduct: number }>;
@@ -31,12 +32,12 @@ function useProductPurchase() {
           queryKey: ["productOptions", productId],
         });
       });
-      alert(SUCCESS_MESSAGE.PURCHASE_COMPLETE);
+      notification.success(SUCCESS_MESSAGE.PURCHASE_COMPLETE);
     },
     onError: (error: unknown) => {
       const errorMessage =
         error instanceof Error ? error.message : ERROR_MESSAGE.BUY_NOW_ERROR;
-      alert(errorMessage);
+      notification.error(errorMessage);
       console.error(`재고 차감 실패: ${error}`);
     },
   });
