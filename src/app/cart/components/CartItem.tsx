@@ -34,24 +34,24 @@ function CartItem({ item, onRemove }: CartItemProps) {
     },
   });
 
-  // 실시간으로 최신 productOptions 가져오기
   const { data: latestProductOptions } = useQuery({
     queryKey: ["productOptions", item.product.id],
     queryFn: () => fetchProductOptionsByProductId(item.product.id),
-    staleTime: 1000 * 30, // 30초간 fresh 상태 유지 (자주 업데이트될 수 있으므로 짧게 설정)
+    staleTime: 1000 * 30,
   });
 
-  // 최신 데이터가 있으면 사용, 없으면 기존 데이터 사용 (fallback)
-  const productOptionsToUse = latestProductOptions || item.productOptions;
+  const productOptions = latestProductOptions?.length
+    ? latestProductOptions
+    : item.productOptions;
   const maxPurchaseQuantity = getMaxPurchaseQuantity(
-    productOptionsToUse,
+    productOptions,
     selectedOptions
   );
 
   const updateCartItemQuantity = useCartStore((state) => state.updateQuantity);
   const handleQuantityChange = (newQuantity: number) => {
     try {
-      updateCartItemQuantity(item.id, newQuantity, productOptionsToUse);
+      updateCartItemQuantity(item.id, newQuantity, productOptions);
       form.clearErrors("quantity");
     } catch (error) {
       const errorMessage =
