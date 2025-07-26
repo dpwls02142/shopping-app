@@ -29,8 +29,6 @@ import { ProductReview } from "@/app/product/[id]/components/ProductReview";
 import { ProductTab } from "@/app/product/[id]/components/ProductTab";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
-import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
-import { notification } from "@/lib/utils/notification";
 
 interface ProductDetailProps {
   productId: string;
@@ -87,12 +85,9 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         productDetail.discount?.discountedPrice,
         productDetail.options
       );
-      notification.success(SUCCESS_MESSAGE.ADD_TO_CART);
       setIsSheetOpen(false);
-    } catch (error: unknown) {
-      notification.error(
-        error instanceof Error ? error.message : ERROR_MESSAGE.ADD_TO_CART_ERROR
-      );
+    } catch (error) {
+      return;
     }
   };
 
@@ -102,7 +97,6 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         optionId,
         quantityToDeduct: quantity,
       });
-
       await queryClient.refetchQueries({
         queryKey: ["productDetail", productId],
       });
@@ -132,12 +126,9 @@ function ProductDetailView({ productId }: ProductDetailProps) {
             );
         }
       }
-      notification.success(SUCCESS_MESSAGE.PURCHASE_COMPLETE);
       setIsSheetOpen(false);
-    } catch (error: unknown) {
-      notification.error(
-        error instanceof Error ? error.message : ERROR_MESSAGE.BUY_NOW_ERROR
-      );
+    } catch (error) {
+      return;
     }
   };
 
