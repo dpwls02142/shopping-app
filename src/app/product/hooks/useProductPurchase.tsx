@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProductOption } from "@/lib/types/productType";
 
 import { purchaseProduct, purchaseProducts } from "@/lib/api/productApi";
-import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
+import { SUCCESS_MESSAGE, ERROR_MESSAGE } from "@/lib/constants/message";
 import { notification } from "@/lib/utils/notification";
 
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
@@ -38,7 +38,6 @@ function useProductPurchase() {
       const errorMessage =
         error instanceof Error ? error.message : ERROR_MESSAGE.BUY_NOW_ERROR;
       notification.error(errorMessage);
-      console.error(`재고 차감 실패: ${error}`);
     },
   });
 }
