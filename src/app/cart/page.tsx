@@ -32,8 +32,11 @@ function CartPage() {
         quantityToDeduct: item.quantity,
       }))
     );
-    await purchaseMutation.mutateAsync(options);
-    items.forEach((item) => removeFromCart(item.id));
+    purchaseMutation.mutateAsync(options, {
+      onSuccess: () => {
+        items.forEach((item) => removeFromCart(item.id));
+      },
+    });
   };
 
   return (
