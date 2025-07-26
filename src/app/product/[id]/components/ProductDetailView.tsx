@@ -86,7 +86,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         productDetail.options
       );
       setIsSheetOpen(false);
-    } catch (error) {
+    } catch (_error: unknown) {
       return;
     }
   };
@@ -127,7 +127,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
         }
       }
       setIsSheetOpen(false);
-    } catch (error) {
+    } catch (_error: unknown) {
       return;
     }
   };

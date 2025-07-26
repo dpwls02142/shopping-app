@@ -53,7 +53,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
     try {
       updateCartItemQuantity(item.id, newQuantity, productOptions);
       form.clearErrors("quantity");
-    } catch (error) {
+    } catch (_error: unknown) {
       form.setValue("quantity", item.quantity);
     }
   };
