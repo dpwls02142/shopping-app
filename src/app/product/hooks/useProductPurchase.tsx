@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+import { notification } from "@/lib/utils/notification";
 import { ProductOption } from "@/lib/types/productType";
 
 import { purchaseProduct, purchaseProducts } from "@/lib/api/productApi";
-import { SUCCESS_MESSAGE, ERROR_MESSAGE } from "@/lib/constants/message";
-import { notification } from "@/lib/utils/notification";
+import { ERROR_MESSAGE,SUCCESS_MESSAGE } from "@/lib/constants/message";
 
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
 type MultipleUpdate = Array<{ optionId: string; quantityToDeduct: number }>;

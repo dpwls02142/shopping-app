@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import { notification } from "@/lib/utils/notification";
 
 function QueryProvider({ children }: { children: React.ReactNode }) {

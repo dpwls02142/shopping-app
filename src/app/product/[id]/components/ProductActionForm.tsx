@@ -1,6 +1,7 @@
 "use client";
 
 import { cn, formatPriceToKor } from "@/lib/utils";
+import { notification } from "@/lib/utils/notification";
 import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
@@ -14,7 +15,6 @@ import { ProductOptions } from "@/app/product/components/ProductOptions";
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
 import { ERROR_MESSAGE } from "@/lib/constants/message";
-import { notification } from "@/lib/utils/notification";
 
 interface ProductActionFormProps {
   productDetail: ProductDetailInfo;

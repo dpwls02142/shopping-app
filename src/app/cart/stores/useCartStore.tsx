@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import { notification } from "@/lib/utils/notification";
 import {
   calculateItemPrice,
   createOptionsFromSelection,
@@ -11,7 +12,6 @@ import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
-import { notification } from "@/lib/utils/notification";
 
 /**
  * 이미 장바구니에 존재하는 상품인지 확인
