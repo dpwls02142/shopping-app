@@ -9,18 +9,18 @@ import {
   getMaxPurchaseQuantity,
 } from "@/lib/utils/productOptionUtils";
 import { CartItem, CartStore } from "@/lib/types/cartType";
-import { Product, ProductOption } from "@/lib/types/productType";
+import { ProductOption } from "@/lib/types/productType";
 
 import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
 
 /**
  * 이미 장바구니에 존재하는 상품인지 확인
  */
-const findExistingItemIndex = (
+function findExistingItemIndex(
   items: CartItem[],
   productId: string,
   selectedOptions: ProductOption[]
-): number => {
+): number {
   return items.findIndex((item) => {
     if (item.product.id !== productId) return false;
     if (item.selectedOptions.length !== selectedOptions.length) return false;
@@ -28,7 +28,17 @@ const findExistingItemIndex = (
       selectedOptions.some((opt) => opt.id === option.id)
     );
   });
-};
+}
+
+function calculateCartSummary(items: CartItem[]) {
+  const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
+  const totalPrice = items.reduce((acc, item) => acc + item.totalPrice, 0);
+  return { totalItems, totalPrice };
+}
+
+function findItemIndexById(items: CartItem[], itemId: string) {
+  return items.findIndex((item) => item.id === itemId);
+}
 
 function handleError(message: string): never {
   notification.error(message);
@@ -43,23 +53,16 @@ const useCartStore = create<CartStore>()(
       totalPrice: 0,
 
       addToCart: (
-        product: Product,
-        selectedOptions: ProductOption[],
-        quantity: number,
-        discountedPrice?: number,
-        allAvailableOptions?: ProductOption[]
+        product,
+        selectedOptions,
+        quantity,
+        discountedPrice,
+        allAvailableOptions
       ) => {
-        if (quantity < 1) {
-          handleError(ERROR_MESSAGE.QUANTITY_MINIMUM);
-        }
-        if (!allAvailableOptions || allAvailableOptions.length === 0) {
-          handleError(ERROR_MESSAGE.MISSING_OPTIONS);
-        }
-
         const { items } = get();
         const selectedOption = createOptionsFromSelection(selectedOptions);
         const maxPurchaseQuantity = getMaxPurchaseQuantity(
-          allAvailableOptions,
+          allAvailableOptions || [],
           selectedOption
         );
 
@@ -71,21 +74,19 @@ const useCartStore = create<CartStore>()(
 
         const updatedItems = [...items];
 
-        const existingItemInCart = existingItemIndex !== -1;
-        const isNewItem = existingItemIndex === -1;
-
-        if (existingItemInCart) {
+        if (existingItemIndex !== -1) {
           const existingItem = updatedItems[existingItemIndex];
           const newQuantity = existingItem.quantity + quantity;
 
           if (newQuantity > maxPurchaseQuantity) {
             const remainingQuantity =
               maxPurchaseQuantity - existingItem.quantity;
-            const errorMessage = ERROR_MESSAGE.QUANTITY_EXCEEDED(
-              existingItem.quantity,
-              remainingQuantity
+            handleError(
+              ERROR_MESSAGE.QUANTITY_EXCEEDED(
+                existingItem.quantity,
+                remainingQuantity
+              )
             );
-            handleError(errorMessage);
           }
 
           const totalItemPrice = calculateItemPrice(
@@ -101,13 +102,9 @@ const useCartStore = create<CartStore>()(
             totalPrice: totalItemPrice,
             discountPrice: discountedPrice,
           };
-        }
-
-        if (isNewItem) {
+        } else {
           if (quantity > maxPurchaseQuantity) {
-            const errorMessage =
-              ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity);
-            handleError(errorMessage);
+            handleError(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity));
           }
 
           const totalItemPrice = calculateItemPrice(
@@ -121,7 +118,7 @@ const useCartStore = create<CartStore>()(
             id: `${product.id}-${crypto.randomUUID()}`,
             product,
             selectedOptions,
-            productOptions: allAvailableOptions,
+            productOptions: allAvailableOptions || [],
             quantity,
             totalPrice: totalItemPrice,
             discountPrice: discountedPrice,
@@ -130,52 +127,24 @@ const useCartStore = create<CartStore>()(
 
           updatedItems.push(newItem);
         }
-        const totalItems = updatedItems.reduce(
-          (sum, item) => sum + item.quantity,
-          0
-        );
-        const totalPrice = updatedItems.reduce(
-          (sum, item) => sum + item.totalPrice,
-          0
-        );
-
+        const { totalItems, totalPrice } = calculateCartSummary(updatedItems);
         set({ items: updatedItems, totalItems, totalPrice });
         notification.success(SUCCESS_MESSAGE.ADD_TO_CART);
       },
 
-      removeFromCart: (itemId: string) => {
+      removeFromCart: (itemId) => {
         const { items } = get();
-        const itemIndex = items.findIndex((item) => item.id === itemId);
+        const itemIndex = findItemIndexById(items, itemId);
         if (itemIndex === -1) return;
-
         const updatedItems = items.filter((item) => item.id !== itemId);
-
-        const totalItems = updatedItems.reduce(
-          (sum, item) => sum + item.quantity,
-          0
-        );
-        const totalPrice = updatedItems.reduce(
-          (sum, item) => sum + item.totalPrice,
-          0
-        );
-
+        const { totalItems, totalPrice } = calculateCartSummary(updatedItems);
         set({ items: updatedItems, totalItems, totalPrice });
       },
 
-      updateQuantity: (
-        itemId: string,
-        quantity: number,
-        allAvailableOptions?: ProductOption[]
-      ) => {
-        if (quantity < 1) {
-          handleError(ERROR_MESSAGE.QUANTITY_MINIMUM);
-        }
-
+      updateQuantity: (itemId, quantity, allAvailableOptions) => {
         const { items } = get();
-        const itemIndex = items.findIndex((item) => item.id === itemId);
-
+        const itemIndex = findItemIndexById(items, itemId);
         if (itemIndex === -1) return;
-
         const existingItem = items[itemIndex];
         const optionsConfig = createOptionsFromSelection(
           existingItem.selectedOptions
@@ -184,40 +153,26 @@ const useCartStore = create<CartStore>()(
           allAvailableOptions || [],
           optionsConfig
         );
-
         if (quantity > maxPurchaseQuantity) {
-          const errorMessage =
-            ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity);
-          handleError(errorMessage);
+          handleError(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity));
         }
-
         const totalItemPrice = calculateItemPrice(
           existingItem.product.basePrice,
           existingItem.selectedOptions,
           quantity,
           existingItem.discountPrice
         );
-
         const updatedItems = [...items];
         updatedItems[itemIndex] = {
           ...existingItem,
           quantity,
           totalPrice: totalItemPrice,
         };
-
-        const totalItems = updatedItems.reduce(
-          (sum, item) => sum + item.quantity,
-          0
-        );
-        const totalPrice = updatedItems.reduce(
-          (sum, item) => sum + item.totalPrice,
-          0
-        );
-
+        const { totalItems, totalPrice } = calculateCartSummary(updatedItems);
         set({ items: updatedItems, totalItems, totalPrice });
       },
 
-      getItemById: (itemId: string) => {
+      getItemById: (itemId) => {
         const { items } = get();
         return items.find((item) => item.id === itemId);
       },
