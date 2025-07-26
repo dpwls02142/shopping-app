@@ -10,7 +10,8 @@ import {
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { Product, ProductOption } from "@/lib/types/productType";
 
-import { ERROR_MESSAGE } from "@/lib/constants/message";
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
+import { notification } from "@/lib/utils/notification";
 
 /**
  * 이미 장바구니에 존재하는 상품인지 확인
@@ -47,7 +48,9 @@ const useCartStore = create<CartStore>()(
           throw new Error(ERROR_MESSAGE.QUANTITY_MINIMUM);
         }
         if (!allAvailableOptions || allAvailableOptions.length === 0) {
-          throw new Error(ERROR_MESSAGE.MISSING_OPTIONS);
+          const errorMessage = ERROR_MESSAGE.MISSING_OPTIONS;
+          notification.error(errorMessage);
+          throw new Error(errorMessage);
         }
 
         const { items } = get();
@@ -75,12 +78,12 @@ const useCartStore = create<CartStore>()(
           if (newQuantity > maxPurchaseQuantity) {
             const remainingQuantity =
               maxPurchaseQuantity - existingItem.quantity;
-            throw new Error(
-              ERROR_MESSAGE.QUANTITY_EXCEEDED(
-                existingItem.quantity,
-                remainingQuantity
-              )
+            const errorMessage = ERROR_MESSAGE.QUANTITY_EXCEEDED(
+              existingItem.quantity,
+              remainingQuantity
             );
+            notification.error(errorMessage);
+            throw new Error(errorMessage);
           }
 
           const totalItemPrice = calculateItemPrice(
@@ -100,9 +103,10 @@ const useCartStore = create<CartStore>()(
 
         if (isNewItem) {
           if (quantity > maxPurchaseQuantity) {
-            throw new Error(
-              ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity)
-            );
+            const errorMessage =
+              ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity);
+            notification.error(errorMessage);
+            throw new Error(errorMessage);
           }
 
           const totalItemPrice = calculateItemPrice(
@@ -135,6 +139,7 @@ const useCartStore = create<CartStore>()(
         );
 
         set({ items: updatedItems, totalItems, totalPrice });
+        notification.success(SUCCESS_MESSAGE.ADD_TO_CART);
       },
 
       removeFromCart: (itemId: string) => {
@@ -162,7 +167,9 @@ const useCartStore = create<CartStore>()(
         allAvailableOptions?: ProductOption[]
       ) => {
         if (quantity < 1) {
-          throw new Error(ERROR_MESSAGE.QUANTITY_MINIMUM);
+          const errorMessage = ERROR_MESSAGE.QUANTITY_MINIMUM;
+          notification.error(errorMessage);
+          throw new Error(errorMessage);
         }
 
         const { items } = get();
@@ -180,7 +187,9 @@ const useCartStore = create<CartStore>()(
         );
 
         if (quantity > maxQuantity) {
-          throw new Error(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxQuantity));
+          const errorMessage = ERROR_MESSAGE.QUANTITY_MAXIMUM(maxQuantity);
+          notification.error(errorMessage);
+          throw new Error(errorMessage);
         }
 
         const totalItemPrice = calculateItemPrice(
