@@ -14,18 +14,19 @@ import { ProductOptions } from "@/app/product/components/ProductOptions";
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
 import { ERROR_MESSAGE } from "@/lib/constants/message";
-import { notification } from "@/lib/utils/notification";
 
 interface ProductActionFormProps {
   productDetail: ProductDetailInfo;
   onAddToCart?: (optionId: string, quantity: number) => void;
   onBuyNow?: (optionId: string, quantity: number) => void;
+  onError?: (message: string) => void;
 }
 
 function ProductActionForm({
   productDetail,
   onAddToCart,
   onBuyNow,
+  onError,
 }: ProductActionFormProps) {
   const {
     form,
@@ -36,13 +37,15 @@ function ProductActionForm({
     maxPurchaseQuantity,
     allOptionsSelected,
     currentMatchingOption,
-    handleOptionSelectionChange,
+    handleOptionChange,
     handleQuantityChange,
-  } = useProductActionForm({ productDetail });
+  } = useProductActionForm({
+    productDetail,
+  });
 
   function handleAddToCartClick() {
     if (!allOptionsSelected || !currentMatchingOption) {
-      notification.error(ERROR_MESSAGE.MISSING_OPTIONS);
+      onError?.(ERROR_MESSAGE.MISSING_OPTIONS);
       return;
     }
     onAddToCart?.(currentMatchingOption.id, watchedQuantity);
@@ -50,7 +53,7 @@ function ProductActionForm({
 
   function handleBuyNowClick() {
     if (!allOptionsSelected || !currentMatchingOption) {
-      notification.error(ERROR_MESSAGE.MISSING_OPTIONS);
+      onError?.(ERROR_MESSAGE.MISSING_OPTIONS);
       return;
     }
     onBuyNow?.(currentMatchingOption.id, watchedQuantity);
@@ -62,7 +65,7 @@ function ProductActionForm({
         <ProductOptions
           productOptions={productOptions || []}
           control={form.control}
-          onSelectionChange={handleOptionSelectionChange}
+          onSelectionChange={handleOptionChange}
         />
 
         <div className="space-y-4 pt-4">
