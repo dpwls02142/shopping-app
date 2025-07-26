@@ -13,21 +13,14 @@ import {
 } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
-import { useCartStore } from "@/app/cart/stores/useCartStore";
-
 import { ERROR_MESSAGE } from "@/lib/constants/message";
 
 interface UseProductActionFormProps {
   productDetail: ProductDetailInfo;
-  onSuccess?: () => void;
 }
 
-function useProductActionForm({
-  productDetail,
-  onSuccess,
-}: UseProductActionFormProps) {
+function useProductActionForm({ productDetail }: UseProductActionFormProps) {
   const { product, options: productOptions, discount } = productDetail;
-  const addToCart = useCartStore((state) => state.addToCart);
 
   const formSchema = z.object({
     options: z.record(z.string(), z.string()),
@@ -68,7 +61,7 @@ function useProductActionForm({
       )
     : 0;
 
-  const handleOptionSelectionChange = (newOptions: Record<string, string>) => {
+  const handleOptionChange = (newOptions: Record<string, string>) => {
     form.setValue("options", newOptions);
     form.setValue("quantity", 1);
   };
@@ -76,41 +69,6 @@ function useProductActionForm({
   const handleQuantityChange = (newQuantity: number) => {
     form.clearErrors("quantity");
     form.setValue("quantity", newQuantity);
-  };
-
-  const onSubmit = (values: FormValues) => {
-    if (!allOptionsSelected) {
-      form.setError("options", {
-        message: ERROR_MESSAGE.MISSING_OPTIONS,
-      });
-      return;
-    }
-
-    if (!currentMatchingOption) {
-      form.setError("options", {
-        message: ERROR_MESSAGE.NOT_FOUND_OPTIONS,
-      });
-      return;
-    }
-
-    try {
-      addToCart(
-        product,
-        [currentMatchingOption],
-        values.quantity,
-        discount?.discountedPrice,
-        productOptions
-      );
-      onSuccess?.();
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : ERROR_MESSAGE.ADD_TO_CART_ERROR;
-      form.setError("quantity", {
-        message: errorMessage,
-      });
-    }
   };
 
   return {
@@ -123,9 +81,8 @@ function useProductActionForm({
     productOptions,
     product,
     currentMatchingOption,
-    handleOptionSelectionChange,
+    handleOptionChange,
     handleQuantityChange,
-    onSubmit,
   };
 }
 
