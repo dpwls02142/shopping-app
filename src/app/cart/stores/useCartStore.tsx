@@ -30,6 +30,11 @@ const findExistingItemIndex = (
   });
 };
 
+function handleError(message: string): never {
+  notification.error(message);
+  throw new Error(message);
+}
+
 const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
@@ -45,12 +50,10 @@ const useCartStore = create<CartStore>()(
         allAvailableOptions?: ProductOption[]
       ) => {
         if (quantity < 1) {
-          throw new Error(ERROR_MESSAGE.QUANTITY_MINIMUM);
+          handleError(ERROR_MESSAGE.QUANTITY_MINIMUM);
         }
         if (!allAvailableOptions || allAvailableOptions.length === 0) {
-          const errorMessage = ERROR_MESSAGE.MISSING_OPTIONS;
-          notification.error(errorMessage);
-          throw new Error(errorMessage);
+          handleError(ERROR_MESSAGE.MISSING_OPTIONS);
         }
 
         const { items } = get();
@@ -82,8 +85,7 @@ const useCartStore = create<CartStore>()(
               existingItem.quantity,
               remainingQuantity
             );
-            notification.error(errorMessage);
-            throw new Error(errorMessage);
+            handleError(errorMessage);
           }
 
           const totalItemPrice = calculateItemPrice(
@@ -105,8 +107,7 @@ const useCartStore = create<CartStore>()(
           if (quantity > maxPurchaseQuantity) {
             const errorMessage =
               ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity);
-            notification.error(errorMessage);
-            throw new Error(errorMessage);
+            handleError(errorMessage);
           }
 
           const totalItemPrice = calculateItemPrice(
@@ -167,9 +168,7 @@ const useCartStore = create<CartStore>()(
         allAvailableOptions?: ProductOption[]
       ) => {
         if (quantity < 1) {
-          const errorMessage = ERROR_MESSAGE.QUANTITY_MINIMUM;
-          notification.error(errorMessage);
-          throw new Error(errorMessage);
+          handleError(ERROR_MESSAGE.QUANTITY_MINIMUM);
         }
 
         const { items } = get();
@@ -181,15 +180,15 @@ const useCartStore = create<CartStore>()(
         const optionsConfig = createOptionsFromSelection(
           existingItem.selectedOptions
         );
-        const maxQuantity = getMaxPurchaseQuantity(
+        const maxPurchaseQuantity = getMaxPurchaseQuantity(
           allAvailableOptions || [],
           optionsConfig
         );
 
-        if (quantity > maxQuantity) {
-          const errorMessage = ERROR_MESSAGE.QUANTITY_MAXIMUM(maxQuantity);
-          notification.error(errorMessage);
-          throw new Error(errorMessage);
+        if (quantity > maxPurchaseQuantity) {
+          const errorMessage =
+            ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity);
+          handleError(errorMessage);
         }
 
         const totalItemPrice = calculateItemPrice(
