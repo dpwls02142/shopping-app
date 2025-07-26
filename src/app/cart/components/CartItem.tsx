@@ -53,12 +53,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
     try {
       updateCartItemQuantity(item.id, newQuantity, productOptions);
       form.clearErrors("quantity");
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : `수량 변경 중 오류가 발생했습니다.`;
-      form.setError("quantity", { message: errorMessage });
+    } catch (_error: unknown) {
       form.setValue("quantity", item.quantity);
     }
   };

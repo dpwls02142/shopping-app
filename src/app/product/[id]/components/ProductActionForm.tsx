@@ -1,6 +1,7 @@
 "use client";
 
 import { cn, formatPriceToKor } from "@/lib/utils";
+import { notification } from "@/lib/utils/notification";
 import { convertRecordToKeyValueArray } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
@@ -13,7 +14,7 @@ import { useProductActionForm } from "@/app/product/[id]/hooks/forms/useProductA
 import { ProductOptions } from "@/app/product/components/ProductOptions";
 import { ProductQuantity } from "@/app/product/components/ProductQuantity";
 
-import { ERROR_MESSAGE } from "@/lib/constants/errorMessage";
+import { ERROR_MESSAGE } from "@/lib/constants/message";
 
 interface ProductActionFormProps {
   productDetail: ProductDetailInfo;
@@ -35,13 +36,15 @@ function ProductActionForm({
     maxPurchaseQuantity,
     allOptionsSelected,
     currentMatchingOption,
-    handleOptionSelectionChange,
+    handleOptionChange,
     handleQuantityChange,
-  } = useProductActionForm({ productDetail });
+  } = useProductActionForm({
+    productDetail,
+  });
 
   function handleAddToCartClick() {
     if (!allOptionsSelected || !currentMatchingOption) {
-      alert(ERROR_MESSAGE.MISSING_OPTIONS);
+      notification.error(ERROR_MESSAGE.MISSING_OPTIONS);
       return;
     }
     onAddToCart?.(currentMatchingOption.id, watchedQuantity);
@@ -49,7 +52,7 @@ function ProductActionForm({
 
   function handleBuyNowClick() {
     if (!allOptionsSelected || !currentMatchingOption) {
-      alert(ERROR_MESSAGE.MISSING_OPTIONS);
+      notification.error(ERROR_MESSAGE.MISSING_OPTIONS);
       return;
     }
     onBuyNow?.(currentMatchingOption.id, watchedQuantity);
@@ -61,7 +64,7 @@ function ProductActionForm({
         <ProductOptions
           productOptions={productOptions || []}
           control={form.control}
-          onSelectionChange={handleOptionSelectionChange}
+          onSelectionChange={handleOptionChange}
         />
 
         <div className="space-y-4 pt-4">

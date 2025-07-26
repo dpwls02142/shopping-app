@@ -13,20 +13,18 @@ import {
 } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
-import { useCartStore } from "@/app/cart/stores/useCartStore";
+import { ERROR_MESSAGE } from "@/lib/constants/message";
 
 interface UseProductActionFormProps {
   productDetail: ProductDetailInfo;
-  onSuccess?: () => void;
 }
 
-function useProductActionForm({ productDetail, onSuccess }: UseProductActionFormProps) {
+function useProductActionForm({ productDetail }: UseProductActionFormProps) {
   const { product, options: productOptions, discount } = productDetail;
-  const addToCart = useCartStore((state) => state.addToCart);
 
   const formSchema = z.object({
     options: z.record(z.string(), z.string()),
-    quantity: z.number().min(1, "수량은 1 이상이어야 합니다."),
+    quantity: z.number().min(1, ERROR_MESSAGE.QUANTITY_MINIMUM),
   });
 
   type FormValues = z.infer<typeof formSchema>;
@@ -63,7 +61,7 @@ function useProductActionForm({ productDetail, onSuccess }: UseProductActionForm
       )
     : 0;
 
-  const handleOptionSelectionChange = (newOptions: Record<string, string>) => {
+  const handleOptionChange = (newOptions: Record<string, string>) => {
     form.setValue("options", newOptions);
     form.setValue("quantity", 1);
   };
@@ -71,41 +69,6 @@ function useProductActionForm({ productDetail, onSuccess }: UseProductActionForm
   const handleQuantityChange = (newQuantity: number) => {
     form.clearErrors("quantity");
     form.setValue("quantity", newQuantity);
-  };
-
-  const onSubmit = (values: FormValues) => {
-    if (!allOptionsSelected) {
-      form.setError("options", {
-        message: `모든 옵션을 선택해주세요.`,
-      });
-      return;
-    }
-
-    if (!currentMatchingOption) {
-      form.setError("options", {
-        message: `유효한 상품 옵션을 찾을 수 없습니다.`,
-      });
-      return;
-    }
-
-    try {
-      addToCart(
-        product,
-        [currentMatchingOption],
-        values.quantity,
-        discount?.discountedPrice,
-        productOptions
-      );
-      onSuccess?.();
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : "장바구니 추가 중 오류가 발생했습니다.";
-      form.setError("quantity", {
-        message: errorMessage,
-      });
-    }
   };
 
   return {
@@ -118,9 +81,8 @@ function useProductActionForm({ productDetail, onSuccess }: UseProductActionForm
     productOptions,
     product,
     currentMatchingOption,
-    handleOptionSelectionChange,
+    handleOptionChange,
     handleQuantityChange,
-    onSubmit,
   };
 }
 
