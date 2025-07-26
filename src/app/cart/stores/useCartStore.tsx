@@ -30,6 +30,26 @@ function findExistingItemIndex(
   });
 }
 
+function updateItem(
+  item: CartItem,
+  quantity: number,
+  discountPrice?: number
+): CartItem {
+  const totalPrice = calculateItemPrice(
+    item.product.basePrice,
+    item.selectedOptions,
+    quantity,
+    discountPrice ?? item.discountPrice
+  );
+
+  return {
+    ...item,
+    quantity,
+    discountPrice: discountPrice ?? item.discountPrice,
+    totalPrice,
+  };
+}
+
 function calculateCartSummary(items: CartItem[]) {
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
   const totalPrice = items.reduce((acc, item) => acc + item.totalPrice, 0);
@@ -59,10 +79,18 @@ const useCartStore = create<CartStore>()(
         discountedPrice,
         allAvailableOptions
       ) => {
+        if (quantity < 1) {
+          handleError(ERROR_MESSAGE.QUANTITY_MINIMUM);
+        }
+
+        if (!allAvailableOptions || allAvailableOptions.length === 0) {
+          handleError(ERROR_MESSAGE.MISSING_OPTIONS);
+        }
+
         const { items } = get();
         const selectedOption = createOptionsFromSelection(selectedOptions);
         const maxPurchaseQuantity = getMaxPurchaseQuantity(
-          allAvailableOptions || [],
+          allAvailableOptions,
           selectedOption
         );
 
@@ -89,19 +117,11 @@ const useCartStore = create<CartStore>()(
             );
           }
 
-          const totalItemPrice = calculateItemPrice(
-            product.basePrice,
-            selectedOptions,
+          updatedItems[existingItemIndex] = updateItem(
+            existingItem,
             newQuantity,
             discountedPrice
           );
-
-          updatedItems[existingItemIndex] = {
-            ...existingItem,
-            quantity: newQuantity,
-            totalPrice: totalItemPrice,
-            discountPrice: discountedPrice,
-          };
         } else {
           if (quantity > maxPurchaseQuantity) {
             handleError(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity));
@@ -118,7 +138,7 @@ const useCartStore = create<CartStore>()(
             id: `${product.id}-${crypto.randomUUID()}`,
             product,
             selectedOptions,
-            productOptions: allAvailableOptions || [],
+            productOptions: allAvailableOptions,
             quantity,
             totalPrice: totalItemPrice,
             discountPrice: discountedPrice,
@@ -142,9 +162,14 @@ const useCartStore = create<CartStore>()(
       },
 
       updateQuantity: (itemId, quantity, allAvailableOptions) => {
+        if (quantity < 1) {
+          handleError(ERROR_MESSAGE.QUANTITY_MINIMUM);
+        }
+
         const { items } = get();
         const itemIndex = findItemIndexById(items, itemId);
         if (itemIndex === -1) return;
+
         const existingItem = items[itemIndex];
         const optionsConfig = createOptionsFromSelection(
           existingItem.selectedOptions
@@ -153,21 +178,15 @@ const useCartStore = create<CartStore>()(
           allAvailableOptions || [],
           optionsConfig
         );
+
         if (quantity > maxPurchaseQuantity) {
           handleError(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity));
         }
-        const totalItemPrice = calculateItemPrice(
-          existingItem.product.basePrice,
-          existingItem.selectedOptions,
-          quantity,
-          existingItem.discountPrice
+
+        const updatedItems = items.map((item) =>
+          item.id === itemId ? updateItem(item, quantity) : item
         );
-        const updatedItems = [...items];
-        updatedItems[itemIndex] = {
-          ...existingItem,
-          quantity,
-          totalPrice: totalItemPrice,
-        };
+
         const { totalItems, totalPrice } = calculateCartSummary(updatedItems);
         set({ items: updatedItems, totalItems, totalPrice });
       },
