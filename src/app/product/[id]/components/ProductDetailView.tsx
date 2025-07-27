@@ -41,7 +41,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const addToCart = useCartStore((s) => s.addToCart);
-  const purchaseMutation = useProductBuy();
+  const buyMutation = useProductBuy();
   const queryClient = useQueryClient();
 
   const {
@@ -93,7 +93,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
 
   const handleBuyNow = async (optionId: string, quantity: number) => {
     try {
-      await purchaseMutation.mutateAsync({
+      await buyMutation.mutateAsync({
         optionId,
         quantityToDeduct: quantity,
       });

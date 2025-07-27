@@ -21,7 +21,7 @@ import { CartSummary } from "@/app/cart/components/CartSummary";
 
 function CartPage() {
   const { items, totalItems, removeFromCart } = useCartStore();
-  const purchaseMutation = useProductBuy();
+  const buyMutation = useProductBuy();
 
   const isCartNull = items.length === 0;
 
@@ -32,7 +32,7 @@ function CartPage() {
         quantityToDeduct: item.quantity,
       }))
     );
-    purchaseMutation.mutateAsync(options, {
+    buyMutation.mutateAsync(options, {
       onSuccess: () => {
         items.forEach((item) => removeFromCart(item.id));
       },
@@ -60,9 +60,9 @@ function CartPage() {
               <Button
                 className={SUBMIT_BUTTON}
                 onClick={handleBuyNow}
-                disabled={purchaseMutation.isPending}
+                disabled={buyMutation.isPending}
               >
-                {purchaseMutation.isPending
+                {buyMutation.isPending
                   ? "주문 중..."
                   : `${totalItems}건 주문하기`}
               </Button>
