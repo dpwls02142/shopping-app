@@ -9,7 +9,7 @@ import { ERROR_MESSAGE,SUCCESS_MESSAGE } from "@/lib/constants/message";
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
 type MultipleUpdate = Array<{ optionId: string; quantityToDeduct: number }>;
 
-function useProductPurchase() {
+function useProductBuy() {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -42,4 +42,4 @@ function useProductPurchase() {
   });
 }
 
-export { useProductPurchase };
+export { useProductBuy };

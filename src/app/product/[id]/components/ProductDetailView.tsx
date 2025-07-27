@@ -19,7 +19,7 @@ import {
 
 import { useProductTab } from "@/app/product/[id]/hooks/useProductTab";
 import { useProductTabObserver } from "@/app/product/[id]/hooks/useProductTabObserver";
-import { useProductPurchase } from "@/app/product/hooks/useProductPurchase";
+import { useProductBuy } from "@/app/product/hooks/useProductBuy";
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 import { ProductActionForm } from "@/app/product/[id]/components/ProductActionForm";
@@ -41,7 +41,7 @@ function ProductDetailView({ productId }: ProductDetailProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const addToCart = useCartStore((s) => s.addToCart);
-  const purchaseMutation = useProductPurchase();
+  const purchaseMutation = useProductBuy();
   const queryClient = useQueryClient();
 
   const {

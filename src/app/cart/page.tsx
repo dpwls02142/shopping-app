@@ -13,7 +13,7 @@ import {
 } from "@/lib/styles";
 import { Button } from "@/ui/button";
 
-import { useProductPurchase } from "@/app/product/hooks/useProductPurchase";
+import { useProductBuy } from "@/app/product/hooks/useProductBuy";
 import { useCartStore } from "@/app/cart/stores/useCartStore";
 
 import { CartItemList } from "@/app/cart/components/CartItemList";
@@ -21,7 +21,7 @@ import { CartSummary } from "@/app/cart/components/CartSummary";
 
 function CartPage() {
   const { items, totalItems, removeFromCart } = useCartStore();
-  const purchaseMutation = useProductPurchase();
+  const purchaseMutation = useProductBuy();
 
   const isCartNull = items.length === 0;
 
