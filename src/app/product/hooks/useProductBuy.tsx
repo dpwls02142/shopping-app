@@ -3,20 +3,20 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { notification } from "@/lib/utils/notification";
 import { ProductOption } from "@/lib/types/productType";
 
-import { purchaseProduct, purchaseProducts } from "@/lib/api/productApi";
-import { ERROR_MESSAGE,SUCCESS_MESSAGE } from "@/lib/constants/message";
+import { buyProduct, buyProducts } from "@/lib/api/productApi";
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@/lib/constants/message";
 
 type SingleUpdate = { optionId: string; quantityToDeduct: number };
 type MultipleUpdate = Array<{ optionId: string; quantityToDeduct: number }>;
 
-function useProductPurchase() {
+function useProductBuy() {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (params: SingleUpdate | MultipleUpdate) => {
       return Array.isArray(params)
-        ? purchaseProducts(params)
-        : purchaseProduct(params.optionId, params.quantityToDeduct);
+        ? buyProducts(params)
+        : buyProduct(params.optionId, params.quantityToDeduct);
     },
     onSuccess: (result: ProductOption | ProductOption[]) => {
       const options = Array.isArray(result) ? result : [result];
@@ -42,4 +42,4 @@ function useProductPurchase() {
   });
 }
 
-export { useProductPurchase };
+export { useProductBuy };

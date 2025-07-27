@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { formatPriceToKor } from "@/lib/utils";
 import {
   createOptionsFromSelection,
-  getMaxPurchaseQuantity,
+  getMaxBuyQuantity,
 } from "@/lib/utils/productOptionUtils";
 import { CartItem as CartItemType } from "@/lib/types/cartType";
 
@@ -43,7 +43,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
   const productOptions = latestProductOptions?.length
     ? latestProductOptions
     : item.productOptions;
-  const maxPurchaseQuantity = getMaxPurchaseQuantity(
+  const maxBuyQuantity = getMaxBuyQuantity(
     productOptions,
     selectedOptions
   );
@@ -94,7 +94,7 @@ function CartItem({ item, onRemove }: CartItemProps) {
             <FormProvider {...form}>
               <ProductQuantity
                 control={form.control}
-                maxPurchaseQuantity={maxPurchaseQuantity}
+                maxBuyQuantity={maxBuyQuantity}
                 selectedOptions={selectedOptions}
                 showSelectedOptions={false}
                 onQuantityChange={handleQuantityChange}

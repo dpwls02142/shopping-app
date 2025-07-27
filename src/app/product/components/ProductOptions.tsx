@@ -19,7 +19,7 @@ import {
 
 import { useProductOptions } from "@/app/product/hooks/forms/useProductOptions";
 
-interface AddToCartOptionsProps {
+interface ProductOptionsProps {
   productOptions: ProductOption[];
   control: Control<{ options: Record<string, string>; quantity: number }>;
   onSelectionChange: (selectedOptions: Record<string, string>) => void;
@@ -29,7 +29,7 @@ function ProductOptions({
   productOptions,
   control,
   onSelectionChange,
-}: AddToCartOptionsProps) {
+}: ProductOptionsProps) {
   const {
     separatedOptions,
     optionKeys,

@@ -33,7 +33,7 @@ function ProductActionForm({
     watchedOptions,
     watchedQuantity,
     totalAmount,
-    maxPurchaseQuantity,
+    maxBuyQuantity,
     allOptionsSelected,
     currentMatchingOption,
     handleOptionChange,
@@ -82,7 +82,7 @@ function ProductActionForm({
               <div>
                 <ProductQuantity
                   control={form.control}
-                  maxPurchaseQuantity={maxPurchaseQuantity}
+                  maxBuyQuantity={maxBuyQuantity}
                   onQuantityChange={handleQuantityChange}
                 />
               </div>

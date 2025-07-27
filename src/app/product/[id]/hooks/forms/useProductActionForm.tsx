@@ -9,7 +9,7 @@ import {
   calculateItemPrice,
   extractOptionKeys,
   findMatchingOption,
-  getMaxPurchaseQuantity,
+  getMaxBuyQuantity,
 } from "@/lib/utils/productOptionUtils";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
@@ -47,7 +47,7 @@ function useProductActionForm({ productDetail }: UseProductActionFormProps) {
     watchedOptions
   );
   const allOptionsSelected = areAllOptionsSelected(optionKeys, watchedOptions);
-  const maxPurchaseQuantity = getMaxPurchaseQuantity(
+  const maxBuyQuantity = getMaxBuyQuantity(
     productOptions || [],
     watchedOptions
   );
@@ -75,7 +75,7 @@ function useProductActionForm({ productDetail }: UseProductActionFormProps) {
     form,
     totalAmount,
     allOptionsSelected,
-    maxPurchaseQuantity,
+    maxBuyQuantity,
     watchedOptions,
     watchedQuantity,
     productOptions,
