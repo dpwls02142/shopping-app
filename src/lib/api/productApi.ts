@@ -135,12 +135,12 @@ export const fetchProductDetail = async (
       options,
     };
   } catch (error) {
-    console.error("fetchProductDetail error:", error);
+    handleApiError(error, []);
     throw error;
   }
 };
 
-export const purchaseProduct = async (
+export const buyProduct = async (
   optionId: string,
   quantityToDeduct: number
 ): Promise<ProductOption> => {
@@ -193,12 +193,12 @@ export const purchaseProduct = async (
   }
 };
 
-export const purchaseProducts = async (
+export const buyProducts = async (
   stockUpdates: Array<{ optionId: string; quantityToDeduct: number }>
 ): Promise<ProductOption[]> => {
   try {
     const updatePromises = stockUpdates.map(({ optionId, quantityToDeduct }) =>
-      purchaseProduct(optionId, quantityToDeduct)
+      buyProduct(optionId, quantityToDeduct)
     );
 
     return await Promise.all(updatePromises);
