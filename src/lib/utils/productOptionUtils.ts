@@ -81,7 +81,7 @@ const createOptionsFromSelection = (
 /**
  * 최대 구매 가능 수량
  */
-const getMaxPurchaseQuantity = (
+const getMaxBuyQuantity = (
   options: ProductOption[],
   selectedOptions: Record<string, string>
 ): number => {
@@ -149,7 +149,7 @@ export {
   createOptionsFromSelection,
   extractOptionKeys,
   findMatchingOption,
-  getMaxPurchaseQuantity,
+  getMaxBuyQuantity,
   safelyParseOptionValue,
   toProductPreview,
   calculateItemPrice,

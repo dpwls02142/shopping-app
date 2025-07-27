@@ -12,7 +12,7 @@ import { useProductQuantity } from "@/app/product/hooks/forms/useProductQuantity
 
 interface ProductQuantityProps {
   control: Control<{ options: Record<string, string>; quantity: number }>;
-  maxPurchaseQuantity?: number;
+  maxBuyQuantity?: number;
   onQuantityChange?: (quantity: number) => void;
   selectedOptions?: Record<string, string>;
   showSelectedOptions?: boolean;
@@ -20,12 +20,12 @@ interface ProductQuantityProps {
 
 function ProductQuantity({
   control,
-  maxPurchaseQuantity = 0,
+  maxBuyQuantity = 0,
   onQuantityChange,
 }: ProductQuantityProps) {
   const { setQuantity } = useProductQuantity({
     control,
-    max: maxPurchaseQuantity,
+    max: maxBuyQuantity,
     onChange: onQuantityChange,
   });
 
@@ -52,7 +52,7 @@ function ProductQuantity({
                   className="w-12 text-center bg-white border-none"
                   type="number"
                   min={1}
-                  max={maxPurchaseQuantity}
+                  max={maxBuyQuantity}
                   value={field.value}
                   onClick={(e) => e.stopPropagation()}
                   onChange={(e) => {
@@ -66,7 +66,7 @@ function ProductQuantity({
                   variant="ghost"
                   size="icon"
                   onClick={() => setQuantity(field.value + 1, field.onChange)}
-                  disabled={field.value >= maxPurchaseQuantity}
+                  disabled={field.value >= maxBuyQuantity}
                 >
                   <PlusIcon className={ICON} />
                 </Button>

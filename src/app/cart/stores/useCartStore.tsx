@@ -6,7 +6,7 @@ import { notification } from "@/lib/utils/notification";
 import {
   calculateItemPrice,
   createOptionsFromSelection,
-  getMaxPurchaseQuantity,
+  getMaxBuyQuantity,
 } from "@/lib/utils/productOptionUtils";
 import { CartItem, CartStore } from "@/lib/types/cartType";
 import { ProductOption } from "@/lib/types/productType";
@@ -89,7 +89,7 @@ const useCartStore = create<CartStore>()(
 
         const { items } = get();
         const selectedOption = createOptionsFromSelection(selectedOptions);
-        const maxPurchaseQuantity = getMaxPurchaseQuantity(
+        const maxBuyQuantity = getMaxBuyQuantity(
           allAvailableOptions,
           selectedOption
         );
@@ -106,9 +106,8 @@ const useCartStore = create<CartStore>()(
           const existingItem = updatedItems[existingItemIndex];
           const newQuantity = existingItem.quantity + quantity;
 
-          if (newQuantity > maxPurchaseQuantity) {
-            const remainingQuantity =
-              maxPurchaseQuantity - existingItem.quantity;
+          if (newQuantity > maxBuyQuantity) {
+            const remainingQuantity = maxBuyQuantity - existingItem.quantity;
             handleError(
               ERROR_MESSAGE.QUANTITY_EXCEEDED(
                 existingItem.quantity,
@@ -123,8 +122,8 @@ const useCartStore = create<CartStore>()(
             discountedPrice
           );
         } else {
-          if (quantity > maxPurchaseQuantity) {
-            handleError(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity));
+          if (quantity > maxBuyQuantity) {
+            handleError(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxBuyQuantity));
           }
 
           const totalItemPrice = calculateItemPrice(
@@ -174,13 +173,13 @@ const useCartStore = create<CartStore>()(
         const optionsConfig = createOptionsFromSelection(
           existingItem.selectedOptions
         );
-        const maxPurchaseQuantity = getMaxPurchaseQuantity(
+        const maxBuyQuantity = getMaxBuyQuantity(
           allAvailableOptions || [],
           optionsConfig
         );
 
-        if (quantity > maxPurchaseQuantity) {
-          handleError(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxPurchaseQuantity));
+        if (quantity > maxBuyQuantity) {
+          handleError(ERROR_MESSAGE.QUANTITY_MAXIMUM(maxBuyQuantity));
         }
 
         const updatedItems = items.map((item) =>
