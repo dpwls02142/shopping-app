@@ -8,6 +8,17 @@ const NUM_CUSTOMERS = 50;
 const NUM_SELLERS = 10;
 const NUM_REVIEWS = 100;
 
+const IMAGE_EXTS = [".jpg"];
+function getLocalImages() {
+  const imagesDir = path.resolve(process.cwd(), "public", "images");
+  if (!fs.existsSync(imagesDir)) return [];
+  return fs
+    .readdirSync(imagesDir)
+    .filter((f) => IMAGE_EXTS.includes(path.extname(f).toLowerCase()))
+    .map((f) => `/images/${f}`);
+}
+const localImages = getLocalImages();
+
 const sellers = Array.from({ length: NUM_SELLERS }, () => ({
   id: faker.string.uuid(),
   name: faker.company.name(),
@@ -56,7 +67,7 @@ const productOptions = products.flatMap((p) => {
       additionalPrice: faker.number.int({ min: 0, max: 1000 }),
       stockQuantity: faker.number.int({ min: 5, max: 50 }),
       maxPurchaseQuantity: faker.number.int({ min: 3, max: 5 }),
-    })),
+    }))
   );
 });
 
@@ -82,20 +93,29 @@ const productDiscounts = products.slice(0, NUM_DEALS).map((p) => {
   };
 });
 
-const productImages = products.flatMap((p) => [
-  {
-    id: faker.string.uuid(),
-    productId: p.id,
-    imageUrl: faker.image.url(),
-    imageType: "thumbnail",
-  },
-  {
-    id: faker.string.uuid(),
-    productId: p.id,
-    imageUrl: faker.image.url(),
-    imageType: "detail",
-  },
-]);
+const productImages = products.flatMap((p) => {
+  const thumb = faker.helpers.arrayElement(localImages);
+  let detail = faker.helpers.arrayElement(localImages);
+  if (localImages.length > 1) {
+    while (detail === thumb) {
+      detail = faker.helpers.arrayElement(localImages);
+    }
+  }
+  return [
+    {
+      id: faker.string.uuid(),
+      productId: p.id,
+      imageUrl: thumb,
+      imageType: "thumbnail",
+    },
+    {
+      id: faker.string.uuid(),
+      productId: p.id,
+      imageUrl: detail,
+      imageType: "detail",
+    },
+  ];
+});
 
 const productReviews = Array.from({ length: NUM_REVIEWS }, () => {
   const product = faker.helpers.arrayElement(products);
@@ -103,12 +123,13 @@ const productReviews = Array.from({ length: NUM_REVIEWS }, () => {
     from: new Date(product.createdAt),
     to: new Date(),
   });
+  const reviewImage = faker.helpers.arrayElement(localImages);
   return {
     id: faker.string.uuid(),
     customerId: faker.helpers.arrayElement(customers).id,
     productId: product.id,
     reviewDetail: faker.lorem.sentence(),
-    imageUrl: faker.image.url(),
+    imageUrl: reviewImage,
     reviewScore: faker.number.int({ min: 1, max: 5 }),
     createdAt: createdAt.toISOString(),
     reviewFavorite: faker.number.int({ min: 0, max: 20 }),
@@ -154,7 +175,7 @@ const db = {
 
 fs.writeFileSync(
   path.join("src", "lib", "db", "db.json"),
-  JSON.stringify(db, null, 2),
+  JSON.stringify(db, null, 2)
 );
 
 console.log("더미 데이터 생성: src/lib/db/db.json");
