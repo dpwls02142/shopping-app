@@ -9,7 +9,7 @@ if (!UNSPLASH_KEY) { console.log(`key 없음`); process.exit(1) };
 
 const QUERY = 'product';
 const COUNT = 50;
-const DOWNLOAD_DIR = path.resolve(process.cwd(), 'src', 'app', 'lib', 'db', 'images');
+const DOWNLOAD_DIR = path.resolve(process.cwd(), 'src', 'lib', 'db', 'images');
 
 if (!fs.existsSync(DOWNLOAD_DIR)) { fs.mkdirSync(DOWNLOAD_DIR, { recursive: true }) };
 
