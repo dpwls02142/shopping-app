@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { Readable } from 'stream';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 const UNSPLASH_KEY = process.env.UNSPLASH_ACCESS_KEY;
@@ -47,11 +48,16 @@ async function downloadImage(photo) {
     const filename = `${photo.id}${ext}`;
     const filepath = path.join(DOWNLOAD_DIR, filename);
     const fileStream = fs.createWriteStream(filepath);
+
+    const nodeReadable = Readable.fromWeb(res.body);
+
     await new Promise((resolve, reject) => {
-        res.body.pipe(fileStream);
-        res.body.on('error', reject);
+        nodeReadable.pipe(fileStream);
+        nodeReadable.on('error', reject);
         fileStream.on('finish', resolve);
+        fileStream.on('error', reject);
     });
+
 
     console.log(`저장됨: ${filename}`);
 }
