@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 const UNSPLASH_KEY = process.env.UNSPLASH_ACCESS_KEY;
 if (!UNSPLASH_KEY) { console.log(`key 없음`); process.exit(1) };
 
@@ -15,7 +15,7 @@ if (!fs.existsSync(DOWNLOAD_DIR)) { fs.mkdirSync(DOWNLOAD_DIR, { recursive: true
 async function trackDownload(photo) {
     if (!photo.links?.download_location) return;
     const url = new URL(photo.links.download_location);
-    url.searchParams.set('client_id', ACCESS_KEY);
+    url.searchParams.set('client_id', UNSPLASH_KEY);
     try {
         const res = await fetch(url.toString(), {
             headers: { 'Accept-Version': 'v1' },
@@ -64,7 +64,7 @@ async function main() {
 
     const res = await fetch(url.toString(), {
         headers: {
-            Authorization: `Client-ID ${ACCESS_KEY}`,
+            Authorization: `Client-ID ${UNSPLASH_KEY}`,
             'Accept-Version': 'v1',
         },
     });
