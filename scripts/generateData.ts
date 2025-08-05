@@ -173,9 +173,6 @@ const db = {
   cartProduct,
 };
 
-fs.writeFileSync(
-  path.join("src", "lib", "db", "db.json"),
-  JSON.stringify(db, null, 2)
-);
+fs.writeFileSync(path.join("db", "db.json"), JSON.stringify(db, null, 2));
 
 console.log("더미 데이터 생성: src/lib/db/db.json");
