@@ -6,19 +6,10 @@ import { Button } from "@/_shared/components/button";
 
 interface AddToCartButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  isDisabled?: boolean;
 }
 
-function AddToCartButton({
-  onClick,
-  isDisabled = false,
-}: AddToCartButtonProps) {
+function AddToCartButton({ onClick }: AddToCartButtonProps) {
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (isDisabled) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
     onClick?.(event);
   };
 
