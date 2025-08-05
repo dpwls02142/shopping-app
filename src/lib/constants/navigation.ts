@@ -4,21 +4,18 @@ const NAV_ITEMS: NavItem[] = [
   {
     id: "home",
     label: "쇼핑 홈",
-    href: "/",
+    href: "/", // (main) 그룹이라 여전히 /
     isMain: true,
     match: (pathname, searchParams) =>
-      pathname === "/" && !searchParams.get("tab") && !searchParams.get("view"),
+      pathname === "/" && !searchParams.get("view"),
   },
   {
     id: "deal",
     label: "특가",
-    href: "/?tab=deal",
+    href: "/deal", // 새로운 URL
     isMain: true,
-    match: (pathname, searchParams) =>
-      pathname === "/" &&
-      (searchParams.get("tab") === "deal" ||
-        searchParams.get("view") === "brand" ||
-        searchParams.get("view") === "daily"),
+    match: (pathname) =>
+      pathname === "/deal" || pathname.startsWith("/deal/"),
   },
   {
     id: "cart",

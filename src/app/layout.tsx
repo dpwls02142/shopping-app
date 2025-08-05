@@ -2,9 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import ConditionalLayout from "@/app/_shared/components/ConditionalLayout";
-
-import QueryProvider from "@/app/_shared/providers/QueryProvider";
+import QueryProvider from "@/_shared/providers/QueryProvider";
 
 import "./globals.css";
 
@@ -36,9 +34,7 @@ export default function RootLayout({
         <QueryProvider>
           <div className="h-screen bg-gray-100 flex justify-center overflow-hidden">
             <div className="w-full max-w-[468px] bg-white h-full overflow-y-auto relative">
-              <Suspense fallback={null}>
-                <ConditionalLayout>{children}</ConditionalLayout>
-              </Suspense>
+              <Suspense fallback={null}>{children}</Suspense>
             </div>
           </div>
         </QueryProvider>

@@ -4,7 +4,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 
-import { ProductDetailView } from "@/app/product/[id]/components/ProductDetailView";
+import { ProductDetailView } from "@/_shared/modules/product/components/ProductDetailView";
 
 import { fetchProductDetail } from "@/lib/api/productApi";
 
