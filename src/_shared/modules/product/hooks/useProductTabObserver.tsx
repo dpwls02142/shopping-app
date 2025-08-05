@@ -9,7 +9,7 @@ interface UseProductTabObserverProps {
 }
 
 const ROOT_MARGIN = "0px 0px -10% 0px";
-const INTERSECTION_THRESHOLD = 0.1;
+const INTERSECTION_THRESHOLD = 0.3;
 
 const useProductTabObserver = ({
   reviewRef,
