@@ -37,23 +37,19 @@ function AddToCartSheet({
 
   const handleAddToCart = async (optionId: string, quantity: number) => {
     if (!productDetail) return;
-    try {
-      const selectedOption = productDetail.options?.find(
-        (option) => option.id === optionId
-      );
-      if (!selectedOption) return;
-      addToCart(
-        productDetail.product,
-        [selectedOption],
-        quantity,
-        productDetail.discount?.discountedPrice,
-        productDetail.options
-      );
-      onOpenChange(false);
-      await queryClient.invalidateQueries({ queryKey: ["cart"] });
-    } catch (_error: unknown) {
-      return;
-    }
+    const selectedOption = productDetail.options?.find(
+      (option) => option.id === optionId
+    );
+    if (!selectedOption) return;
+    addToCart(
+      productDetail.product,
+      [selectedOption],
+      quantity,
+      productDetail.discount?.discountedPrice,
+      productDetail.options
+    );
+    onOpenChange(false);
+    await queryClient.invalidateQueries({ queryKey: ["cart"] });
   };
 
   return (
