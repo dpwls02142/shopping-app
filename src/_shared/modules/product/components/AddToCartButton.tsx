@@ -1,6 +1,8 @@
-import { Button } from "@/_shared/components/button";
-import { ShoppingCart } from "lucide-react";
 import { MouseEventHandler } from "react";
+
+import { ShoppingCart } from "lucide-react";
+
+import { Button } from "@/_shared/components/button";
 
 interface AddToCartButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -29,7 +31,6 @@ function AddToCartButton({
       aria-label="장바구니에 추가"
     >
       <ShoppingCart className="h-4 w-4" />
-      <span className="sr-only">장바구니에 추가</span>
     </Button>
   );
 }

@@ -1,16 +1,16 @@
 "use client";
 
+import { MouseEvent,useState } from "react";
 import Link from "next/link";
-import { useState, MouseEvent } from "react";
 
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
 import { OPTION_TEXT } from "@/lib/styles";
 
-import { ProductImage } from "@/_shared/modules/product/components/ProductImage";
-import { ProductPrice } from "@/_shared/modules/product/components/ProductPrice";
 import { AddToCartButton } from "@/_shared/modules/product/components/AddToCartButton";
 import { AddToCartSheet } from "@/_shared/modules/product/components/AddToCartSheet";
+import { ProductImage } from "@/_shared/modules/product/components/ProductImage";
+import { ProductPrice } from "@/_shared/modules/product/components/ProductPrice";
 
 interface ProductCardProps {
   product: ProductPreviewInfo;

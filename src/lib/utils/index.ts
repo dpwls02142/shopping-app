@@ -38,7 +38,7 @@ const handleApiError = <T>(error: unknown, defaultValue: T): T => {
 const fetchWithErrorHandling = async <T>(
   url: string,
   errorMessage: string,
-  defaultValue: T,
+  defaultValue: T
 ): Promise<T> => {
   try {
     const response = await fetch(url);

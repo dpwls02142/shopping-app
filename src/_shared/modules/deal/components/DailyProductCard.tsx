@@ -1,14 +1,17 @@
 "use client";
 
+import { MouseEvent, useState } from "react";
+import Link from "next/link";
+
+import { ProductPreviewInfo } from "@/lib/types/productType";
+
+import { OPTION_TEXT, TITLE } from "@/lib/styles";
+
+import { DealTimer } from "@/_shared/modules/deal/components/DealTimer";
 import { AddToCartButton } from "@/_shared/modules/product/components/AddToCartButton";
 import { AddToCartSheet } from "@/_shared/modules/product/components/AddToCartSheet";
 import { ProductImage } from "@/_shared/modules/product/components/ProductImage";
 import { ProductPrice } from "@/_shared/modules/product/components/ProductPrice";
-import { OPTION_TEXT, TITLE } from "@/lib/styles";
-import { ProductPreviewInfo } from "@/lib/types/productType";
-import Link from "next/link";
-import { MouseEvent, useState } from "react";
-import { DealTimer } from "@/_shared/modules/deal/components/DealTimer";
 
 interface ProductCardProps {
   product: ProductPreviewInfo;

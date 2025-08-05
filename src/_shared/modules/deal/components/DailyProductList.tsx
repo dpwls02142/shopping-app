@@ -1,4 +1,5 @@
 import { DailyProductCard } from "@/_shared/modules/deal/components/DailyProductCard";
+
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 
 async function DailyProductList() {
