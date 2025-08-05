@@ -42,11 +42,7 @@ function AddToCartForm({ productDetail, onAddToCart }: AddToCartFormProps) {
       notification.error(ERROR_MESSAGE.MISSING_OPTIONS);
       return;
     }
-    try {
-      onAddToCart?.(currentMatchingOption.id, watchedQuantity);
-    } catch {
-      notification.error(ERROR_MESSAGE.ADD_TO_CART_ERROR);
-    }
+    onAddToCart?.(currentMatchingOption.id, watchedQuantity);
   }
 
   return (
