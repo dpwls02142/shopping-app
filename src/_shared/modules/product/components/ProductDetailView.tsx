@@ -7,6 +7,12 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ProductDetailInfo } from "@/lib/types/productType";
 
 import { CART_BOTTOM_CONTAINER } from "@/lib/styles";
+
+import { useProductBuy } from "@/_shared/modules/product/hooks/useProductBuy";
+import { useProductTab } from "@/_shared/modules/product/hooks/useProductTab";
+import { useProductTabObserver } from "@/_shared/modules/product/hooks/useProductTabObserver";
+import { useCartStore } from "@/_shared/modules/cart/stores/useCartStore";
+
 import { Button } from "@/_shared/components/button";
 import {
   Sheet,
@@ -16,12 +22,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/_shared/components/sheet";
-
-import { useProductTab } from "@/_shared/modules/product/hooks/useProductTab";
-import { useProductTabObserver } from "@/_shared/modules/product/hooks/useProductTabObserver";
-import { useProductBuy } from "@/_shared/modules/product/hooks/useProductBuy";
-import { useCartStore } from "@/_shared/modules/cart/stores/useCartStore";
-
 import { ProductActionForm } from "@/_shared/modules/product/components/ProductActionForm";
 import { ProductDescription } from "@/_shared/modules/product/components/ProductDescription";
 import { ProductOverview } from "@/_shared/modules/product/components/ProductOverview";

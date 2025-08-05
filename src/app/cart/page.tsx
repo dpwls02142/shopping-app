@@ -15,9 +15,9 @@ import {
 import { useProductBuy } from "@/_shared/modules/product/hooks/useProductBuy";
 import { useCartStore } from "@/_shared/modules/cart/stores/useCartStore";
 
+import { Button } from "@/_shared/components/button";
 import { CartItemList } from "@/_shared/modules/cart/components/CartItemList";
 import { CartSummary } from "@/_shared/modules/cart/components/CartSummary";
-import { Button } from "@/_shared/components/button";
 
 function CartPage() {
   const { items, totalItems, removeFromCart } = useCartStore();

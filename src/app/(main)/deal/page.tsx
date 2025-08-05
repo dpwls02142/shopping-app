@@ -1,5 +1,5 @@
-import { DealView } from "@/_shared/modules/deal/components/DealView";
 import { AppSwipeNavbar } from "@/_shared/components/AppSwipeNavbar";
+import { DealView } from "@/_shared/modules/deal/components/DealView";
 
 interface DealsPageProps {
   searchParams: Promise<{

@@ -1,8 +1,7 @@
 import { Suspense } from "react";
 
-import { ProductListSkeleton } from "@/_shared/modules/product/components/ProductListSkeleton";
-
 import { ProductCard } from "@/_shared/modules/product/components/ProductCard";
+import { ProductListSkeleton } from "@/_shared/modules/product/components/ProductListSkeleton";
 
 import { fetchCustomers } from "@/lib/api/customerApi";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";

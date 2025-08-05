@@ -11,11 +11,11 @@ import {
 import { CartItem as CartItemType } from "@/lib/types/cartType";
 
 import { OPTION_TEXT, TITLE } from "@/lib/styles";
-import { Button } from "@/_shared/components/button";
 import { X } from "lucide-react";
 
 import { useCartStore } from "@/_shared/modules/cart/stores/useCartStore";
 
+import { Button } from "@/_shared/components/button";
 import { ProductQuantity } from "@/_shared/modules/product/components/ProductQuantity";
 
 import { fetchProductOptionsByProductId } from "@/lib/api/productApi";

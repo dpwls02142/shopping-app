@@ -1,4 +1,5 @@
 import { PRODUCT_RATING_SIZE } from "@/lib/styles";
+
 import { Rating, RatingButton } from "@/_shared/components/shadcn-io/rating";
 
 type ProductRatingSize = "small" | "medium" | "large";

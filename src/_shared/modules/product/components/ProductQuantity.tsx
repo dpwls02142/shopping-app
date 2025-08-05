@@ -3,6 +3,10 @@
 import { Control } from "react-hook-form";
 
 import { ICON } from "@/lib/styles";
+import { MinusIcon, PlusIcon } from "lucide-react";
+
+import { useProductQuantity } from "@/_shared/modules/product/hooks/forms/useProductQuantity";
+
 import { Button } from "@/_shared/components/button";
 import {
   FormControl,
@@ -11,9 +15,6 @@ import {
   FormMessage,
 } from "@/_shared/components/form";
 import { Input } from "@/_shared/components/input";
-import { MinusIcon, PlusIcon } from "lucide-react";
-
-import { useProductQuantity } from "@/_shared/modules/product/hooks/forms/useProductQuantity";
 
 interface ProductQuantityProps {
   control: Control<{ options: Record<string, string>; quantity: number }>;

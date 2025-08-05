@@ -5,7 +5,6 @@ import { formatDateToKor } from "@/lib/utils";
 import { Review } from "@/lib/types/productType";
 
 import { Button } from "@/_shared/components/button";
-
 import { ProductRating } from "@/_shared/modules/product/components/ProductRating";
 
 interface ProductReviewProps {

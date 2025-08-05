@@ -5,9 +5,10 @@ import { ReactNode, useRef } from "react";
 import { MAIN_CONTAINER } from "@/lib/styles";
 
 import { useScrollActivity } from "@/_shared/modules/point/hooks/useScrollActivity";
-import { PointDisplay } from "@/_shared/modules/point/components/PointDisplay";
+
 import { AppHeader } from "@/_shared/components/AppHeader";
 import { AppNavbar } from "@/_shared/components/AppNavbar";
+import { PointDisplay } from "@/_shared/modules/point/components/PointDisplay";
 
 interface MainLayoutProps {
   children: ReactNode;
