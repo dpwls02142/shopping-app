@@ -1,11 +1,5 @@
-import { ProductPreviewInfo } from "@/lib/types/productType";
-
-import { DailyProductCard } from "./DailyProductCard";
+import { DailyProductCard } from "@/_shared/modules/deal/components/DailyProductCard";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
-
-interface ProductCardProps {
-  product: ProductPreviewInfo;
-}
 
 async function DailyProductList() {
   const products = await fetchProductPreviewInfo();
