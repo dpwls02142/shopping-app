@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
-    "json-server": "json-server --watch src/lib/db/db.json --port 3001",
+    "json-server": "json-server --watch db/db.json --port 3001",
     "test": "vitest"
   },
   "dependencies": {
