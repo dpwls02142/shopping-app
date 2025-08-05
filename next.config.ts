@@ -1,27 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
+  async rewrites() {
+    return [
       {
-        protocol: "https",
-        hostname: "picsum.photos",
-        port: "",
-        pathname: "/**",
+        source: "/api/:path*",
+        destination: "https://back-shopping-app.vercel.app/api/:path*",
       },
-      {
-        protocol: "https",
-        hostname: "loremflickr.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "i.pinimg.com",
-        port: "",
-        pathname: "/**",
-      },
-    ],
+    ];
   },
 };
 
