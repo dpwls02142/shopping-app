@@ -15,9 +15,8 @@ import { ArrowLeft, ShoppingCart } from "lucide-react";
 
 import { useCartStore } from "@/_shared/modules/cart/stores/useCartStore";
 
-const MAX_DISPLAY_CART_ITEMS = 99;
-
 const MAIN_PAGES = ["/", "/deal"];
+const MAX_DISPLAY_CART_ITEMS = 99;
 
 function HeaderTitle() {
   const pathname = usePathname();
