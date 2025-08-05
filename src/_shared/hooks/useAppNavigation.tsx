@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { NavigationPage } from "@/lib/types/navigationType";
+
 import { NAV_ITEMS } from "@/lib/constants/navigation";
 
 function useAppNavigation() {
