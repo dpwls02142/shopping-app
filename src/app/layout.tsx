@@ -1,7 +1,7 @@
 import { Suspense } from "react";
+import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Toaster } from "react-hot-toast";
 
 import QueryProvider from "@/_shared/providers/QueryProvider";
 
