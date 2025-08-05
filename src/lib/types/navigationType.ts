@@ -1,11 +1,10 @@
-type NavigationPage = "home" | "product" | "cart" | "deal";
+type NavigationPage = "home" | "deal";
 
 type NavItem = {
   id: NavigationPage;
   label: string;
   href: string;
-  isMain: boolean;
-  match: (pathname: string, searchParams: URLSearchParams) => boolean;
+  match: (pathname: string) => boolean;
 };
 
 export type { NavigationPage, NavItem };
