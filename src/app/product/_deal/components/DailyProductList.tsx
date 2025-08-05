@@ -1,6 +1,43 @@
 import { ProductCard } from "@/app/product/components/ProductCard";
-
+import { ProductPreviewInfo } from "@/lib/types/productType";
 import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
+import Link from "next/link";
+import { ProductPrice } from "../../components/ProductPrice";
+import { ProductImage } from "../../components/ProductImage";
+import { DealTimer } from "./DealTimer";
+import { OPTION_TEXT, TITLE } from "@/lib/styles";
+interface ProductCardProps {
+  product: ProductPreviewInfo;
+}
+
+function DailyProductCard({ product }: ProductCardProps) {
+  return (
+    <li key={product.id}>
+      <Link href={`/product/${product.id}`}>
+        <div className="flex-shrink-0 w-full rounded-lg overflow-hidden">
+          <div className="relative h-48 w-full rounded-t-lg overflow-hidden">
+            <ProductImage product={product} />
+          </div>
+          <div className="p-4">
+            <h3 className={TITLE}>{product.name}</h3>
+            <div className="flex items-center justify-between">
+              <ProductPrice product={product} size="large" />
+              <div className="flex items-center">
+                <span className="text-yellow-400">★</span>
+                <span className={OPTION_TEXT}>
+                  {product.averageRating} ({product.reviewCount})
+                </span>
+              </div>
+            </div>
+            <div>
+              <DealTimer />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </li>
+  );
+}
 
 async function DailyProductList() {
   const products = await fetchProductPreviewInfo();
@@ -15,11 +52,7 @@ async function DailyProductList() {
       <div className="flex flex-col space-y-4 p-4 max-w-4xl mx-auto">
         <ul className="list-none p-0 m-0">
           {dailyDealProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              variant="daily_deal"
-            />
+            <DailyProductCard key={product.id} product={product} />
           ))}
         </ul>
       </div>

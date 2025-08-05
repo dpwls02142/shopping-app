@@ -4,48 +4,14 @@ import Link from "next/link";
 
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
-import { OPTION_TEXT, TITLE } from "@/lib/styles";
-
-import { DealTimer } from "@/app/product/_deal/components/DealTimer";
+import { OPTION_TEXT } from "@/lib/styles";
 import { ProductImage } from "@/app/product/components/ProductImage";
 import { ProductPrice } from "@/app/product/components/ProductPrice";
-
-type ProductCardVariant = "default" | "daily_deal";
 interface ProductCardProps {
   product: ProductPreviewInfo;
-  variant?: ProductCardVariant;
 }
 
-function ProductCard({ product, variant = "default" }: ProductCardProps) {
-  if (variant === "daily_deal") {
-    return (
-      <li key={product.id}>
-        <Link href={`/product/${product.id}`}>
-          <div className="flex-shrink-0 w-full rounded-lg overflow-hidden">
-            <div className="relative h-48 w-full rounded-t-lg overflow-hidden">
-              <ProductImage product={product} />
-            </div>
-            <div className="p-4">
-              <h3 className={TITLE}>{product.name}</h3>
-              <div className="flex items-center justify-between">
-                <ProductPrice product={product} size="large" />
-                <div className="flex items-center">
-                  <span className="text-yellow-400">★</span>
-                  <span className={OPTION_TEXT}>
-                    {product.averageRating} ({product.reviewCount})
-                  </span>
-                </div>
-              </div>
-              <div>
-                <DealTimer />
-              </div>
-            </div>
-          </div>
-        </Link>
-      </li>
-    );
-  }
-
+function ProductCard({ product }: ProductCardProps) {
   return (
     <li key={product.id}>
       <Link href={`/product/${product.id}`}>
