@@ -23,6 +23,7 @@ function ProductImage({
         fill
         sizes={containerSize}
         priority={containerSize !== "small"}
+        className="object-cover"
       />
     </div>
   );
