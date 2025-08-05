@@ -15,7 +15,7 @@ interface ProductCardProps {
 
 function DailyProductCard({ product }: ProductCardProps) {
   return (
-    <li key={product.id}>
+    <li>
       <Link href={`/product/${product.id}`}>
         <div className="flex-shrink-0 w-full rounded-lg overflow-hidden">
           <div className="relative h-48 w-full rounded-t-lg overflow-hidden">

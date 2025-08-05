@@ -14,7 +14,7 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps) {
   return (
-    <li key={product.id}>
+    <li>
       <Link href={`/product/${product.id}`}>
         <ProductImage product={product} />
         <div className="space-y-1">
