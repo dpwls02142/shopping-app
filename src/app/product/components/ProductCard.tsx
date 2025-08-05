@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
 import { OPTION_TEXT } from "@/lib/styles";
+
 import { ProductImage } from "@/app/product/components/ProductImage";
 import { ProductPrice } from "@/app/product/components/ProductPrice";
 interface ProductCardProps {

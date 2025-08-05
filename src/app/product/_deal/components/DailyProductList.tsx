@@ -1,11 +1,14 @@
-import { ProductCard } from "@/app/product/components/ProductCard";
-import { ProductPreviewInfo } from "@/lib/types/productType";
-import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 import Link from "next/link";
-import { ProductPrice } from "../../components/ProductPrice";
-import { ProductImage } from "../../components/ProductImage";
-import { DealTimer } from "./DealTimer";
+
+import { ProductPreviewInfo } from "@/lib/types/productType";
+
 import { OPTION_TEXT, TITLE } from "@/lib/styles";
+
+import { DealTimer } from "@/app/product/_deal/components/DealTimer";
+import { ProductImage } from "@/app/product/components/ProductImage";
+import { ProductPrice } from "@/app/product/components/ProductPrice";
+
+import { fetchProductPreviewInfo } from "@/lib/api/productsApi";
 interface ProductCardProps {
   product: ProductPreviewInfo;
 }
