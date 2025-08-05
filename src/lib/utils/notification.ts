@@ -1,14 +1,16 @@
+import { toast } from "react-hot-toast";
+
 const notification = {
   success: (message: string) => {
-    alert(message);
+    toast.success(message);
   },
 
   error: (message: string) => {
-    alert(message);
+    toast.error(message);
   },
 
   info: (message: string) => {
-    alert(message);
+    toast(message);
   },
 };
 

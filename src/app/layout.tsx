@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         <QueryProvider>
           <div className="h-screen bg-gray-100 flex justify-center overflow-hidden">
             <div className="w-full max-w-[468px] bg-white h-full overflow-y-auto relative">
+              <Toaster position="top-center" reverseOrder={false} />
               <Suspense fallback={null}>{children}</Suspense>
             </div>
           </div>
