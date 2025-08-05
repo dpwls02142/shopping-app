@@ -17,7 +17,7 @@ interface MainLayoutProps {
 export default function MainLayout({ children }: MainLayoutProps) {
   const mainRef = useRef<HTMLElement>(null);
 
-  useScrollActivity({ mainRef, isEnabled: true });
+  useScrollActivity({ mainRef });
 
   return (
     <div className="h-full flex flex-col">

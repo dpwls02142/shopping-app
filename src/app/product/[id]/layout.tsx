@@ -16,7 +16,7 @@ interface ProductLayoutProps {
 export default function ProductLayout({ children }: ProductLayoutProps) {
   const mainRef = useRef<HTMLElement>(null);
 
-  useScrollActivity({ mainRef, isEnabled: true });
+  useScrollActivity({ mainRef });
 
   return (
     <div className="h-full flex flex-col">
