@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { ProductListSkeleton } from "@/_shared/components/ProductListSkeleton";
+import { ProductListSkeleton } from "@/_shared/modules/product/components/ProductListSkeleton";
 
 import { ProductCard } from "@/_shared/modules/product/components/ProductCard";
 
