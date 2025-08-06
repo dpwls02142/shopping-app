@@ -16,6 +16,12 @@ export async function generateMetadata(props: ProductPageProps) {
   const productDetail = await fetchProductDetail(productId);
   return {
     title: `${productDetail.product.name} | 쇼핑몰`,
+    openGraph: {
+      title: `${productDetail.product.name} | 쇼핑몰`,
+      description: `${productDetail.product.name} 상세 페이지`,
+      type: "website",
+      images: [productDetail.thumbnailImage || ""],
+    },
   };
 }
 
