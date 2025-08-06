@@ -3,15 +3,40 @@
 > 본 리포지토리는 [토스쇼핑](https://toss.im/shopping-seller) 클론 코딩 프로젝트입니다.
 > 프로젝트 데모는 [해당 사이트](https://shopping-app-ivory.vercel.app/)에서 볼 수 있습니다.
 
-## ⚠️ 안내 사항
-본 프로젝트는 mock DB를 기반으로 작동하기에 배포 환경에서는 상품을 장바구니에 담는 기능까지만 제공합니다. 하지만 로컬 환경에서는 PATCH 요청을 테스트 할 수 있습니다.
+## 스크린샷
+
+![Image](https://github.com/user-attachments/assets/7561f41d-29bc-47eb-9b59-9578665076d6)
+
+## 실행 방법
+
+```bash
+# package 설치
+pnpm install
+# .env.local 생성 후 base url 설정
+API_BASE_URL=https://back-shopping-app.vercel.app
+# 개발 환경 실행
+pnpm dev
+# 빌드
+pnpm build
+# 빌드 환경 실행
+pnpm start
+```
+
+## 안내 사항
+
+본 프로젝트는 mock DB를 기반으로 작동하기에 production 환경에서는 장바구니에 상품을 담는 기능까지만 제공합니다만,
+로컬 환경에서는 json-server를 활용해 상품 구매 기능(PATCH 요청)을 테스트 할 수 있습니다.
 
 ### 로컬 환경에서 전체 기능 테스트 방법
+
 1. 다음 명령어로 로컬 환경에서 json-server를 실행합니다.
-```
+
+```bash
 pnpm json-server
 ```
+
 2. lib/utils/index.ts 파일 내 getApiUrl 함수를 아래와 같이 수정합니다.
+
 ```ts
 const getApiUrl = (endpoint: string) => {
   // 서버 측
@@ -28,15 +53,15 @@ const getApiUrl = (endpoint: string) => {
 
 ## 사용 기술 스택
 
-| 분류        | 기술 스택                                                            |
-| ----------- | -------------------------------------------------------------------- |
-| 프레임워크  | React v19.0.0, Next.js v15.1.0 (App Router), TypeScript v5           |
+| 분류        | 기술 스택                                                             |
+| ----------- | --------------------------------------------------------------------- |
+| 프레임워크  | React v19.0.0, Next.js v15.1.0 (App Router), TypeScript v5            |
 | 상태 관리   | Zustand v5.0.6 (클라이언트 상태), tanstack-query v.5.83.0 (서버 상태) |
-| 폼 관리     | React Hook Form v7.60.0                                              |
-| 스타일링    | Tailwind CSS v3.4.1, shadcn/ui, radix-ui                             |
-| 패키지 관리 | pnpm                                                                 |
-| 데이터      | Faker.js v9.9.0, json-server v1.0.0-beta.3                           |
-| 기타 도구   | ESLint v9, Prettier v3.6.2, Husky v9.1.7                             |
+| 폼 관리     | React Hook Form v7.60.0                                               |
+| 스타일링    | Tailwind CSS v3.4.1, shadcn/ui, radix-ui                              |
+| 패키지 관리 | pnpm                                                                  |
+| 데이터      | Faker.js v9.9.0, json-server v1.0.0-beta.3                            |
+| 기타 도구   | ESLint v9, Prettier v3.6.2, Husky v9.1.7                              |
 
 ## 프레임워크 및 라이브러리 선택 이유
 
@@ -54,7 +79,7 @@ const getApiUrl = (endpoint: string) => {
   - 장바구니에 상품을 담거나 하루 특가의 타이머등 전역에서 관리되어야 하는 상태가 있기 때문에
 
 - **tanstack-query**
-  - 상품 주문시 mutate를 활용해 데이터 업데이트를 효율적으로 관리하기 위해서 
+  - 상품 주문시 mutate를 활용해 데이터 업데이트를 효율적으로 관리하기 위해서
 
 ### 폼 관리
 
@@ -75,7 +100,3 @@ const getApiUrl = (endpoint: string) => {
 
 - **Faker.js + json-server**
   - 가상 API 환경을 구성하기 위해서
-
-## 스크린샷
-
-## 프로젝트 구조
