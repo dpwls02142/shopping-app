@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="kr" className={`${pretendard.variable}`}>
+    <html lang="ko" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
         <QueryProvider>
           <div className="h-screen bg-gray-100 flex justify-center overflow-hidden">
