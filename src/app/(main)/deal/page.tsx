@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { AppSwipeNavbar } from "@/_shared/components/AppSwipeNavbar";
 import { DealView } from "@/_shared/modules/deal/components/DealView";
+import { AppSwipeNavbar } from "@/_shared/modules/main/components/AppSwipeNavbar";
 
 import { fetchCustomers } from "@/lib/api/customerApi";
 

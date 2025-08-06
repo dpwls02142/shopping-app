@@ -6,7 +6,7 @@ import { motion, PanInfo } from "framer-motion";
 
 import { SWIPE_CONTAINER } from "@/lib/styles";
 
-import { useAppNavigation } from "@/_shared/hooks/useAppNavigation";
+import { useAppNavbar } from "@/_shared/modules/main/hooks/useAppNavbar";
 
 interface SwipeContainerProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ interface SwipeContainerProps {
 const SWIPE_THRESHOLD = 50;
 
 function AppSwipeNavbar({ children }: SwipeContainerProps) {
-  const { currentPage, mainNavItems } = useAppNavigation();
+  const { currentPage, mainNavItems } = useAppNavbar();
   const router = useRouter();
 
   const handleDragEnd = (

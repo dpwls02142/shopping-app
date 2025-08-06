@@ -5,7 +5,7 @@
 
 ## 스크린샷
 
-![Image](https://github.com/user-attachments/assets/7561f41d-29bc-47eb-9b59-9578665076d6)
+<img src="https://github.com/user-attachments/assets/7561f41d-29bc-47eb-9b59-9578665076d6" width="400">
 
 ## 실행 방법
 

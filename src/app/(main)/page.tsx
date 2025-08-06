@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { AppSwipeNavbar } from "@/_shared/components/AppSwipeNavbar";
+import { AppSwipeNavbar } from "@/_shared/modules/main/components/AppSwipeNavbar";
 import { PersonalizedProductList } from "@/_shared/modules/product/components/PersonalizedProductList";
 
 import { fetchCustomers } from "@/lib/api/customerApi";

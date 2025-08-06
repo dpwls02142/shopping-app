@@ -7,7 +7,7 @@ import { MAIN_CONTAINER } from "@/lib/styles";
 import { useScrollActivity } from "@/_shared/modules/point/hooks/useScrollActivity";
 
 import { AppHeader } from "@/_shared/components/AppHeader";
-import { AppNavbar } from "@/_shared/components/AppNavbar";
+import { AppNavbar } from "@/_shared/modules/main/components/AppNavbar";
 import { PointDisplay } from "@/_shared/modules/point/components/PointDisplay";
 
 interface MainLayoutProps {
