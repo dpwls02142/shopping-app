@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { AppSwipeNavbar } from "@/_shared/components/AppSwipeNavbar";
 import { DealView } from "@/_shared/modules/deal/components/DealView";
 
@@ -7,7 +9,11 @@ interface DealsPageProps {
   }>;
 }
 
-export default async function DealsPage({ searchParams }: DealsPageProps) {
+export const metadata: Metadata = {
+  title: `특가 상품`,
+};
+
+async function DealsPage({ searchParams }: DealsPageProps) {
   const params = await searchParams;
   const { view } = params;
 
@@ -17,3 +23,5 @@ export default async function DealsPage({ searchParams }: DealsPageProps) {
     </AppSwipeNavbar>
   );
 }
+
+export default DealsPage;
