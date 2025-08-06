@@ -9,7 +9,7 @@ import {
   NAV_ITEM_LABEL,
 } from "@/lib/styles";
 
-import { useAppNavigation } from "@/_shared/hooks/useAppNavigation";
+import { useAppNavigation } from "@/_shared/modules/main/hooks/useAppNavigation";
 
 function AppNavbar() {
   const { currentPage, mainNavItems } = useAppNavigation();
