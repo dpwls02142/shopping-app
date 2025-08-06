@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { cn } from "@/lib/utils";
+
 import {
   CART_BOTTOM_CONTAINER,
   CART_EMPTY_CONTAINER,
@@ -9,12 +11,13 @@ import {
   SUBMIT_BUTTON,
   TITLE,
 } from "@/lib/styles";
+
 import { useProductBuy } from "@/_shared/modules/product/hooks/useProductBuy";
 import { useCartStore } from "@/_shared/modules/cart/stores/useCartStore";
-import { cn } from "@/lib/utils";
+
+import { Button } from "@/_shared/components/button";
 import { CartItemList } from "@/_shared/modules/cart/components/CartItemList";
 import { CartSummary } from "@/_shared/modules/cart/components/CartSummary";
-import { Button } from "@/_shared/components/button";
 
 function CartView() {
   const { items, totalItems, removeFromCart } = useCartStore();
