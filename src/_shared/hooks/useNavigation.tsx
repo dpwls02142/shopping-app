@@ -8,20 +8,22 @@ function useNavigation() {
 
   useEffect(() => {
     const entryPage = sessionStorage.getItem("entry-page");
+    const currentPageCount = parseInt(
+      sessionStorage.getItem("page-count") || "0"
+    );
 
     if (!entryPage) {
+      // 첫 진입
       sessionStorage.setItem("entry-page", pathname);
       sessionStorage.setItem("page-count", "1");
       setCanShowBackButton(false);
     } else {
-      const pageCount = parseInt(sessionStorage.getItem("page-count") || "1");
-      sessionStorage.setItem("page-count", (pageCount + 1).toString());
-      if (pathname === entryPage) {
-        setCanShowBackButton(false);
-      } else {
-        // 다른 페이지이고 2번째 이상 방문인 경우
-        setCanShowBackButton(pageCount >= 2);
-      }
+      // 첫 진입이 아니라면 page count 증가
+      const newPageCount = currentPageCount + 1;
+      sessionStorage.setItem("page-count", newPageCount.toString());
+
+      if (pathname === entryPage) setCanShowBackButton(false);
+      else setCanShowBackButton(newPageCount >= 2);
     }
   }, [pathname]);
 
