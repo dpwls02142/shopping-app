@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { AppSwipeNavbar } from "@/_shared/components/AppSwipeNavbar";
 import { DealView } from "@/_shared/modules/deal/components/DealView";
+
 import { fetchCustomers } from "@/lib/api/customerApi";
 
 interface DealsPageProps {

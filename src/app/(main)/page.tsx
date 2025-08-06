@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { AppSwipeNavbar } from "@/_shared/components/AppSwipeNavbar";
 import { PersonalizedProductList } from "@/_shared/modules/product/components/PersonalizedProductList";
+
 import { fetchCustomers } from "@/lib/api/customerApi";
 
 export async function generateMetadata(): Promise<Metadata> {

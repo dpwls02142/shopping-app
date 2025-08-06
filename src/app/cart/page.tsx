@@ -1,6 +1,8 @@
-import { CartView } from "@/_shared/modules/cart/components/CartView";
-import { fetchCustomers } from "@/lib/api/customerApi";
 import { Metadata } from "next";
+
+import { CartView } from "@/_shared/modules/cart/components/CartView";
+
+import { fetchCustomers } from "@/lib/api/customerApi";
 
 export async function generateMetadata(): Promise<Metadata> {
   const customers = await fetchCustomers();
