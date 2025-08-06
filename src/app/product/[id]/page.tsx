@@ -20,7 +20,9 @@ export async function generateMetadata(props: ProductPageProps) {
       title: `${productDetail.product.name} | 쇼핑몰`,
       description: `${productDetail.product.name} 상세 페이지`,
       type: "website",
-      images: [productDetail.thumbnailImage || ""],
+      images: productDetail.thumbnailImage
+        ? [productDetail.thumbnailImage]
+        : [],
     },
   };
 }
