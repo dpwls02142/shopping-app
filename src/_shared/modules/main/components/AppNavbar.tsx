@@ -9,10 +9,10 @@ import {
   NAV_ITEM_LABEL,
 } from "@/lib/styles";
 
-import { useAppNavigation } from "@/_shared/modules/main/hooks/useAppNavigation";
+import { useAppNavbar } from "@/_shared/modules/main/hooks/useAppNavbar";
 
 function AppNavbar() {
-  const { currentPage, mainNavItems } = useAppNavigation();
+  const { currentPage, mainNavItems } = useAppNavbar();
   const router = useRouter();
 
   const handleTabClick = (pageId: string, event: React.MouseEvent) => {

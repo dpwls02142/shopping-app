@@ -5,7 +5,7 @@ import { NavigationPage } from "@/lib/types/navigationType";
 
 import { NAV_ITEMS } from "@/lib/constants/navigation";
 
-function useAppNavigation() {
+function useAppNavbar() {
   const pathname = usePathname();
 
   const [currentPage, setCurrentPage] = useState<NavigationPage>("home");
@@ -21,4 +21,4 @@ function useAppNavigation() {
   };
 }
 
-export { useAppNavigation };
+export { useAppNavbar };
