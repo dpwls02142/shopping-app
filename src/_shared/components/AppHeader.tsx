@@ -13,6 +13,7 @@ import {
 } from "@/lib/styles";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 
+import { useNavigation } from "@/_shared/hooks/useNavigation";
 import { useCartStore } from "@/_shared/modules/cart/stores/useCartStore";
 
 const MAIN_PAGES = ["/", "/deal"];
@@ -31,8 +32,10 @@ function HeaderTitle() {
 function BackButton() {
   const pathname = usePathname();
   const router = useRouter();
+  const { canShowBackButton } = useNavigation();
   const isMainPage = MAIN_PAGES.includes(pathname);
-  if (isMainPage) return null;
+  if (isMainPage || !canShowBackButton) return null;
+
   return (
     <button
       onClick={() => router.back()}
