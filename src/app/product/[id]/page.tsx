@@ -11,6 +11,22 @@ interface ProductPageProps {
   }>;
 }
 
+export async function generateMetadata(props: ProductPageProps) {
+  const { id: productId } = await props.params;
+  const productDetail = await fetchProductDetail(productId);
+  return {
+    title: `${productDetail.product.name} | 쇼핑몰`,
+    openGraph: {
+      title: `${productDetail.product.name} | 쇼핑몰`,
+      description: `${productDetail.product.name} 상세 페이지`,
+      type: "website",
+      images: productDetail.thumbnailImage
+        ? [productDetail.thumbnailImage]
+        : [],
+    },
+  };
+}
+
 async function ProductPage(props: ProductPageProps) {
   const { id: productId } = await props.params;
   const queryClient = getQueryClient();
