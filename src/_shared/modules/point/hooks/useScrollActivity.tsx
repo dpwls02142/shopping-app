@@ -92,7 +92,7 @@ function useScrollActivity({ mainRef }: UseScrollActivityProps) {
 
     const intervalId = window.setInterval(() => {
       updateScrollTime();
-    }, 100);
+    }, SCROLL_THROTTLE_INTERVAL_MS);
 
     return () => clearInterval(intervalId);
   }, [isScrolling, updateScrollTime]);
