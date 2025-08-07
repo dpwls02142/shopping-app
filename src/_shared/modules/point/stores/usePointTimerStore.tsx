@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, subscribeWithSelector } from "zustand/middleware";
 
-type PointTimerState = {  
+type PointTimerState = {
   scrollTimeElapsed: number;
   isScrolling: boolean;
   points: number;
@@ -19,7 +19,6 @@ type PointTimerActions = {
   resetScrollTimer: () => void;
   addPoints: (amount: number) => void;
   clearLastPointsAdded: () => void;
-  initializeSession: () => void;
   syncStateFromStorage: () => void;
 };
 
@@ -43,11 +42,6 @@ const usePointTimerStore = create<PointTimerState & PointTimerActions>()(
         sessionStartTime: Date.now(),
         scrollStartTime: null,
         accumulatedScrollTime: 0,
-
-        initializeSession: () => {
-          const currentTime = Date.now();
-          set({ sessionStartTime: currentTime });
-        },
 
         syncStateFromStorage: () => {
           // localStorage에서 최신 상태를 가져와서 동기화

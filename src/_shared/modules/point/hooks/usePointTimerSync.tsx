@@ -8,12 +8,10 @@ import { usePointTimerStore } from "@/_shared/modules/point/stores/usePointTimer
  * 탭 간 포인트 타이머 상태 동기화를 위한 훅
  */
 function usePointTimerSync() {
-  const { syncStateFromStorage, initializeSession } = usePointTimerStore();
+  const { syncStateFromStorage } = usePointTimerStore();
 
   useEffect(() => {
     syncStateFromStorage();
-
-    initializeSession();
 
     const handleFocus = () => {
       syncStateFromStorage();
@@ -32,7 +30,7 @@ function usePointTimerSync() {
       window.removeEventListener("focus", handleFocus);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [syncStateFromStorage, initializeSession]);
+  }, [syncStateFromStorage]);
 }
 
 export { usePointTimerSync };
