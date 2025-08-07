@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 
 import { POINT_DISPLAY } from "@/lib/styles";
 
-import { usePointTimerStore } from "@/_shared/modules/point/stores/usePointTimerStore";
 import { usePointTimerSync } from "@/_shared/modules/point/hooks/usePointTimerSync";
+import { usePointTimerStore } from "@/_shared/modules/point/stores/usePointTimerStore";
 
 import {
   POINT_MESSAGE_DURATION_MS,

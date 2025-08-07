@@ -1,8 +1,8 @@
 import { RefObject, useCallback, useEffect, useMemo, useRef } from "react";
 import { throttle } from "lodash";
 
-import { usePointTimerStore } from "@/_shared/modules/point/stores/usePointTimerStore";
 import { usePointTimerSync } from "@/_shared/modules/point/hooks/usePointTimerSync";
+import { usePointTimerStore } from "@/_shared/modules/point/stores/usePointTimerStore";
 
 import {
   MIN_SCROLL_DELTA,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+
 import { usePointTimerStore } from "@/_shared/modules/point/stores/usePointTimerStore";
 
 /**
