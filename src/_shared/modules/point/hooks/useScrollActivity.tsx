@@ -1,13 +1,13 @@
 import { RefObject, useCallback, useEffect, useMemo, useRef } from "react";
 import { throttle } from "lodash";
 
-import usePointTimerStore from "@/_shared/modules/point/stores/usePointTimerStore";
+import { usePointTimerStore } from "@/_shared/modules/point/stores/usePointTimerStore";
+import { usePointTimerSync } from "@/_shared/modules/point/hooks/usePointTimerSync";
 
 import {
   MIN_SCROLL_DELTA,
   POINTS_PER_INTERVAL,
   SCROLL_INACTIVITY_THRESHOLD_MS,
-  SCROLL_POINT_GAIN_INTERVAL_MS,
   SCROLL_THROTTLE_INTERVAL_MS,
   TOTAL_SCROLL_TIME_FOR_POINTS_MS,
 } from "@/lib/constants/point";
@@ -21,10 +21,12 @@ interface UseScrollActivityProps {
  * @param mainRef - 스크롤 메인 요소 참조
  */
 function useScrollActivity({ mainRef }: UseScrollActivityProps) {
+  usePointTimerSync();
+
   const {
     isScrolling,
     scrollTimeElapsed,
-    incrementScrollTime,
+    updateScrollTime,
     resetScrollTimer,
     addPoints,
     startScrollTimer,
@@ -89,11 +91,11 @@ function useScrollActivity({ mainRef }: UseScrollActivityProps) {
     if (!isScrolling) return;
 
     const intervalId = window.setInterval(() => {
-      incrementScrollTime(SCROLL_POINT_GAIN_INTERVAL_MS);
-    }, SCROLL_POINT_GAIN_INTERVAL_MS);
+      updateScrollTime();
+    }, 100);
 
     return () => clearInterval(intervalId);
-  }, [isScrolling, incrementScrollTime]);
+  }, [isScrolling, updateScrollTime]);
 
   /**
    * 포인트 지급
