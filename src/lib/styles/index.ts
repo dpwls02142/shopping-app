@@ -54,6 +54,12 @@ export const PRODUCT_IMAGE_CONTAINER = {
   large: "relative w-full aspect-square overflow-hidden",
 };
 
+export const PRODUCT_IMAGE_SIZES = {
+  small: "64px",
+  medium: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
+  large: "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw",
+};
+
 export const PRODUCT_PRICE_SIZE = {
   small: {
     main: "text-sm font-bold text-gray-900",

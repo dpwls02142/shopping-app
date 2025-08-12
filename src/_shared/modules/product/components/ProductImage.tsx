@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { ProductPreviewInfo } from "@/lib/types/productType";
 
-import { PRODUCT_IMAGE_CONTAINER } from "@/lib/styles";
+import { PRODUCT_IMAGE_CONTAINER, PRODUCT_IMAGE_SIZES } from "@/lib/styles";
 
 type ProductImageContainerSize = "small" | "medium" | "large";
 
@@ -21,7 +21,7 @@ function ProductImage({
         src={product.thumbnailImage ?? ""}
         alt={product.name}
         fill
-        sizes={containerSize}
+        sizes={PRODUCT_IMAGE_SIZES[containerSize]}
         priority={containerSize !== "small"}
         className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
       />
