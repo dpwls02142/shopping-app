@@ -23,7 +23,7 @@ function ProductImage({
         fill
         sizes={containerSize}
         priority={containerSize !== "small"}
-        className="object-cover"
+        className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
       />
     </div>
   );
