@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: `특가 상품`,
+    description: `특가 상품`,
     openGraph: {
       title: `${name}님을 위한 특가 상품`,
       description: `${name}님을 위한 특가 상품을 만나보세요.`,

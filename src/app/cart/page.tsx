@@ -10,6 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: `장바구니`,
+    description: `장바구니`,
     openGraph: {
       title: `${name}님의 장바구니`,
       description: `${name}님의 장바구니를 확인해보세요.`,

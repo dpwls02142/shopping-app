@@ -4,6 +4,7 @@ import { ProductDetailView } from "@/_shared/modules/product/components/ProductD
 
 import { fetchProductDetail } from "@/lib/api/productApi";
 import { getQueryClient } from "@/lib/queryClient";
+import { Description } from "@radix-ui/react-dialog";
 
 interface ProductPageProps {
   params: Promise<{
@@ -14,11 +15,13 @@ interface ProductPageProps {
 export async function generateMetadata(props: ProductPageProps) {
   const { id: productId } = await props.params;
   const productDetail = await fetchProductDetail(productId);
+  const desc = `${productDetail.product.name} 상세 페이지`;
   return {
     title: `${productDetail.product.name} | 쇼핑몰`,
+    Description: desc,
     openGraph: {
       title: `${productDetail.product.name} | 쇼핑몰`,
-      description: `${productDetail.product.name} 상세 페이지`,
+      description: desc,
       type: "website",
       images: productDetail.thumbnailImage
         ? [productDetail.thumbnailImage]

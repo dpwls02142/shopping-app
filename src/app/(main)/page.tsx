@@ -11,6 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: `쇼핑몰`,
+    description: `추천 상품`,
     openGraph: {
       title: `${name}님을 위한 추천 상품`,
       description: `${name}님을 위한 추천 상품을 만나보세요.`,
