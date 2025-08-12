@@ -4,7 +4,6 @@ import { ProductDetailView } from "@/_shared/modules/product/components/ProductD
 
 import { fetchProductDetail } from "@/lib/api/productApi";
 import { getQueryClient } from "@/lib/queryClient";
-import { Description } from "@radix-ui/react-dialog";
 
 interface ProductPageProps {
   params: Promise<{
