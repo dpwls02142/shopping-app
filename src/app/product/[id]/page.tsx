@@ -17,7 +17,7 @@ export async function generateMetadata(props: ProductPageProps) {
   const desc = `${productDetail.product.name} 상세 페이지`;
   return {
     title: `${productDetail.product.name} | 쇼핑몰`,
-    Description: desc,
+    description: desc,
     openGraph: {
       title: `${productDetail.product.name} | 쇼핑몰`,
       description: desc,
