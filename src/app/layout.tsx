@@ -16,6 +16,7 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   title: `쇼핑몰`,
+  description: `쇼핑몰`,
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_BASE_URL || "https://shopping-app-ivory.vercel.app/"
   ),
